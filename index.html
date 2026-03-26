@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abishek Medical Center | Dr. Jayanthi Prabakaran</title>
+<meta name="description" content="Abishek Medical Center - Expert Obstetrics & Gynaecology care in Erode by Dr. Jayanthi Prabakaran, Gold Medalist from Chennai Medical College.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14532d">
+<link rel="apple-touch-icon" href="icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#14532d;
+  --green-mid:#166534;
+  --green-light:#22c55e;
+  --green-pale:#f0fdf4;
+  --green-soft:#dcfce7;
+  --gold:#d4a017;
+  --white:#fff;
+  --dark:#0a1628;
+  --gray:#64748b;
+  --light:#f8fafc;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:999;padding:0 5%;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,83,45,0.08);transition:all .3s}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:44px;height:44px;background:var(--green);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+.logo-words h2{font-family:'Playfair Display',serif;font-size:17px;color:var(--green);font-weight:700;line-height:1.2}
+.logo-words p{font-size:11px;color:var(--gray);letter-spacing:.5px}
+.nav-links{display:flex;list-style:none;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--dark);transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green)!important;color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600!important;transition:all .2s!important}
+.nav-cta:hover{background:#166534!important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(20,83,45,.3)!important}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.ham span{display:block;width:24px;height:2px;background:var(--green);border-radius:2px;transition:.3s}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:linear-gradient(135deg,#052e16 0%,#14532d 45%,#166534 100%);display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+.hero-bg-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,.04)}
+.hbc1{width:700px;height:700px;top:-200px;right:-200px}
+.hbc2{width:400px;height:400px;bottom:-150px;left:-100px}
+.hbc3{width:200px;height:200px;top:40%;left:35%;background:rgba(255,255,255,.03)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 5%;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+.hero-tag i{color:#86efac}
+.hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:#86efac}
+.hero p{color:rgba(255,255,255,.75);font-size:17px;line-height:1.8;margin-bottom:38px;max-width:520px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-w{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--green);padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.btn-o{display:inline-flex;align-items:center;gap:9px;background:transparent;color:#fff;padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);transition:all .25s}
+.btn-o:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12)}
+.h-stat h3{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff}
+.h-stat p{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* Doctor Card */
+.doc-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:36px 28px;text-align:center;animation:floatDoc 4s ease-in-out infinite}
+@keyframes floatDoc{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.doc-avatar{width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.15);border:3px solid rgba(255,255,255,.3);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:64px;color:rgba(255,255,255,.6);overflow:hidden}
+.doc-avatar img{width:100%;height:100%;object-fit:cover}
+.doc-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:5px}
+.doc-card .spec{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:4px}
+.doc-card .college{font-size:12px;color:rgba(255,255,255,.55)}
+.gold-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#b8860b,#d4a017,#ffd700);color:#000;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-top:14px}
+.doc-actions{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.doc-actions a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;text-decoration:none;transition:all .2s}
+.doc-actions a:hover{background:rgba(255,255,255,.25);transform:scale(1.1)}
+
+/* ── SECTION BASE ── */
+section{padding:90px 5%}
+.max{max-width:1200px;margin:0 auto}
+.sec-label{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.sec-title{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:16px}
+.sec-sub{font-size:16px;color:var(--gray);max-width:560px;line-height:1.8}
+.sec-head{margin-bottom:56px}
+.sec-head.center{text-align:center}.sec-head.center .sec-sub{margin:0 auto}
+
+/* ── ABOUT ── */
+.about{background:var(--green-pale)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-text .sec-sub{margin-bottom:28px}
+.feat-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.feat{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500}
+.feat i{color:var(--green);font-size:15px}
+.stats-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.s-card{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .2s}
+.s-card:hover{transform:translateY(-4px)}
+.s-card.filled{background:var(--green)}
+.s-card i{font-size:28px;color:var(--green);margin-bottom:12px}
+.s-card.filled i{color:#86efac}
+.s-card h3{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--dark)}
+.s-card.filled h3,.s-card.filled p{color:#fff}
+.s-card p{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.srv-card{background:#fff;border-radius:20px;padding:34px 26px;box-shadow:0 2px 20px rgba(0,0,0,.06);border:1px solid #e2e8f0;transition:all .3s;position:relative;overflow:hidden}
+.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-light));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.srv-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(20,83,45,.12);border-color:transparent}
+.srv-card:hover::after{transform:scaleX(1)}
+.srv-icon{width:58px;height:58px;border-radius:14px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;color:var(--green);transition:all .3s}
+.srv-card:hover .srv-icon{background:var(--green);color:#fff}
+.srv-card h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--dark)}
+.srv-card p{font-size:14px;color:var(--gray);line-height:1.7}
+
+/* ── DOCTOR ── */
+.doctors{background:var(--green-pale)}
+.doc-profile{background:#fff;border-radius:28px;padding:52px;box-shadow:0 8px 40px rgba(0,0,0,.08);display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
+.dp-img{text-align:center}
+.dp-photo{width:220px;height:220px;border-radius:50%;background:var(--green-soft);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:88px;color:var(--green);overflow:hidden;border:5px solid var(--green-pale);box-shadow:0 0 0 4px var(--green)}
+.dp-photo img{width:100%;height:100%;object-fit:cover}
+.dp-social{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.dp-social a{width:38px;height:38px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:16px;text-decoration:none;transition:all .2s}
+.dp-social a.yt{--c:#ff0000}
+.dp-social a.ig{--c:#e1306c}
+.dp-social a.fb{--c:#1877f2}
+.dp-social a:hover{background:var(--c,var(--green));color:#fff;transform:translateY(-2px)}
+.dp-info .sec-label{margin-bottom:8px}
+.dp-info h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.dp-info .dp-role{font-size:16px;color:var(--green);font-weight:600;margin-bottom:18px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.badge{padding:7px 15px;border-radius:20px;font-size:13px;font-weight:600;background:var(--green-pale);color:var(--green)}
+.badge.gold-b{background:linear-gradient(135deg,#fffbeb,#fef9c3);color:#92400e;border:1px solid #fcd34d}
+.dp-bio{font-size:15px;color:var(--gray);line-height:1.85;margin-bottom:24px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.exp-item{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}
+.exp-item i{color:var(--green);font-size:13px}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.c-items{margin-top:28px;display:flex;flex-direction:column;gap:18px}
+.c-item{display:flex;gap:16px;align-items:flex-start}
+.c-ico{width:48px;height:48px;border-radius:13px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--green);flex-shrink:0}
+.c-ico.wa{background:#e8fff1;color:#25d366}
+.c-text h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:3px}
+.c-text p,.c-text a{font-size:15px;font-weight:600;color:var(--dark);text-decoration:none;line-height:1.5}
+.c-text a:hover{color:var(--green)}
+.appt-btn{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--green);color:#fff;padding:15px 30px;border-radius:11px;font-weight:700;font-size:15px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(20,83,45,.25)}
+.appt-btn:hover{background:#166534;transform:translateY(-2px);box-shadow:0 8px 28px rgba(20,83,45,.3)}
+.map-wrap{border-radius:20px;overflow:hidden;height:420px;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.map-wrap iframe{width:100%;height:100%;border:none}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:#fff;padding:60px 5% 24px}
+.foot-inner{max-width:1200px;margin:0 auto}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.foot-brand h3{font-family:'Playfair Display',serif;font-size:22px;color:#86efac;margin-bottom:14px}
+.foot-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:20px}
+.foot-social{display:flex;gap:10px}
+.foot-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:15px;text-decoration:none;transition:all .2s}
+.foot-social a:hover{background:var(--green);color:#fff}
+.foot-col h4{font-size:15px;font-weight:700;margin-bottom:18px;color:#fff}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:10px}
+.foot-col ul li a{font-size:14px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.foot-col ul li a:hover{color:#86efac}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;text-align:center;font-size:13px;color:rgba(255,255,255,.3)}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;text-decoration:none;z-index:9999;box-shadow:0 4px 20px rgba(37,211,102,.45);animation:waPulse 2.5s infinite}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-float:hover{transform:scale(1.1);background:#1da851}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero h1{font-size:38px}
+  .hero p{margin:0 auto 30px}
+  .hero-btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  .doc-card{max-width:320px;margin:0 auto}
+  .about-grid,.doc-profile,.contact-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .ham{display:flex}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 5%;gap:16px;border-bottom:1px solid #e2e8f0}
+  .nav-links.open{display:flex}
+}
+@media(max-width:600px){
+  .hero h1{font-size:30px}
+  .services-grid{grid-template-columns:1fr}
+  .stats-cards{grid-template-columns:1fr 1fr}
+  .sec-title{font-size:30px}
+  .doc-profile{padding:28px 20px}
+  .exp-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark"><i class="fas fa-heartbeat"></i></div>
+      <div class="logo-words">
+        <h2>Abishek Medical Center</h2>
+        <p>Women's Healthcare · Erode</p>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Doctor</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="ham" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-circle hbc1"></div>
+  <div class="hero-bg-circle hbc2"></div>
+  <div class="hero-bg-circle hbc3"></div>
+  <div class="hero-inner">
+    <div class="reveal">
+      <div class="hero-tag"><i class="fas fa-map-marker-alt"></i> Erode Fort, Tamil Nadu</div>
+      <h1>Expert Care for <em>Women's Health</em> You Can Trust</h1>
+      <p>Led by Dr. Jayanthi Prabakaran — Gold Medalist in Obstetrics & Gynaecology from Chennai Medical College — delivering world-class women's healthcare in Erode.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/917448777717" class="btn-w"><i class="fab fa-whatsapp"></i> Book Appointment</a>
+        <a href="#services" class="btn-o"><i class="fas fa-stethoscope"></i> Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><h3>5000+</h3><p>Patients Treated</p></div>
+        <div class="h-stat"><h3>10+</h3><p>Years Experience</p></div>
+        <div class="h-stat"><h3>24/7</h3><p>Emergency Care</p></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="doc-card">
+        <div class="doc-avatar"><i class="fas fa-user-md"></i></div>
+        <h3>Dr. Jayanthi Prabakaran</h3>
+        <p class="spec">Obstetrics & Gynaecology</p>
+        <p class="college">Chennai Medical College</p>
+        <div class="gold-badge"><i class="fas fa-medal"></i> Gold Medalist</div>
+        <div class="doc-actions">
+          <a href="https://www.youtube.com/@dr.jayanthiprabakaran" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="sec-head">
+          <p class="sec-label">Who We Are</p>
+          <h2 class="sec-title">Trusted Women's Healthcare in Erode</h2>
+          <p class="sec-sub">Abishek Medical Center is a premier women's healthcare facility in the heart of Erode Fort, committed to delivering clinical excellence with a personal touch.</p>
+        </div>
+        <p style="font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:16px">Our center is equipped with modern medical technology and led by Dr. Jayanthi Prabakaran, a Gold Medalist from Chennai Medical College, ensuring every patient receives world-class care close to home.</p>
+        <p style="font-size:15px;color:var(--gray);line-height:1.9">We believe every woman deserves compassionate, expert care — from pregnancy to postnatal care and beyond.</p>
+        <div class="feat-list">
+          <div class="feat"><i class="fas fa-check-circle"></i> Expert Medical Care</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> Modern Equipment</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> 24/7 Emergency</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> Affordable Plans</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> Safe & Hygienic</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> Personalized Care</div>
+        </div>
+      </div>
+      <div class="stats-cards reveal">
+        <div class="s-card filled">
+          <i class="fas fa-award"></i>
+          <h3>Gold</h3>
+          <p>Medal Doctor</p>
+        </div>
+        <div class="s-card">
+          <i class="fas fa-users"></i>
+          <h3>5000+</h3>
+          <p>Happy Patients</p>
+        </div>
+        <div class="s-card">
+          <i class="fas fa-clock"></i>
+          <h3>24/7</h3>
+          <p>Always Available</p>
+        </div>
+        <div class="s-card filled">
+          <i class="fas fa-star"></i>
+          <h3>Top</h3>
+          <p>Rated Clinic</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="max">
+    <div class="sec-head center reveal">
+      <p class="sec-label">What We Offer</p>
+      <h2 class="sec-title">Our Medical Services</h2>
+      <p class="sec-sub">Comprehensive women's healthcare services delivered with expertise, compassion, and the latest medical technology.</p>
+    </div>
+    <div class="services-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-baby"></i></div>
+        <h3>Obstetrics & Maternity Care</h3>
+        <p>Complete prenatal, delivery, and postnatal care ensuring safe and healthy pregnancies for every mother in Erode.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-venus"></i></div>
+        <h3>Gynaecology</h3>
+        <p>Expert diagnosis and treatment of all gynaecological conditions using modern, minimally invasive techniques.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>High Risk Pregnancy</h3>
+        <p>Specialized care for high-risk pregnancies with advanced monitoring and expert medical management.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Fertility Treatment</h3>
+        <p>Comprehensive fertility evaluation and treatment options to help families grow with care and compassion.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-notes-medical"></i></div>
+        <h3>Women's Health Checkup</h3>
+        <p>Regular health screenings, cancer screenings, and preventive care tailored specifically for women.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><i class="fas fa-pills"></i></div>
+        <h3>Family Planning</h3>
+        <p>Personalized family planning counselling and contraception services suited to your lifestyle and needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section class="doctors" id="doctors">
+  <div class="max">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Meet Our Expert</p>
+      <h2 class="sec-title">Our Lead Consultant</h2>
+      <p class="sec-sub">A Gold Medalist dedicated to transforming women's healthcare in Erode</p>
+    </div>
+    <div class="doc-profile reveal">
+      <div class="dp-img">
+        <div class="dp-photo"><i class="fas fa-user-md"></i></div>
+        <div class="dp-social">
+          <a href="https://www.youtube.com/@dr.jayanthiprabakaran" target="_blank" class="yt" style="--c:#ff0000"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank" class="ig" style="--c:#e1306c"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank" class="fb" style="--c:#1877f2"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/917448777717" style="--c:#25d366"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="font-size:12px;color:var(--gray);margin-top:12px">📹 Weekly health videos on YouTube</p>
+      </div>
+      <div class="dp-info">
+        <p class="sec-label">Lead Consultant</p>
+        <h2>Dr. Jayanthi Prabakaran</h2>
+        <p class="dp-role">Obstetrics & Gynaecology Specialist</p>
+        <div class="badges">
+          <span class="badge gold-b">🏅 Gold Medalist</span>
+          <span class="badge">Chennai Medical College</span>
+          <span class="badge">OB/GYN Specialist</span>
+        </div>
+        <p class="dp-bio">Dr. Jayanthi Prabakaran is a distinguished Gold Medalist in Obstetrics & Gynaecology from Chennai Medical College. With exceptional academic credentials and deep clinical expertise, she has dedicated her career to providing outstanding women's healthcare in Erode.</p>
+        <p class="dp-bio">She is known for her compassionate patient care, precise clinical judgment, and commitment to patient education — sharing weekly informative health videos on her YouTube channel <strong>@DR.JAYANTHIPRABAKARAN</strong>.</p>
+        <div class="exp-grid">
+          <div class="exp-item"><i class="fas fa-check"></i> Normal & C-Section Deliveries</div>
+          <div class="exp-item"><i class="fas fa-check"></i> Laparoscopic Surgery</div>
+          <div class="exp-item"><i class="fas fa-check"></i> High Risk Pregnancy Care</div>
+          <div class="exp-item"><i class="fas fa-check"></i> Fertility Treatments</div>
+          <div class="exp-item"><i class="fas fa-check"></i> Gynaecological Oncology</div>
+          <div class="exp-item"><i class="fas fa-check"></i> Menstrual Disorders</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max">
+    <div class="sec-head center reveal">
+      <p class="sec-label">Find Us</p>
+      <h2 class="sec-title">Visit Abishek Medical Center</h2>
+      <p class="sec-sub">We're located in the heart of Erode Fort. Reach out to us anytime — we're always here to help.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h2 class="sec-title" style="font-size:32px">Get In <span style="color:var(--green)">Touch</span></h2>
+        <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-top:8px">Book an appointment or walk in to our clinic. We're dedicated to providing expert care for every woman.</p>
+        <div class="c-items">
+          <div class="c-item">
+            <div class="c-ico"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="c-text">
+              <h4>Address</h4>
+              <p>18, Bharathi Street, Erode Fort<br>Erode – 638001, Tamil Nadu</p>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico"><i class="fas fa-phone-alt"></i></div>
+            <div class="c-text">
+              <h4>Phone</h4>
+              <a href="tel:9750511225">9750511225</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico wa"><i class="fab fa-whatsapp"></i></div>
+            <div class="c-text">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/917448777717">7448777717</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico"><i class="fas fa-clock"></i></div>
+            <div class="c-text">
+              <h4>Working Hours</h4>
+              <p>Mon – Sat: 9:00 AM – 6:00 PM<br>Emergency: 24 / 7</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/917448777717" class="appt-btn"><i class="fab fa-whatsapp"></i> Book Appointment on WhatsApp</a>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.5!2d77.7139!3d11.3430!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96f00000000000%3A0x0!2sErode+Fort%2C+Erode%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <h3>Abishek Medical Center</h3>
+        <p>Expert Obstetrics & Gynaecology care in Erode, led by Dr. Jayanthi Prabakaran — Gold Medalist from Chennai Medical College. Compassionate care for every woman.</p>
+        <div class="foot-social">
+          <a href="https://www.youtube.com/@dr.jayanthiprabakaran" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/917448777717"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Our Doctor</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Maternity Care</a></li>
+          <li><a href="#services">Gynaecology</a></li>
+          <li><a href="#services">High Risk Pregnancy</a></li>
+          <li><a href="#services">Fertility Treatment</a></li>
+          <li><a href="#services">Family Planning</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2025 Abishek Medical Center · Dr. Jayanthi Prabakaran · All Rights Reserved · Erode, Tamil Nadu</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/917448777717" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Nav toggle
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')))
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'))
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  })
+})
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})
+},{threshold:0.12})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+
+// PWA
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))
+}
+</script>
+</body>
+</html>
