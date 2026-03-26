@@ -1,0 +1,22 @@
+{
+  "name": "Abishek Medical Center",
+  "short_name": "Abishek MC",
+  "description": "Expert Obstetrics & Gynaecology care in Erode by Dr. Jayanthi Prabakaran",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#14532d",
+  "theme_color": "#14532d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
