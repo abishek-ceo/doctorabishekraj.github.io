@@ -1,215 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  ‹!-- Google tag (gtag.js) →→
-‹script async src="https://www.googletagmanager.com/gtag/js?id=G-XJL7J574CW"></script>
-<script>
-window datalayer = window dataLayer |I;
-function gtag() {dataLayer. push (arguments) ;} gtag('js', new Date()) ;
-gtag('config', 'G-XJL7J574CW');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abishek Hospital | Dr. Jayanthi Prabakaran - OB/GYN Erode</title>
-<meta name="description" content="Abishek Hospital - Expert Obstetrics & Gynaecology care in Erode by Dr. Jayanthi Prabakaran, Gold Medalist from Chennai Medical College.">
+<title>Abishek Hospital | No.1 OB/GYN Hospital in Erode, Tamil Nadu</title>
+<meta name="description" content="Abishek Hospital Erode - No.1 Women's Healthcare by Dr. Jayanthi Prabakaran, Gold Medalist from Madras Medical College. 40,000+ safe deliveries.">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#14532d">
 <link rel="apple-touch-icon" href="icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --green:#14532d;--green-mid:#166534;--green-light:#22c55e;
-  --green-pale:#f0fdf4;--green-soft:#dcfce7;--gold:#d4a017;
-  --white:#fff;--dark:#0a1628;--gray:#64748b;--light:#f8fafc;
+  --green:#0d4a26;--green2:#166534;--green3:#22c55e;
+  --pale:#f0fdf4;--soft:#dcfce7;--gold:#c9920a;
+  --dark:#070e1a;--gray:#5a6a7a;--light:#f7f9fc;--white:#fff;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
-nav{position:fixed;top:0;width:100%;z-index:999;padding:0 5%;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,83,45,0.08)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo img.logo-img{height:42px;object-fit:contain}
-.logo-fallback{display:flex;align-items:center;gap:10px}
-.logo-mark{width:42px;height:42px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
-.logo-words h2{font-family:'Playfair Display',serif;font-size:16px;color:var(--green);font-weight:700;line-height:1.2}
-.logo-words p{font-size:11px;color:var(--gray)}
-.nav-links{display:flex;list-style:none;gap:28px;align-items:center}
-.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--dark);transition:color .2s}
+body{font-family:'Inter',sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(13,74,38,.1);transition:.3s}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img.logo-img{height:44px;object-fit:contain}
+.logo-fb{display:none;align-items:center;gap:10px}
+.logo-mk{width:42px;height:42px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.logo-wds h2{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--green);font-weight:700;line-height:1.2}
+.logo-wds p{font-size:10px;color:var(--gray);letter-spacing:.5px}
+.nav-links{display:flex;list-style:none;gap:30px;align-items:center}
+.nav-links a{text-decoration:none;font-size:13.5px;font-weight:500;color:var(--dark);transition:color .2s;letter-spacing:.2px}
 .nav-links a:hover{color:var(--green)}
-.nav-cta{background:var(--green)!important;color:#fff!important;padding:10px 20px;border-radius:8px;font-weight:600!important}
-.nav-cta:hover{background:#166534!important;transform:translateY(-1px)}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.nav-email{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green)!important;font-weight:600!important;background:var(--pale);padding:7px 14px;border-radius:20px;border:1px solid var(--soft)}
+.nav-email i{font-size:11px}
+.nav-cta{background:var(--green)!important;color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600!important}
+.nav-cta:hover{background:#0a3a1e!important}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .ham span{display:block;width:24px;height:2px;background:var(--green);border-radius:2px}
-.hero{min-height:100vh;background:linear-gradient(135deg,#052e16 0%,#14532d 50%,#166534 100%);display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
-.hbc{position:absolute;border-radius:50%;background:rgba(255,255,255,.04)}
-.hbc1{width:600px;height:600px;top:-200px;right:-150px}
-.hbc2{width:350px;height:350px;bottom:-100px;left:-80px}
-.hero-inner{max-width:1200px;margin:0 auto;padding:80px 5%;display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:center;position:relative;z-index:1}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
-.hero h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,#020f07 0%,#0d4a26 40%,#166534 75%,#1a7a3e 100%);display:flex;align-items:center;padding-top:74px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hbc{position:absolute;border-radius:50%;background:rgba(255,255,255,.03)}
+.hbc1{width:700px;height:700px;top:-250px;right:-200px}
+.hbc2{width:400px;height:400px;bottom:-150px;left:-120px}
+.hero-inner{max-width:1240px;margin:0 auto;padding:80px 5%;display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9);font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+.hero-pill i{color:#86efac;font-size:10px}
+.hero-no1{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,rgba(201,146,10,.25),rgba(201,146,10,.1));border:1px solid rgba(201,146,10,.4);color:#fde68a;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:6px 13px;border-radius:20px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:10px}
 .hero h1 em{font-style:normal;color:#86efac}
-.hero p{color:rgba(255,255,255,.75);font-size:16px;line-height:1.8;margin-bottom:36px;max-width:500px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-w{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--green);padding:13px 26px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.btn-w:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
-.btn-yt{display:inline-flex;align-items:center;gap:9px;background:#ff0000;color:#fff;padding:13px 26px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s}
+.hero-sub-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(255,255,255,.65);font-weight:400;margin-bottom:22px;font-style:italic}
+.hero p{color:rgba(255,255,255,.72);font-size:15.5px;line-height:1.85;margin-bottom:36px;max-width:520px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--green);padding:13px 26px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.btn-yt{display:inline-flex;align-items:center;gap:9px;background:#ff0000;color:#fff;padding:13px 26px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s}
 .btn-yt:hover{background:#cc0000;transform:translateY(-2px)}
-.hero-stats{display:flex;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
-.h-stat h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
-.h-stat p{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
-.doc-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:28px 22px;text-align:center;animation:floatDoc 4s ease-in-out infinite}
-@keyframes floatDoc{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.doc-avatar{width:170px;height:170px;border-radius:50%;border:3px solid rgba(255,255,255,.4);margin:0 auto 18px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.doc-avatar img{width:100%;height:100%;object-fit:cover;object-position:top}
-.doc-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.btn-email{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:13px;text-decoration:none;padding:8px 0;transition:color .2s}
+.btn-email:hover{color:#fff}
+.btn-email i{font-size:14px;color:#86efac}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
+.h-stat{text-align:center;padding:0 8px;border-right:1px solid rgba(255,255,255,.1)}
+.h-stat:last-child{border-right:none}
+.h-stat h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:#fff;line-height:1}
+.h-stat .unit{font-size:11px;color:#86efac;font-weight:600;letter-spacing:.5px;margin-bottom:3px}
+.h-stat p{font-size:10px;color:rgba(255,255,255,.5);margin-top:3px;line-height:1.3}
+
+/* DOCTOR CARD */
+.doc-card{background:rgba(255,255,255,.07);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.13);border-radius:28px;padding:30px 24px;text-align:center;animation:floatD 5s ease-in-out infinite}
+@keyframes floatD{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.doc-ava{width:176px;height:176px;border-radius:50%;border:3px solid rgba(255,255,255,.35);margin:0 auto 18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.doc-ava img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.no1-tag{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#92400e,#b45309,#d97706);color:#fff;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:10px;letter-spacing:.5px}
+.doc-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
 .doc-card .spec{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:3px}
-.doc-card .college{font-size:11px;color:rgba(255,255,255,.55)}
-.gold-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#b8860b,#ffd700);color:#000;font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;margin-top:12px}
-.doc-actions{display:flex;gap:8px;justify-content:center;margin-top:14px}
-.doc-actions a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;transition:all .2s}
-.doc-actions a:hover{transform:scale(1.1)}
-.doc-actions a.yt-a:hover{background:#ff0000}
-.doc-actions a.ig-a:hover{background:#e1306c}
-.doc-actions a.fb-a:hover{background:#1877f2}
-.doc-actions a.wa-a:hover{background:#25d366}
-section{padding:88px 5%}
-.max{max-width:1200px;margin:0 auto}
-.sec-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
-.sec-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:14px}
-.sec-sub{font-size:15px;color:var(--gray);max-width:560px;line-height:1.8}
-.sec-head{margin-bottom:52px}
-.sec-head.center{text-align:center}.sec-head.center .sec-sub{margin:0 auto}
-/* YOUTUBE */
-.youtube-sec{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);padding:88px 5%}
-.yt-inner{max-width:1200px;margin:0 auto}
-.yt-daily-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:30px;margin-bottom:16px;animation:ytPulse 2s infinite}
-@keyframes ytPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,0,0,.5)}50%{box-shadow:0 0 0 14px rgba(255,0,0,0)}}
-.yt-header{text-align:center;margin-bottom:52px}
-.yt-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.yt-channel-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:36px;text-align:center}
-.yt-avatar{width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 18px;border:4px solid #ff0000;box-shadow:0 0 20px rgba(255,0,0,.4)}
-.yt-avatar img{width:100%;height:100%;object-fit:cover;object-position:top}
-.yt-channel-card h3{font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:8px}
-.yt-channel-card p{color:rgba(255,255,255,.6);font-size:14px;line-height:1.7;margin-bottom:22px}
-.yt-stats{display:flex;gap:20px;justify-content:center;margin-bottom:24px}
-.yt-stat h4{font-family:'Playfair Display',serif;font-size:22px;color:#ff4444;font-weight:700}
-.yt-stat p{font-size:11px;color:rgba(255,255,255,.5)}
-.yt-sub-btn{display:inline-flex;align-items:center;gap:9px;background:#ff0000;color:#fff;padding:13px 26px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s}
-.yt-sub-btn:hover{background:#cc0000;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,0,0,.4)}
-.yt-features{display:flex;flex-direction:column;gap:18px}
-.yt-feat{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:20px}
-.yt-ico{width:46px;height:46px;border-radius:12px;background:rgba(255,0,0,.15);display:flex;align-items:center;justify-content:center;font-size:20px;color:#ff4444;flex-shrink:0}
-.yt-feat h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
-.yt-feat p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+.doc-card .college{font-size:11px;color:rgba(255,255,255,.5)}
+.gold-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#92400e,#ffd700);color:#000;font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;margin-top:10px}
+.doc-socials{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.doc-socials a{width:33px;height:33px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;text-decoration:none;transition:all .2s}
+.doc-socials a:hover{transform:scale(1.12)}
+.doc-socials a.yt:hover{background:#ff0000}
+.doc-socials a.ig:hover{background:#e1306c}
+.doc-socials a.fb:hover{background:#1877f2}
+.doc-socials a.wa:hover{background:#25d366}
+
+/* SECTIONS */
+section{padding:92px 5%}
+.max{max-width:1240px;margin:0 auto}
+.lbl{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:800;color:var(--dark);line-height:1.15;margin-bottom:14px}
+.sub{font-size:15px;color:var(--gray);max-width:580px;line-height:1.85}
+.sh{margin-bottom:56px}
+.sh.c{text-align:center}.sh.c .sub{margin:0 auto}
+
+/* ACHIEVEMENTS STRIP */
+.achieve{background:var(--green);padding:56px 5%}
+.ach-inner{max-width:1240px;margin:0 auto}
+.ach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15);border-radius:20px;overflow:hidden}
+.ach-card{background:var(--green);padding:36px 24px;text-align:center;transition:background .2s}
+.ach-card:hover{background:#0a3a1e}
+.ach-card i{font-size:30px;color:#86efac;margin-bottom:14px}
+.ach-card h3{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:800;color:#fff;line-height:1}
+.ach-card p{font-size:12px;color:rgba(255,255,255,.65);margin-top:6px;line-height:1.4;letter-spacing:.3px}
+
+/* EMAIL BANNER */
+.email-banner{background:linear-gradient(135deg,#022c13,#0d4a26);padding:40px 5%}
+.email-banner-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.eb-left{display:flex;align-items:center;gap:18px}
+.eb-icon{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:24px;color:#86efac;flex-shrink:0}
+.eb-text p{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.eb-text h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;font-weight:700}
+.eb-text h3 a{color:#86efac;text-decoration:none;transition:color .2s}
+.eb-text h3 a:hover{color:#fff}
+.eb-btn{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--green);padding:13px 26px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;transition:all .25s}
+.eb-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
 /* ABOUT */
-.about{background:var(--green-pale)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about{background:var(--pale)}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .feat-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-.feat{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:500}
-.feat i{color:var(--green)}
-.stats-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.s-card{background:#fff;border-radius:18px;padding:26px 18px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .2s}
-.s-card:hover{transform:translateY(-4px)}
-.s-card.filled{background:var(--green)}
-.s-card i{font-size:26px;color:var(--green);margin-bottom:10px}
-.s-card.filled i{color:#86efac}
-.s-card h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--dark)}
-.s-card.filled h3,.s-card.filled p{color:#fff}
-.s-card p{font-size:12px;color:var(--gray);margin-top:4px}
+.feat{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500}
+.feat i{color:var(--green);font-size:14px}
+.no1-cards{display:flex;flex-direction:column;gap:14px}
+.n1c{display:flex;align-items:center;gap:16px;background:#fff;border-radius:16px;padding:22px 20px;box-shadow:0 4px 20px rgba(0,0,0,.06);border-left:4px solid var(--green);transition:transform .2s}
+.n1c:hover{transform:translateX(4px)}
+.n1c-ico{width:46px;height:46px;border-radius:12px;background:var(--pale);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--green);flex-shrink:0}
+.n1c h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:3px}
+.n1c p{font-size:12px;color:var(--gray);line-height:1.5}
+
 /* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.srv-card{background:#fff;border-radius:20px;padding:32px 24px;box-shadow:0 2px 20px rgba(0,0,0,.06);border:1px solid #e2e8f0;transition:all .3s;position:relative;overflow:hidden}
-.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-light));transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.srv-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(20,83,45,.12)}
-.srv-card:hover::after{transform:scaleX(1)}
-.srv-icon{width:54px;height:54px;border-radius:14px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;color:var(--green);transition:all .3s}
-.srv-card:hover .srv-icon{background:var(--green);color:#fff}
-.srv-card h3{font-size:16px;font-weight:700;margin-bottom:9px;color:var(--dark)}
-.srv-card p{font-size:13px;color:var(--gray);line-height:1.7}
-/* DOCTOR */
-.doctors{background:var(--green-pale)}
-.doc-profile{background:#fff;border-radius:28px;padding:48px;box-shadow:0 8px 40px rgba(0,0,0,.08);display:grid;grid-template-columns:280px 1fr;gap:52px;align-items:center}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.srv{background:#fff;border-radius:20px;padding:34px 26px;box-shadow:0 2px 20px rgba(0,0,0,.05);border:1px solid #e8f0e8;transition:all .3s;position:relative;overflow:hidden}
+.srv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green3));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.srv:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(13,74,38,.13)}
+.srv:hover::after{transform:scaleX(1)}
+.srv-ico{width:54px;height:54px;border-radius:14px;background:var(--pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;color:var(--green);transition:.3s}
+.srv:hover .srv-ico{background:var(--green);color:#fff}
+.srv h3{font-size:16px;font-weight:700;margin-bottom:9px}
+.srv p{font-size:13px;color:var(--gray);line-height:1.75}
+
+/* YOUTUBE */
+.yt-sec{background:linear-gradient(150deg,#080808,#111,#1a1a1a);padding:92px 5%}
+.yt-max{max-width:1240px;margin:0 auto}
+.yt-top{text-align:center;margin-bottom:56px}
+.yt-live-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;font-size:12px;font-weight:700;padding:9px 20px;border-radius:30px;margin-bottom:18px;animation:ytP 2s infinite}
+@keyframes ytP{0%,100%{box-shadow:0 0 0 0 rgba(255,0,0,.5)}50%{box-shadow:0 0 0 14px rgba(255,0,0,0)}}
+.yt-live-badge .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.yt-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.yt-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:38px;text-align:center}
+.yt-ava{width:114px;height:114px;border-radius:50%;overflow:hidden;margin:0 auto 18px;border:4px solid #ff0000;box-shadow:0 0 24px rgba(255,0,0,.35)}
+.yt-ava img{width:100%;height:100%;object-fit:cover;object-position:top}
+.yt-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;margin-bottom:8px}
+.yt-card p{color:rgba(255,255,255,.55);font-size:13.5px;line-height:1.75;margin-bottom:24px}
+.yt-meta{display:flex;gap:20px;justify-content:center;margin-bottom:26px}
+.yt-m h4{font-family:'Cormorant Garamond',serif;font-size:24px;color:#ff4444;font-weight:700}
+.yt-m p{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px}
+.yt-sub{display:inline-flex;align-items:center;gap:9px;background:#ff0000;color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(255,0,0,.3)}
+.yt-sub:hover{background:#cc0000;transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,0,0,.4)}
+.yt-feats{display:flex;flex-direction:column;gap:16px}
+.ytf{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:20px}
+.ytf-ico{width:46px;height:46px;border-radius:12px;background:rgba(255,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:20px;color:#ff4444;flex-shrink:0}
+.ytf h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.ytf p{font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.6}
+.yt-new-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,0,0,.15);border:1px solid rgba(255,0,0,.35);color:#ff6666;padding:8px 18px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;margin-top:10px}
+.yt-new-btn:hover{background:#ff0000;color:#fff;border-color:#ff0000}
+.yt-new-btn .dot{width:7px;height:7px;border-radius:50%;background:#ff4444;animation:blink 1s infinite}
+
+/* DOCTOR SECTION */
+.dr-sec{background:var(--pale)}
+.dr-profile{background:#fff;border-radius:28px;padding:52px;box-shadow:0 8px 48px rgba(0,0,0,.08);display:grid;grid-template-columns:290px 1fr;gap:56px;align-items:start}
 .dp-img{text-align:center}
-.dp-photo{width:210px;height:210px;border-radius:50%;margin:0 auto 18px;overflow:hidden;border:5px solid var(--green-pale);box-shadow:0 0 0 4px var(--green)}
-.dp-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
-.dp-social{display:flex;gap:9px;justify-content:center;margin-top:14px}
-.dp-social a{width:36px;height:36px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:15px;text-decoration:none;transition:all .2s}
-.dp-social a:hover{color:#fff;transform:translateY(-2px)}
-.dp-social a.yt:hover{background:#ff0000}
-.dp-social a.ig:hover{background:#e1306c}
-.dp-social a.fb:hover{background:#1877f2}
-.dp-social a.wa:hover{background:#25d366}
-.dp-info h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;color:var(--dark);margin-bottom:6px}
-.dp-role{font-size:15px;color:var(--green);font-weight:600;margin-bottom:16px}
+.dp-ph{width:220px;height:220px;border-radius:50%;margin:0 auto 18px;overflow:hidden;border:5px solid var(--pale);box-shadow:0 0 0 4px var(--green)}
+.dp-ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+.dp-no1{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.dp-soc{display:flex;gap:9px;justify-content:center;margin-top:14px}
+.dp-soc a{width:36px;height:36px;border-radius:50%;background:var(--pale);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:15px;text-decoration:none;transition:all .2s}
+.dp-soc a:hover{color:#fff;transform:translateY(-2px)}
+.dp-soc a.yt:hover{background:#ff0000}
+.dp-soc a.ig:hover{background:#e1306c}
+.dp-soc a.fb:hover{background:#1877f2}
+.dp-soc a.wa:hover{background:#25d366}
+.dp-info h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:800;color:var(--dark);margin-bottom:5px}
+.dp-role{font-size:14px;color:var(--green);font-weight:600;margin-bottom:16px;letter-spacing:.3px}
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.badge{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;background:var(--green-pale);color:var(--green)}
-.badge.gold-b{background:linear-gradient(135deg,#fffbeb,#fef9c3);color:#92400e;border:1px solid #fcd34d}
-.dp-bio{font-size:14px;color:var(--gray);line-height:1.85;margin-bottom:20px}
-.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.exp-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500}
-.exp-item i{color:var(--green);font-size:12px}
+.bdg{padding:7px 15px;border-radius:20px;font-size:12px;font-weight:600;background:var(--pale);color:var(--green)}
+.bdg.gold{background:linear-gradient(135deg,#fffbeb,#fef9c3);color:#92400e;border:1px solid #fcd34d}
+.bdg.no1{background:linear-gradient(135deg,#ede9fe,#ddd6fe);color:#5b21b6}
+.dp-bio{font-size:14px;color:var(--gray);line-height:1.9;margin-bottom:18px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px}
+.ei{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.ei i{color:var(--green);font-size:12px}
+.dp-email{display:inline-flex;align-items:center;gap:9px;background:var(--pale);border:1px solid var(--soft);color:var(--green);padding:11px 20px;border-radius:9px;font-size:13.5px;font-weight:700;text-decoration:none;transition:all .2s}
+.dp-email:hover{background:var(--green);color:#fff}
+
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .c-items{margin-top:24px;display:flex;flex-direction:column;gap:16px}
 .c-item{display:flex;gap:14px;align-items:flex-start}
-.c-ico{width:46px;height:46px;border-radius:12px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--green);flex-shrink:0}
+.c-ico{width:46px;height:46px;border-radius:12px;background:var(--pale);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--green);flex-shrink:0}
 .c-ico.wa{background:#e8fff1;color:#25d366}
-.c-ico.mail{background:#eff6ff;color:#2563eb}
-.c-text h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:2px}
-.c-text p,.c-text a{font-size:14px;font-weight:600;color:var(--dark);text-decoration:none;line-height:1.5}
-.c-text a:hover{color:var(--green)}
-.appt-btn{display:inline-flex;align-items:center;gap:9px;margin-top:24px;background:var(--green);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(20,83,45,.25)}
-.appt-btn:hover{background:#166534;transform:translateY(-2px)}
-.map-wrap{border-radius:20px;overflow:hidden;height:400px;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.c-ico.ml{background:#eff6ff;color:#2563eb}
+.c-txt h4{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray);margin-bottom:3px}
+.c-txt p,.c-txt a{font-size:14px;font-weight:600;color:var(--dark);text-decoration:none;line-height:1.6}
+.c-txt a:hover{color:var(--green)}
+.c-txt .addr-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--green);text-decoration:none;margin-top:5px;background:var(--pale);padding:5px 11px;border-radius:6px;transition:all .2s}
+.c-txt .addr-link:hover{background:var(--green);color:#fff}
+.appt-wrap{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.appt-btn{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#fff;padding:14px 26px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(13,74,38,.25)}
+.appt-btn:hover{background:#0a3a1e;transform:translateY(-2px)}
+.email-btn{display:inline-flex;align-items:center;gap:9px;background:var(--pale);border:1.5px solid var(--soft);color:var(--green);padding:14px 22px;border-radius:9px;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s}
+.email-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.map-wrap{border-radius:20px;overflow:hidden;height:420px;box-shadow:0 8px 40px rgba(0,0,0,.1)}
 .map-wrap iframe{width:100%;height:100%;border:none}
-footer{background:var(--dark);color:#fff;padding:56px 5% 22px}
-.foot-inner{max-width:1200px;margin:0 auto}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:44px}
-.foot-logo img{height:36px;object-fit:contain;margin-bottom:14px;filter:brightness(0) invert(1)}
-.foot-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:18px}
-.foot-social{display:flex;gap:9px}
-.foot-social a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:14px;text-decoration:none;transition:all .2s}
-.foot-social a:hover{background:var(--green);color:#fff}
-.foot-social a.yt-s:hover{background:#ff0000}
-.foot-col h4{font-size:14px;font-weight:700;margin-bottom:16px;color:#fff}
-.foot-col ul{list-style:none}
-.foot-col ul li{margin-bottom:9px}
-.foot-col ul li a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
-.foot-col ul li a:hover{color:#86efac}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
-.wa-float{position:fixed;bottom:26px;right:26px;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;text-decoration:none;z-index:9999;box-shadow:0 4px 20px rgba(37,211,102,.45);animation:waPulse 2.5s infinite}
-@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* FOOTER */
+footer{background:#040d08;color:#fff;padding:60px 5% 22px}
+.f-inner{max-width:1240px;margin:0 auto}
+.f-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.f-logo img{height:38px;filter:brightness(0) invert(1);margin-bottom:14px;object-fit:contain}
+.f-logo .fb-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#86efac;display:none}
+.f-about p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.85;margin-bottom:18px}
+.f-email-link{display:inline-flex;align-items:center;gap:8px;background:rgba(134,239,172,.1);border:1px solid rgba(134,239,172,.2);color:#86efac;font-size:13px;font-weight:600;padding:9px 16px;border-radius:8px;text-decoration:none;margin-bottom:18px;transition:all .2s}
+.f-email-link:hover{background:rgba(134,239,172,.2);color:#fff}
+.f-soc{display:flex;gap:9px}
+.f-soc a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;transition:all .2s}
+.f-soc a:hover{background:var(--green);color:#fff}
+.f-soc a.yt:hover{background:#ff0000}
+.f-col h4{font-size:13px;font-weight:700;margin-bottom:16px;color:#fff;letter-spacing:.3px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:9px}
+.f-col ul li a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.f-col ul li a:hover{color:#86efac}
+.f-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-bottom p{font-size:12px;color:rgba(255,255,255,.25)}
+.f-bottom a{color:rgba(255,255,255,.35);text-decoration:none;font-size:12px}
+.f-bottom a:hover{color:#86efac}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:26px;right:26px;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;text-decoration:none;z-index:9999;box-shadow:0 4px 20px rgba(37,211,102,.5);animation:waP 2.5s infinite}
+@keyframes waP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .wa-float:hover{transform:scale(1.1)}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-@media(max-width:900px){
-  .hero-inner,.about-grid,.doc-profile,.contact-grid,.yt-grid{grid-template-columns:1fr}
-  .hero h1{font-size:34px}.hero p{margin:0 auto 28px}
-  .hero-btns,.hero-stats{justify-content:center}
-  .doc-card{max-width:300px;margin:0 auto}
-  .services-grid{grid-template-columns:1fr 1fr}
-  .foot-grid{grid-template-columns:1fr}
+.reveal-l{opacity:0;transform:translateX(-26px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l.in{opacity:1;transform:none}
+
+/* MOBILE */
+@media(max-width:960px){
+  .hero-inner,.ab-grid,.dr-profile,.ct-grid,.yt-grid{grid-template-columns:1fr}
+  .hero h1{font-size:38px}.hero-sub-title{font-size:18px}
+  .hero-btns,.hero-eyebrow{flex-wrap:wrap}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .doc-card{max-width:310px;margin:0 auto}
+  .ach-grid{grid-template-columns:repeat(2,1fr)}
+  .srv-grid{grid-template-columns:1fr 1fr}
+  .f-grid{grid-template-columns:1fr}
+  .email-banner-inner{flex-direction:column;align-items:flex-start}
   .ham{display:flex}
-  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 5%;gap:14px;border-bottom:1px solid #e2e8f0}
+  .nav-links{display:none;position:absolute;top:74px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 5%;gap:14px;border-bottom:1px solid #e2e8f0;box-shadow:0 8px 24px rgba(0,0,0,.08)}
   .nav-links.open{display:flex}
+  .nav-email{display:none}
 }
 @media(max-width:600px){
-  .hero h1{font-size:27px}.services-grid{grid-template-columns:1fr}
-  .sec-title{font-size:26px}.doc-profile{padding:22px 14px}
-  .stats-cards,.exp-grid,.feat-list{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:29px}.srv-grid{grid-template-columns:1fr}
+  .h2{font-size:30px}.dr-profile{padding:22px 16px}
+  .exp-grid,.feat-list{grid-template-columns:1fr 1fr}
+  .ach-grid{grid-template-columns:1fr 1fr}
+  .f-bottom{flex-direction:column;text-align:center}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#home" class="logo">
-      <img src="logo.png" alt="Abishek Hospital" class="logo-img" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
-      <div class="logo-fallback" id="logoFallback" style="display:none">
-        <div class="logo-mark"><i class="fas fa-heartbeat"></i></div>
-        <div class="logo-words"><h2>Abishek Hospital</h2><p>Women's Healthcare · Erode</p></div>
+      <img src="logo.png" alt="Abishek Hospital" class="logo-img" onerror="this.style.display='none';document.getElementById('lFb').style.display='flex'">
+      <div class="logo-fb" id="lFb">
+        <div class="logo-mk"><i class="fas fa-heartbeat"></i></div>
+        <div class="logo-wds"><h2>Abishek Hospital</h2><p>No.1 Women's Healthcare · Erode</p></div>
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -218,104 +294,95 @@ footer{background:var(--dark);color:#fff;padding:56px 5% 22px}
       <li><a href="#services">Services</a></li>
       <li><a href="#youtube">Videos</a></li>
       <li><a href="#doctors">Doctor</a></li>
+      <li><a href="mailto:info@abishekhospital.com" class="nav-email"><i class="fas fa-envelope"></i> info@abishekhospital.com</a></li>
       <li><a href="#contact" class="nav-cta">Contact Us</a></li>
     </ul>
     <div class="ham" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hbc hbc1"></div><div class="hbc hbc2"></div>
   <div class="hero-inner">
-    <div class="reveal">
-      <div class="hero-tag"><i class="fas fa-map-marker-alt"></i> Erode Fort, Tamil Nadu</div>
-      <h1>Expert Care for <em>Women's Health</em> You Can Trust</h1>
-      <p>Led by Dr. Jayanthi Prabakaran — Gold Medalist in Obstetrics & Gynaecology from Chennai Medical College — delivering world-class women's healthcare in Erode.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/917448777717" class="btn-w"><i class="fab fa-whatsapp"></i> Book Appointment</a>
-        <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="btn-yt"><i class="fab fa-youtube"></i> Daily Health Videos</a>
+    <div class="reveal-l">
+      <div class="hero-eyebrow">
+        <div class="hero-pill"><i class="fas fa-map-marker-alt"></i> Erode Fort, Tamil Nadu</div>
+        <div class="hero-no1">⭐ No.1 OB/GYN Hospital in Tamil Nadu</div>
       </div>
+      <h1>Trusted Women's<br>Healthcare by <em>Tamil Nadu's<br>No.1 OB/GYN</em></h1>
+      <p class="hero-sub-title">Gold Medalist · Madras Medical College · 40,000+ Safe Deliveries</p>
+      <p>Dr. Jayanthi Prabakaran — Gold Medalist Obstetrician & Gynaecologist from the prestigious Madras Medical College — bringing world-class women's healthcare to Erode for over a decade.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/917448777717" class="btn-wa"><i class="fab fa-whatsapp"></i> Book Appointment</a>
+        <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="btn-yt"><i class="fab fa-youtube"></i> Watch Daily Videos</a>
+      </div>
+      <a href="mailto:info@abishekhospital.com" class="btn-email"><i class="fas fa-envelope"></i> info@abishekhospital.com</a>
       <div class="hero-stats">
-        <div class="h-stat"><h3>5000+</h3><p>Patients Treated</p></div>
-        <div class="h-stat"><h3>10+</h3><p>Years Experience</p></div>
-        <div class="h-stat"><h3>Daily</h3><p>YouTube Videos</p></div>
+        <div class="h-stat"><div class="unit">40,000+</div><h3>Safe</h3><p>Deliveries</p></div>
+        <div class="h-stat"><div class="unit">2,500+</div><h3>Epidural</h3><p>Deliveries</p></div>
+        <div class="h-stat"><div class="unit">2,000+</div><h3>IUI</h3><p>Conceptions</p></div>
+        <div class="h-stat"><div class="unit">7,000+</div><h3>Lap Gynec</h3><p>Surgeries</p></div>
       </div>
     </div>
     <div class="reveal">
       <div class="doc-card">
-        <div class="doc-avatar"><img src="doctor.png" alt="Dr. Jayanthi Prabakaran"></div>
+        <div class="no1-tag">⭐ No.1 OB/GYN · Tamil Nadu</div>
+        <div class="doc-ava"><img src="doctor.png" alt="Dr. Jayanthi Prabakaran"></div>
         <h3>Dr. Jayanthi Prabakaran</h3>
         <p class="spec">Obstetrics & Gynaecology</p>
-        <p class="college">Chennai Medical College</p>
+        <p class="college">Madras Medical College</p>
         <div class="gold-badge"><i class="fas fa-medal"></i> Gold Medalist</div>
-        <div class="doc-actions">
-          <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt-a" title="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank" class="ig-a" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank" class="fb-a" title="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://wa.me/917448777717" class="wa-a" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <div class="doc-socials">
+          <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank" class="ig"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank" class="fb"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/919750511225" class="wa"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- YOUTUBE -->
-<section class="youtube-sec" id="youtube">
-  <div class="yt-inner">
-    <div class="yt-header reveal">
-      <div class="yt-daily-badge"><i class="fab fa-youtube"></i> New Video Every Day!</div>
-      <p class="sec-label" style="color:#ff4444;margin-top:16px">Watch & Learn Free</p>
-      <h2 class="sec-title" style="color:#fff;font-size:36px">Daily Health Videos by <span style="color:#ff4444">Dr. Jayanthi</span></h2>
-      <p class="sec-sub" style="color:rgba(255,255,255,.6)">Get expert women's health tips, pregnancy advice & medical education — completely free — every single day!</p>
-    </div>
-    <div class="yt-grid">
-      <div class="yt-channel-card reveal">
-        <div class="yt-avatar"><img src="doctor.png" alt="Dr Jayanthi YouTube"></div>
-        <h3>@abishekmedicalcenter</h3>
-        <p>Expert health videos in Tamil on women's health, pregnancy care, gynaecology and more by Dr. Jayanthi Prabakaran, Gold Medalist OB/GYN.</p>
-        <div class="yt-stats">
-          <div class="yt-stat"><h4>Daily</h4><p>New Videos</p></div>
-          <div class="yt-stat"><h4>Free</h4><p>Health Tips</p></div>
-          <div class="yt-stat"><h4>Tamil</h4><p>Language</p></div>
-        </div>
-        <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt-sub-btn"><i class="fab fa-youtube"></i> Subscribe — It's Free!</a>
-      </div>
-      <div class="yt-features reveal">
-        <div class="yt-feat">
-          <div class="yt-ico"><i class="fas fa-calendar-day"></i></div>
-          <div><h4>Posted Every Single Day</h4><p>New health content uploaded daily — never miss important health information from your trusted doctor.</p></div>
-        </div>
-        <div class="yt-feat">
-          <div class="yt-ico"><i class="fas fa-baby"></i></div>
-          <div><h4>Pregnancy & Maternity Tips</h4><p>Expert guidance on every stage of pregnancy from a trusted Gold Medalist OB/GYN specialist.</p></div>
-        </div>
-        <div class="yt-feat">
-          <div class="yt-ico"><i class="fas fa-venus"></i></div>
-          <div><h4>Women's Health Education</h4><p>PCOS, fertility, menstrual health, menopause and all important women's health topics explained simply.</p></div>
-        </div>
-        <div class="yt-feat">
-          <div class="yt-ico"><i class="fas fa-comments"></i></div>
-          <div><h4>Book a Personal Consultation</h4><p>Loved the videos? Come visit us at Abishek Hospital, Erode or WhatsApp to book your appointment.</p></div>
-        </div>
-      </div>
+<!-- ACHIEVEMENTS -->
+<div class="achieve">
+  <div class="ach-inner">
+    <div class="ach-grid">
+      <div class="ach-card reveal"><i class="fas fa-baby"></i><h3>40,000+</h3><p>Safe Deliveries</p></div>
+      <div class="ach-card reveal"><i class="fas fa-syringe"></i><h3>2,500+</h3><p>Epidural Deliveries</p></div>
+      <div class="ach-card reveal"><i class="fas fa-heartbeat"></i><h3>2,000+</h3><p>Successful IUI Conceptions</p></div>
+      <div class="ach-card reveal"><i class="fas fa-stethoscope"></i><h3>7,000+</h3><p>Lap Gynec Surgeries</p></div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- EMAIL BANNER -->
+<div class="email-banner">
+  <div class="email-banner-inner">
+    <div class="eb-left reveal-l">
+      <div class="eb-icon"><i class="fas fa-envelope"></i></div>
+      <div class="eb-text">
+        <p>Write to us anytime</p>
+        <h3>📧 <a href="mailto:info@abishekhospital.com">info@abishekhospital.com</a></h3>
+      </div>
+    </div>
+    <a href="mailto:info@abishekhospital.com" class="eb-btn reveal"><i class="fas fa-paper-plane"></i> Send Us an Email</a>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="max">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="sec-head">
-          <p class="sec-label">Who We Are</p>
-          <h2 class="sec-title">Trusted Women's Healthcare in Erode</h2>
-          <p class="sec-sub">Abishek Hospital is a premier women's healthcare facility in the heart of Erode Fort, committed to clinical excellence with a personal touch.</p>
+    <div class="ab-grid">
+      <div class="reveal-l">
+        <div class="sh">
+          <p class="lbl">Who We Are</p>
+          <h2 class="h2">Tamil Nadu's No.1 Women's Healthcare Hospital</h2>
+          <p class="sub">Abishek Hospital has earned its reputation as the most trusted women's healthcare facility in Erode — led by a Gold Medalist from the prestigious Madras Medical College.</p>
         </div>
-        <p style="font-size:14px;color:var(--gray);line-height:1.9;margin-bottom:14px">Our center is equipped with modern medical technology and led by Dr. Jayanthi Prabakaran, a Gold Medalist from Chennai Medical College, ensuring every patient receives world-class care close to home.</p>
-        <p style="font-size:14px;color:var(--gray);line-height:1.9">We believe every woman deserves compassionate, expert care — from pregnancy to postnatal care and beyond.</p>
+        <p style="font-size:14px;color:var(--gray);line-height:1.9;margin-bottom:14px">With over 40,000 safe deliveries, 7,000+ laparoscopic surgeries, and a legacy of excellence, we are proud to be Tamil Nadu's premier destination for obstetrics and gynaecology care.</p>
         <div class="feat-list">
-          <div class="feat"><i class="fas fa-check-circle"></i> Expert Medical Care</div>
+          <div class="feat"><i class="fas fa-check-circle"></i> Gold Medal Expertise</div>
           <div class="feat"><i class="fas fa-check-circle"></i> Modern Equipment</div>
           <div class="feat"><i class="fas fa-check-circle"></i> 24/7 Emergency</div>
           <div class="feat"><i class="fas fa-check-circle"></i> Affordable Plans</div>
@@ -323,11 +390,23 @@ footer{background:var(--dark);color:#fff;padding:56px 5% 22px}
           <div class="feat"><i class="fas fa-check-circle"></i> Personalized Care</div>
         </div>
       </div>
-      <div class="stats-cards reveal">
-        <div class="s-card filled"><i class="fas fa-award"></i><h3>Gold</h3><p>Medal Doctor</p></div>
-        <div class="s-card"><i class="fas fa-users"></i><h3>5000+</h3><p>Happy Patients</p></div>
-        <div class="s-card"><i class="fab fa-youtube"></i><h3>Daily</h3><p>Health Videos</p></div>
-        <div class="s-card filled"><i class="fas fa-clock"></i><h3>24/7</h3><p>Always Available</p></div>
+      <div class="no1-cards reveal">
+        <div class="n1c">
+          <div class="n1c-ico"><i class="fas fa-award"></i></div>
+          <div><h4>Gold Medalist · Madras Medical College</h4><p>Top academic distinction from Tamil Nadu's most prestigious medical institution.</p></div>
+        </div>
+        <div class="n1c">
+          <div class="n1c-ico"><i class="fas fa-trophy"></i></div>
+          <div><h4>No.1 OB/GYN Hospital in Tamil Nadu</h4><p>Recognised for excellence in obstetric care, patient outcomes and compassionate service.</p></div>
+        </div>
+        <div class="n1c">
+          <div class="n1c-ico"><i class="fab fa-youtube"></i></div>
+          <div><h4>Daily Free Health Education on YouTube</h4><p>New video every day — empowering women across Tamil Nadu with free medical knowledge.</p></div>
+        </div>
+        <div class="n1c">
+          <div class="n1c-ico"><i class="fas fa-users"></i></div>
+          <div><h4>50,000+ Lives Transformed</h4><p>Trusted by families across Erode and Tamil Nadu for over a decade of expert care.</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -336,60 +415,97 @@ footer{background:var(--dark);color:#fff;padding:56px 5% 22px}
 <!-- SERVICES -->
 <section id="services">
   <div class="max">
-    <div class="sec-head center reveal">
-      <p class="sec-label">What We Offer</p>
-      <h2 class="sec-title">Our Medical Services</h2>
-      <p class="sec-sub">Comprehensive women's healthcare services delivered with expertise, compassion, and the latest medical technology.</p>
+    <div class="sh c reveal">
+      <p class="lbl">What We Offer</p>
+      <h2 class="h2">Our Medical Services</h2>
+      <p class="sub">Comprehensive women's healthcare by Tamil Nadu's No.1 OB/GYN specialist — delivered with expertise and compassion.</p>
     </div>
-    <div class="services-grid">
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-baby"></i></div><h3>Obstetrics & Maternity Care</h3><p>Complete prenatal, delivery, and postnatal care ensuring safe and healthy pregnancies for every mother in Erode.</p></div>
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-venus"></i></div><h3>Gynaecology</h3><p>Expert diagnosis and treatment of all gynaecological conditions using modern, minimally invasive techniques.</p></div>
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-heartbeat"></i></div><h3>High Risk Pregnancy</h3><p>Specialized care for high-risk pregnancies with advanced monitoring and expert medical management.</p></div>
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-microscope"></i></div><h3>Fertility Treatment</h3><p>Comprehensive fertility evaluation and treatment options to help families grow with care and compassion.</p></div>
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-notes-medical"></i></div><h3>Women's Health Checkup</h3><p>Regular health screenings, cancer screenings, and preventive care tailored specifically for women.</p></div>
-      <div class="srv-card reveal"><div class="srv-icon"><i class="fas fa-pills"></i></div><h3>Family Planning</h3><p>Personalized family planning counselling and contraception services suited to your lifestyle and needs.</p></div>
+    <div class="srv-grid">
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-baby"></i></div><h3>Obstetrics & Maternity Care</h3><p>Complete prenatal, delivery, and postnatal care — 40,000+ safe deliveries performed with excellence and compassion.</p></div>
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-venus"></i></div><h3>Gynaecology</h3><p>Expert diagnosis and treatment of all gynaecological conditions using modern, minimally invasive techniques.</p></div>
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-heartbeat"></i></div><h3>High Risk Pregnancy</h3><p>Specialized care for high-risk pregnancies with advanced monitoring by a Gold Medalist OB/GYN specialist.</p></div>
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-microscope"></i></div><h3>Fertility Treatment</h3><p>Over 2,000 successful IUI conceptions — comprehensive fertility evaluation and treatment with compassion.</p></div>
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-scalpel"></i></div><h3>Laparoscopic Surgery</h3><p>7,000+ successful lap gynec surgeries — minimally invasive, faster recovery, expert precision.</p></div>
+      <div class="srv reveal"><div class="srv-ico"><i class="fas fa-pills"></i></div><h3>Family Planning</h3><p>Personalized family planning counselling and contraception services tailored to your needs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE -->
+<section class="yt-sec" id="youtube">
+  <div class="yt-max">
+    <div class="yt-top reveal">
+      <div class="yt-live-badge"><div class="dot"></div> New Video Posted Every Day!</div>
+      <p class="lbl" style="color:#ff4444;margin-top:16px">Free Health Education Daily</p>
+      <h2 class="h2" style="color:#fff;font-size:40px">Watch. Learn. <span style="color:#ff4444">Stay Healthy.</span></h2>
+      <p class="sub" style="color:rgba(255,255,255,.55)">Dr. Jayanthi Prabakaran shares expert women's health videos in Tamil — completely free — every single day on YouTube.</p>
+    </div>
+    <div class="yt-grid">
+      <div class="yt-card reveal-l">
+        <div class="yt-ava"><img src="doctor.png" alt="Dr Jayanthi YouTube"></div>
+        <h3>@abishekmedicalcenter</h3>
+        <p>Daily health videos in Tamil by Tamil Nadu's No.1 OB/GYN Gold Medalist — covering pregnancy, gynaecology, fertility, and women's wellness.</p>
+        <div class="yt-meta">
+          <div class="yt-m"><h4>Daily</h4><p>New Videos</p></div>
+          <div class="yt-m"><h4>Free</h4><p>Always Free</p></div>
+          <div class="yt-m"><h4>Tamil</h4><p>Language</p></div>
+        </div>
+        <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt-sub"><i class="fab fa-youtube"></i> Subscribe Now — It's Free!</a>
+        <br><br>
+        <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt-new-btn"><div class="dot"></div> New Video Today — Watch Now</a>
+      </div>
+      <div class="yt-feats reveal">
+        <div class="ytf"><div class="ytf-ico"><i class="fas fa-calendar-day"></i></div><div><h4>New Video Every Single Day</h4><p>Never miss important health information — a new expert video uploaded daily without fail.</p></div></div>
+        <div class="ytf"><div class="ytf-ico"><i class="fas fa-baby"></i></div><div><h4>Pregnancy & Maternity</h4><p>Expert guidance on every stage of pregnancy from Tamil Nadu's most trusted OB/GYN Gold Medalist.</p></div></div>
+        <div class="ytf"><div class="ytf-ico"><i class="fas fa-venus"></i></div><div><h4>Women's Health in Tamil</h4><p>PCOS, fertility, menstrual health, menopause — all explained clearly in Tamil for every woman.</p></div></div>
+        <div class="ytf"><div class="ytf-ico"><i class="fas fa-comments"></i></div><div><h4>Have Questions? Book a Consultation</h4><p>Loved the videos? Visit Abishek Hospital or WhatsApp us to meet Dr. Jayanthi personally.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- DOCTOR -->
-<section class="doctors" id="doctors">
+<section class="dr-sec" id="doctors">
   <div class="max">
-    <div class="sec-head center reveal">
-      <p class="sec-label">Meet Our Expert</p>
-      <h2 class="sec-title">Our Lead Consultant</h2>
-      <p class="sec-sub">A Gold Medalist dedicated to transforming women's healthcare in Erode</p>
+    <div class="sh c reveal">
+      <p class="lbl">Meet Our Expert</p>
+      <h2 class="h2">Tamil Nadu's No.1 OB/GYN Specialist</h2>
+      <p class="sub">A Gold Medalist from Madras Medical College — dedicated to transforming women's healthcare across Tamil Nadu</p>
     </div>
-    <div class="doc-profile reveal">
+    <div class="dr-profile reveal">
       <div class="dp-img">
-        <div class="dp-photo"><img src="doctor.png" alt="Dr. Jayanthi Prabakaran"></div>
-        <div class="dp-social">
+        <div class="dp-no1">⭐ No.1 OB/GYN · Tamil Nadu</div>
+        <div class="dp-ph"><img src="doctor.png" alt="Dr. Jayanthi Prabakaran"></div>
+        <div class="dp-soc">
           <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
           <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank" class="ig"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank" class="fb"><i class="fab fa-facebook"></i></a>
-          <a href="https://wa.me/917448777717" class="wa"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/919750511225" class="wa"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p style="font-size:12px;color:var(--gray);margin-top:10px">📹 Daily videos on YouTube</p>
+        <p style="font-size:11px;color:var(--gray);margin-top:10px">📹 New video every day on YouTube</p>
       </div>
       <div class="dp-info">
-        <p class="sec-label">Lead Consultant</p>
+        <p class="lbl">Lead Consultant</p>
         <h2>Dr. Jayanthi Prabakaran</h2>
-        <p class="dp-role">Obstetrics & Gynaecology Specialist</p>
+        <p class="dp-role">Consultant Obstetrician & Gynaecologist</p>
         <div class="badges">
-          <span class="badge gold-b">🏅 Gold Medalist</span>
-          <span class="badge">Chennai Medical College</span>
-          <span class="badge">OB/GYN Specialist</span>
+          <span class="bdg gold">🏅 Gold Medalist</span>
+          <span class="bdg">Madras Medical College</span>
+          <span class="bdg no1">⭐ No.1 OB/GYN · TN</span>
+          <span class="bdg">OB/GYN Specialist</span>
         </div>
-        <p class="dp-bio">Dr. Jayanthi Prabakaran is a distinguished Gold Medalist in Obstetrics & Gynaecology from Chennai Medical College. With exceptional academic credentials and deep clinical expertise, she has dedicated her career to outstanding women's healthcare in Erode.</p>
-        <p class="dp-bio">She shares daily health videos on YouTube <strong>@abishekmedicalcenter</strong> to educate and empower women across Tamil Nadu — making expert medical knowledge freely available to all.</p>
+        <p class="dp-bio">Dr. Jayanthi Prabakaran is a distinguished <strong>Gold Medalist in Obstetrics & Gynaecology from the prestigious Madras Medical College</strong>, Tamil Nadu's most renowned medical institution. Her academic excellence and clinical mastery have established her as Tamil Nadu's No.1 OB/GYN specialist.</p>
+        <p class="dp-bio">With over 40,000 safe deliveries, 7,000+ laparoscopic surgeries, and 2,000+ successful IUI conceptions, she is a transformative force in women's healthcare. She also shares daily health videos on YouTube <strong>@abishekmedicalcenter</strong> — making expert knowledge freely available in Tamil to every woman across the state.</p>
         <div class="exp-grid">
-          <div class="exp-item"><i class="fas fa-check"></i> Normal & C-Section Deliveries</div>
-          <div class="exp-item"><i class="fas fa-check"></i> Laparoscopic Surgery</div>
-          <div class="exp-item"><i class="fas fa-check"></i> High Risk Pregnancy Care</div>
-          <div class="exp-item"><i class="fas fa-check"></i> Fertility Treatments</div>
-          <div class="exp-item"><i class="fas fa-check"></i> Gynaecological Oncology</div>
-          <div class="exp-item"><i class="fas fa-check"></i> Menstrual Disorders</div>
+          <div class="ei"><i class="fas fa-check"></i> 40,000+ Safe Deliveries</div>
+          <div class="ei"><i class="fas fa-check"></i> 7,000+ Laparoscopic Surgeries</div>
+          <div class="ei"><i class="fas fa-check"></i> High Risk Pregnancy Care</div>
+          <div class="ei"><i class="fas fa-check"></i> 2,000+ IUI Conceptions</div>
+          <div class="ei"><i class="fas fa-check"></i> Epidural / Painless Delivery</div>
+          <div class="ei"><i class="fas fa-check"></i> Gynaecological Oncology</div>
         </div>
+        <br>
+        <a href="mailto:info@abishekhospital.com" class="dp-email"><i class="fas fa-envelope"></i> info@abishekhospital.com</a>
       </div>
     </div>
   </div>
@@ -398,92 +514,101 @@ footer{background:var(--dark);color:#fff;padding:56px 5% 22px}
 <!-- CONTACT -->
 <section id="contact">
   <div class="max">
-    <div class="sec-head center reveal">
-      <p class="sec-label">Find Us</p>
-      <h2 class="sec-title">Visit Abishek Hospital</h2>
-      <p class="sec-sub">Located in Erode Fort. Reach us by phone, WhatsApp, or email — we're always here for you.</p>
+    <div class="sh c reveal">
+      <p class="lbl">Find Us</p>
+      <h2 class="h2">Visit Abishek Hospital, Erode</h2>
+      <p class="sub">Located in the heart of Erode Fort — easily accessible from Erode Junction. Reach us by phone, WhatsApp, or email.</p>
     </div>
-    <div class="contact-grid">
-      <div class="reveal">
-        <h2 class="sec-title" style="font-size:30px">Get In <span style="color:var(--green)">Touch</span></h2>
-        <p style="color:var(--gray);font-size:14px;line-height:1.8;margin-top:8px">Book an appointment or walk in to our clinic. Dedicated expert care for every woman.</p>
+    <div class="ct-grid">
+      <div class="reveal-l">
+        <h2 class="h2" style="font-size:32px">Get In <span style="color:var(--green)">Touch</span></h2>
+        <p style="color:var(--gray);font-size:14px;line-height:1.85;margin-top:8px">Book an appointment or walk into our clinic. Tamil Nadu's No.1 OB/GYN team is always here for you.</p>
         <div class="c-items">
           <div class="c-item">
             <div class="c-ico"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="c-text">
+            <div class="c-txt">
               <h4>Address</h4>
-              <p>18, Bharathi Street, Erode Fort<br>Erode – 638001, Tamil Nadu<br><small style="color:var(--gray);font-weight:400">📍 Plus Code: 8PR9+JM Erode, Tamil Nadu</small></p>
+              <p>No.18, Near Bus Stand, Bharathi Street<br>Erode Fort, Erode – 638001<br>Tamil Nadu, India</p>
+              <a href="https://maps.google.com/?q=Abishek+Hospital+Erode+Fort+Tamil+Nadu" target="_blank" class="addr-link"><i class="fas fa-directions"></i> Get Directions on Google Maps</a>
             </div>
           </div>
           <div class="c-item">
             <div class="c-ico"><i class="fas fa-phone-alt"></i></div>
-            <div class="c-text"><h4>Phone</h4><a href="tel:9750511225">9750511225</a></div>
+            <div class="c-txt"><h4>Phone & WhatsApp</h4><a href="tel:9750511225">9750511225</a></div>
           </div>
           <div class="c-item">
             <div class="c-ico wa"><i class="fab fa-whatsapp"></i></div>
-            <div class="c-text"><h4>WhatsApp</h4><a href="https://wa.me/917448777717">7448777717</a></div>
+            <div class="c-txt"><h4>WhatsApp (Alternate)</h4><a href="https://wa.me/917448777717">7448777717</a></div>
           </div>
           <div class="c-item">
-            <div class="c-ico mail"><i class="fas fa-envelope"></i></div>
-            <div class="c-text"><h4>Email</h4><a href="mailto:info@abishekhospital.com">info@abishekhospital.com</a></div>
+            <div class="c-ico ml"><i class="fas fa-envelope"></i></div>
+            <div class="c-txt"><h4>Email</h4><a href="mailto:info@abishekhospital.com">info@abishekhospital.com</a></div>
           </div>
           <div class="c-item">
             <div class="c-ico"><i class="fas fa-clock"></i></div>
-            <div class="c-text"><h4>Working Hours</h4><p>Mon – Sat: 9:00 AM – 6:00 PM<br>Emergency: 24 / 7</p></div>
+            <div class="c-txt"><h4>Working Hours</h4><p>Mon – Sat: 9:00 AM – 6:30 PM<br>Sunday: Closed · Emergency: 24/7</p></div>
           </div>
         </div>
-        <a href="https://wa.me/917448777717" class="appt-btn"><i class="fab fa-whatsapp"></i> Book Appointment on WhatsApp</a>
+        <div class="appt-wrap">
+          <a href="https://wa.me/919750511225" class="appt-btn"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+          <a href="mailto:info@abishekhospital.com" class="email-btn"><i class="fas fa-envelope"></i> Email Us</a>
+        </div>
       </div>
       <div class="map-wrap reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.2!2d77.7165!3d11.3410!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96f15a359d225%3A0xeb4165611403f70e!2s8PR9%2BJP+Erode%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.2756!2d77.71532!3d11.34177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96f15a359d225%3A0xeb4165611403f70e!2sAbishek%20Hospital!5e0!3m2!1sen!2sin!4v1712000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="foot-inner">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <div class="foot-logo"><img src="logo.png" alt="Abishek Hospital" onerror="this.parentElement.innerHTML='<h3 style=&quot;font-family:Playfair Display,serif;color:#86efac;font-size:20px&quot;>Abishek Hospital</h3>'"></div>
-        <p>Expert Obstetrics & Gynaecology care in Erode by Dr. Jayanthi Prabakaran — Gold Medalist from Chennai Medical College. Daily health videos on YouTube.</p>
-        <div class="foot-social">
-          <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt-s"><i class="fab fa-youtube"></i></a>
+  <div class="f-inner">
+    <div class="f-grid">
+      <div class="f-about">
+        <div class="f-logo">
+          <img src="logo.png" alt="Abishek Hospital" onerror="this.style.display='none';document.getElementById('fbname').style.display='block'">
+          <div class="fb-name" id="fbname">Abishek Hospital</div>
+        </div>
+        <p>Tamil Nadu's No.1 OB/GYN Hospital — led by Dr. Jayanthi Prabakaran, Gold Medalist from Madras Medical College. 40,000+ safe deliveries and daily health videos on YouTube.</p>
+        <a href="mailto:info@abishekhospital.com" class="f-email-link"><i class="fas fa-envelope"></i> info@abishekhospital.com</a>
+        <div class="f-soc">
+          <a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
           <a href="https://www.instagram.com/dr.jayanthiprabakaran" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/dr.jayanthi.prabakaran" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://wa.me/917448777717"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:info@abishekhospital.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://wa.me/919750511225"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      <div class="foot-col">
+      <div class="f-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#youtube">Health Videos</a></li>
+          <li><a href="#youtube">Daily Videos</a></li>
           <li><a href="#doctors">Our Doctor</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="foot-col">
+      <div class="f-col">
         <h4>Contact</h4>
         <ul>
           <li><a href="tel:9750511225">📞 9750511225</a></li>
           <li><a href="https://wa.me/917448777717">💬 7448777717</a></li>
           <li><a href="mailto:info@abishekhospital.com">✉️ info@abishekhospital.com</a></li>
-          <li><a href="#">📍 Erode Fort, 638001</a></li>
+          <li><a href="https://maps.google.com/?q=Abishek+Hospital+Erode" target="_blank">📍 Erode Fort, 638001</a></li>
           <li><a href="https://www.youtube.com/@abishekmedicalcenter" target="_blank">▶️ @abishekmedicalcenter</a></li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
-      <p>© 2025 Abishek Hospital · Dr. Jayanthi Prabakaran · All Rights Reserved · Erode, Tamil Nadu</p>
+    <div class="f-bottom">
+      <p>© 2025 Abishek Hospital · Dr. Jayanthi Prabakaran · All Rights Reserved</p>
+      <a href="mailto:info@abishekhospital.com">info@abishekhospital.com</a>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/917448777717" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/919750511225" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
@@ -494,8 +619,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
   })
 })
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.1})
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.08})
+document.querySelectorAll('.reveal,.reveal-l').forEach(el=>obs.observe(el))
 if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))}
 </script>
 </body>
