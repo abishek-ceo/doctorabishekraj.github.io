@@ -500,6 +500,352 @@ footer{background:var(--ink);padding:80px 5% 28px}
   .cf-title{font-size:26px}
   .cf-row{grid-template-columns:1fr;gap:14px}
 }
+
+/* ═══════════════════════════════════════════════════
+   3D DEPTH · GLASSMORPHISM · PRO VISUAL LAYER
+═══════════════════════════════════════════════════ */
+
+/* Global 3D base */
+.srv-card,.afc,.wc,.ab-card,.yt-card,.dr-full{
+  will-change:transform;transform-style:preserve-3d
+}
+
+/* Hero — bold 3D base shadow */
+.hero{
+  box-shadow:0 60px 120px -30px rgba(194,24,91,.55),
+             0 20px 40px -10px rgba(136,14,79,.35)
+}
+
+/* Hero right — glass panel */
+.hero-right{
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.05),
+             inset 1px 0 0 rgba(255,255,255,.03)
+}
+
+/* Hero eyebrow pills — glass depth */
+.h-pill{
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 2px 16px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.1)
+}
+
+/* Hero stat numbers — 3D text depth */
+.hs-num{text-shadow:0 4px 14px rgba(0,0,0,.3),0 1px 3px rgba(0,0,0,.2)}
+.hs-gold{text-shadow:0 4px 14px rgba(245,200,66,.35),0 1px 3px rgba(0,0,0,.2)}
+
+/* Nav logo — 3D glowing lift */
+.nav-logo-img{
+  filter:contrast(1.08) saturate(1.18)
+    drop-shadow(0 4px 14px rgba(194,24,91,.38))
+    drop-shadow(0 8px 28px rgba(194,24,91,.22))
+    drop-shadow(0 1px 4px rgba(0,0,0,.25));
+  transition:transform .38s cubic-bezier(.16,1,.3,1),filter .38s
+}
+.logo:hover .nav-logo-img{
+  transform:scale(1.06) translateY(-3px);
+  filter:contrast(1.12) saturate(1.28)
+    drop-shadow(0 8px 22px rgba(194,24,91,.52))
+    drop-shadow(0 16px 40px rgba(194,24,91,.28))
+}
+
+/* CTA button shine overlay */
+.cta-main,.cta-yt,.nav-cta,.wcta-wa,.ct-wa,.cf-submit,.eb-btn{
+  position:relative;overflow:hidden
+}
+.cta-main::before,.cta-yt::before,.nav-cta::before,.wcta-wa::before,
+.ct-wa::before,.cf-submit::before,.eb-btn::before{
+  content:'';position:absolute;top:-50%;left:-60%;
+  width:50%;height:200%;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);
+  transform:skewX(-15deg);transition:left .6s ease;pointer-events:none
+}
+.cta-main:hover::before,.cta-yt:hover::before,.nav-cta:hover::before,
+.wcta-wa:hover::before,.ct-wa:hover::before,.cf-submit:hover::before,.eb-btn:hover::before{
+  left:130%
+}
+
+/* 3D Service Cards */
+.srv-card:hover{
+  transform:perspective(900px) rotateX(-5deg) rotateY(4deg) translateY(-14px) scale(1.02);
+  box-shadow:16px 32px 64px rgba(194,24,91,.22),0 0 0 1px rgba(194,24,91,.08)
+}
+
+/* 3D Affordable Cards */
+.afc:hover{
+  transform:perspective(900px) rotateX(-6deg) translateY(-12px) scale(1.01);
+  box-shadow:0 32px 72px rgba(194,24,91,.2)
+}
+
+/* 3D Affordable Promise block */
+.afford-promise{
+  transform:perspective(2200px) rotateX(1.8deg);
+  box-shadow:0 40px 90px -20px rgba(194,24,91,.45),
+             inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s
+}
+.afford-promise:hover{
+  transform:perspective(2200px) rotateX(0deg) translateY(-6px);
+  box-shadow:0 56px 110px -20px rgba(194,24,91,.52)
+}
+
+/* 3D Wellness Cards */
+.wc{perspective:900px}
+.wc:hover{
+  transform:perspective(900px) rotateX(-7deg) translateY(-10px) scale(1.03);
+  box-shadow:0 28px 64px rgba(194,24,91,.3)
+}
+
+/* 3D About Cards */
+.ab-card:hover{
+  transform:perspective(900px) rotateX(-4deg) rotateY(6deg) translateY(-6px);
+  box-shadow:12px 24px 48px rgba(194,24,91,.18)
+}
+
+/* 3D Doctor panel */
+.dr-full{
+  transform:perspective(2400px) rotateX(0.8deg);
+  box-shadow:0 12px 80px rgba(194,24,91,.1);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s
+}
+.dr-full:hover{
+  transform:perspective(2400px) rotateX(0deg) translateY(-6px);
+  box-shadow:0 40px 100px rgba(194,24,91,.18)
+}
+
+/* 3D Doctor photo ring */
+.df-photo{
+  box-shadow:0 0 0 4px rgba(194,24,91,.12),
+             0 0 0 10px rgba(194,24,91,.06),
+             0 24px 80px rgba(194,24,91,.2)
+}
+
+/* 3D YT Cards */
+.yt-card{transition:all .35s cubic-bezier(.16,1,.3,1)}
+.yt-card:hover{
+  transform:translateX(8px) perspective(800px) rotateY(-3deg);
+  background:rgba(194,24,91,.1);
+  border-color:rgba(249,168,212,.18)
+}
+
+/* 3D marquee text depth */
+.mi-num{text-shadow:0 2px 8px rgba(0,0,0,.2)}
+
+/* Wellness CTA — 3D lift */
+.wellness-cta{
+  box-shadow:0 8px 48px rgba(194,24,91,.08);
+  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s
+}
+.wellness-cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 24px 64px rgba(194,24,91,.14)
+}
+
+/* Map — 3D depth */
+.map-wrap{
+  transform:perspective(2000px) rotateX(1.5deg);
+  transition:transform .5s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 24px 80px rgba(194,24,91,.14)
+}
+.map-wrap:hover{
+  transform:perspective(2000px) rotateX(0deg) translateY(-4px)
+}
+
+/* Contact form 3D panel */
+.cf-wrap{
+  transform:perspective(2000px) rotateX(0.6deg);
+  transition:transform .5s,box-shadow .5s;
+  box-shadow:0 16px 80px rgba(194,24,91,.09)
+}
+.cf-wrap:hover{
+  transform:perspective(2000px) rotateX(0deg) translateY(-4px);
+  box-shadow:0 32px 100px rgba(194,24,91,.14)
+}
+
+/* Input focus 3D glow */
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{
+  border-color:var(--rose);
+  box-shadow:0 0 0 3px rgba(194,24,91,.1),0 4px 16px rgba(194,24,91,.12)
+}
+
+/* WhatsApp float 3D */
+.wa-float{
+  box-shadow:0 8px 32px rgba(37,211,102,.45),
+             0 2px 8px rgba(37,211,102,.3),
+             0 0 0 3px rgba(37,211,102,.15);
+  transition:transform .28s cubic-bezier(.16,1,.3,1),box-shadow .28s
+}
+.wa-float:hover{
+  transform:scale(1.12) translateY(-4px);
+  box-shadow:0 16px 48px rgba(37,211,102,.55),0 0 0 5px rgba(37,211,102,.2)
+}
+
+/* Scrolled nav 3D glass */
+nav.scrolled{
+  background:rgba(255,249,245,.96);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  box-shadow:0 2px 40px rgba(194,24,91,.08),0 1px 0 rgba(194,24,91,.06)
+}
+
+/* ═══════════════════════════════════════════════════
+   ALL-DEVICE RESPONSIVE — COMPLETE SYSTEM
+═══════════════════════════════════════════════════ */
+
+/* ── Large Desktop 1440px+ ── */
+@media(min-width:1440px){
+  .hero-h1{font-size:80px}
+  .hero-left{padding:80px 72px 80px 96px}
+  .hero-right{padding:80px 56px}
+}
+
+/* ── Tablet/Laptop 1024–1200px ── */
+@media(max-width:1200px) and (min-width:1025px){
+  .nav-logo-img{height:80px}
+  .nav-inner{height:96px}
+  .mobile-nav{top:96px}
+  .hero{padding-top:96px}
+}
+
+/* ── Tablet 768–1024px ── */
+@media(max-width:1024px){
+  .nav-inner{height:88px}
+  .nav-logo-img{height:70px;border-radius:9px}
+  .mobile-nav{top:88px}
+  .hero{padding-top:88px}
+  .hero-left{padding:60px 5%}
+  .hero-h1{font-size:52px}
+  /* Disable perspective on touch — no hover */
+  .srv-card:hover,.afc:hover,.wc:hover,.ab-card:hover{
+    transform:translateY(-6px) !important
+  }
+  .afford-promise,.dr-full,.map-wrap,.cf-wrap,.wellness-cta{
+    transform:none !important
+  }
+  .afford-promise:hover,.dr-full:hover,.map-wrap:hover,.cf-wrap:hover{
+    transform:translateY(-4px) !important
+  }
+}
+
+/* ── Mobile 480–768px ── */
+@media(max-width:768px){
+  .nav-inner{height:74px;padding:0 18px}
+  .nav-logo-img{height:58px;border-radius:8px}
+  .mobile-nav{top:74px}
+  .hero{padding-top:74px}
+  .hero-left{padding:48px 20px 56px}
+  .hero-h1{font-size:36px;letter-spacing:-1.2px;line-height:1.1}
+  .hero-sub{font-size:15.5px}
+  .hero-desc{font-size:14px}
+  .hs-num{font-size:26px}
+  .afford-promise{padding:32px 24px}
+  .eb-h2{font-size:28px}
+  .wellness-cta{padding:30px 22px}
+  .dr-full{padding:32px 22px}
+}
+
+/* ── Small Mobile 360–480px ── */
+@media(max-width:480px){
+  .nav-inner{height:66px;padding:0 15px}
+  .nav-logo-img{height:52px;border-radius:7px}
+  .mobile-nav{top:66px;padding:16px 15px}
+  .hero{padding-top:66px}
+  .hero-left{padding:40px 16px 48px}
+  .hero-h1{font-size:28px;letter-spacing:-0.8px;line-height:1.12}
+  .h-pill,.h-no1{font-size:9.5px;padding:5px 10px;letter-spacing:1.2px}
+  .hero-sub{font-size:14px;margin-bottom:20px}
+  .hero-desc{font-size:13px;margin-bottom:32px}
+  .cta-main,.cta-yt{padding:13px 20px;font-size:13px;gap:8px}
+  .hero-ctas{gap:10px}
+  .hs-num{font-size:22px}
+  .hs-label{font-size:9px}
+  .hero-stats{margin-top:32px;padding-top:28px;gap:0}
+  .yt-h2{font-size:30px}
+  .afford-head-l h2,.ab-l .h2,.srv-head-l h2,.doctor-head h2,
+  .contact-head h2,.wellness-head h2,.eb-h2{font-size:28px!important;letter-spacing:-0.6px}
+  .afford-promise{padding:24px 18px;gap:28px}
+  .ap-l h3{font-size:24px}
+  .dr-full{padding:24px 16px}
+  .df-photo{width:170px;height:170px}
+  .dr-fr h2{font-size:26px}
+  .eb-h2{font-size:22px!important}
+  .wellness-cta{padding:24px 18px;flex-direction:column;align-items:flex-start}
+  .wcta-btns{width:100%;flex-direction:column}
+  .wcta-wa,.wcta-em{justify-content:center;width:100%}
+  .cf-wrap{padding:24px 15px;border-radius:18px}
+  .cf-title{font-size:22px}
+  .cf-sub{font-size:13px}
+  .ct-ico{width:40px;height:40px;font-size:15px;border-radius:10px}
+  .map-wrap{height:300px;border-radius:16px}
+  .f-top{gap:28px}
+  .f-brand-name{font-size:17px}
+  .footer{padding:60px 5% 24px}
+  .afford,.about,.services,.wellness,.doctor,.contact,.yt-hero{padding:64px 5%}
+  .email-band{padding:48px 5%}
+  .dr-contact-btns{flex-direction:column}
+  .dr-btn-em,.dr-btn-wa{justify-content:center;text-align:center}
+}
+
+/* ── Tiny Mobile ≤360px ── */
+@media(max-width:360px){
+  .nav-inner{height:60px;padding:0 13px}
+  .nav-logo-img{height:46px;border-radius:6px}
+  .mobile-nav{top:60px;padding:14px 13px}
+  .hero{padding-top:60px}
+  .hero-left{padding:34px 13px 42px}
+  .hero-h1{font-size:24px;letter-spacing:-0.5px}
+  .h-pill,.h-no1{font-size:9px;padding:4px 9px}
+  .hero-desc{font-size:12.5px}
+  .cta-main,.cta-yt{padding:12px 16px;font-size:12.5px}
+  .hs-num{font-size:19px}
+  .hs-label{font-size:8px;letter-spacing:.3px}
+  .hc-link{font-size:11px}
+}
+
+/* ── Safe-area notch/home-bar ── */
+@supports(padding:max(0px)){
+  .wa-float{
+    bottom:max(24px,env(safe-area-inset-bottom));
+    right:max(24px,env(safe-area-inset-right))
+  }
+  .mobile-nav{
+    padding-bottom:max(20px,calc(env(safe-area-inset-bottom) + 10px))
+  }
+}
+
+/* ── Touch: remove perspective on hover (no hover on touch) ── */
+@media(hover:none) and (pointer:coarse){
+  .srv-card:hover,.afc:hover,.wc:hover,.ab-card:hover,
+  .yt-card:hover,.dr-full:hover,.afford-promise:hover,
+  .map-wrap:hover,.cf-wrap:hover,.wellness-cta:hover{
+    transform:none!important
+  }
+  .cta-main:hover,.cta-yt:hover,.nav-cta:hover,.wcta-wa:hover,
+  .ct-wa:hover,.cf-submit:hover,.eb-btn:hover{
+    transform:none!important
+  }
+  .logo:hover .nav-logo-img{transform:none!important}
+}
+
+/* ── Reduced Motion ── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.15s!important;
+    animation-iteration-count:1!important
+  }
+  .srv-card:hover,.afc:hover,.wc:hover,.ab-card:hover{
+    transform:translateY(-4px)!important
+  }
+  .afford-promise,.dr-full,.map-wrap,.cf-wrap{transform:none!important}
+}
+
+/* ── Print ── */
+@media print{
+  nav,.wa-float,.mobile-nav,.cursor,.cursor-ring{display:none!important}
+  .hero{min-height:auto;padding:32px 5%;box-shadow:none}
+  .hero-right{display:none}
+  body{color:#000}
+}
 </style>
 </head>
 <body>
@@ -1122,6 +1468,14 @@ function submitContactForm(){
 window.addEventListener('resize', () => {
   if(window.innerWidth >= 1024) closeMobileNav();
 });
+
+/* ══ MOBILE NAV HEIGHT SYNC ══ */
+function syncMobileNavTop(){
+  const h = document.getElementById('mainNav').offsetHeight;
+  document.getElementById('mobileNav').style.top = h + 'px';
+}
+window.addEventListener('resize', syncMobileNavTop);
+syncMobileNavTop();
 </script>
 </body>
 </html>
