@@ -919,7 +919,7 @@ nav.scrolled{
 .pl-trk{width:200px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
 .pl-bar{height:100%;width:0;border-radius:2px;
   background:linear-gradient(90deg,rgba(245,200,66,.6),#fff,rgba(245,200,66,.6));
-  animation:loaderBar 1.8s cubic-bezier(.16,1,.3,1) both .2s}
+  animation:loaderBar .55s cubic-bezier(.16,1,.3,1) both .1s}
 .pl-lbl{font-family:'Playfair Display',serif;font-size:13px;font-weight:600;
   color:rgba(255,255,255,.55);letter-spacing:3.5px;text-transform:uppercase;
   animation:ldPop .8s both .4s}
@@ -1862,8 +1862,8 @@ syncMobileNavTop();
     if (!pl) return;
     setTimeout(() => {
       pl.classList.add('off');
-      setTimeout(() => pl.remove(), 950);
-    }, 1800);
+      setTimeout(() => pl.remove(), 650);
+    }, 350);
   });
 
   /* ══ 2. SCROLL PROGRESS BAR ══ */
