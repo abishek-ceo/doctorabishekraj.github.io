@@ -115,6 +115,7 @@ body.locked>main,body.locked>.footer,body.locked>.mbar{visibility:hidden;transit
 .mbar{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 12px 30px -10px rgba(42,10,24,.45)}
 .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;border-radius:14px;color:#fff;text-decoration:none;font:700 .8rem/1.1 var(--body)}
 .mbar .i{width:22px;height:22px}
+.mbar.mbar-off{transform:translateY(calc(100% + 30px));opacity:0;visibility:hidden;pointer-events:none}   /* hidden state: not clickable, not tabbable */
 .mbar .m-call{background:var(--rose-500)}.mbar .m-wa{background:var(--wa)}.mbar .m-dir{background:var(--plum)}
 
 /* ---------- sections ---------- */
@@ -358,6 +359,8 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   /* press and hover feedback */
   .btn:active{transform:scale(.97)}
   a.card:active,.soc-card:active{transform:scale(.985)}
+  .mbar{transition:transform .28s ease,opacity .2s ease,visibility 0s}
+  .mbar.mbar-off{transition:transform .28s ease,opacity .2s ease,visibility 0s .28s}
   .mbar a{transition:transform .15s}
   .mbar a:active{transform:scale(.95)}
   @media (hover:hover){
