@@ -56,7 +56,7 @@ const homeFaqs = [
   ['Where is Abishek Hospital in Erode?', `We are at ${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}. <a href="/contact/">See the map and directions</a>.`],
   ['What are your clinic timings?', `${site.hours.opd}. Emergency care is available ${site.hours.emergency}.`],
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
-  ['Who is the doctor?', `${D}, Consultant Obstetrician & Gynaecologist, is an Academic Topper and Gold Medalist from Coimbatore Medical College, with over 40,000 safe deliveries. <a href="${doctorUrl}">Know more about Dr. Jayanthi Prabakaran</a>.`],
+  ['Who is the doctor?', `${D}, Consultant Obstetrician & Gynaecologist, is an Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries. <a href="${doctorUrl}">Know more about Dr. Jayanthi Prabakaran</a>.`],
   ['Which services do you offer?', 'Pregnancy and delivery care, normal and painless (epidural) delivery, high-risk pregnancy care, gynaecology and lady doctor consultations, PCOS and PCOD treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery, menopause care and family planning.'],
 ];
 
@@ -81,17 +81,16 @@ export const home = {
 <section class="hero"><div class="wrap split">
 <div>
 ${statusLine('rise')}
-<div class="pill-row rise"><span class="pill">${icon('pin')} Erode Fort, Tamil Nadu</span><span class="pill">${icon('siren')} Emergency care 24/7</span><span class="pill">${icon('award')} No.1 OB/GYN · Tamil Nadu</span></div>
+<div class="pill-row rise"><span class="pill">${icon('pin')} Erode Fort, Tamil Nadu</span><span class="pill">${icon('syringe')} Painless delivery</span><span class="pill">${icon('user')} Lady doctor</span></div>
 <h1 class="rise d1">Gynecologist &amp; Maternity Hospital in <em>Erode</em></h1>
 <span class="tamil-line rise d1" lang="ta">${tamil.hero}</span>
-<p class="lead rise d2">Trusted care for every woman, at every stage. Led by ${D}, Academic Topper and Gold Medalist from Coimbatore Medical College, with over 40,000 safe deliveries. Pregnancy care, painless delivery, gynaecology, PCOS and fertility treatment and laparoscopic surgery, with honest, upfront pricing.</p>
+<p class="lead rise d2">Trusted care for every woman, at every stage. Led by ${D}, Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries, and honest, upfront pricing.</p>
 <div class="btn-row rise d3">${btnWA()}${btnCall(undefined, 'btn btn-outline')}</div>
-<div class="trust rise d3">${stats.map((s) => `<div><b>${s.n}</b><span>${s.label}</span></div>`).join('')}</div>
+<div class="trust rise d3">${[[stats[0].n, 'Safe deliveries'], [stats[1].n, 'Painless deliveries'], [stats[3].n, 'Keyhole surgeries']].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join('')}</div>
 </div>
 <div class="portrait rise d2">
 <div class="portrait-frame"><img src="/assets/img/doctor-480.webp" srcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" sizes="(min-width:960px) 360px, 80vw" width="480" height="481" fetchpriority="high" alt="${D}, gynecologist and obstetrician in Erode"></div>
 <div class="portrait-badge pb-1">${icon('award')}<span>Academic Topper<small>Coimbatore Medical College</small></span></div>
-<div class="portrait-badge pb-2">${icon('baby')}<span>40,000+<small>safe deliveries</small></span></div>
 </div></div></section>
 
 <div class="wrap"><div class="quick">
@@ -110,9 +109,9 @@ ${serviceCards(homeCards)}
 <section class="section section-soft"><div class="wrap split two">
 <div><span class="eyebrow">${icon('hand-heart')} Why Abishek Hospital</span>
 <h2>Expert care that every family can <em>afford</em></h2>
-<p class="lead">We believe exceptional medical care should never be a privilege. Gold-medal expertise meets transparent, compassionate pricing.</p>
+<p class="lead">We believe exceptional medical care should never be a privilege. Senior, experienced care meets transparent, compassionate pricing.</p>
 <ul class="checks">
-<li><b>Gold-medal expertise.</b> ${D} is an Academic Topper and Gold Medalist from Coimbatore Medical College.</li>
+<li><b>Experienced, senior care.</b> ${D} is an Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries.</li>
 <li><b>Transparent pricing.</b> Costs are discussed upfront, before any procedure, with no hidden fees.</li>
 <li><b>Open day and night.</b> Emergency care is available 24/7.</li>
 <li><b>Modern, clean and hygienic.</b> Modern equipment and a safe, hygienic environment.</li>
@@ -134,7 +133,7 @@ ${statsBand()}
 <div><span class="eyebrow">${icon('user')} Meet your doctor</span>
 <h2>${D}</h2>
 <span class="role">${site.doctor.role}</span>
-<p>An Academic Topper and Gold Medalist from ${site.doctor.college}, ${D} has over 40,000 safe deliveries, 7,000+ laparoscopic surgeries and 500+ conceptions through IUI to her name. She is also a high-risk pregnancy specialist, with experience in epidural (painless) delivery.</p>
+<p>An Academic Topper from ${site.doctor.college}, ${D} has over 40,000 safe deliveries, 7,000+ laparoscopic surgeries and 500+ conceptions through IUI to her name. She is also a high-risk pregnancy specialist, with experience in epidural (painless) delivery.</p>
 <blockquote class="quote">“Expert care should be accessible to all, not just a few.”<small>${D}</small></blockquote>
 <div class="btn-row"><a class="btn btn-primary" href="${doctorUrl}">About Dr. Jayanthi ${icon('arrow')}</a>${btnWA(undefined, 'Book appointment')}</div></div>
 </div></section>
@@ -248,14 +247,14 @@ export const doctor = {
 <span class="eyebrow">${icon('award')} Meet your doctor</span>
 <h1>Dr. Jayanthi <em>Prabakaran</em></h1>
 <span class="tamil-line" lang="ta">டாக்டர் ஜெயந்தி பிரபாகரன் — மகப்பேறு மற்றும் மகளிர் நோய் மருத்துவ நிபுணர்</span>
-<p class="lead">${site.doctor.role} at ${site.name}, Erode Fort. Academic Topper and Gold Medalist from ${site.doctor.college}, with over 40,000 safe deliveries.</p>
+<p class="lead">${site.doctor.role} at ${site.name}, Erode Fort. Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries.</p>
 <div class="btn-row">${btnWA('Hello Abishek Hospital, I would like to book an appointment with Dr. Jayanthi Prabakaran.')}${btnCall(undefined, 'btn btn-outline')}</div></div>
 <div class="doc-photo"><div class="portrait-frame"><img src="/assets/img/doctor-480.webp" srcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" sizes="(min-width:960px) 340px, 80vw" width="480" height="481" fetchpriority="high" alt="${D}, gynecologist and obstetrician in Erode"></div></div>
 </div></section>
 
 <section class="section" id="about"><div class="wrap"><div class="prose">
 <h2>About ${D}</h2>
-<p>${D} is an Academic Topper and Gold Medalist from ${site.doctor.college}, one of Tamil Nadu’s well-known medical institutions. Her academic strength and years of dedicated clinical practice have made her a trusted obstetrician and gynaecologist for families in Erode and beyond.</p>
+<p>${D} is an Academic Topper from ${site.doctor.college}, one of Tamil Nadu’s well-known medical institutions. Her academic strength and years of dedicated clinical practice have made her a trusted obstetrician and gynaecologist for families in Erode and beyond.</p>
 <p>With over 40,000 safe deliveries, more than 7,000 laparoscopic surgeries and over 500 conceptions through IUI, she has made expert women’s healthcare accessible in Erode. She also shares free health education videos in Tamil every day on YouTube (${social[0].handle}), so that every woman can learn from trusted medical knowledge.</p>
 </div></div></section>
 
@@ -280,7 +279,7 @@ ${statsBand()}</div></section>
 <div><span class="eyebrow">${icon('hand-heart')} Philosophy</span><h2>Excellence without <em>compromise</em></h2>
 <blockquote class="quote">“Expert care should be accessible to all, not just a few.”<small>${D}</small></blockquote>
 <p style="margin-top:1.2rem">Every woman deserves the same gold-standard care, whatever her background. Treatment costs are discussed upfront, before any procedure, and consultation fees are kept affordable for all income groups.</p></div>
-<div><div class="card flat"><span class="ico">${icon('cap')}</span><h3>Education and recognition</h3><ul class="checks" style="margin-bottom:0"><li>Academic Topper and Gold Medalist, ${site.doctor.college}</li><li>${site.doctor.role}</li><li>High-risk pregnancy specialist</li></ul></div></div>
+<div><div class="card flat"><span class="ico">${icon('cap')}</span><h3>Education and recognition</h3><ul class="checks" style="margin-bottom:0"><li>Academic Topper, ${site.doctor.college}</li><li>${site.doctor.role}</li><li>High-risk pregnancy specialist</li></ul></div></div>
 </div></section>
 
 <section class="section section-soft"><div class="wrap">
@@ -409,7 +408,7 @@ const faqAbout = [
   ['What are your clinic hours?', `${site.hours.opd}. Emergency care is available ${site.hours.emergency}.`],
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
   ['Is emergency care available 24/7?', `Yes. Call ${P} at any hour or come straight to the hospital. In a life-threatening emergency, dial 108 or 112 for an ambulance.`],
-  ['How do I choose a gynecologist in Erode?', `Look for a registered obstetrician and gynaecologist with the qualifications and experience for the care you need, a hospital with emergency and delivery facilities available at all hours, clear and upfront pricing, and a doctor you feel comfortable talking to. ${D} is an Academic Topper and Gold Medalist from ${site.doctor.college} with over 40,000 safe deliveries, and ${site.name} offers emergency care 24/7. You are welcome to visit and meet us before you decide.`],
+  ['How do I choose a gynecologist in Erode?', `Look for a registered obstetrician and gynaecologist with the qualifications and experience for the care you need, a hospital with emergency and delivery facilities available at all hours, clear and upfront pricing, and a doctor you feel comfortable talking to. ${D} is an Academic Topper from ${site.doctor.college} with over 40,000 safe deliveries, and ${site.name} offers emergency care 24/7. You are welcome to visit and meet us before you decide.`],
   ['How much is the consultation fee?', `Consultation fees are kept affordable for all income groups, and treatment costs are explained clearly before any procedure. Please call or WhatsApp ${P} for the current fee.`],
 ];
 const faqPregnancy = [

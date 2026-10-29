@@ -85,8 +85,9 @@
     });
   });
 
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;   /* visitors who ask for less motion get none of the movement below */
+
   /* ---- count-up numbers in the experience band (left as plain text for visitors who prefer less motion) ---- */
-  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var figures = $$('.stat b');
   if (!calm && figures.length && 'IntersectionObserver' in window && window.requestAnimationFrame) {
     var withCommas = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
@@ -114,6 +115,25 @@
       entries.forEach(function (e) { if (e.isIntersecting) { seen.unobserve(e.target); countUp(e.target); } });
     }, { threshold: 0.6 });
     figures.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight) seen.observe(el); });   /* a number already on screen at load stays as it is: no flash back to zero */
+  }
+
+  /* ---- content fades up once as it scrolls into view (only items below the fold are touched, so nothing is hidden if this fails) ---- */
+  if (!calm && 'IntersectionObserver' in window) {
+    var fade = $$('.section .sec-head, .section .card, .section .stat, .section .steps li, .section .soc-card, .section .info-list li, .section .sos, .section .callout, .section .quote, .section .doc-photo, .section .gallery figure, .cta .box');
+    var seenOnce = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        seenOnce.unobserve(el);
+        el.classList.add('rv-go');
+        setTimeout(function () { el.classList.remove('rv', 'rv-go'); }, 700);   /* back to its normal styles, so hover effects keep working */
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    var below = fade.filter(function (el) { return el.getBoundingClientRect().top > window.innerHeight; });   /* read every position first, then write: no repeated layout */
+    below.forEach(function (el) {
+      el.classList.add('rv');
+      seenOnce.observe(el);
+    });
   }
 
   /* ---- booking form: opens WhatsApp (or email) with the details pre-filled ---- */

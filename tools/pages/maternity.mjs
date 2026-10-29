@@ -63,7 +63,7 @@ const maternity = makeServicePage({
 <li><b>Family planning.</b> Safe ways to space your next pregnancy, discussed at your postnatal checkup, usually around six weeks after delivery.</li></ul>` },
     { id: 'why', title: 'Why families in Erode choose Abishek Hospital', nav: 'Why us', wide: true, html: `
 <div class="grid cards">
-<div class="card flat"><span class="ico">${icon('award')}</span><h3>Experience you can rely on</h3><p>Dr. Jayanthi Prabakaran, Academic Topper and Gold Medalist from Coimbatore Medical College, has over 40,000 safe deliveries to her name.</p></div>
+<div class="card flat"><span class="ico">${icon('award')}</span><h3>Experience you can rely on</h3><p>Dr. Jayanthi Prabakaran, Academic Topper from Coimbatore Medical College, has over 40,000 safe deliveries to her name.</p></div>
 <div class="card flat"><span class="ico">${icon('siren')}</span><h3>Open for emergencies, 24/7</h3><p>Pregnancy emergencies do not wait for clinic hours. Our emergency care is available day and night.</p></div>
 <div class="card flat"><span class="ico">${icon('hand-heart')}</span><h3>Clear, honest costs</h3><p>Treatment costs are explained upfront, before any procedure, with no hidden fees.</p></div>
 <div class="card flat"><span class="ico">${icon('video')}</span><h3>Free health education</h3><p>Daily pregnancy and women’s health videos in Tamil on our YouTube channel, free for every family.</p></div>

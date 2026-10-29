@@ -95,7 +95,7 @@ export function doctorNode() {
     '@id': `${U}/#doctor`,
     name: site.doctor.name,
     jobTitle: site.doctor.role,
-    description: `${site.doctor.name} is a Consultant Obstetrician & Gynaecologist at ${site.name}, Erode Fort. Academic Topper and Gold Medalist from ${site.doctor.college}, with over 40,000 safe deliveries.`,
+    description: `${site.doctor.name} is a Consultant Obstetrician & Gynaecologist at ${site.name}, Erode Fort. Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries.`,
     image: `${U}/assets/img/doctor-698.webp`,
     url: `${U}${doctorUrl}`,
     worksFor: { '@id': `${U}/#hospital` },

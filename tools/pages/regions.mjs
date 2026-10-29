@@ -86,7 +86,7 @@ function regionPage(d) {
 <p>${t.route}</p>
 <p><a class="btn btn-outline" href="${site.maps.directions}" target="_blank" rel="noopener">${icon('navigation')} Get directions</a></p>` },
       { id: 'care', title: 'Care you can get at Abishek Hospital', nav: 'Our care', html: `
-<p>${site.doctor.name}, ${site.doctor.role}, is an Academic Topper and Gold Medalist from ${site.doctor.college}, with over 40,000 safe deliveries. <a href="${doctorUrl}">Read about the doctor</a>.</p>
+<p>${site.doctor.name}, ${site.doctor.role}, is an Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries. <a href="${doctorUrl}">Read about the doctor</a>.</p>
 ${svcLinks}` },
       { id: 'plan', title: `Planning your visit from ${d.name}`, nav: 'Plan your visit', html: visitPlan(t.tips) },
     ],
@@ -107,7 +107,7 @@ export const regionPages = districts.map(regionPage);
 
 /* ---------------- the Tamil Nadu hub ---------------- */
 const hubFaqs = [
-  ['Which hospital can women across Tamil Nadu visit for pregnancy and gynaecology care outside the big cities?', `${site.name} at Erode Fort is a women’s health and maternity hospital led by ${site.doctor.name}, an Academic Topper and Gold Medalist from ${site.doctor.college} with over 40,000 safe deliveries. When you choose any hospital, look at the doctor’s qualifications and experience, whether emergency and delivery care is available at all hours, and whether costs are explained clearly. You are welcome to visit and meet us before you decide.`],
+  ['Which hospital can women across Tamil Nadu visit for pregnancy and gynaecology care outside the big cities?', `${site.name} at Erode Fort is a women’s health and maternity hospital led by ${site.doctor.name}, an Academic Topper from ${site.doctor.college} with over 40,000 safe deliveries. When you choose any hospital, look at the doctor’s qualifications and experience, whether emergency and delivery care is available at all hours, and whether costs are explained clearly. You are welcome to visit and meet us before you decide.`],
   ['Does Abishek Hospital have branches in Chennai, Coimbatore or other cities?', 'No. We have one hospital, at Erode Fort. Women travel to us from nearby towns such as Salem, Tiruppur, Namakkal, Karur, Coimbatore and Gobichettipalayam, and we are glad to help you plan the journey.'],
   ['Is painless (epidural) delivery available?', `Yes. We support normal delivery and offer epidural (painless) labour, with over 2,500 epidural deliveries. <a href="${slugUrl('normal-painless-delivery-erode')}">Read about normal and painless delivery</a>.`],
   ['I live far away. Can I book before I travel?', `Yes, and we suggest it. Message us on WhatsApp or call ${P} so your time is confirmed. Clinic hours are ${site.hours.opd}.`],
@@ -204,7 +204,7 @@ export const tamilPage = {
 
 <section class="section section-soft"><div class="wrap split two">
 <div><h2 lang="ta">எங்கள் மருத்துவர்</h2>
-<p lang="ta">டாக்டர் ஜெயந்தி பிரபாகரன், கோயம்புத்தூர் மருத்துவக் கல்லூரியில் படிப்பில் முதலிடமும் தங்கப் பதக்கமும் பெற்றவர். மகப்பேறு மற்றும் மகளிர் நல மருத்துவ நிபுணரான அவர், 40,000-க்கும் மேற்பட்ட பாதுகாப்பான பிரசவங்களை நடத்தியுள்ளார்.</p>
+<p lang="ta">டாக்டர் ஜெயந்தி பிரபாகரன், கோயம்புத்தூர் மருத்துவக் கல்லூரியில் படிப்பில் முதலிடம் பெற்றவர். மகப்பேறு மற்றும் மகளிர் நல மருத்துவ நிபுணரான அவர், 40,000-க்கும் மேற்பட்ட பாதுகாப்பான பிரசவங்களை நடத்தியுள்ளார்.</p>
 <p><a class="link-arrow" href="${doctorUrl}">About the doctor (English) ${icon('arrow')}</a></p></div>
 <div class="card flat"><h3 lang="ta">முகவரி &amp; நேரம்</h3>
 <p lang="ta">எண்.18, பேருந்து நிலையம் அருகில், பாரதி தெரு, ஈரோடு கோட்டை, ஈரோடு – ${site.address.pin}</p>
