@@ -6,9 +6,9 @@ export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
 export const stripTags = (h) => h.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&rsquo;|&#8217;/g, '’').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-// The "Open now" line on the home and contact pages. The hospital is open 24 hours a day, so it is plain text, not a live clock.
+// The "Open now" line on the home and contact pages. The hospital is open round the clock, so it is plain text, not a live clock.
 export const statusLine = (cls = '') =>
-  `<p class="status-line${cls ? ' ' + cls : ''}"><span class="dot" aria-hidden="true"></span><b>Open now</b> · ${site.hours.emergency}</p>`;
+  `<p class="status-line${cls ? ' ' + cls : ''}"><span class="dot" aria-hidden="true"></span><b>Open now</b> · 24/7</p>`;
 // Browsers that support it fetch a page's HTML when a visitor hovers or presses a link, so the next page opens almost instantly.
 const SPECULATION = JSON.stringify({ prefetch: [{ where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[target=_blank]' } }] }, eagerness: 'moderate' }] });
 
@@ -135,7 +135,7 @@ function head(page, ctx, main) {
   const italic = /<h1[^>]*>(?:(?!<\/h1>)[\s\S])*<em>/.test(main) ? '<link rel="preload" href="/assets/fonts/PlayfairDisplay-italic-var.woff2" as="font" type="font/woff2" crossorigin>\n' : '';   // the accent word in most headings is italic
   const img = `${U}${page.ogImage || '/assets/img/og-image.jpg'}`;
   // Pages that exist in English and Tamil point at each other, so Google shows each searcher the right one.
-  const hreflang = page.alternates ? page.alternates.map(([l, h]) => `<link rel="alternate" hreflang="${l}" href="${U}${h}">\n`).join('') + `<link rel="alternate" hreflang="x-default" href="${U}/">\n` : '';
+  const hreflang = page.alternates ? page.alternates.map(([l, h]) => `<link rel="alternate" hreflang="${l}" href="${U}${h}">\n`).join('') + `<link rel="alternate" hreflang="x-default" href="${U}${page.alternates.find(([l]) => l === 'en-IN')[1]}">\n` : '';
   const geo = page.geo ? `<meta name="geo.region" content="IN-TN"><meta name="geo.placename" content="Erode"><meta name="geo.position" content="${site.geo.lat};${site.geo.lng}"><meta name="ICBM" content="${site.geo.lat}, ${site.geo.lng}">\n` : '';
   return `<!doctype html>
 <html lang="${page.lang || 'en'}">
@@ -212,7 +212,7 @@ function header(page, ctx) {
 <p class="grp">Our services</p>
 <div class="sublist">${services.map((s) => `<a href="${slugUrl(s.slug)}">${s.short}</a>`).join('')}</div>
 <p class="grp">More</p>
-<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="/ta/" lang="ta">தமிழில்</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
+<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/women-health-guides/">Women’s Health Guides</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="/ta/" lang="ta">தமிழில்</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
 <div class="btn-row">${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}</div>
 ${socialList('on-dark')}
 </nav></div>
@@ -227,7 +227,7 @@ function footer(ctx) {
 <div class="f-brand">${brandHtml()}<p>${site.doctor.name}, ${site.doctor.role}, leads ${site.name} at Erode Fort: pregnancy and painless delivery care, gynaecology, PCOS and fertility treatment, and laparoscopic surgery for women in Erode and nearby towns.</p>
 ${socialList('on-dark')}</div>
 <div><p class="f-title">Services</p><ul>${services.map((s) => `<li><a href="${slugUrl(s.slug)}">${s.short}</a></li>`).join('')}</ul></div>
-<div><p class="f-title">Explore</p><ul><li><a href="/">Home</a></li><li><a href="${doctorUrl}">Dr. Jayanthi Prabakaran</a></li><li><a href="/videos/">Daily health videos</a></li>${ctx.hasGallery ? '<li><a href="/gallery/">Hospital gallery</a></li>' : ''}<li><a href="/pregnancy-due-date-calculator/">Due date calculator</a></li><li><a href="/visit-reminder/">Visit reminder</a></li><li><a href="/faq/">FAQs</a></li><li><a href="/contact/">Contact &amp; directions</a></li><li><a href="/privacy-policy.html">Privacy policy</a></li></ul></div>
+<div><p class="f-title">Explore</p><ul><li><a href="/">Home</a></li><li><a href="${doctorUrl}">Dr. Jayanthi Prabakaran</a></li><li><a href="/videos/">Daily health videos</a></li>${ctx.hasGallery ? '<li><a href="/gallery/">Hospital gallery</a></li>' : ''}<li><a href="/pregnancy-due-date-calculator/">Due date calculator</a></li><li><a href="/visit-reminder/">Visit reminder</a></li><li><a href="/women-health-guides/">Women’s health guides</a></li><li><a href="/faq/">FAQs</a></li><li><a href="/contact/">Contact &amp; directions</a></li><li><a href="/privacy-policy.html">Privacy policy</a></li></ul></div>
 <div><p class="f-title">Visit us</p><ul class="f-contact">
 <li>${icon('pin')}<span>${site.address.line1},<br>${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}</span></li>
 <li>${icon('phone')}<a href="${tel}">${site.phone.intl}</a></li>

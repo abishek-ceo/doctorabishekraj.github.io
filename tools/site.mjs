@@ -23,7 +23,6 @@ export const site = {
   },
   geo: { lat: 11.341532, lng: 77.7191778 },
   // days = outpatient clinic days (0 = Sunday ... 6 = Saturday); keep `opd` worded to match. Used by the structured data and the reminder page.
-  // `emergency` is also the wording of the "Open now" line: the hospital is open round the clock.
   hours: { opd: 'Mon – Sat, 9:00 AM – 6:30 PM', days: [1, 2, 3, 4, 5, 6], open: '09:00', close: '18:30', emergency: '24 hours a day, 7 days a week' },
   maps: {
     view: 'https://www.google.com/maps/search/?api=1&query=Abishek+Hospital+Erode+Fort+Tamil+Nadu',

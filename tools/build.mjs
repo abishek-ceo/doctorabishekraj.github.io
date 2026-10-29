@@ -15,6 +15,7 @@ import { home, doctor, videos, contact, faq } from './pages/core.mjs';
 import { gallery, privacy, notFound } from './pages/misc.mjs';
 import { dueDate, visitReminder } from './pages/tools.mjs';
 import { hub, regionPages, tamilPage } from './pages/regions.mjs';
+import { guidesHub, guidePages, taGuidePages } from './pages/guides.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rd = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -32,7 +33,7 @@ for (const p of photos) if (!captions[p.id]) console.warn(`  ! photo "${p.id}" h
 const ordered = photos.slice().sort((a, b) => (captions[a.id]?.order ?? 99) - (captions[b.id]?.order ?? 99));
 
 const pages = [
-  home, ...maternityPages, ...gynaePages, hub, ...regionPages, tamilPage, doctor, videos, contact, faq,
+  home, ...maternityPages, ...gynaePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
   dueDate, visitReminder,
   privacy, notFound,
