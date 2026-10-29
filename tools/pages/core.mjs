@@ -179,7 +179,9 @@ ${socialCards()}
 <p>Do not wait for clinic hours. Call us at any time of day or night, or come straight to the hospital.</p>
 <a class="big" href="${tel}">${site.phone.intl}</a>
 <p style="margin:0;font-size:.92rem">In a life-threatening emergency, dial 108 or 112 for an ambulance.</p></div>
-</div></div></section>
+</div>
+<div class="callout" style="margin-top:1.6rem;max-width:820px"><p><b>Free tools:</b> <a href="/pregnancy-due-date-calculator/">Pregnancy due date calculator</a> · <a href="/visit-reminder/">Add your next visit to your calendar</a></p></div>
+</div></section>
 
 <section class="section"><div class="wrap split faq-split">
 <div><span class="eyebrow">${icon('help')} Quick answers</span><h2>Frequently asked <em>questions</em></h2>
@@ -353,7 +355,8 @@ ${crumbs([['Home', '/'], ['Contact & directions']])}
 <section class="section section-soft"><div class="wrap"><div class="contact-grid" style="align-items:start">
 <div><span class="eyebrow">${icon('send')} Book an appointment</span><h2>Tell us how we can <em>help</em></h2>
 <p class="lead">Fill in your details and we will open WhatsApp with your message ready to send. Prefer to talk? Call ${P}.</p>
-<p>Serving women and families in ${areas.join(', ')} and nearby towns.</p></div>
+<p>Serving women and families in ${areas.join(', ')} and nearby towns.</p>
+<p>Already have a visit? <a href="/visit-reminder/">Add it to your phone's calendar</a> with a reminder.</p></div>
 <div>
 <form class="form form-card" data-wa-form data-wa="${site.phone.wa}" data-mail="${site.email}" novalidate>
 <div class="field"><label for="f-name">Your name <span aria-hidden="true">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="err">Please enter your name.</span></div>

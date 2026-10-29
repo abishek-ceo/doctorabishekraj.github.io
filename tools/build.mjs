@@ -13,6 +13,7 @@ import maternityPages from './pages/maternity.mjs';
 import gynaePages from './pages/gynae.mjs';
 import { home, doctor, videos, contact, faq } from './pages/core.mjs';
 import { gallery, privacy, notFound } from './pages/misc.mjs';
+import { dueDate, visitReminder } from './pages/tools.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rd = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -32,12 +33,14 @@ const ordered = photos.slice().sort((a, b) => (captions[a.id]?.order ?? 99) - (c
 const pages = [
   home, ...maternityPages, ...gynaePages, doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
+  dueDate, visitReminder,
   privacy, notFound,
 ];
 
 const ctx = {
   cssHref: `/assets/css/site.css?v=${hash(rd('assets/css/site.css'))}`,
   jsHref: `/assets/js/site.js?v=${hash(rd('assets/js/site.js'))}`,
+  toolsJsHref: `/assets/js/tools.js?v=${hash(rd('assets/js/tools.js'))}`,
   photos: ordered,
   captions,
   hasGallery: ordered.length > 0,

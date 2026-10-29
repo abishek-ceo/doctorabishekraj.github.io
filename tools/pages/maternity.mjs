@@ -38,6 +38,7 @@ const maternity = makeServicePage({
 <ul class="checks"><li>blood group and Rh factor, haemoglobin and iron levels</li><li>blood sugar, to screen for gestational diabetes (usually between 24 and 28 weeks, earlier if you are at risk)</li><li>thyroid and infection screening, as advised</li><li>ultrasound scans to confirm the due date, check your baby’s development and monitor growth</li></ul>
 <h3>Everyday care</h3>
 <p>Take folic acid, iron and calcium as prescribed, eat balanced home-cooked meals with enough protein, fruit, vegetables and water, walk daily unless told otherwise, and take the vaccines recommended in pregnancy. Avoid tobacco, alcohol and any medicine not prescribed for you.</p>
+<p>Not sure of your due date? Use our free <a href="/pregnancy-due-date-calculator/">pregnancy due date calculator</a>.</p>
 <p><b>Bring to your first visit:</b> previous medical and scan reports, a list of your medicines, the date of your last period and records of any earlier pregnancies.</p>` },
     { id: 'video', title: 'Watch: tips for a healthy pregnancy', nav: 'Watch', wide: true, html: `
 <div class="split two">${videoCard()}
