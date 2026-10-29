@@ -5,7 +5,7 @@ import { icon, esc, crumbs, faqBlock, ctaBand, wa, slugUrl, doctorUrl } from '..
 
 const P = site.phone.display;
 const place = `${site.name}, ${site.address.line1}, ${site.address.area}, ${site.address.city} ${site.address.pin}`;
-const toolAttrs = `data-tool data-wa="${site.phone.wa}" data-place="${esc(place)}" data-phone="${esc(P)}" data-hours="${esc(site.hours.opd)}" data-open="${site.hours.open}" data-close="${site.hours.close}"`;
+const toolAttrs = `data-tool data-wa="${site.phone.wa}" data-place="${esc(place)}" data-phone="${esc(P)}" data-hours="${esc(site.hours.opd)}" data-days="${site.hours.days.join(',')}" data-closed="${site.hours.closedOn.join(',')}" data-open="${site.hours.open}" data-close="${site.hours.close}"`;
 const bookMsg = 'Hello Abishek Hospital, I would like to book an antenatal visit.';
 
 const dueFaqs = [

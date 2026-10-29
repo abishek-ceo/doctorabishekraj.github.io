@@ -34,6 +34,7 @@ ul,ol{margin:0 0 1em;padding-left:1.25em}
 li{margin:.25em 0}
 :focus-visible{outline:3px solid var(--rose-500);outline-offset:3px;border-radius:6px}
 .footer :focus-visible,.drawer :focus-visible{outline-color:var(--gold-soft)}
+a,button,summary,label,input,select,textarea{touch-action:manipulation}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--plum);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
 .skip:focus{top:12px}
@@ -176,7 +177,7 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .stat{padding:22px 18px;border-radius:var(--radius);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);text-align:center}
 .stat b{display:block;font:800 clamp(1.8rem,1.4rem + 2vw,2.6rem)/1 var(--display);color:var(--gold-soft)}
-.stat span{display:block;margin-top:6px;font-size:.92rem;color:rgba(255,255,255,.85)}
+.stat>span{display:block;margin-top:6px;font-size:.92rem;color:rgba(255,255,255,.85)}
 .checks{list-style:none;padding:0;margin:0 0 1em}
 .checks li{position:relative;padding-left:2em;margin:.55em 0}
 .checks li::before{content:"";position:absolute;left:0;top:.28em;width:1.3em;height:1.3em;border-radius:50%;background:var(--rose-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A8134F' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/70% no-repeat}
@@ -302,11 +303,59 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 .center-page{min-height:60vh;display:grid;place-items:center;text-align:center;padding:60px 0}
 html:not(.js) [data-map],html:not(.js) .form-card{display:none}
 
-/* ---------- motion ---------- */
-@media (prefers-reduced-motion:no-preference){
-  .rise{animation:rise .6s ease both}
-  .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* ---------- motion ----------
+   All movement lives in the next block, so visitors who ask their device for less motion get none of it. */
+@media screen and (prefers-reduced-motion:no-preference){
+  /* home hero: quick, short entrance (text is never hidden for long) */
+  .rise{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+  .rise.d1{animation-delay:.05s}.rise.d2{animation-delay:.1s}.rise.d3{animation-delay:.15s}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .pb-1{animation:bob 6s ease-in-out infinite}.pb-2{animation:bob 7s ease-in-out -2.5s infinite}
+  @keyframes bob{50%{transform:translateY(-7px)}}
+
+  /* an expanding ring: "open now" dot and the play button */
+  [data-open-status][data-state=open] .dot::after,.video-play::after{content:"";position:absolute;inset:0;border-radius:50%;animation:ring 2.4s ease-out infinite}
+  [data-open-status][data-state=open] .dot::after{background:var(--st)}
+  .video-play::after{border:2px solid rgba(255,255,255,.75)}
+  @keyframes ring{from{transform:scale(1);opacity:.6}to{transform:scale(1.8);opacity:0}}
+
+  /* press and hover feedback */
+  .btn:active{transform:scale(.97)}
+  a.card:active,.soc-card:active,.quick a:active{transform:scale(.985)}
+  .quick a,.mbar a{transition:transform .15s,box-shadow .15s}
+  .quick a:hover{transform:translateY(-2px)}
+  .mbar a:active{transform:scale(.95)}
+  @media (hover:hover){
+    .gallery img{transition:transform .6s ease}
+    .gallery figure:hover img{transform:scale(1.05)}
+  }
+
+  /* a calculator result pops in when it appears */
+  .result{animation:pop .4s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
+
+  /* FAQ answers slide open (browsers without this simply open instantly) */
+  @supports (interpolate-size:allow-keywords){
+    :root{interpolate-size:allow-keywords}
+    .faq details::details-content{block-size:0;overflow:clip;transition:block-size .3s ease,content-visibility .3s allow-discrete}
+    .faq details[open]::details-content{block-size:auto}
+  }
+
+  /* page-to-page fade; the header and the phone action bar stay put while the page changes */
+  @view-transition{navigation:auto}
+  .header{view-transition-name:site-header}
+  .mbar{view-transition-name:site-dock}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+
+  /* scroll-driven (no JavaScript): a reading-progress line under the header, and content that fades up as it scrolls in */
+  @supports (animation-timeline:scroll()){
+    .header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--rose-500));transform:scaleX(0);transform-origin:0 50%;animation:progress linear both;animation-timeline:scroll(root block)}
+    @keyframes progress{to{transform:scaleX(1)}}
+  }
+  @supports (animation-timeline:view()){
+    .section :is(.sec-head,.card,.stat,.steps li,.soc-card,.info-list li,.sos,.callout,.quote,.doc-photo,.gallery figure),.cta .box{animation:reveal linear backwards;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes reveal{from{opacity:0;transform:translateY(22px)}}
+  }
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 
@@ -388,7 +437,7 @@ body{font-variant-numeric:lining-nums}
 .video-text{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 20px 22px;min-width:0}
 .video-kicker{display:inline-flex;align-items:center;gap:6px;font:700 .78rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft)}
 .video-title{font:800 clamp(1.2rem,1rem + 1vw,1.6rem)/1.15 var(--display)}
-.video-play{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:var(--rose-600);box-shadow:0 10px 24px -8px rgba(0,0,0,.5);transition:transform .15s}
+.video-play{position:relative;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:var(--rose-600);box-shadow:0 10px 24px -8px rgba(0,0,0,.5);transition:transform .15s}
 .video-play .i{margin-left:3px;fill:currentColor}
 .video-card:hover .video-play{transform:scale(1.08)}
 .video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
@@ -399,3 +448,13 @@ body{font-variant-numeric:lining-nums}
   .video-text{flex:1;justify-content:center;padding:clamp(14px,3vw,28px)}
   .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;aspect-ratio:auto}
 }
+
+/* ---------- live clinic status (filled in by site.js) ---------- */
+.status-line{display:none;margin:.9rem 0 0;font-size:.95rem;line-height:1.5;color:var(--muted);--st:var(--muted)}
+.hero .status-line{margin:0 0 .7rem}
+.js .status-line{display:block;min-height:1.5em}   /* the line's space is kept while the script works out the time, so nothing jumps */
+.status-line[data-state=open]{--st:var(--wa)}
+.status-line[data-state=soon]{--st:#8A5A00}
+.status-line[data-state=closed]{--st:var(--rose-700)}
+.status-line b{font-weight:700;color:var(--st)}
+.status-line .dot{position:relative;display:inline-block;width:.6em;height:.6em;margin-right:.5em;border-radius:50%;background:var(--st);vertical-align:.05em}

@@ -1,6 +1,6 @@
 // Home, doctor, videos, contact and FAQ pages.
 import { site, social, stats, services, areas, tamil, reviews } from '../site.mjs';
-import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard } from '../lib.mjs';
+import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, statusLine } from '../lib.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
@@ -79,6 +79,7 @@ export const home = {
   render: (ctx) => `
 <section class="hero"><div class="wrap split">
 <div>
+${statusLine('rise')}
 <div class="pill-row rise"><span class="pill">${icon('pin')} Erode Fort, Tamil Nadu</span><span class="pill">${icon('siren')} Emergency care 24/7</span><span class="pill">${icon('award')} No.1 OB/GYN · Tamil Nadu</span></div>
 <h1 class="rise d1">Gynecologist &amp; Maternity Hospital in <em>Erode</em></h1>
 <span class="tamil-line rise d1" lang="ta">${tamil.hero}</span>
@@ -343,6 +344,7 @@ ${crumbs([['Home', '/'], ['Contact & directions']])}
 <h1>Visit <em>Abishek Hospital</em></h1>
 <span class="tamil-line" lang="ta">அபிஷேக் மருத்துவமனை, ஈரோடு கோட்டை</span>
 <p class="lead">Book your appointment by WhatsApp or phone, or walk in during clinic hours. Emergency care is available 24 hours a day.</p>
+${statusLine()}
 <div class="btn-row">${btnWA()}${btnCall(undefined, 'btn btn-outline')}${btnDir()}</div>
 </div></section>
 

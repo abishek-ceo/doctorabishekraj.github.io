@@ -22,7 +22,10 @@ export const site = {
     pin: '638001',
   },
   geo: { lat: 11.341532, lng: 77.7191778 },
-  hours: { opd: 'Mon – Sat, 9:00 AM – 6:30 PM', open: '09:00', close: '18:30', emergency: '24 hours a day, 7 days a week' },
+  // days = outpatient days (0 = Sunday ... 6 = Saturday); keep `opd` worded to match.
+  // closedOn = dates when the outpatient clinic is shut, e.g. public holidays: ['2026-11-08', '2027-01-15'] (year-month-day).
+  // These drive the live "Open now" line, the structured data and the reminder page; the pages need rebuilding after a change.
+  hours: { opd: 'Mon – Sat, 9:00 AM – 6:30 PM', days: [1, 2, 3, 4, 5, 6], closedOn: [], open: '09:00', close: '18:30', emergency: '24 hours a day, 7 days a week' },
   maps: {
     view: 'https://www.google.com/maps/search/?api=1&query=Abishek+Hospital+Erode+Fort+Tamil+Nadu',
     directions: 'https://www.google.com/maps/dir/?api=1&destination=Abishek+Hospital+Erode+Fort+Tamil+Nadu',

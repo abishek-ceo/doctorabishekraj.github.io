@@ -5,6 +5,13 @@ export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const stripTags = (h) => h.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&rsquo;|&#8217;/g, '’').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// The live "Open now" line (filled in by assets/js/site.js). It sits on its own full-width row with its space reserved in the stylesheet, so filling it in never moves anything.
+export const statusLine = (cls = '') =>
+  `<p class="status-line${cls ? ' ' + cls : ''}" data-open-status data-days="${site.hours.days.join(',')}" data-closed="${site.hours.closedOn.join(',')}" data-open="${site.hours.open}" data-close="${site.hours.close}"></p>`;
+// Browsers that support it fetch a page's HTML when a visitor hovers or presses a link, so the next page opens almost instantly.
+const SPECULATION = JSON.stringify({ prefetch: [{ where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[target=_blank]' } }] }, eagerness: 'moderate' }] });
+
 let SPRITE = '/assets/icons.svg';
 export const setSprite = (href) => { SPRITE = href; };
 export const icon = (name, cls = '') => {
@@ -71,8 +78,8 @@ export function hospitalNode() {
     geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
     hasMap: site.maps.view,
     openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: site.hours.open, closes: site.hours.close },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '00:00', closes: '23:59', description: '24/7 emergency care' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: site.hours.days.map((d) => DAY_NAMES[d]), opens: site.hours.open, closes: site.hours.close },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: [...DAY_NAMES.slice(1), DAY_NAMES[0]], opens: '00:00', closes: '23:59', description: '24/7 emergency care' },
     ],
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
     knowsAbout: ['Normal delivery', 'Painless (epidural) delivery', 'High-risk pregnancy care', 'PCOS and PCOD treatment', 'Infertility and IUI treatment', 'Laparoscopic gynaecological surgery', 'Menopause care', 'Family planning'],
@@ -121,8 +128,9 @@ function graph(page) {
 }
 
 /* ---------- page chrome ---------- */
-function head(page, ctx) {
+function head(page, ctx, main) {
   const url = `${U}${page.path}`;
+  const italic = /<h1[^>]*>(?:(?!<\/h1>)[\s\S])*<em>/.test(main) ? '<link rel="preload" href="/assets/fonts/PlayfairDisplay-italic-var.woff2" as="font" type="font/woff2" crossorigin>\n' : '';   // the accent word in most headings is italic
   const img = `${U}${page.ogImage || '/assets/img/og-image.jpg'}`;
   const geo = page.geo ? `<meta name="geo.region" content="IN-TN"><meta name="geo.placename" content="Erode"><meta name="geo.position" content="${site.geo.lat};${site.geo.lng}"><meta name="ICBM" content="${site.geo.lat}, ${site.geo.lng}">\n` : '';
   return `<!doctype html>
@@ -142,8 +150,9 @@ ${geo}<link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/DMSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/PlayfairDisplay-var.woff2" as="font" type="font/woff2" crossorigin>
-${page.preload || ''}<link rel="stylesheet" href="${ctx.cssHref}">
+${italic}${page.preload || ''}<link rel="stylesheet" href="${ctx.cssHref}">
 <script>document.documentElement.classList.add('js')</script>
+<script type="speculationrules">${SPECULATION}</script>
 <meta property="og:type" content="${page.ogType || 'website'}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:locale" content="en_IN">
@@ -236,11 +245,12 @@ ${socialList('on-dark')}</div>
 }
 
 export function renderPage(page, ctx) {
+  const main = page.render(ctx);
   const scripts = `<script src="${ctx.jsHref}" defer></script>` + (page.toolsJs ? `<script src="${ctx.toolsJsHref}" defer></script>` : '');
-  return `${head(page, ctx)}
-<body${page.bodyClass ? ` class="${page.bodyClass}"` : ''}>
+  return `${head(page, ctx, main)}
+<body>
 ${header(page, ctx)}<main id="main">
-${page.render(ctx)}
+${main}
 </main>
 ${footer(ctx)}${scripts}
 </body>

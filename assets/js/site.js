@@ -85,6 +85,89 @@
     });
   });
 
+  /* ---- live clinic status ("Open now" / "Closed now"), always in Indian time whatever the visitor's own time zone ---- */
+  var statuses = $$('[data-open-status]');
+  if (statuses.length) {
+    var WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var toMin = function (t) { var m = /^(\d{1,2}):(\d{2})$/.exec(t || ''); return m ? +m[1] * 60 + +m[2] : null; };
+    var at12 = function (m) { var h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + ':' + (mm < 10 ? '0' : '') + mm + (h < 12 ? ' AM' : ' PM'); };
+    var list = function (v) { return (v || '').split(',').filter(function (x) { return x !== ''; }); };
+    var showStatus = function (el, state, lead, rest) {
+      var key = state + lead + rest;
+      if (el.getAttribute('data-key') === key) return;   /* nothing changed: leave the page alone */
+      el.setAttribute('data-key', key);
+      el.setAttribute('data-state', state);
+      el.textContent = '';
+      var dot = doc.createElement('span'), b = doc.createElement('b');
+      dot.className = 'dot';
+      dot.setAttribute('aria-hidden', 'true');
+      b.textContent = lead;
+      el.appendChild(dot);
+      el.appendChild(b);
+      el.appendChild(doc.createTextNode(rest));
+    };
+    var refreshStatus = function () {
+      var wall = Date.now() + 330 * 60000;   /* India is UTC+5:30 all year: the shifted date's UTC fields are the clock on the wall in Erode */
+      var t = new Date(wall), now = t.getUTCHours() * 60 + t.getUTCMinutes();
+      statuses.forEach(function (el) {
+        var days = list(el.getAttribute('data-days')).map(Number), shut = list(el.getAttribute('data-closed'));
+        var open = toMin(el.getAttribute('data-open')), close = toMin(el.getAttribute('data-close'));
+        if (!days.length || open === null || close === null) return;
+        var onDay = function (n) {   /* is the clinic open on the day n days from today? */
+          var d = new Date(wall + n * 86400000), iso = d.getUTCFullYear() + '-' + (d.getUTCMonth() < 9 ? '0' : '') + (d.getUTCMonth() + 1) + '-' + (d.getUTCDate() < 10 ? '0' : '') + d.getUTCDate();
+          return days.indexOf(d.getUTCDay()) !== -1 && shut.indexOf(iso) === -1;
+        };
+        if (onDay(0) && now >= open && now < close) {
+          var soon = close - now <= 30;
+          showStatus(el, soon ? 'soon' : 'open', soon ? 'Closing soon' : 'Open now', ' · until ' + at12(close));
+          return;
+        }
+        var when = onDay(0) && now < open ? 'today' : '';
+        for (var n = 1; !when && n <= 60; n++) {
+          if (!onDay(n)) continue;
+          var d = new Date(wall + n * 86400000);
+          when = n === 1 ? 'tomorrow' : n < 7 ? WEEK[d.getUTCDay()] : WEEK[d.getUTCDay()].slice(0, 3) + ' ' + d.getUTCDate() + ' ' + MONTHS[d.getUTCMonth()];
+        }
+        if (when) showStatus(el, 'closed', 'Closed now', ' · opens ' + when + ' ' + at12(open));
+      });
+    };
+    var tickStatus = function () { refreshStatus(); setTimeout(tickStatus, 60000 - (Date.now() % 60000) + 100); };   /* re-check at the top of every minute */
+    tickStatus();
+    doc.addEventListener('visibilitychange', function () { if (!doc.hidden) refreshStatus(); });
+  }
+
+  /* ---- count-up numbers in the experience band (left as plain text for visitors who prefer less motion) ---- */
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var figures = $$('.stat b');
+  if (!calm && figures.length && 'IntersectionObserver' in window && window.requestAnimationFrame) {
+    var withCommas = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+    var countUp = function (el) {
+      var target = el.textContent.trim(), m = /^([\d,]+)(\D*)$/.exec(target);
+      if (!m) return;
+      var end = parseInt(m[1].replace(/,/g, ''), 10), tail = m[2], first = null;
+      var real = doc.createElement('span'), shown = doc.createElement('span');
+      real.className = 'sr-only';   /* assistive technology reads the real number, not the one that is counting */
+      real.textContent = target;
+      shown.setAttribute('aria-hidden', 'true');
+      shown.textContent = '0' + tail;
+      el.textContent = '';
+      el.appendChild(real);
+      el.appendChild(shown);
+      var step = function (ts) {
+        if (first === null) first = ts;
+        var p = Math.min(1, (ts - first) / 1400);
+        if (p < 1) { shown.textContent = withCommas(Math.round(end * (1 - Math.pow(1 - p, 3)))) + tail; window.requestAnimationFrame(step); }
+        else el.textContent = target;   /* done: back to the plain number the page was published with */
+      };
+      window.requestAnimationFrame(step);
+    };
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { seen.unobserve(e.target); countUp(e.target); } });
+    }, { threshold: 0.6 });
+    figures.forEach(function (el) { if (el.getBoundingClientRect().top > window.innerHeight) seen.observe(el); });   /* a number already on screen at load stays as it is: no flash back to zero */
+  }
+
   /* ---- booking form: opens WhatsApp (or email) with the details pre-filled ---- */
   var form = $('[data-wa-form]');
   if (form) {
