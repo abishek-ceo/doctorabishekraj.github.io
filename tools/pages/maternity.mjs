@@ -1,5 +1,5 @@
 // Pregnancy-related service pages: maternity, normal & painless delivery, high-risk pregnancy.
-import { icon, makeServicePage } from '../lib.mjs';
+import { icon, makeServicePage, videoCard } from '../lib.mjs';
 import { site } from '../site.mjs';
 
 const P = site.phone.display;
@@ -39,6 +39,10 @@ const maternity = makeServicePage({
 <h3>Everyday care</h3>
 <p>Take folic acid, iron and calcium as prescribed, eat balanced home-cooked meals with enough protein, fruit, vegetables and water, walk daily unless told otherwise, and take the vaccines recommended in pregnancy. Avoid tobacco, alcohol and any medicine not prescribed for you.</p>
 <p><b>Bring to your first visit:</b> previous medical and scan reports, a list of your medicines, the date of your last period and records of any earlier pregnancies.</p>` },
+    { id: 'video', title: 'Watch: tips for a healthy pregnancy', nav: 'Watch', wide: true, html: `
+<div class="split two">${videoCard()}
+<div class="prose"><p>Dr. Jayanthi Prabakaran shares her tips for a healthy pregnancy in this video from our YouTube channel. A new women’s health video is shared every day, free for every family.</p>
+<p><a class="link-arrow" href="/videos/">More health videos ${icon('arrow')}</a></p></div></div>` },
     { id: 'delivery', title: 'Your delivery options', nav: 'Delivery', wide: true, html: `
 <div class="prose"><p>The safest way for your baby to be born depends on your health, your baby’s position and how labour progresses. Dr. Jayanthi Prabakaran will explain your options during your antenatal visits, so there are no surprises in labour.</p></div>
 <div class="grid cards">

@@ -66,6 +66,23 @@
     });
   });
 
+  /* ---- click-to-play YouTube videos (privacy-friendly: nothing loads from YouTube until tapped) ---- */
+  $$('.video').forEach(function (box) {
+    var link = box.querySelector('a');
+    if (!link) return;
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var f = doc.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-video') + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = box.getAttribute('data-title') || 'Video';
+      f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
+  });
+
   /* ---- booking form: opens WhatsApp (or email) with the details pre-filled ---- */
   var form = $('[data-wa-form]');
   if (form) {

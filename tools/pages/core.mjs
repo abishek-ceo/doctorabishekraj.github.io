@@ -1,6 +1,6 @@
 // Home, doctor, videos, contact and FAQ pages.
 import { site, social, stats, services, areas, tamil } from '../site.mjs';
-import { icon, esc, btnWA, btnCall, btnDir, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl } from '../lib.mjs';
+import { icon, esc, btnWA, btnCall, btnDir, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard } from '../lib.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
@@ -121,7 +121,7 @@ ${serviceCards(homeCards)}
 <li><b>Modern, clean and hygienic.</b> Modern equipment and a safe, hygienic environment.</li>
 <li><b>Personalised care.</b> Every woman is heard, and every plan is explained in plain language.</li></ul>
 <div class="btn-row">${btnWA(undefined, 'Book on WhatsApp')}<a class="btn btn-outline" href="/contact/">Contact &amp; directions</a></div></div>
-<div class="card" style="padding:clamp(22px,3vw,34px)"><span class="eyebrow">${icon('video')} Free health education</span>
+<div class="card" style="padding:clamp(22px,3vw,34px)">${videoCard()}<span class="eyebrow" style="margin-top:1.3rem">${icon('video')} Free health education</span>
 <h3>Watch. Learn. Stay well.</h3>
 <p>${D} shares women’s health videos in Tamil every day, completely free: pregnancy tips, gynaecology, PCOS, fertility, periods and menopause.</p>
 <div class="btn-row" style="margin-top:.4rem"><a class="btn btn-primary" href="${YT}" target="_blank" rel="noopener">${icon('youtube')} Watch on YouTube</a><a class="btn btn-outline" href="/videos/">About the videos</a></div></div>
@@ -295,7 +295,15 @@ export const videos = {
 <li>${icon('languages')}<span><b>In Tamil</b><small>Clear and easy to follow</small></span></li></ul></aside>
 </div></section>
 
-<section class="section"><div class="wrap">
+<section class="section"><div class="wrap split two">
+${videoCard()}
+<div><span class="eyebrow">${icon('play')} Featured video</span><h2>Tips for a <em>healthy pregnancy</em></h2>
+<p class="lead">${D} shares her tips for a healthy pregnancy. Watch it here, then subscribe for a new video every day.</p>
+<div class="btn-row"><a class="btn btn-outline" href="${YT}/videos" target="_blank" rel="noopener">${icon('youtube')} More videos on YouTube</a></div>
+<p style="margin-top:1rem"><a class="link-arrow" href="${slugUrl('maternity-hospital-erode')}">Pregnancy care in Erode ${icon('arrow')}</a></p></div>
+</div></section>
+
+<section class="section section-soft"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('play')} What you will learn</span><h2>Topics <em>we cover</em></h2></div>
 <div class="grid cards">
 <div class="card flat"><span class="ico">${icon('baby')}</span><h3>Pregnancy and maternity guidance</h3><p>From conception to postnatal care: antenatal checkups, diet, delivery and newborn care.</p><a class="link-arrow" href="${slugUrl('maternity-hospital-erode')}">Pregnancy care in Erode ${icon('arrow')}</a></div>

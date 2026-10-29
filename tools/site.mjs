@@ -31,7 +31,8 @@ export const site = {
 };
 
 export const social = [
-  { id: 'youtube', label: 'YouTube', handle: '@abishekmedicalcenter', url: 'https://www.youtube.com/@abishekmedicalcenter' },
+  { id: 'youtube', label: 'YouTube', handle: '@abishekmedicalcenter', url: 'https://www.youtube.com/@abishekmedicalcenter',
+    alt: ['https://www.youtube.com/channel/UCyuPSFNLWCyKALkSbKXVZIg'] },   // same channel by ID (its description shows this hospital's address)
   { id: 'instagram', label: 'Instagram', handle: 'dr.jayanthiprabakaran', url: 'https://www.instagram.com/dr.jayanthiprabakaran' },
   { id: 'facebook', label: 'Facebook', handle: 'dr.jayanthi.prabakaran', url: 'https://www.facebook.com/dr.jayanthi.prabakaran' },
 ];
@@ -68,3 +69,6 @@ export const tamil = {
   hero: 'ஈரோடு மகப்பேறு மருத்துவமனை · மகளிர் மருத்துவ நிபுணர்',
   emergency: '24 மணி நேர அவசர சிகிச்சை',
 };
+
+// Videos embedded on the site. Only add a video here once it is confirmed to be on the hospital's own channel.
+export const featuredVideo = { id: 'RI4eVa9w0uY', title: 'Doctor’s tips for a healthy pregnancy' };

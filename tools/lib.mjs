@@ -1,5 +1,5 @@
 // Shared layout, components and structured data for the static page builder.
-import { site, social, services, stats, areas, tamil } from './site.mjs';
+import { site, social, services, stats, areas, tamil, featuredVideo } from './site.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -74,7 +74,7 @@ export function hospitalNode() {
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
     knowsAbout: ['Normal delivery', 'Painless (epidural) delivery', 'High-risk pregnancy care', 'PCOS and PCOD treatment', 'Infertility and IUI treatment', 'Laparoscopic gynaecological surgery', 'Menopause care', 'Family planning'],
     areaServed: areas.map((a) => ({ '@type': 'City', name: a })),
-    sameAs: social.map((s) => s.url),
+    sameAs: social.flatMap((s) => [s.url, ...(s.alt || [])]),
   };
 }
 export function doctorNode() {
@@ -91,7 +91,7 @@ export function doctorNode() {
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
     alumniOf: { '@type': 'CollegeOrUniversity', name: site.doctor.college },
     knowsAbout: ['Obstetrics', 'Gynaecology', 'High-risk pregnancy', 'Epidural (painless) delivery', 'Laparoscopic gynaecological surgery', 'IUI and infertility treatment', 'PCOS'],
-    sameAs: social.map((s) => s.url),
+    sameAs: social.flatMap((s) => [s.url, ...(s.alt || [])]),
   };
 }
 
@@ -282,3 +282,11 @@ export function makeServicePage(d) {
     render: (ctx) => servicePage(data, ctx),
   };
 }
+
+/* ---------- click-to-play YouTube video (nothing loads from YouTube until it is tapped) ---------- */
+export const videoCard = (v = featuredVideo) =>
+  `<div class="video" data-video="${v.id}" data-title="${esc(v.title)}">` +
+  `<a class="video-card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">` +
+  `<span class="video-text"><span class="video-kicker">${icon('youtube')} Watch</span><span class="video-title">${esc(v.title)}</span>` +
+  `<span class="video-play">${icon('play')}</span><span class="sr-only"> Play video</span></span>` +
+  `<img src="/assets/img/doctor-480.webp" srcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" sizes="320px" width="480" height="481" loading="lazy" decoding="async" alt=""></a></div>`;

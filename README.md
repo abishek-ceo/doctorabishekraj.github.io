@@ -38,3 +38,4 @@ Typical edit: change the text in `tools/pages/...`, run the two commands above, 
 - The booking form opens WhatsApp (or email) with the details pre-filled; nothing is stored on the website.
 - Add another social profile in `tools/site.mjs` (`social`) and add its icon to `tools/icons.json` if needed.
 - `assets/img/og-image.jpg` is the WhatsApp/Facebook share preview; its template is `tools/og-template.html`.
+- Videos use a click-to-play card (nothing loads from YouTube until it is tapped). The embedded video is `featuredVideo` in `tools/site.mjs`; only add video IDs that are confirmed to be on the hospital's own channel, then run the build.
