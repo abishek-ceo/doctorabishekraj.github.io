@@ -37,6 +37,13 @@ export const social = [
   { id: 'facebook', label: 'Facebook', handle: 'dr.jayanthi.prabakaran', url: 'https://www.facebook.com/dr.jayanthi.prabakaran' },
 ];
 
+// Google reviews. A Place ID is the base64 form of the feature id in the Maps embed above (0x3ba96f39204d44cf:0xc80ad23add3dfe23),
+// so this is the same listing. It was derived, not opened (Google is blocked in the build sandbox): tap the link once to confirm.
+export const reviews = {
+  placeId: 'ChIJz0RNIDlvqTsRI_493TrSCsg',
+  write: 'https://search.google.com/local/writereview?placeid=ChIJz0RNIDlvqTsRI_493TrSCsg',
+};
+
 // Numbers exactly as stated on the previous site.
 export const stats = [
   { n: '40,000+', label: 'Safe deliveries' },

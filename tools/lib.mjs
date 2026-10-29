@@ -1,5 +1,5 @@
 // Shared layout, components and structured data for the static page builder.
-import { site, social, services, stats, areas, tamil, featuredVideo } from './site.mjs';
+import { site, social, services, stats, areas, tamil, featuredVideo, reviews } from './site.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -24,6 +24,9 @@ export const btnCall = (label = `Call ${site.phone.display}`, cls = 'btn btn-pri
   `<a class="${cls}" href="${tel}">${icon('phone')} ${label}</a>`;
 export const btnDir = (label = 'Get directions', cls = 'btn btn-outline') =>
   `<a class="${cls}" href="${site.maps.directions}" target="_blank" rel="noopener">${icon('navigation')} ${label}</a>`;
+
+export const btnReview = (label = 'Write a Google review', cls = 'btn btn-outline btn-sm') =>
+  `<a class="${cls}" href="${reviews.write}" target="_blank" rel="noopener">${icon('star')} ${label}</a>`;
 
 export const socialList = (cls = '') =>
   `<ul class="social${cls ? ' ' + cls : ''}">` +
@@ -216,6 +219,7 @@ ${socialList('on-dark')}</div>
 <li>${icon('pin')}<span>${site.address.line1},<br>${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}</span></li>
 <li>${icon('phone')}<a href="${tel}">${site.phone.intl}</a></li>
 <li>${icon('mail')}<a href="mailto:${site.email}">${site.email}</a></li>
+<li>${icon('star')}<a href="${reviews.write}" target="_blank" rel="noopener">Review us on Google</a></li>
 <li>${icon('clock')}<span>${site.hours.opd}<br>Emergency care: ${site.hours.emergency}</span></li>
 </ul></div></div>
 <div class="f-bottom">

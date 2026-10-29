@@ -1,6 +1,6 @@
 // Home, doctor, videos, contact and FAQ pages.
-import { site, social, stats, services, areas, tamil } from '../site.mjs';
-import { icon, esc, btnWA, btnCall, btnDir, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard } from '../lib.mjs';
+import { site, social, stats, services, areas, tamil, reviews } from '../site.mjs';
+import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard } from '../lib.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
@@ -168,6 +168,7 @@ ${galleryGrid(ctx, (ctx.photos.filter((p) => p.width / p.height > 1.2).length >=
 <div class="sec-head"><span class="eyebrow">${icon('message')} Stay connected</span><h2>Follow us for daily <em>health tips</em></h2>
 <p class="lead">Learn from ${D} wherever you are, and message us any time.</p></div>
 ${socialCards()}
+<div class="callout" style="margin-top:1.6rem;max-width:820px"><p><b>Been treated at Abishek Hospital?</b> Your honest review on Google helps other families in Erode choose the right care. <a href="${reviews.write}" target="_blank" rel="noopener">Write a Google review</a>.</p></div>
 </div></section>
 
 <section class="section section-soft"><div class="wrap">
@@ -349,7 +350,8 @@ ${crumbs([['Home', '/'], ['Contact & directions']])}
 </div></section>
 
 <section class="section"><div class="wrap"><div class="contact-grid">
-<div>${infoList()}<div style="margin-top:1.4rem"><b>Follow us</b><div style="margin-top:10px">${socialList()}</div></div></div>
+<div>${infoList()}<div style="margin-top:1.4rem"><b>Follow us</b><div style="margin-top:10px">${socialList()}</div></div>
+<div style="margin-top:1.4rem"><b>Been treated here?</b><p style="margin:.3rem 0 .8rem;max-width:34rem">Your honest review on Google helps other families in Erode choose the right care.</p>${btnReview()}</div></div>
 <div>${mapCard()}${lookForPhoto(ctx)}</div>
 </div></div></section>
 
