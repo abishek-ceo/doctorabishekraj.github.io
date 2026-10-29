@@ -14,18 +14,13 @@ const photoImg = (p, alt, sizes, eager = false) => {
   return `<img src="/assets/img/photos/${p.files[w0]}" srcset="${srcset}" sizes="${sizes}" width="${w0}" height="${Math.round(w0 * p.height / p.width)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'} alt="${alt}">`;
 };
 
-// Photos keep their natural shape (masonry columns). Only photos large enough to enlarge cleanly get a pop-up viewer.
+// Photos keep their natural shape (masonry columns) and are shown at natural size: the supplied files are small thumbnails.
 export function galleryGrid(ctx, items, { uniform = false, eager = 0 } = {}) {
   const cls = uniform ? `gallery uniform${items.length % 2 ? ' odd' : ''}" style="--n:${Math.min(items.length, 4)}` : 'gallery';
   return `<div class="${cls}">` + items.map((p, i) => {
     const cap = ctx.captions[p.id] || {};
-    const alt = esc(cap.alt || 'Abishek Hospital, Erode Fort');
-    const widths = Object.keys(p.files).map(Number).sort((a, b) => a - b);
-    const img = photoImg(p, alt, '(min-width:1100px) 360px, (min-width:600px) 33vw, 50vw', i < eager);
-    const figcap = cap.caption ? `<figcaption>${esc(cap.caption)}</figcaption>` : '';
-    return ctx.canEnlarge
-      ? `<a href="/assets/img/photos/${p.files[widths[widths.length - 1]]}" data-lb data-alt="${alt}" data-cap="${esc(cap.caption || '')}">${img}${figcap}</a>`
-      : `<figure>${img}${figcap}</figure>`;
+    const img = photoImg(p, esc(cap.alt || 'Abishek Hospital, Erode Fort'), '(min-width:1100px) 360px, (min-width:600px) 33vw, 50vw', i < eager);
+    return `<figure>${img}${cap.caption ? `<figcaption>${esc(cap.caption)}</figcaption>` : ''}</figure>`;
   }).join('') + `</div>`;
 }
 
@@ -349,11 +344,11 @@ ${crumbs([['Home', '/'], ['Contact & directions']])}
 <div class="btn-row">${btnWA()}${btnCall(undefined, 'btn btn-outline')}${btnDir()}</div>
 </div></section>
 
-<section class="section"><div class="wrap"><div class="contact-grid">
+<div class="section"><div class="wrap"><div class="contact-grid">
 <div>${infoList()}<div style="margin-top:1.4rem"><b>Follow us</b><div style="margin-top:10px">${socialList()}</div></div>
 <div style="margin-top:1.4rem"><b>Been treated here?</b><p style="margin:.3rem 0 .8rem;max-width:34rem">Your honest review on Google helps other families in Erode choose the right care.</p>${btnReview()}</div></div>
 <div>${mapCard()}${lookForPhoto(ctx)}</div>
-</div></div></section>
+</div></div></div>
 
 <section class="section section-soft"><div class="wrap"><div class="contact-grid" style="align-items:start">
 <div><span class="eyebrow">${icon('send')} Book an appointment</span><h2>Tell us how we can <em>help</em></h2>

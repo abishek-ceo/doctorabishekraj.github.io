@@ -19,7 +19,7 @@
   if (openBtn) openBtn.addEventListener('click', function () { setDrawer(true); });
   if (drawer) {
     $$('[data-close-menu]', drawer).forEach(function (b) { b.addEventListener('click', function () { setDrawer(false); }); });
-    $$('a', drawer).forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); body.classList.remove('locked'); }); });
+    $$('a', drawer).forEach(function (a) { a.addEventListener('click', function () { setDrawer(false); }); });
   }
 
   /* ---- services dropdown (desktop). CSS :hover/:focus-within already works without JS ---- */
@@ -63,6 +63,7 @@
       f.allowFullscreen = true;
       box.innerHTML = '';
       box.appendChild(f);
+      f.focus();   /* the tapped button is gone: keep keyboard focus on the page */
     });
   });
 
@@ -80,6 +81,7 @@
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       box.innerHTML = '';
       box.appendChild(f);
+      f.focus();
     });
   });
 
@@ -113,8 +115,8 @@
       e.preventDefault();
       if (!check()) return;
       var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text());
-      var w = window.open(url, '_blank', 'noopener');
-      if (!w) window.location.href = url;
+      var w = window.open(url, '_blank');   /* 'noopener' in the features would always return null and send this tab to WhatsApp too */
+      if (w) w.opener = null; else window.location.href = url;
       say('Opening WhatsApp with your details. If nothing opened, tap "Send by email" or call us.');
     });
     var mailBtn = $('[data-mail-btn]', form);

@@ -1,5 +1,5 @@
 // Shared layout, components and structured data for the static page builder.
-import { site, social, services, stats, areas, tamil, featuredVideo, reviews } from './site.mjs';
+import { site, social, services, areas, tamil, featuredVideo, reviews } from './site.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -236,7 +236,7 @@ ${socialList('on-dark')}</div>
 }
 
 export function renderPage(page, ctx) {
-  const scripts = `<script src="${ctx.jsHref}" defer></script>` + (page.gallery && ctx.canEnlarge ? `<script src="${ctx.galleryJsHref}" defer></script>` : '');
+  const scripts = `<script src="${ctx.jsHref}" defer></script>`;
   return `${head(page, ctx)}
 <body${page.bodyClass ? ` class="${page.bodyClass}"` : ''}>
 ${header(page, ctx)}<main id="main">
@@ -249,7 +249,7 @@ ${footer(ctx)}${scripts}
 }
 
 /* ---------- the shared template for every service page ---------- */
-export function servicePage(s, ctx) {
+export function servicePage(s) {
   const toc = s.sections.map((x) => `<li><a href="#${x.id}">${esc(x.nav || x.title)}</a></li>`).join('') + (s.faqs ? '<li><a href="#faqs">FAQs</a></li>' : '');
   const related = s.related.map((slug) => services.find((x) => x.slug === slug)).filter(Boolean);
   const sections = s.sections.map((sec, i) =>
@@ -283,7 +283,7 @@ export function makeServicePage(d) {
     specialty: s.specialty,
     crumbs: crumbsArr,
     faqs: d.faqs,
-    render: (ctx) => servicePage(data, ctx),
+    render: () => servicePage(data),
   };
 }
 
