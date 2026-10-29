@@ -9,9 +9,9 @@
     "caption": "Patient room",
     "order": 2
   },
-  "reception-waiting-area": {
-    "alt": "Reception counter and waiting bench with notice boards inside Abishek Hospital",
-    "caption": "Reception and waiting area",
+  "hospital-interior": {
+    "alt": "Inside Abishek Hospital: a hall with a wooden door, a bench, a barred window and Tamil notice boards on the walls",
+    "caption": "Inside the hospital",
     "order": 3
   },
   "patient-room-doorway": {

@@ -6,14 +6,14 @@ import { galleryGrid } from './core.mjs';
 export const gallery = {
   path: '/gallery/',
   title: 'Hospital Photo Gallery | Abishek Hospital, Erode Fort',
-  description: 'Photos of Abishek Hospital, Erode Fort: the entrance, reception area, patient rooms, operation theatre and corridors. Near the bus stand, Bharathi Street.',
+  description: 'Photos of Abishek Hospital, Erode Fort: the entrance, patient rooms, operation theatre and corridors. Near the bus stand, Bharathi Street.',
   gallery: true,
   crumbs: [['Home', '/'], ['Gallery']],
   render: (ctx) => `
 <section class="page-hero"><div class="wrap">${crumbs([['Home', '/'], ['Gallery']])}
 <span class="eyebrow">${icon('camera')} Inside our hospital</span>
 <h1>Our Hospital in <em>Pictures</em></h1>
-<p class="lead">A look at the entrance, reception and rooms at Abishek Hospital, Erode Fort.${ctx.canEnlarge ? ' Tap any photo to see it larger.' : ''}</p></div></section>
+<p class="lead">A look at the entrance, rooms and corridors at Abishek Hospital, Erode Fort.${ctx.canEnlarge ? ' Tap any photo to see it larger.' : ''}</p></div></section>
 <section class="section"><div class="wrap">${galleryGrid(ctx, ctx.photos, { eager: 3 })}</div></section>
 ${ctx.canEnlarge ? `<dialog class="lightbox" id="lb" aria-label="Photo viewer"><button type="button" data-close aria-label="Close photo">${icon('close')}</button><img alt=""><p></p></dialog>` : ''}
 ${ctaBand('Visit us at Erode Fort', 'Walk in during clinic hours, or book on WhatsApp.')}`,

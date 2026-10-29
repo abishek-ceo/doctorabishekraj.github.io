@@ -17,6 +17,15 @@
   }
  },
  {
+  "id": "hospital-interior",
+  "width": 588,
+  "height": 440,
+  "files": {
+   "480": "hospital-interior-480.webp",
+   "588": "hospital-interior-588.webp"
+  }
+ },
+ {
   "id": "operation-theatre-entrance",
   "width": 588,
   "height": 440,
@@ -39,15 +48,6 @@
   "height": 440,
   "files": {
    "330": "patient-room-330.webp"
-  }
- },
- {
-  "id": "reception-waiting-area",
-  "width": 588,
-  "height": 440,
-  "files": {
-   "480": "reception-waiting-area-480.webp",
-   "588": "reception-waiting-area-588.webp"
   }
  }
 ]
