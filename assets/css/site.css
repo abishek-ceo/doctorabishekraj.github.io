@@ -73,7 +73,9 @@ a,button,summary,label,input,select,textarea{touch-action:manipulation}
 .nav a,.nav .sub-toggle{display:inline-flex;align-items:center;gap:4px;padding:.55em .8em;border-radius:10px;color:var(--plum);font:600 .97rem/1 var(--body);text-decoration:none;background:none;border:0;cursor:pointer}
 .nav a:hover,.nav .sub-toggle:hover,.nav [aria-current=page]{color:var(--rose-600);background:var(--rose-50)}
 .nav .i{width:1em;height:1em}
-.sub{display:none;position:absolute;top:calc(100% + 8px);left:-80px;width:520px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);grid-template-columns:1fr 1fr;gap:4px}
+.nav .has-sub{position:static}   /* the menu hangs from the header's lower edge, not from the link */
+.sub{display:none;position:absolute;z-index:2;top:100%;left:auto;margin:6px 0 0 -80px;width:520px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);grid-template-columns:1fr 1fr;gap:4px}
+.sub::before{content:"";position:absolute;left:0;right:0;top:-40px;height:40px}   /* keeps the hover alive while the pointer crosses the gap */
 .sub.open{display:grid}
 html:not(.js) .has-sub:hover .sub,html:not(.js) .has-sub:focus-within .sub{display:grid}
 .sub a{padding:.7em .8em;font-weight:600;white-space:normal;align-items:flex-start}
@@ -314,8 +316,8 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   @keyframes bob{50%{transform:translateY(-7px)}}
 
   /* an expanding ring: "open now" dot and the play button */
-  [data-open-status][data-state=open] .dot::after,.video-play::after{content:"";position:absolute;inset:0;border-radius:50%;animation:ring 2.4s ease-out infinite}
-  [data-open-status][data-state=open] .dot::after{background:var(--st)}
+  .status-line .dot::after,.video-play::after{content:"";position:absolute;inset:0;border-radius:50%;animation:ring 2.4s ease-out infinite}
+  .status-line .dot::after{background:var(--wa)}
   .video-play::after{border:2px solid rgba(255,255,255,.75)}
   @keyframes ring{from{transform:scale(1);opacity:.6}to{transform:scale(1.8);opacity:0}}
 
@@ -449,12 +451,8 @@ body{font-variant-numeric:lining-nums}
   .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;aspect-ratio:auto}
 }
 
-/* ---------- live clinic status (filled in by site.js) ---------- */
-.status-line{display:none;margin:.9rem 0 0;font-size:.95rem;line-height:1.5;color:var(--muted);--st:var(--muted)}
+/* ---------- "Open now" line (home hero and contact page) ---------- */
+.status-line{margin:.9rem 0 0;font-size:.95rem;line-height:1.5;color:var(--muted)}
 .hero .status-line{margin:0 0 .7rem}
-.js .status-line{display:block;min-height:1.5em}   /* the line's space is kept while the script works out the time, so nothing jumps */
-.status-line[data-state=open]{--st:var(--wa)}
-.status-line[data-state=soon]{--st:#8A5A00}
-.status-line[data-state=closed]{--st:var(--rose-700)}
-.status-line b{font-weight:700;color:var(--st)}
-.status-line .dot{position:relative;display:inline-block;width:.6em;height:.6em;margin-right:.5em;border-radius:50%;background:var(--st);vertical-align:.05em}
+.status-line b{font-weight:700;color:var(--wa)}
+.status-line .dot{position:relative;display:inline-block;width:.6em;height:.6em;margin-right:.5em;border-radius:50%;background:var(--wa);vertical-align:.05em}

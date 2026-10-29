@@ -112,7 +112,6 @@
     var vDate = $('#v-date'), vTime = $('#v-time'), vType = $('#v-type'), visitRes = $('[data-visit-result]');
     var OPEN = minutes(root.getAttribute('data-open')), CLOSE = minutes(root.getAttribute('data-close')), HOURS = root.getAttribute('data-hours') || '';
     var DAYS = (root.getAttribute('data-days') || '').split(',').filter(function (x) { return x !== ''; }).map(Number);   /* clinic days, 0 = Sunday */
-    var SHUT = (root.getAttribute('data-closed') || '').split(',').filter(function (x) { return x !== ''; });   /* dates the clinic is shut (holidays) */
     var TYPES = { antenatal: 'Antenatal checkup', followup: 'Follow-up visit', postnatal: 'Postnatal checkup', other: 'Visit' };
     var has = function (k) { return Object.prototype.hasOwnProperty.call(TYPES, k); };
     var visitEvent = null, shareUrl = '';
@@ -127,8 +126,7 @@
       var when = longDate(day) + ' at ' + clock(hh, mm);
       var notes = [];
       if (day < today()) notes.push('This date has already passed.');
-      if (SHUT.indexOf(ymd(day)) !== -1) notes.push('The clinic is closed for regular visits on this date. Please call ' + PHONE + ' to choose another day.');
-      else if (DAYS.length && DAYS.indexOf(day.getDay()) === -1) notes.push(day.toLocaleDateString('en-IN', { weekday: 'long' }) + ' is for emergency care only. Please call ' + PHONE + ' to confirm this visit.');
+      if (DAYS.length && DAYS.indexOf(day.getDay()) === -1) notes.push(day.toLocaleDateString('en-IN', { weekday: 'long' }) + ' is for emergency care only. Please call ' + PHONE + ' to confirm this visit.');
       else if (OPEN !== null && CLOSE !== null && (mins < OPEN || mins > CLOSE)) notes.push('Clinic hours are ' + HOURS + '. Please call ' + PHONE + ' to confirm this time.');
       var start = new Date(Date.UTC(day.getFullYear(), day.getMonth(), day.getDate(), hh, mm) - IST_MINUTES * 60000);
       var label = TYPES[typeKey];
