@@ -218,6 +218,11 @@ export const tamilPage = {
 <ul class="chips">${districts.map((d) => `<li><a href="${regionUrl(d.slug)}"><span lang="ta">${d.tamil}</span> · ${d.km} km</a></li>`).join('')}</ul>
 </div></section>
 
+<section class="section"><div class="wrap">
+<div class="sec-head"><h2 lang="ta">பெண்கள் ஆரோக்கிய வழிகாட்டி</h2></div>
+<ul class="chips"><li><a href="/ta/white-discharge/" lang="ta">வெள்ளைப்படுதல்</a></li><li><a href="/ta/irregular-periods/" lang="ta">ஒழுங்கற்ற மாதவிடாய்</a></li><li><a href="/ta/early-pregnancy-symptoms/" lang="ta">கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்</a></li></ul>
+</div></section>
+
 <section class="section section-soft"><div class="wrap">
 <div class="sec-head"><h2 lang="ta">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2></div>
 ${faqBlock(taFaqs)}</div></section>

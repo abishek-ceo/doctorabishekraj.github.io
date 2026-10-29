@@ -74,7 +74,7 @@ a,button,summary,label,input,select,textarea{touch-action:manipulation}
 .nav a:hover,.nav .sub-toggle:hover,.nav [aria-current=page]{color:var(--rose-600);background:var(--rose-50)}
 .nav .i{width:1em;height:1em}
 .nav .has-sub{position:static}   /* the menu hangs from the header's lower edge, not from the link */
-.sub{display:none;position:absolute;z-index:2;top:100%;left:auto;margin:6px 0 0 -80px;width:520px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);grid-template-columns:1fr 1fr;gap:4px}
+.sub{display:none;position:absolute;z-index:3;top:100%;left:auto;margin:6px 0 0 -80px;width:520px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);grid-template-columns:1fr 1fr;gap:4px}
 .sub::before{content:"";position:absolute;left:0;right:0;top:-40px;height:40px}   /* keeps the hover alive while the pointer crosses the gap */
 .sub.open{display:grid}
 html:not(.js) .has-sub:hover .sub,html:not(.js) .has-sub:focus-within .sub{display:grid}
@@ -351,7 +351,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
 
   /* scroll-driven (no JavaScript): a reading-progress line under the header, and content that fades up as it scrolls in */
   @supports (animation-timeline:scroll()){
-    .header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--rose-500));transform:scaleX(0);transform-origin:0 50%;animation:progress linear both;animation-timeline:scroll(root block)}
+    .header::after{content:"";position:absolute;z-index:0;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--rose-500));transform:scaleX(0);transform-origin:0 50%;animation:progress linear both;animation-timeline:scroll(root block)}
     @keyframes progress{to{transform:scaleX(1)}}
   }
   @supports (animation-timeline:view()){

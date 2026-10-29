@@ -168,6 +168,23 @@ ${galleryGrid(ctx, (ctx.photos.filter((p) => p.width / p.height > 1.2).length >=
 <p style="margin-top:1.2rem"><a class="link-arrow" href="${hubUrl}">Women’s hospital for patients across Tamil Nadu ${icon('arrow')}</a> &nbsp; <a class="link-arrow" href="/ta/" lang="ta">தமிழில் படிக்க ${icon('arrow')}</a></p>
 </div></section>
 
+<section class="section section-soft"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">${icon('clipboard')} Free guides</span><h2>Women’s health questions, <em>answered simply</em></h2>
+<p class="lead">Periods, discharge, early pregnancy, delivery and recovery, in plain words. Some in Tamil too.</p></div>
+<ul class="chips">
+<li><a href="/women-health-guides/irregular-periods/">Irregular periods</a></li>
+<li><a href="/women-health-guides/white-discharge/">White discharge</a></li>
+<li><a href="/women-health-guides/early-pregnancy-symptoms/">Early pregnancy symptoms</a></li>
+<li><a href="/women-health-guides/normal-delivery-vs-caesarean/">Normal delivery or caesarean?</a></li>
+<li><a href="/women-health-guides/food-and-care-in-early-pregnancy/">Food in early pregnancy</a></li>
+<li><a href="/women-health-guides/care-after-delivery/">Care after delivery</a></li>
+<li><a href="/ta/white-discharge/" lang="ta">வெள்ளைப்படுதல்</a></li>
+<li><a href="/ta/irregular-periods/" lang="ta">ஒழுங்கற்ற மாதவிடாய்</a></li>
+<li><a href="/ta/early-pregnancy-symptoms/" lang="ta">கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்</a></li>
+</ul>
+<p style="margin-top:1.2rem"><a class="link-arrow" href="/women-health-guides/">All women’s health guides ${icon('arrow')}</a></p>
+</div></section>
+
 <section class="section"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('message')} Stay connected</span><h2>Follow us for daily <em>health tips</em></h2>
 <p class="lead">Learn from ${D} wherever you are, and message us any time.</p></div>
