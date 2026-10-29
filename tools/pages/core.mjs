@@ -78,8 +78,9 @@ export const home = {
   faqs: homeFaqs,
   preload: `<link rel="preload" as="image" href="/assets/img/doctor-480.webp" imagesrcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" imagesizes="360px" media="(min-width:960px)" fetchpriority="high">\n`,
   render: (ctx) => `
-<section class="hero"><div class="wrap split">
+<section class="hero"><svg class="kolam" aria-hidden="true" focusable="false"><defs><pattern id="kolam" width="120" height="120" patternUnits="userSpaceOnUse"><g fill="#C2185B"><circle cx="60" cy="12" r="2.3"/><circle cx="36" cy="36" r="2.3"/><circle cx="60" cy="36" r="2.3"/><circle cx="84" cy="36" r="2.3"/><circle cx="12" cy="60" r="2.3"/><circle cx="36" cy="60" r="2.3"/><circle cx="60" cy="60" r="2.3"/><circle cx="84" cy="60" r="2.3"/><circle cx="108" cy="60" r="2.3"/><circle cx="36" cy="84" r="2.3"/><circle cx="60" cy="84" r="2.3"/><circle cx="84" cy="84" r="2.3"/><circle cx="60" cy="108" r="2.3"/></g><g fill="none" stroke="#C2185B" stroke-width="1.6" stroke-linecap="round"><path d="M60 22C75 22 98 45 98 60C98 75 75 98 60 98C45 98 22 75 22 60C22 45 45 22 60 22Z"/><path d="M60 40C69 40 80 51 80 60C80 69 69 80 60 80C51 80 40 69 40 60C40 51 51 40 60 40Z"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#kolam)"/></svg><span class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><div class="wrap split">
 <div>
+<p class="greet rise" lang="ta"><b>வணக்கம்!</b> <span>அபிஷேக் மருத்துவமனைக்கு உங்களை வரவேற்கிறோம்</span></p>
 ${statusLine('rise')}
 <div class="pill-row rise"><span class="pill">${icon('pin')} Erode Fort, Tamil Nadu</span><span class="pill">${icon('syringe')} Painless delivery</span><span class="pill">${icon('user')} Lady doctor</span></div>
 <h1 class="rise d1">Gynecologist &amp; Maternity Hospital in <em>Erode</em></h1>
