@@ -153,6 +153,7 @@ ${hreflang}<meta name="robots" content="${page.noindex ? 'noindex,follow' : 'ind
 <meta name="author" content="${esc(site.name)}">
 ${verification.google ? `<meta name="google-site-verification" content="${esc(verification.google)}">\n` : ''}${verification.bing ? `<meta name="msvalidate.01" content="${esc(verification.bing)}">\n` : ''}
 <meta name="theme-color" content="#C2185B">
+<meta name="color-scheme" content="light">
 ${geo}<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
