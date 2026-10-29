@@ -1,6 +1,6 @@
 // Home, doctor, videos, contact and FAQ pages.
-import { site, social, stats, services, areas, tamil, reviews } from '../site.mjs';
-import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, statusLine } from '../lib.mjs';
+import { site, social, stats, services, areas, districts, tamil, reviews } from '../site.mjs';
+import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, statusLine, hubUrl, regionUrl } from '../lib.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
@@ -74,6 +74,7 @@ export const home = {
   schemaType: 'WebPage',
   withDoctor: true,
   geo: true,
+  alternates: [['en-IN', '/'], ['ta-IN', '/ta/']],
   faqs: homeFaqs,
   preload: `<link rel="preload" as="image" href="/assets/img/doctor-480.webp" imagesrcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" imagesizes="360px" media="(min-width:960px)" fetchpriority="high">\n`,
   render: (ctx) => `
@@ -159,6 +160,13 @@ ${galleryGrid(ctx, (ctx.photos.filter((p) => p.width / p.height > 1.2).length >=
 <li><a href="${slugUrl('gynecologist-erode')}#menopause">Menopause care</a></li>
 <li><a href="${slugUrl('gynecologist-erode')}#family-planning">Family planning</a></li>
 </ul></div></section>
+
+<section class="section"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">${icon('pin')} From other towns</span><h2>Coming from another town in <em>Tamil Nadu?</em></h2>
+<p class="lead">Erode is an easy trip by rail or road. Salem, Tiruppur, Namakkal, Karur, Coimbatore and Gobichettipalayam are all within about two hours. We are one hospital, at Erode Fort, and we will help you plan your visit.</p></div>
+<ul class="chips">${districts.map((d) => `<li><a href="${regionUrl(d.slug)}">${d.name} · ${d.km} km</a></li>`).join('')}</ul>
+<p style="margin-top:1.2rem"><a class="link-arrow" href="${hubUrl}">Women’s hospital for patients across Tamil Nadu ${icon('arrow')}</a> &nbsp; <a class="link-arrow" href="/ta/" lang="ta">தமிழில் படிக்க ${icon('arrow')}</a></p>
+</div></section>
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('message')} Stay connected</span><h2>Follow us for daily <em>health tips</em></h2>
@@ -408,7 +416,12 @@ const faqSurgery = [
   ['What is laparoscopic surgery?', 'Surgery through a few small cuts using a camera and fine instruments, with less pain, a shorter stay and faster recovery. <a href="/laparoscopic-surgery-erode/">Read about laparoscopic surgery</a>.'],
   ['Can fibroids and ovarian cysts be treated by keyhole surgery?', 'Often yes, depending on their size, number and position. Your doctor will advise you after an ultrasound.'],
 ];
-export const allFaqs = [...faqAbout, ...faqPregnancy, ...faqGynae, ...faqFertility, ...faqSurgery];
+const faqTowns = [
+  ['I live in another town. Can I still visit Abishek Hospital?', `Yes. Women come to us from Salem, Tiruppur, Namakkal, Karur, Coimbatore, Gobichettipalayam and other towns. Message us on WhatsApp or call ${P} to book, and see <a href="${hubUrl}">how to reach us from your town</a>.`],
+  ['Do you have a branch in my city?', 'No. We have one hospital, at Erode Fort. We do not have branches in other cities.'],
+  ['Is there a Tamil page?', 'Yes. <a href="/ta/" lang="ta">தமிழில் படிக்க</a>.'],
+];
+export const allFaqs = [...faqAbout, ...faqPregnancy, ...faqGynae, ...faqFertility, ...faqSurgery, ...faqTowns];
 export const faq = {
   path: '/faq/',
   title: 'FAQs | Gynecologist & Maternity Hospital in Erode | Abishek Hospital',
@@ -427,5 +440,6 @@ ${group('Pregnancy and delivery', 'pregnancy', faqPregnancy)}
 ${group('Gynaecology, PCOS and menopause', 'gynaecology', faqGynae)}
 ${group('Fertility and IUI', 'fertility', faqFertility)}
 ${group('Laparoscopic surgery', 'surgery', faqSurgery)}
+${group('Visiting from other towns', 'towns', faqTowns)}
 ${ctaBand()}`,
 };

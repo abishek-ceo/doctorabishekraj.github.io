@@ -41,7 +41,7 @@ for (const [url, h] of html) {
   if (!title) bad(label, 'missing <title>'); else { if (titles.has(title)) bad(label, `duplicate title with ${titles.get(title)}`); titles.set(title, label); }
   if (!desc) bad(label, 'missing meta description'); else { if (descs.has(desc)) bad(label, `duplicate description with ${descs.get(desc)}`); descs.set(desc, label); }
   if (canon !== SITE + url) bad(label, `canonical is ${canon}, expected ${SITE + url}`);
-  if (!/<html lang="en">/.test(h)) bad(label, 'missing <html lang>');
+  if (!/<html lang="(en|ta)">/.test(h)) bad(label, 'missing <html lang>');
   const h1 = (h.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) bad(label, `${h1} <h1> elements`);
   if (!/<meta name="viewport"/.test(h)) bad(label, 'missing viewport');
