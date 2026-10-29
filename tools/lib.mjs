@@ -114,7 +114,7 @@ export function doctorNode() {
 function graph(page) {
   const url = `${U}${page.path}`;
   const nodes = [
-    { '@type': 'WebSite', '@id': `${U}/#website`, url: `${U}/`, name: site.name, inLanguage: 'en-IN', publisher: { '@id': `${U}/#hospital` } },
+    { '@type': 'WebSite', '@id': `${U}/#website`, url: `${U}/`, name: site.name, alternateName: [`${site.name} Erode`, site.url.replace('https://', '')], inLanguage: 'en-IN', publisher: { '@id': `${U}/#hospital` } },
     hospitalNode(),
   ];
   if (page.withDoctor) nodes.push(doctorNode());
