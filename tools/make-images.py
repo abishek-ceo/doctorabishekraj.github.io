@@ -85,12 +85,8 @@ def logos():
     # Stop at row 264 (still blank) so the tops of the wordmark letters stay out, then pad with white.
     heart = L.crop((heart_cols.min() - pad, 54 - pad, heart_cols.max() + pad + 1, 264))
     heart = ImageOps.expand(heart, border=(0, 0, 0, pad - 2), fill=(255, 255, 255))
-    cols = np.where(content.any(axis=0))[0]
-    rows = np.where(content.any(axis=1))[0]
-    full = L.crop((cols.min() - pad, rows.min() - pad, cols.max() + pad + 1, rows.max() + pad + 1))
     print('logo')
-    save_webp(full, 'logo-full.webp', 90)
-    save_webp(heart, 'mark-lg.webp', 90)                                   # 238 px wide, for 3x screens
+    save_webp(heart, 'mark-lg.webp', 90)                                  # 238 px wide, for 3x screens
     save_webp(heart.resize((88, round(88 * heart.height / heart.width)), Image.LANCZOS), 'mark-sm.webp', 90)
 
     def square(size, scale):

@@ -7,8 +7,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { site, services } from './site.mjs';
-import { renderPage, setSprite, usedIcons, slugUrl } from './lib.mjs';
+import { site } from './site.mjs';
+import { renderPage, setSprite, usedIcons } from './lib.mjs';
 import maternityPages from './pages/maternity.mjs';
 import gynaePages from './pages/gynae.mjs';
 import { home, doctor, videos, contact, faq } from './pages/core.mjs';
@@ -38,11 +38,9 @@ const pages = [
 const ctx = {
   cssHref: `/assets/css/site.css?v=${hash(rd('assets/css/site.css'))}`,
   jsHref: `/assets/js/site.js?v=${hash(rd('assets/js/site.js'))}`,
-  galleryJsHref: `/assets/js/gallery.js?v=${hash(rd('assets/js/gallery.js'))}`,
   photos: ordered,
   captions,
   hasGallery: ordered.length > 0,
-  canEnlarge: ordered.length > 0 && ordered.every((p) => Math.max(...Object.keys(p.files).map(Number)) >= 900),   // small photos are shown at natural size, no pop-up
 };
 
 // ---- pass 1: render to learn which icons are used; build the sprite; pass 2: final output ----
@@ -70,10 +68,9 @@ for (const page of pages) {
 if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, 'gallery'), { recursive: true });
 
 // ---- sitemap + robots ----
-const prio = (p) => (p === '/' ? '1.0' : services.some((s) => p === slugUrl(s.slug)) ? '0.9' : p === slugUrl(site.doctor.slug) || p === '/contact/' ? '0.8' : p === '/privacy-policy.html' ? '0.2' : '0.6');
-const indexable = pages.filter((p) => !p.noindex);
+const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.path === '/' ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${prio(p.path)}</priority>\n  </url>`).join('\n') + `\n</urlset>\n`);
+  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`).join('\n') + `\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /photos/\n\nSitemap: ${site.url}/sitemap.xml\n`);
 
 console.log(`Built ${pages.length} pages (${usedIcons.size} icons in sprite, ${(sprite.length / 1024).toFixed(1)} KB)${ctx.hasGallery ? `, ${ordered.length} gallery photos` : ', no gallery photos yet'}`);

@@ -101,6 +101,11 @@ for (const [url, h] of html) {
 if (!fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8').includes(`Sitemap: ${SITE}/sitemap.xml`)) bad('robots.txt', 'missing Sitemap line');
 if (fs.readFileSync(path.join(ROOT, 'CNAME'), 'utf8').trim() !== 'abishekhospital.com') bad('CNAME', 'changed');
 
+// leftovers: files in assets/ that no page, stylesheet or the manifest refers to (photos.json is read by the builder)
+const corpus = [...html.values(), ...['assets/css/site.css', 'manifest.json'].map((f) => fs.readFileSync(path.join(ROOT, f), 'utf8'))].join('\n');
+const assetFiles = (dir) => fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? assetFiles(`${dir}/${e.name}`) : [`${dir}/${e.name}`]));
+for (const f of assetFiles('assets')) if (!f.endsWith('photos.json') && !corpus.includes(path.basename(f))) bad(f, 'is not used by any page, stylesheet or the manifest (delete it)');
+
 console.log(`Checked ${html.size} pages, ${titles.size} unique titles, ${external.size} external URLs.`);
 console.log('External links:\n  ' + [...external].sort().join('\n  '));
 if (problems.length) { console.log(`\n${problems.length} PROBLEM(S):\n- ` + problems.join('\n- ')); process.exit(1); }
