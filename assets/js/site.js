@@ -35,9 +35,19 @@
   if (dock) doc.addEventListener('focusin', function (e) {
     var t = e.target;
     if (!t || !t.getBoundingClientRect || dock.offsetParent === null && getComputedStyle(dock).display === 'none') return;
+    if (dock.classList.contains('mbar-off')) return;
     var r = t.getBoundingClientRect(), d = dock.getBoundingClientRect();
     if (r.bottom > d.top - 8 && r.top < d.bottom && r.top > 0) window.scrollBy(0, r.bottom - d.top + 16);
   });
+
+  /* ---- while the page's own Call / WhatsApp buttons are on screen, the phone bar steps aside (it would sit on top of them and repeat them) ---- */
+  var heroCta = $('.hero .btn-row, .page-hero .btn-row');
+  if (dock && heroCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      dock.classList.toggle('mbar-off', e.intersectionRatio >= 0.6);
+    }, { threshold: [0.6] }).observe(heroCta);
+  }
 
   /* ---- services dropdown (desktop). CSS :hover/:focus-within already works without JS ---- */
   var subBtn = $('.sub-toggle'), sub = $('#sub-services');
