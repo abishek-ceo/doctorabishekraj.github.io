@@ -6,9 +6,9 @@ export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
 export const stripTags = (h) => h.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&rsquo;|&#8217;/g, '’').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-// The live "Open now" line (filled in by assets/js/site.js). It sits on its own full-width row with its space reserved in the stylesheet, so filling it in never moves anything.
+// The "Open now" line on the home and contact pages. The hospital is open 24 hours a day, so it is plain text, not a live clock.
 export const statusLine = (cls = '') =>
-  `<p class="status-line${cls ? ' ' + cls : ''}" data-open-status data-days="${site.hours.days.join(',')}" data-closed="${site.hours.closedOn.join(',')}" data-open="${site.hours.open}" data-close="${site.hours.close}"></p>`;
+  `<p class="status-line${cls ? ' ' + cls : ''}"><span class="dot" aria-hidden="true"></span><b>Open now</b> · ${site.hours.emergency}</p>`;
 // Browsers that support it fetch a page's HTML when a visitor hovers or presses a link, so the next page opens almost instantly.
 const SPECULATION = JSON.stringify({ prefetch: [{ where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[target=_blank]' } }] }, eagerness: 'moderate' }] });
 
