@@ -14,8 +14,8 @@ const warnSigns = `<div class="callout warn"><h3>Call ${P} or come to the hospit
 
 const maternity = makeServicePage({
   slug: 'maternity-hospital-erode',
-  title: 'Maternity Hospital in Erode | Pregnancy & Delivery | Abishek Hospital',
-  description: `Pregnancy care and delivery at Abishek Hospital, Erode Fort: antenatal checkups, normal and painless delivery, postnatal care and 24/7 emergency. Call ${P}.`,
+  title: 'Maternity Hospital in Erode | Delivery & Care | Abishek Hospital',
+  description: `Pregnancy care and delivery at Abishek Hospital, Erode: antenatal checkups, normal and painless delivery, postnatal care, 24/7 emergency. Call ${P}.`,
   eyebrow: 'Pregnancy & delivery',
   h1: 'Maternity Hospital in <em>Erode</em>',
   tamil: 'ஈரோடு மகப்பேறு மருத்துவமனை · கர்ப்பகால பராமரிப்பு · பிரசவம்',
@@ -82,8 +82,8 @@ const maternity = makeServicePage({
 
 const delivery = makeServicePage({
   slug: 'normal-painless-delivery-erode',
-  title: 'Normal & Painless (Epidural) Delivery in Erode | Abishek Hospital',
-  description: `Normal delivery and painless (epidural) labour at Abishek Hospital, Erode Fort. Over 2,500 epidural deliveries. Led by Dr. Jayanthi Prabakaran. Call ${P}.`,
+  title: 'Normal & Painless (Epidural) Delivery, Erode | Abishek Hospital',
+  description: `Normal delivery and painless (epidural) labour at Abishek Hospital, Erode. Over 2,500 epidural deliveries. By Dr. Jayanthi Prabakaran. Call ${P}.`,
   eyebrow: 'Normal & painless delivery',
   h1: 'Normal &amp; Painless Delivery in <em>Erode</em>',
   tamil: 'சுகப்பிரசவம் · வலியில்லா பிரசவம் (எபிடியூரல்)',
@@ -136,7 +136,7 @@ const delivery = makeServicePage({
 const highRisk = makeServicePage({
   slug: 'high-risk-pregnancy-erode',
   title: 'High-Risk Pregnancy Care in Erode | Abishek Hospital',
-  description: 'High-risk pregnancy care at Abishek Hospital, Erode Fort: gestational diabetes, high blood pressure, twins, previous C-section and more, with 24/7 monitoring.',
+  description: 'High-risk pregnancy care at Abishek Hospital, Erode Fort: gestational diabetes, high blood pressure, twins, previous C-section, with 24/7 monitoring.',
   eyebrow: 'High-risk pregnancy',
   h1: 'High-Risk Pregnancy Hospital in <em>Erode</em>',
   tamil: 'அதிக ஆபத்துள்ள கர்ப்பகால சிகிச்சை',

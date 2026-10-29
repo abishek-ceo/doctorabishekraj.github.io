@@ -1,7 +1,7 @@
 // Women's health guides: plain-language answers to the questions women most often search for (English, plus Tamil versions of the top three).
 // General education only: no diagnosis, no drug doses, and never a claim that a named doctor wrote or reviewed a page.
 import { site } from '../site.mjs';
-import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, slugUrl, doctorUrl } from '../lib.mjs';
+import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, shareRow, slugUrl, doctorUrl } from '../lib.mjs';
 
 const P = site.phone.display;
 export const guidesUrl = '/women-health-guides/';
@@ -14,8 +14,8 @@ const urgent = (title, items, tail = '') => `<div class="callout warn"><h3>${tit
 const en = [
   {
     slug: 'irregular-periods',
-    title: 'Irregular Periods: Causes and When to See a Gynecologist | Abishek Hospital',
-    description: `Why periods become irregular (PCOS, thyroid, stress, weight) and when to see a gynecologist in Erode. A simple guide from Abishek Hospital. Call ${P}.`,
+    title: 'Irregular Periods: Causes and Treatment | Abishek Hospital',
+    description: `Why periods become irregular (PCOS, thyroid, stress, weight) and when to see a gynecologist in Erode. A guide from Abishek Hospital. Call ${P}.`,
     h1: 'Irregular Periods: <em>Causes</em> and When to See a Doctor',
     tamil: 'ஒழுங்கற்ற மாதவிடாய் · மாதவிடாய் பிரச்சனை',
     lead: 'Irregular periods are very common, and many causes are easy to treat. Here is what is normal, what can cause a change, and the signs that mean you should see a gynecologist.',
@@ -43,8 +43,8 @@ const en = [
   },
   {
     slug: 'white-discharge',
-    title: 'White Discharge in Women: Normal or Not? | Abishek Hospital, Erode',
-    description: `When white vaginal discharge is normal, when it is a sign of infection, and when to see a gynecologist. Simple guide from Abishek Hospital, Erode. Call ${P}.`,
+    title: 'White Discharge: Normal or Not? | Abishek Hospital, Erode',
+    description: `When white discharge is normal, when it is a sign of infection, and when to see a gynecologist. Simple guide from Abishek Hospital. Call ${P}.`,
     h1: 'White Discharge in Women: <em>Normal or Not?</em>',
     tamil: 'வெள்ளைப்படுதல் · எப்போது மருத்துவரைப் பார்க்க வேண்டும்',
     lead: 'A little white or clear vaginal discharge is normal and healthy. It is a problem only when it changes in smell, colour or amount, or comes with itching, burning or pain. Here is how to tell the difference.',
@@ -72,8 +72,8 @@ const en = [
   },
   {
     slug: 'early-pregnancy-symptoms',
-    title: 'Early Pregnancy Symptoms and What to Do First | Abishek Hospital, Erode',
-    description: `Early signs of pregnancy, when to take a test, what to do in the first weeks and the danger signs. A simple guide from Abishek Hospital, Erode. Call ${P}.`,
+    title: 'Early Pregnancy Symptoms & First Steps | Abishek Hospital',
+    description: `Early signs of pregnancy, when to take a test, what to do in the first weeks and the danger signs. A simple guide from Abishek Hospital. Call ${P}.`,
     h1: '<em>Early Pregnancy</em> Symptoms and What to Do First',
     tamil: 'கர்ப்பத்தின் ஆரம்ப அறிகுறிகள் · கர்ப்பப் பரிசோதனை',
     lead: 'A missed period is often the first sign, but nausea, tender breasts and tiredness are common too. Here are the usual signs, when to test, what to do in the first weeks and the signs that need urgent care.',
@@ -100,7 +100,7 @@ const en = [
   },
   {
     slug: 'normal-delivery-vs-caesarean',
-    title: 'Normal Delivery or Caesarean? A Simple Guide | Abishek Hospital, Erode',
+    title: 'Normal Delivery or Caesarean? | Abishek Hospital',
     description: `Normal (vaginal) delivery and caesarean compared: benefits, risks, recovery and when a caesarean is advised. A plain guide from Abishek Hospital, Erode.`,
     h1: 'Normal Delivery or <em>Caesarean</em>? A Simple Guide',
     tamil: 'சுகப்பிரசவம் அல்லது சிசேரியன் · வலியில்லா பிரசவம்',
@@ -128,8 +128,8 @@ const en = [
   },
   {
     slug: 'food-and-care-in-early-pregnancy',
-    title: 'Food and Care in Early Pregnancy: A Simple Guide | Abishek Hospital',
-    description: `What to eat, what to avoid and how to ease nausea in early pregnancy, with everyday Tamil Nadu foods. A simple guide from Abishek Hospital, Erode. Call ${P}.`,
+    title: 'Food & Care in Early Pregnancy | Abishek Hospital',
+    description: `What to eat, what to avoid and how to ease nausea in early pregnancy, with everyday Tamil Nadu foods. A guide from Abishek Hospital, Erode. Call ${P}.`,
     h1: 'Food and Care in <em>Early Pregnancy</em>',
     tamil: 'கர்ப்பகால உணவு · முதல் மூன்று மாத பராமரிப்பு',
     lead: 'You do not need a special diet. Balanced, home-cooked food, the supplements your doctor prescribes, enough water and rest are the basics. Here is a simple guide.',
@@ -156,8 +156,8 @@ const en = [
   },
   {
     slug: 'care-after-delivery',
-    title: 'Care After Delivery: Recovery, Feeding and Warning Signs | Abishek Hospital',
-    description: `How to look after yourself after a normal delivery or caesarean: bleeding, stitches, feeding, mood and warning signs. A plain guide from Abishek Hospital, Erode.`,
+    title: 'Care After Delivery and Warning Signs | Abishek Hospital',
+    description: `Looking after yourself after a normal delivery or caesarean: bleeding, stitches, feeding, mood and warning signs. A guide from Abishek Hospital, Erode.`,
     h1: 'Care <em>After Delivery</em>: Recovery and Warning Signs',
     tamil: 'பிரசவத்திற்குப் பிந்தைய பராமரிப்பு',
     lead: 'The weeks after birth are a time of healing. This guide covers what to expect, how to care for yourself and your baby, and the warning signs that need medical help.',
@@ -188,7 +188,7 @@ const guideCrumbs = (g) => [['Home', '/'], ['Women’s health guides', guidesUrl
 function enPage(g) {
   const path = `${guidesUrl}${g.slug}/`;
   const c = guideCrumbs({ ...g, short: g.title.split(' | ')[0] });
-  const data = { icon: g.icon, crumbs: c, eyebrow: 'Women’s health guide', h1: g.h1, tamil: g.tamil, lead: g.lead, waText: g.waText, facts: g.facts, sections: g.sections, faqs: g.faqs, related: g.related };
+  const data = { icon: g.icon, crumbs: c, eyebrow: 'Women’s health guide', h1: g.h1, tamil: g.tamil, lead: g.lead, waText: g.waText, facts: g.facts, sections: g.sections, faqs: g.faqs, related: g.related, share: { url: site.url + path, text: g.title.split(' | ')[0] } };
   const page = { path, title: g.title, description: g.description, schemaType: 'MedicalWebPage', crumbs: c, faqs: g.faqs, render: () => servicePage(data) };
   if (g.ta) page.alternates = [['en-IN', path], ['ta-IN', `/ta/${g.ta}/`]];
   return page;
@@ -203,7 +203,7 @@ export const taList = (items) => `<ul class="checks" lang="ta">${items.map((i) =
 const ta = [
   {
     slug: 'white-discharge', en: 'white-discharge',
-    title: 'வெள்ளைப்படுதல்: காரணங்கள், எப்போது மருத்துவர்? | அபிஷேக் மருத்துவமனை',
+    title: 'வெள்ளைப்படுதல்: காரணங்கள் | அபிஷேக்',
     description: 'வெள்ளைப்படுதல் எப்போது இயல்பானது, எப்போது தொற்றின் அறிகுறி, மருத்துவரை எப்போது பார்க்க வேண்டும் என்பதற்கான எளிய விளக்கம். ஈரோடு அபிஷேக் மருத்துவமனை.',
     crumb: 'வெள்ளைப்படுதல்',
     h1: '<em>வெள்ளைப்படுதல்</em>: இயல்பானதா? எப்போது மருத்துவரைப் பார்க்க வேண்டும்?',
@@ -222,7 +222,7 @@ const ta = [
   },
   {
     slug: 'irregular-periods', en: 'irregular-periods',
-    title: 'ஒழுங்கற்ற மாதவிடாய்: காரணங்களும் சிகிச்சையும் | அபிஷேக் மருத்துவமனை, ஈரோடு',
+    title: 'ஒழுங்கற்ற மாதவிடாய்: காரணங்கள் | அபிஷேக்',
     description: 'மாதவிடாய் ஒழுங்கற்று வருவதற்கான காரணங்கள் (பிசிஓஎஸ், தைராய்டு, மன அழுத்தம்), மருத்துவரை எப்போது பார்க்க வேண்டும் என்பதற்கான எளிய விளக்கம்.',
     crumb: 'ஒழுங்கற்ற மாதவிடாய்',
     h1: '<em>ஒழுங்கற்ற மாதவிடாய்</em>: காரணங்களும் சிகிச்சையும்',
@@ -241,7 +241,7 @@ const ta = [
   },
   {
     slug: 'early-pregnancy-symptoms', en: 'early-pregnancy-symptoms',
-    title: 'கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்: என்ன செய்ய வேண்டும்? | அபிஷேக் மருத்துவமனை',
+    title: 'கர்ப்பத்தின் ஆரம்ப அறிகுறிகள் | அபிஷேக்',
     description: 'கர்ப்பத்தின் ஆரம்ப அறிகுறிகள், கர்ப்பப் பரிசோதனை எப்போது செய்யலாம், முதல் வாரங்களில் செய்ய வேண்டியவை மற்றும் ஆபத்து அறிகுறிகள். ஈரோடு அபிஷேக் மருத்துவமனை.',
     crumb: 'கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்',
     h1: 'கர்ப்பத்தின் <em>ஆரம்ப அறிகுறிகள்</em>',
@@ -275,6 +275,7 @@ export function taPage(g) {
 </div></section>
 ${g.sections.map(([t, html], i) => `<section class="section${i % 2 ? ' section-soft' : ''}"><div class="wrap"><h2 lang="ta">${t}</h2><div class="prose">${html}</div></div></section>`).join('\n')}
 <section class="section section-soft"><div class="wrap"><div class="sec-head"><h2 lang="ta">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2></div>${faqBlock(g.faqs)}</div></section>
+${shareRow(site.url + path, g.title.split(' | ')[0], '<span lang="ta">பயனுள்ளதாக இருந்ததா? குடும்பத்தினருடனும் நண்பர்களுடனும் பகிருங்கள்.</span>', '<span lang="ta">வாட்ஸ்அப்பில் பகிர</span>')}
 <section class="section"><div class="wrap"><div class="prose"><h2 lang="ta">அபிஷேக் மருத்துவமனையில்</h2>${taCare}<p><a class="link-arrow" href="${enPath}">${g.enLabel || 'Read this guide in English'} ${icon('arrow')}</a></p></div></div></section>
 ${ctaBand('முன்பதிவுக்கு எங்களைத் தொடர்பு கொள்ளுங்கள்', `வாட்ஸ்அப் செய்யுங்கள் அல்லது ${P} என்ற எண்ணில் அழைக்கவும். அவசர சிகிச்சை 24 மணி நேரமும் உண்டு.`, taWa)}`,
   };
@@ -306,7 +307,7 @@ const hubData = {
 };
 export const guidesHub = {
   path: guidesUrl,
-  title: 'Women’s Health Guides in English and Tamil | Abishek Hospital, Erode',
+  title: 'Women’s Health Guides in English & Tamil | Abishek Hospital',
   description: `Simple guides on irregular periods, white discharge, early pregnancy, normal delivery vs caesarean, pregnancy food and care after delivery. Some in Tamil.`,
   schemaType: 'CollectionPage',
   crumbs: hubCrumbs,

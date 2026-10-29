@@ -29,6 +29,9 @@ export const regionUrl = (slug) => `${hubUrl}${slug}/`;
 
 export const btnWA = (text = 'Hello Abishek Hospital, I would like to book an appointment.', label = 'Book on WhatsApp', cls = 'btn btn-wa') =>
   `<a class="${cls}" href="${wa(text)}" target="_blank" rel="noopener">${icon('whatsapp')} ${label}</a>`;
+/* "Share on WhatsApp": a plain link (no script, nothing loads from WhatsApp until it is tapped) that pre-fills the guide's address */
+export const shareRow = (url, text, lead, label) =>
+  `<div class="section share-section"><div class="wrap"><div class="share-row"><p>${lead}</p><a class="btn btn-outline btn-sm" href="https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}" target="_blank" rel="noopener">${icon('whatsapp')} ${label}</a></div></div></div>`;
 export const btnCall = (label = `Call ${site.phone.display}`, cls = 'btn btn-primary') =>
   `<a class="${cls}" href="${tel}">${icon('phone')} ${label}</a>`;
 export const btnDir = (label = 'Get directions', cls = 'btn btn-outline') =>
@@ -79,7 +82,6 @@ export function hospitalNode() {
       { '@type': 'ContactPoint', telephone: site.phone.tel, contactType: 'appointments', availableLanguage: ['Tamil', 'English'], areaServed: 'IN-TN' },
       { '@type': 'ContactPoint', telephone: site.phone.tel, contactType: 'emergency', availableLanguage: ['Tamil', 'English'], areaServed: 'IN-TN', hoursAvailable: { '@type': 'OpeningHoursSpecification', dayOfWeek: [...DAY_NAMES.slice(1), DAY_NAMES[0]], opens: '00:00', closes: '23:59' } },
     ],
-    priceRange: '$$',
     address: { '@type': 'PostalAddress', streetAddress: `${site.address.line1}, ${site.address.area}`, addressLocality: site.address.city, addressRegion: site.address.state, postalCode: site.address.pin, addressCountry: 'IN' },
     geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
     hasMap: site.maps.view,
@@ -296,6 +298,7 @@ export function servicePage(s) {
 </div></section>
 ${sections}
 ${s.faqs ? `<section class="section section-soft" id="faqs"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('help')} Questions answered</span><h2>Frequently asked questions</h2></div>${faqBlock(s.faqs)}</div></section>` : ''}
+${s.share ? shareRow(s.share.url, s.share.text, 'Found this useful? Share it with a friend or family member.', 'Share on WhatsApp') : ''}
 <section class="section"><div class="wrap"><div class="sec-head"><span class="eyebrow">Related care</span><h2>You may also need</h2></div>${serviceCards(related, true)}</div></section>
 ${ctaBand(undefined, undefined, s.waText)}`;
 }

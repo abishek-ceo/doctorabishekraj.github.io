@@ -8,8 +8,8 @@ const card = (ic, title, text, link) =>
 
 const gynae = makeServicePage({
   slug: 'gynecologist-erode',
-  title: 'Gynecologist in Erode | Lady Doctor for Women’s Health | Abishek Hospital',
-  description: 'Lady gynecologist in Erode for irregular or painful periods, fibroids, ovarian cysts, discharge, menopause and family planning. Abishek Hospital, Erode Fort.',
+  title: 'Gynecologist in Erode | Lady Doctor | Abishek Hospital',
+  description: 'Lady gynecologist in Erode for irregular or painful periods, fibroids, ovarian cysts, discharge, menopause and family planning. Abishek Hospital, Erode.',
   eyebrow: 'Gynaecology & women’s health',
   h1: 'Gynecologist in <em>Erode</em>',
   tamil: 'மகளிர் மருத்துவம் · மாதவிடாய் பிரச்சனைகள் · கர்ப்பப்பை சிகிச்சை',
@@ -137,7 +137,7 @@ const pcos = makeServicePage({
 const fertility = makeServicePage({
   slug: 'infertility-treatment-erode',
   title: 'Infertility & IUI Treatment in Erode | Abishek Hospital',
-  description: 'Infertility evaluation and IUI treatment in Erode, with over 500 conceptions through IUI. Compassionate fertility care by Dr. Jayanthi Prabakaran, Abishek Hospital.',
+  description: 'Infertility evaluation and IUI treatment in Erode, with over 500 conceptions through IUI. Fertility care by Dr. Jayanthi Prabakaran, Abishek Hospital.',
   eyebrow: 'Fertility & IUI',
   h1: 'Infertility Treatment &amp; IUI in <em>Erode</em>',
   tamil: 'குழந்தையின்மை சிகிச்சை · கருத்தரிப்பு ஆலோசனை · ஐ.யூ.ஐ',
@@ -189,7 +189,7 @@ const fertility = makeServicePage({
 const laparoscopy = makeServicePage({
   slug: 'laparoscopic-surgery-erode',
   title: 'Laparoscopic (Keyhole) Surgery in Erode | Abishek Hospital',
-  description: 'Laparoscopic (keyhole) surgery for fibroids, ovarian cysts, endometriosis and more at Abishek Hospital, Erode Fort. Over 7,000 laparoscopic gynaecological surgeries.',
+  description: 'Laparoscopic (keyhole) surgery for fibroids, ovarian cysts, endometriosis and more at Abishek Hospital, Erode. Over 7,000 laparoscopic surgeries.',
   eyebrow: 'Laparoscopic surgery',
   h1: 'Laparoscopic Gynaecological Surgery in <em>Erode</em>',
   tamil: 'லேப்ராஸ்கோபி அறுவை சிகிச்சை · சிறிய துளை அறுவை சிகிச்சை',

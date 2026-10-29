@@ -69,8 +69,8 @@ const homeCards = [
 
 export const home = {
   path: '/',
-  title: 'Best Gynecologist & Maternity Hospital in Erode | Abishek Hospital',
-  description: `Gynecologist & maternity hospital in Erode Fort, led by ${D}. Normal & painless delivery, PCOS, IUI, laparoscopic surgery, 24/7 emergency.`,
+  title: 'Best Gynecologist & Maternity Hospital, Erode | Abishek Hospital',
+  description: `Gynecologist & maternity hospital in Erode, led by ${D}. Normal & painless delivery, PCOS, IUI, laparoscopy, 24/7 emergency.`,
   schemaType: 'WebPage',
   withDoctor: true,
   geo: true,
@@ -236,7 +236,7 @@ const doctorFaqs = [
 export const doctor = {
   path: doctorUrl,
   title: 'Dr. Jayanthi Prabakaran | Gynecologist & Obstetrician in Erode',
-  description: `${D}, Obstetrician & Gynaecologist at Abishek Hospital, Erode Fort. Academic Topper, Coimbatore Medical College. 40,000+ safe deliveries.`,
+  description: `${D}, Obstetrician-Gynaecologist at Abishek Hospital, Erode. Academic Topper, Coimbatore Medical College. 40,000+ safe deliveries.`,
   schemaType: 'AboutPage',
   withDoctor: true,
   ogType: 'profile',
@@ -301,8 +301,8 @@ const videoFaqs = [
 ];
 export const videos = {
   path: '/videos/',
-  title: 'Women’s Health Videos in Tamil | Dr. Jayanthi Prabakaran YouTube',
-  description: `Free daily women’s health videos in Tamil by ${D}: pregnancy tips, PCOS, fertility, periods and menopause. Watch on YouTube ${social[0].handle}.`,
+  title: 'Women’s Health Videos in Tamil | Dr. Jayanthi Prabakaran',
+  description: `Women’s health videos in Tamil by ${D}: pregnancy tips, PCOS, fertility, periods and menopause. YouTube ${social[0].handle}.`,
   crumbs: [['Home', '/'], ['Daily health videos']],
   faqs: videoFaqs,
   render: () => `
@@ -357,7 +357,7 @@ const contactFaqs = [
 export const contact = {
   path: '/contact/',
   title: 'Contact & Directions | Abishek Hospital, Erode Fort',
-  description: `Visit Abishek Hospital at ${site.address.line1}, Erode Fort. ${site.hours.opd}; emergency 24/7. Call or WhatsApp ${P} to book.`,
+  description: `Visit Abishek Hospital at ${site.address.line1}, Erode Fort. ${site.hours.opd}; emergency 24/7. Call or WhatsApp ${P}.`,
   schemaType: 'ContactPage',
   geo: true,
   crumbs: [['Home', '/'], ['Contact & directions']],
@@ -441,7 +441,7 @@ const faqTowns = [
 export const allFaqs = [...faqAbout, ...faqPregnancy, ...faqGynae, ...faqFertility, ...faqSurgery, ...faqTowns];
 export const faq = {
   path: '/faq/',
-  title: 'FAQs | Gynecologist & Maternity Hospital in Erode | Abishek Hospital',
+  title: 'FAQs: Pregnancy, Delivery, PCOS & IUI | Abishek Hospital',
   description: `Answers to common questions about pregnancy, painless delivery, PCOS, fertility, IUI and laparoscopic surgery at Abishek Hospital, Erode. Call ${P}.`,
   schemaType: 'FAQPage',
   crumbs: [['Home', '/'], ['FAQs']],

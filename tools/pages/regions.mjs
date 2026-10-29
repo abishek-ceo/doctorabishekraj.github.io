@@ -95,8 +95,8 @@ ${svcLinks}` },
   };
   return {
     path: url,
-    title: `Women’s Hospital for ${d.name} Patients | Abishek Hospital, Erode`,
-    description: `Women from ${d.name} visit Abishek Hospital, Erode Fort (about ${d.km} km): gynecologist, painless delivery, PCOS, IUI, 24/7 emergency. Call ${P}.`,
+    title: `Women’s Hospital for ${d.name} | Abishek Hospital`,
+    description: `Women from ${d.name} visit Abishek Hospital, Erode (about ${d.km} km): gynecologist, painless delivery, PCOS, IUI, 24/7 emergency. Call ${P}.`,
     schemaType: 'WebPage',
     crumbs: crumbsArr,
     faqs,
@@ -153,7 +153,7 @@ const hubData = {
 export const hub = {
   path: hubUrl,
   title: 'Women’s Hospital in Tamil Nadu | Abishek Hospital, Erode',
-  description: `Erode women’s hospital for patients across Tamil Nadu: Salem, Tiruppur, Namakkal, Karur, Coimbatore. Painless delivery, PCOS, IUI, laparoscopy, 24/7 emergency.`,
+  description: `Erode women’s hospital for Tamil Nadu patients: Salem, Tiruppur, Namakkal, Karur, Coimbatore. Painless delivery, PCOS, IUI, laparoscopy, 24/7 emergency.`,
   schemaType: 'WebPage',
   crumbs: hubCrumbs,
   faqs: hubFaqs,
@@ -183,7 +183,7 @@ export const tamilPage = {
   path: '/ta/',
   lang: 'ta',
   alternates: [['en-IN', '/'], ['ta-IN', '/ta/']],
-  title: 'மகளிர் & மகப்பேறு மருத்துவமனை ஈரோடு | அபிஷேக் மருத்துவமனை',
+  title: 'மகப்பேறு மருத்துவமனை ஈரோடு | அபிஷேக்',
   description: `ஈரோடு கோட்டை அபிஷேக் மருத்துவமனை: டாக்டர் ஜெயந்தி பிரபாகரன் தலைமையில் சுகப்பிரசவம், வலியில்லா பிரசவம், பிசிஓஎஸ், குழந்தையின்மை சிகிச்சை. அவசர சிகிச்சை 24 மணி நேரம்.`,
   schemaType: 'WebPage',
   withDoctor: true,
