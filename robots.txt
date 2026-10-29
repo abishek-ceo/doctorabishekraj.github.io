@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /tools/
+Disallow: /photos/
 
 Sitemap: https://abishekhospital.com/sitemap.xml

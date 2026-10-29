@@ -42,6 +42,7 @@ const ctx = {
   photos: ordered,
   captions,
   hasGallery: ordered.length > 0,
+  canEnlarge: ordered.length > 0 && ordered.every((p) => Math.max(...Object.keys(p.files).map(Number)) >= 900),   // small photos are shown at natural size, no pop-up
 };
 
 // ---- pass 1: render to learn which icons are used; build the sprite; pass 2: final output ----
@@ -73,7 +74,7 @@ const prio = (p) => (p === '/' ? '1.0' : services.some((s) => p === slugUrl(s.sl
 const indexable = pages.filter((p) => !p.noindex);
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.path === '/' ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${prio(p.path)}</priority>\n  </url>`).join('\n') + `\n</urlset>\n`);
-write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /tools/\n\nSitemap: ${site.url}/sitemap.xml\n`);
+write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /photos/\n\nSitemap: ${site.url}/sitemap.xml\n`);
 
 console.log(`Built ${pages.length} pages (${usedIcons.size} icons in sprite, ${(sprite.length / 1024).toFixed(1)} KB)${ctx.hasGallery ? `, ${ordered.length} gallery photos` : ', no gallery photos yet'}`);
 console.log(report.join('\n'));

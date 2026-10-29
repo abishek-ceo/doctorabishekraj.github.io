@@ -7,17 +7,33 @@ const D = site.doctor.name;
 const YT = social[0].url, IG = social[1].url, FB = social[2].url;
 
 /* ---------- shared blocks ---------- */
-export function galleryGrid(ctx, items) {
-  return `<div class="gallery">` + items.map((p) => {
+const photoImg = (p, alt, sizes, eager = false) => {
+  const widths = Object.keys(p.files).map(Number).sort((a, b) => a - b);
+  const w0 = widths[0];
+  const srcset = widths.map((w) => `/assets/img/photos/${p.files[w]} ${w}w`).join(', ');
+  return `<img src="/assets/img/photos/${p.files[w0]}" srcset="${srcset}" sizes="${sizes}" width="${w0}" height="${Math.round(w0 * p.height / p.width)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'} alt="${alt}">`;
+};
+
+// Photos keep their natural shape (masonry columns). Only photos large enough to enlarge cleanly get a pop-up viewer.
+export function galleryGrid(ctx, items, { uniform = false, eager = 0 } = {}) {
+  const cls = uniform ? `gallery uniform${items.length % 2 ? ' odd' : ''}" style="--n:${Math.min(items.length, 4)}` : 'gallery';
+  return `<div class="${cls}">` + items.map((p, i) => {
     const cap = ctx.captions[p.id] || {};
-    const alt = esc(cap.alt || `Abishek Hospital, Erode Fort`);
+    const alt = esc(cap.alt || 'Abishek Hospital, Erode Fort');
     const widths = Object.keys(p.files).map(Number).sort((a, b) => a - b);
-    const largest = p.files[widths[widths.length - 1]];
-    const srcset = widths.filter((w) => w <= 960).map((w) => `/assets/img/photos/${p.files[w]} ${w}w`).join(', ');
-    const small = p.files[widths[0]];
-    const h = Math.round(widths[0] * p.height / p.width);
-    return `<a href="/assets/img/photos/${largest}" data-lb data-alt="${alt}" data-cap="${esc(cap.caption || '')}"><img src="/assets/img/photos/${small}" srcset="${srcset}" sizes="(min-width:960px) 25vw, (min-width:600px) 33vw, 50vw" width="${widths[0]}" height="${h}" loading="lazy" decoding="async" alt="${alt}">${cap.caption ? `<figcaption>${esc(cap.caption)}</figcaption>` : ''}</a>`;
+    const img = photoImg(p, alt, '(min-width:1100px) 360px, (min-width:600px) 33vw, 50vw', i < eager);
+    const figcap = cap.caption ? `<figcaption>${esc(cap.caption)}</figcaption>` : '';
+    return ctx.canEnlarge
+      ? `<a href="/assets/img/photos/${p.files[widths[widths.length - 1]]}" data-lb data-alt="${alt}" data-cap="${esc(cap.caption || '')}">${img}${figcap}</a>`
+      : `<figure>${img}${figcap}</figure>`;
   }).join('') + `</div>`;
+}
+
+export function lookForPhoto(ctx) {
+  const p = ctx.photos.find((x) => x.id === 'hospital-entrance');
+  if (!p) return '';
+  const cap = ctx.captions[p.id] || {};
+  return `<figure class="look-for">${photoImg(p, esc(cap.alt || 'Abishek Hospital entrance'), '(min-width:768px) 520px, 100vw')}<figcaption>Look for the Abishek Hospital signboard above the entrance at Erode Fort.</figcaption></figure>`;
 }
 
 const mapCard = () => `<div class="map-card"><div><span class="pin">${icon('pin')}</span><p>${site.address.line1},<br>${site.address.area}, ${site.address.city} – ${site.address.pin}</p>
@@ -126,8 +142,8 @@ ${statsBand()}
 <div class="btn-row"><a class="btn btn-primary" href="${doctorUrl}">About Dr. Jayanthi ${icon('arrow')}</a>${btnWA(undefined, 'Book appointment')}</div></div>
 </div></section>
 ${ctx.photos.length ? `
-<section class="section section-soft"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('camera')} Our hospital</span><h2>A welcoming, <em>clean</em> and caring space</h2></div>
-${galleryGrid(ctx, ctx.photos.slice(0, 8))}
+<section class="section section-soft"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('camera')} Our hospital</span><h2>A look <em>inside</em> our hospital</h2></div>
+${galleryGrid(ctx, (ctx.photos.filter((p) => p.width / p.height > 1.2).length >= 3 ? ctx.photos.filter((p) => p.width / p.height > 1.2) : ctx.photos).slice(0, 4), { uniform: true })}
 <p style="margin-top:1.2rem"><a class="link-arrow" href="/gallery/">See all photos ${icon('arrow')}</a></p></div></section>` : ''}
 
 <section class="section section-soft"><div class="wrap">
@@ -314,7 +330,7 @@ export const contact = {
   geo: true,
   crumbs: [['Home', '/'], ['Contact & directions']],
   faqs: contactFaqs,
-  render: () => `
+  render: (ctx) => `
 <section class="page-hero"><div class="wrap">
 ${crumbs([['Home', '/'], ['Contact & directions']])}
 <span class="eyebrow">${icon('pin')} Find us</span>
@@ -326,7 +342,7 @@ ${crumbs([['Home', '/'], ['Contact & directions']])}
 
 <section class="section"><div class="wrap"><div class="contact-grid">
 <div>${infoList()}<div style="margin-top:1.4rem"><b>Follow us</b><div style="margin-top:10px">${socialList()}</div></div></div>
-${mapCard()}
+<div>${mapCard()}${lookForPhoto(ctx)}</div>
 </div></div></section>
 
 <section class="section section-soft"><div class="wrap"><div class="contact-grid" style="align-items:start">

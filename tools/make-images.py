@@ -117,13 +117,16 @@ def photos():
         return
     dest = OUT / 'photos'
     dest.mkdir(exist_ok=True)
+    for stale in dest.glob('*.webp'):
+        stale.unlink()                      # keep derivatives in sync with photos/
     items = []
     for p in sorted(src.iterdir()):
         if p.suffix.lower() not in ('.jpg', '.jpeg', '.png', '.webp'):
             continue
         im = ImageOps.exif_transpose(Image.open(p)).convert('RGB')   # also drops EXIF/GPS on save
         stem = p.stem.lower().replace(' ', '-')
-        widths = [w for w in (480, 960, 1600) if w <= im.width] or [im.width]
+        cap = min(im.width, 1600)                                  # never upscale beyond the source
+        widths = [w for w in (480, 960) if w < cap] + [cap]
         files = {}
         for w in widths:
             r = im if w == im.width else im.resize((w, round(w * im.height / im.width)), Image.LANCZOS)

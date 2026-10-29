@@ -27,7 +27,7 @@ Typical edit: change the text in `tools/pages/...`, run the two commands above, 
 
 ## Hospital photos
 
-1. Put your own photos (jpg/png/webp) in a `photos/` folder. Avoid patients and newborns unless you hold written consent.
+1. Put your own photos (jpg/png/webp) in a `photos/` folder. Use the **original full-size files** (ideally 1600 px or wider). Photos narrower than about 900 px, such as small Google Maps thumbnails, are shown at natural size with no click-to-enlarge, because enlarging them looks blurry. Avoid patients and newborns unless you hold written consent.
 2. `python3 tools/make-images.py` (needs Pillow, numpy, scipy). It resizes to 480/960/1600 px WebP and strips location data (EXIF/GPS).
 3. Add a line per photo in `photos/captions.json`: `{"file-name-without-extension": {"alt": "...", "caption": "...", "order": 1}}`.
 4. Run the build. A Gallery page, menu entry and a home-page photo strip appear automatically when photos exist.

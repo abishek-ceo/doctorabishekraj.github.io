@@ -6,16 +6,16 @@ import { galleryGrid } from './core.mjs';
 export const gallery = {
   path: '/gallery/',
   title: 'Hospital Photo Gallery | Abishek Hospital, Erode Fort',
-  description: 'Take a look inside Abishek Hospital at Erode Fort: our reception, wards and facilities. Clean, safe and welcoming care for women and families in Erode.',
+  description: 'Photos of Abishek Hospital, Erode Fort: the entrance, reception area, patient rooms, operation theatre and corridors. Near the bus stand, Bharathi Street.',
   gallery: true,
   crumbs: [['Home', '/'], ['Gallery']],
   render: (ctx) => `
 <section class="page-hero"><div class="wrap">${crumbs([['Home', '/'], ['Gallery']])}
 <span class="eyebrow">${icon('camera')} Inside our hospital</span>
 <h1>Our Hospital in <em>Pictures</em></h1>
-<p class="lead">A look at Abishek Hospital at Erode Fort. Tap any photo to see it larger.</p></div></section>
-<section class="section"><div class="wrap">${galleryGrid(ctx, ctx.photos)}</div></section>
-<dialog class="lightbox" id="lb" aria-label="Photo viewer"><button type="button" data-close aria-label="Close photo">${icon('close')}</button><img alt=""><p></p></dialog>
+<p class="lead">A look at the entrance, reception and rooms at Abishek Hospital, Erode Fort.${ctx.canEnlarge ? ' Tap any photo to see it larger.' : ''}</p></div></section>
+<section class="section"><div class="wrap">${galleryGrid(ctx, ctx.photos, { eager: 3 })}</div></section>
+${ctx.canEnlarge ? `<dialog class="lightbox" id="lb" aria-label="Photo viewer"><button type="button" data-close aria-label="Close photo">${icon('close')}</button><img alt=""><p></p></dialog>` : ''}
 ${ctaBand('Visit us at Erode Fort', 'Walk in during clinic hours, or book on WhatsApp.')}`,
 };
 

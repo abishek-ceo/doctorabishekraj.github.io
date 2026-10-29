@@ -232,7 +232,7 @@ ${socialList('on-dark')}</div>
 }
 
 export function renderPage(page, ctx) {
-  const scripts = `<script src="${ctx.jsHref}" defer></script>` + (page.gallery ? `<script src="${ctx.galleryJsHref}" defer></script>` : '');
+  const scripts = `<script src="${ctx.jsHref}" defer></script>` + (page.gallery && ctx.canEnlarge ? `<script src="${ctx.galleryJsHref}" defer></script>` : '');
   return `${head(page, ctx)}
 <body${page.bodyClass ? ` class="${page.bodyClass}"` : ''}>
 ${header(page, ctx)}<main id="main">
