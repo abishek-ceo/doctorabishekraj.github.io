@@ -8,19 +8,36 @@
 
   /* ---- mobile drawer ---- */
   var drawer = $('#drawer'), openBtn = $('[data-open-menu]');
+  var behind = $$('.skip, .header, main, .footer, .mbar');   /* everything the open menu covers: not reachable by keyboard or screen reader */
   function setDrawer(open) {
     if (!drawer) return;
     drawer.classList.toggle('open', open);
     body.classList.toggle('locked', open);
+    behind.forEach(function (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
     if (openBtn) openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     if (open) { var c = $('[data-close-menu]', drawer); if (c) c.focus(); }
     else if (openBtn && doc.activeElement && drawer.contains(doc.activeElement)) { openBtn.focus(); }
   }
   if (openBtn) openBtn.addEventListener('click', function () { setDrawer(true); });
   if (drawer) {
+    drawer.addEventListener('keydown', function (e) {   /* keep Tab inside the open menu */
+      if (e.key !== 'Tab' || !drawer.classList.contains('open')) return;
+      var items = $$('a[href], button', drawer), first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
     $$('[data-close-menu]', drawer).forEach(function (b) { b.addEventListener('click', function () { setDrawer(false); }); });
     $$('a', drawer).forEach(function (a) { a.addEventListener('click', function () { setDrawer(false); }); });
   }
+
+  /* ---- a focused field or button is never left hidden behind the fixed phone bar ---- */
+  var dock = $('.mbar');
+  if (dock) doc.addEventListener('focusin', function (e) {
+    var t = e.target;
+    if (!t || !t.getBoundingClientRect || dock.offsetParent === null && getComputedStyle(dock).display === 'none') return;
+    var r = t.getBoundingClientRect(), d = dock.getBoundingClientRect();
+    if (r.bottom > d.top - 8 && r.top < d.bottom && r.top > 0) window.scrollBy(0, r.bottom - d.top + 16);
+  });
 
   /* ---- services dropdown (desktop). CSS :hover/:focus-within already works without JS ---- */
   var subBtn = $('.sub-toggle'), sub = $('#sub-services');
