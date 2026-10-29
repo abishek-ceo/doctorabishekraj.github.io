@@ -71,7 +71,7 @@ export function hospitalNode() {
     geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
     hasMap: site.maps.view,
     openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '18:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: site.hours.open, closes: site.hours.close },
       { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '00:00', closes: '23:59', description: '24/7 emergency care' },
     ],
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
@@ -199,7 +199,7 @@ function header(page, ctx) {
 <p class="grp">Our services</p>
 <div class="sublist">${services.map((s) => `<a href="${slugUrl(s.slug)}">${s.short}</a>`).join('')}</div>
 <p class="grp">More</p>
-<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
+<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
 <div class="btn-row">${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}</div>
 ${socialList('on-dark')}
 </nav></div>
@@ -214,7 +214,7 @@ function footer(ctx) {
 <div class="f-brand">${brandHtml()}<p>${site.doctor.name}, ${site.doctor.role}, leads ${site.name} at Erode Fort: pregnancy and painless delivery care, gynaecology, PCOS and fertility treatment, and laparoscopic surgery for women in Erode and nearby towns.</p>
 ${socialList('on-dark')}</div>
 <div><p class="f-title">Services</p><ul>${services.map((s) => `<li><a href="${slugUrl(s.slug)}">${s.short}</a></li>`).join('')}</ul></div>
-<div><p class="f-title">Explore</p><ul><li><a href="/">Home</a></li><li><a href="${doctorUrl}">Dr. Jayanthi Prabakaran</a></li><li><a href="/videos/">Daily health videos</a></li>${ctx.hasGallery ? '<li><a href="/gallery/">Hospital gallery</a></li>' : ''}<li><a href="/faq/">FAQs</a></li><li><a href="/contact/">Contact &amp; directions</a></li><li><a href="/privacy-policy.html">Privacy policy</a></li></ul></div>
+<div><p class="f-title">Explore</p><ul><li><a href="/">Home</a></li><li><a href="${doctorUrl}">Dr. Jayanthi Prabakaran</a></li><li><a href="/videos/">Daily health videos</a></li>${ctx.hasGallery ? '<li><a href="/gallery/">Hospital gallery</a></li>' : ''}<li><a href="/pregnancy-due-date-calculator/">Due date calculator</a></li><li><a href="/visit-reminder/">Visit reminder</a></li><li><a href="/faq/">FAQs</a></li><li><a href="/contact/">Contact &amp; directions</a></li><li><a href="/privacy-policy.html">Privacy policy</a></li></ul></div>
 <div><p class="f-title">Visit us</p><ul class="f-contact">
 <li>${icon('pin')}<span>${site.address.line1},<br>${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}</span></li>
 <li>${icon('phone')}<a href="${tel}">${site.phone.intl}</a></li>
@@ -236,7 +236,7 @@ ${socialList('on-dark')}</div>
 }
 
 export function renderPage(page, ctx) {
-  const scripts = `<script src="${ctx.jsHref}" defer></script>`;
+  const scripts = `<script src="${ctx.jsHref}" defer></script>` + (page.toolsJs ? `<script src="${ctx.toolsJsHref}" defer></script>` : '');
   return `${head(page, ctx)}
 <body${page.bodyClass ? ` class="${page.bodyClass}"` : ''}>
 ${header(page, ctx)}<main id="main">
