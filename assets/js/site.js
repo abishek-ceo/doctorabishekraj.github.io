@@ -63,7 +63,7 @@
     if (e.key === 'Escape' || e.key === 'Esc') { setSub(false); setDrawer(false); }
   });
   if (window.matchMedia) {
-    var mq = window.matchMedia('(min-width:1024px)');
+    var mq = window.matchMedia('(min-width:1160px)');
     var close = function () { if (mq.matches) setDrawer(false); };
     if (mq.addEventListener) mq.addEventListener('change', close); else if (mq.addListener) mq.addListener(close);
   }
