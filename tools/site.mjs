@@ -31,6 +31,10 @@ export const site = {
   },
 };
 
+// Search-engine ownership checks. Paste the content="..." value of the tag Google Search Console (or Bing Webmaster Tools) gives you,
+// then rebuild: it is added to every page's <head>. Leave empty until you have one.
+export const verification = { google: '', bing: '' };
+
 export const social = [
   { id: 'youtube', label: 'YouTube', handle: '@abishekmedicalcenter', url: 'https://www.youtube.com/@abishekmedicalcenter',
     alt: ['https://www.youtube.com/channel/UCyuPSFNLWCyKALkSbKXVZIg'] },   // same channel by ID (its description shows this hospital's address)

@@ -1,5 +1,5 @@
 // Shared layout, components and structured data for the static page builder.
-import { site, social, services, areas, districts, tamil, featuredVideo, reviews } from './site.mjs';
+import { site, social, services, areas, districts, tamil, featuredVideo, reviews, verification } from './site.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -75,6 +75,10 @@ export function hospitalNode() {
     telephone: site.phone.tel,
     email: site.email,
     description: 'Women’s health and maternity hospital at Erode Fort, Tamil Nadu, led by Dr. Jayanthi Prabakaran. Obstetrics and painless delivery, gynaecology, high-risk pregnancy care, PCOS treatment, fertility and IUI treatment, and laparoscopic surgery.',
+    contactPoint: [
+      { '@type': 'ContactPoint', telephone: site.phone.tel, contactType: 'appointments', availableLanguage: ['Tamil', 'English'], areaServed: 'IN-TN' },
+      { '@type': 'ContactPoint', telephone: site.phone.tel, contactType: 'emergency', availableLanguage: ['Tamil', 'English'], areaServed: 'IN-TN', hoursAvailable: { '@type': 'OpeningHoursSpecification', dayOfWeek: [...DAY_NAMES.slice(1), DAY_NAMES[0]], opens: '00:00', closes: '23:59' } },
+    ],
     priceRange: '$$',
     address: { '@type': 'PostalAddress', streetAddress: `${site.address.line1}, ${site.address.area}`, addressLocality: site.address.city, addressRegion: site.address.state, postalCode: site.address.pin, addressCountry: 'IN' },
     geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
@@ -147,6 +151,7 @@ function head(page, ctx, main) {
 <link rel="canonical" href="${url}">
 ${hreflang}<meta name="robots" content="${page.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
 <meta name="author" content="${esc(site.name)}">
+${verification.google ? `<meta name="google-site-verification" content="${esc(verification.google)}">\n` : ''}${verification.bing ? `<meta name="msvalidate.01" content="${esc(verification.bing)}">\n` : ''}
 <meta name="theme-color" content="#C2185B">
 ${geo}<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -190,7 +195,15 @@ const brandHtml = () =>
   `<a class="brand" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="50px" width="50" height="48" alt="">` +
   `<span><span class="brand-name">${site.name}</span><span class="brand-sub">Women’s Health · Erode Fort</span><span class="sr-only"> – home page</span></span></a>`;
 
+// One-tap switch between English and Tamil: to the page's own translation when it has one, otherwise to the matching home page.
+function langSwitch(page) {
+  const find = (code) => (page.alternates || []).find(([l]) => l === code);
+  return page.lang === 'ta'
+    ? { href: (find('en-IN') || [0, '/'])[1], label: 'English', attrs: 'hreflang="en-IN" lang="en"' }
+    : { href: (find('ta-IN') || [0, '/ta/'])[1], label: 'தமிழ்', attrs: 'hreflang="ta-IN" lang="ta"' };
+}
 function header(page, ctx) {
+  const sw = langSwitch(page);
   const isService = services.some((s) => page.path === slugUrl(s.slug));
   const items = navItems(ctx).map((it) => {
     if (it.sub) {
@@ -203,6 +216,7 @@ function header(page, ctx) {
 <header class="header"><div class="wrap">${brandHtml()}
 <nav class="nav" aria-label="Main"><ul>${items}</ul></nav>
 <div class="header-cta"><a class="btn btn-outline btn-sm" href="${tel}" aria-label="Call ${site.phone.display}">${icon('phone')}<span class="call-text">${site.phone.display}</span></a>${btnWA(undefined, 'Book appointment', 'btn btn-wa btn-sm')}</div>
+<a class="lang-btn" href="${sw.href}" ${sw.attrs}>${sw.label}</a>
 <button class="menu-btn open-menu" type="button" data-open-menu aria-expanded="false" aria-controls="drawer" aria-label="Open menu">${icon('menu')}</button>
 </div></header>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
@@ -212,7 +226,7 @@ function header(page, ctx) {
 <p class="grp">Our services</p>
 <div class="sublist">${services.map((s) => `<a href="${slugUrl(s.slug)}">${s.short}</a>`).join('')}</div>
 <p class="grp">More</p>
-<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/women-health-guides/">Women’s Health Guides</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="/ta/" lang="ta">தமிழில்</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
+<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/women-health-guides/">Women’s Health Guides</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="${sw.href}" ${sw.attrs}>${sw.label}</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
 <div class="btn-row">${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}</div>
 ${socialList('on-dark')}
 </nav></div>
@@ -296,6 +310,7 @@ export function makeServicePage(d) {
     description: d.description,
     schemaType: 'MedicalWebPage',
     specialty: s.specialty,
+    alternates: [['en-IN', slugUrl(d.slug)], ['ta-IN', `/ta/${d.slug}/`]],
     crumbs: crumbsArr,
     faqs: d.faqs,
     render: () => servicePage(data),

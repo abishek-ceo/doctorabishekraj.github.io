@@ -83,6 +83,9 @@ html:not(.js) .has-sub:hover .sub,html:not(.js) .has-sub:focus-within .sub{displ
 .sub a{padding:.7em .8em;font-weight:600;white-space:normal;align-items:flex-start}
 .sub a small{display:block;font-weight:400;color:var(--muted);font-size:.8rem;line-height:1.3;margin-top:2px}
 .header-cta{display:none;align-items:center;gap:8px}
+.lang-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--rose-700);font:700 .92rem/1 var(--tamil);text-decoration:none;white-space:nowrap}
+.lang-btn:hover{background:var(--rose-50);color:var(--rose-700)}
+.lang-btn[lang=en]{font-family:var(--body)}
 .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--plum);cursor:pointer}
 .menu-btn .i{width:24px;height:24px}
 
@@ -325,6 +328,21 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .pb-1{animation:bob 6s ease-in-out infinite}
   @keyframes bob{50%{transform:translateY(-7px)}}
 
+  /* welcome line, drifting petals, a gentle sparkle on the main buttons and a small wiggle on service icons */
+  .greet b{background-size:0 6px;animation:underline .9s .4s ease forwards}
+  @keyframes underline{to{background-size:100% 6px}}
+  .petals i{animation:drift 20s linear infinite}
+  .petals i:nth-child(1){animation-delay:-2s;animation-duration:19s}.petals i:nth-child(2){animation-delay:-9s;animation-duration:23s}.petals i:nth-child(3){animation-delay:-5s;animation-duration:17s}
+  .petals i:nth-child(4){animation-delay:-13s;animation-duration:25s}.petals i:nth-child(5){animation-delay:-7s;animation-duration:21s}.petals i:nth-child(6){animation-delay:-16s;animation-duration:18s}
+  @keyframes drift{0%{transform:translate3d(0,0,0) rotate(0);opacity:0}8%{opacity:.8}50%{transform:translate3d(34px,40vh,0) rotate(170deg);opacity:.7}92%{opacity:.5}100%{transform:translate3d(-24px,84vh,0) rotate(330deg);opacity:0}}
+  .card .ico{transition:transform .25s ease}
+  @media (hover:hover){
+    a.card:hover .ico{transform:rotate(-6deg) scale(1.08)}
+    .btn-wa,.btn-primary{position:relative;overflow:hidden}
+    .btn-wa::after,.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+    .btn-wa:hover::after,.btn-primary:hover::after{transform:translateX(120%);transition:transform .7s ease}
+  }
+
   /* an expanding ring: "open now" dot and the play button */
   .status-line .dot::after,.video-play::after{content:"";position:absolute;inset:0;border-radius:50%;animation:ring 2.4s ease-out infinite}
   .status-line .dot::after{background:var(--wa)}
@@ -372,6 +390,19 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
 }
 @media print{.rv{opacity:1!important;transform:none!important}}
 
+/* ---------- warm touches: kolam-inspired pattern, welcome line, petals ---------- */
+.hero{isolation:isolate;overflow:hidden}
+.kolam{position:absolute;z-index:-1;top:0;right:0;width:min(58%,640px);height:100%;opacity:.09;-webkit-mask-image:linear-gradient(to left,#000 10%,transparent 90%);mask-image:linear-gradient(to left,#000 10%,transparent 90%);pointer-events:none}
+.cta .box{position:relative;overflow:hidden;isolation:isolate}
+.cta .box::before{content:"";position:absolute;z-index:-1;inset:0 0 0 auto;width:min(60%,520px);background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22%3E%3Cg fill=%22%23FFFFFF%22%3E%3Ccircle cx=%2260%22 cy=%2212%22 r=%222.3%22/%3E%3Ccircle cx=%2236%22 cy=%2236%22 r=%222.3%22/%3E%3Ccircle cx=%2260%22 cy=%2236%22 r=%222.3%22/%3E%3Ccircle cx=%2284%22 cy=%2236%22 r=%222.3%22/%3E%3Ccircle cx=%2212%22 cy=%2260%22 r=%222.3%22/%3E%3Ccircle cx=%2236%22 cy=%2260%22 r=%222.3%22/%3E%3Ccircle cx=%2260%22 cy=%2260%22 r=%222.3%22/%3E%3Ccircle cx=%2284%22 cy=%2260%22 r=%222.3%22/%3E%3Ccircle cx=%22108%22 cy=%2260%22 r=%222.3%22/%3E%3Ccircle cx=%2236%22 cy=%2284%22 r=%222.3%22/%3E%3Ccircle cx=%2260%22 cy=%2284%22 r=%222.3%22/%3E%3Ccircle cx=%2284%22 cy=%2284%22 r=%222.3%22/%3E%3Ccircle cx=%2260%22 cy=%22108%22 r=%222.3%22/%3E%3C/g%3E%3Cg fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%221.6%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M60 22C75 22 98 45 98 60C98 75 75 98 60 98C45 98 22 75 22 60C22 45 45 22 60 22Z%22/%3E%3Cpath d=%22M60 40C69 40 80 51 80 60C80 69 69 80 60 80C51 80 40 69 40 60C40 51 51 40 60 40Z%22/%3E%3C/g%3E%3C/svg%3E") 0 0/120px 120px;opacity:.1;-webkit-mask-image:linear-gradient(to left,#000 10%,transparent 90%);mask-image:linear-gradient(to left,#000 10%,transparent 90%);pointer-events:none}
+.greet{margin:0 0 .5rem;font:600 1.05rem/1.5 var(--tamil);color:var(--rose-700)}
+.greet b{font-weight:800;background:linear-gradient(var(--gold-soft),var(--gold-soft)) 0 100%/100% 6px no-repeat}
+.greet span{color:var(--muted);font-weight:500}
+.petals{position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none}
+.petals i{position:absolute;top:-24px;width:14px;height:14px;border-radius:70% 0 70% 0;background:linear-gradient(135deg,#fff,#F9C7DA);box-shadow:0 0 0 1px rgba(194,24,91,.12);opacity:0}
+.petals i:nth-child(1){left:8%}.petals i:nth-child(2){left:24%;width:11px;height:11px}.petals i:nth-child(3){left:41%;width:16px;height:16px}
+.petals i:nth-child(4){left:58%;width:12px;height:12px}.petals i:nth-child(5){left:74%}.petals i:nth-child(6){left:91%;width:10px;height:10px}
+
 /* ---------- breakpoints ---------- */
 @media (min-width:600px){
   .quick{grid-template-columns:repeat(4,1fr)}
@@ -401,10 +432,12 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
 @media (min-width:1024px){
   .nav{display:block}
   .menu-btn.open-menu,.mbar{display:none}
+  .lang-btn{margin-left:2px}
   .header-cta{display:flex}
   .footer{padding-bottom:0}
 }
-@media (max-width:359px){.brand-sub{display:none}.btn{padding-inline:1em}}
+@media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.header .wrap{gap:8px}}
+@media (max-width:359px){.brand-sub{display:none}.btn{padding-inline:1em}.lang-btn{display:none}}
 @media print{.header,.mbar,.cta,.drawer{display:none}body{padding:0}}
 
 /* ---------- additions after first review ---------- */

@@ -196,10 +196,10 @@ function enPage(g) {
 export const guidePages = en.map(enPage);
 
 /* ---------------- Tamil guides (the three most searched topics) ---------------- */
-const taWa = 'வணக்கம் அபிஷேக் மருத்துவமனை, நான் முன்பதிவு செய்ய விரும்புகிறேன்.';
-const taCare = `<p lang="ta">ஈரோடு கோட்டை அபிஷேக் மருத்துவமனையில் டாக்டர் ஜெயந்தி பிரபாகரனைச் சந்திக்க வாட்ஸ்அப் செய்யுங்கள் அல்லது ${P} என்ற எண்ணில் அழைக்கவும். புறநோயாளிகள் நேரம்: திங்கள் – சனி, காலை 9:00 – மாலை 6:30. அவசர சிகிச்சை 24 மணி நேரமும் உண்டு.</p>
+export const taWa = 'வணக்கம் அபிஷேக் மருத்துவமனை, நான் முன்பதிவு செய்ய விரும்புகிறேன்.';
+export const taCare = `<p lang="ta">ஈரோடு கோட்டை அபிஷேக் மருத்துவமனையில் டாக்டர் ஜெயந்தி பிரபாகரனைச் சந்திக்க வாட்ஸ்அப் செய்யுங்கள் அல்லது ${P} என்ற எண்ணில் அழைக்கவும். புறநோயாளிகள் நேரம்: திங்கள் – சனி, காலை 9:00 – மாலை 6:30. அவசர சிகிச்சை 24 மணி நேரமும் உண்டு.</p>
 <p class="note" lang="ta">இந்தப் பக்கம் பொதுவான தகவலுக்காக மட்டுமே. இது நோய் கண்டறிதல் அல்ல; உங்கள் மருத்துவரின் ஆலோசனைக்கு மாற்றும் அல்ல.</p>`;
-const taList = (items) => `<ul class="checks" lang="ta">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
+export const taList = (items) => `<ul class="checks" lang="ta">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
 const ta = [
   {
     slug: 'white-discharge', en: 'white-discharge',
@@ -259,9 +259,9 @@ const ta = [
   },
 ];
 
-function taPage(g) {
+export function taPage(g) {
   const path = `/ta/${g.slug}/`;
-  const enPath = `${guidesUrl}${g.en}/`;
+  const enPath = g.enPath || `${guidesUrl}${g.en}/`;
   const c = [['Home', '/'], ['தமிழ்', '/ta/'], [g.crumb]];
   return {
     path, lang: 'ta', alternates: [['en-IN', enPath], ['ta-IN', path]],
@@ -275,7 +275,7 @@ function taPage(g) {
 </div></section>
 ${g.sections.map(([t, html], i) => `<section class="section${i % 2 ? ' section-soft' : ''}"><div class="wrap"><h2 lang="ta">${t}</h2><div class="prose">${html}</div></div></section>`).join('\n')}
 <section class="section section-soft"><div class="wrap"><div class="sec-head"><h2 lang="ta">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2></div>${faqBlock(g.faqs)}</div></section>
-<section class="section"><div class="wrap"><div class="prose"><h2 lang="ta">அபிஷேக் மருத்துவமனையில்</h2>${taCare}<p><a class="link-arrow" href="${enPath}">Read this guide in English ${icon('arrow')}</a></p></div></div></section>
+<section class="section"><div class="wrap"><div class="prose"><h2 lang="ta">அபிஷேக் மருத்துவமனையில்</h2>${taCare}<p><a class="link-arrow" href="${enPath}">${g.enLabel || 'Read this guide in English'} ${icon('arrow')}</a></p></div></div></section>
 ${ctaBand('முன்பதிவுக்கு எங்களைத் தொடர்பு கொள்ளுங்கள்', `வாட்ஸ்அப் செய்யுங்கள் அல்லது ${P} என்ற எண்ணில் அழைக்கவும். அவசர சிகிச்சை 24 மணி நேரமும் உண்டு.`, taWa)}`,
   };
 }

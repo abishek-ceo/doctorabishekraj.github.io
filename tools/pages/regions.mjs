@@ -199,7 +199,7 @@ export const tamilPage = {
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2 lang="ta">எங்கள் சிகிச்சைகள்</h2></div>
-<div class="grid cards">${taServices.map(([slug, name, blurb]) => `<a class="card" href="${slugUrl(slug)}"><span class="ico">${icon(taIcons[slug])}</span><h3 lang="ta">${name}</h3><p lang="ta">${blurb}</p><span class="link-arrow">Details in English ${icon('arrow')}</span></a>`).join('')}</div>
+<div class="grid cards">${taServices.map(([slug, name, blurb]) => `<a class="card" href="/ta/${slug}/"><span class="ico">${icon(taIcons[slug])}</span><h3 lang="ta">${name}</h3><p lang="ta">${blurb}</p><span class="link-arrow" lang="ta">மேலும் அறிய ${icon('arrow')}</span></a>`).join('')}</div>
 </div></section>
 
 <section class="section section-soft"><div class="wrap split two">

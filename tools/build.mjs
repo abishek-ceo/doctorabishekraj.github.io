@@ -16,6 +16,7 @@ import { gallery, privacy, notFound } from './pages/misc.mjs';
 import { dueDate, visitReminder } from './pages/tools.mjs';
 import { hub, regionPages, tamilPage } from './pages/regions.mjs';
 import { guidesHub, guidePages, taGuidePages } from './pages/guides.mjs';
+import { taServicePages } from './pages/ta-services.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rd = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -33,7 +34,7 @@ for (const p of photos) if (!captions[p.id]) console.warn(`  ! photo "${p.id}" h
 const ordered = photos.slice().sort((a, b) => (captions[a.id]?.order ?? 99) - (captions[b.id]?.order ?? 99));
 
 const pages = [
-  home, ...maternityPages, ...gynaePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, doctor, videos, contact, faq,
+  home, ...maternityPages, ...gynaePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
   dueDate, visitReminder,
   privacy, notFound,
@@ -74,8 +75,9 @@ if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, '
 
 // ---- sitemap + robots ----
 const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`).join('\n') + `\n</urlset>\n`);
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n` +
+    (p.alternates ? p.alternates.map(([l, h]) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${site.url}${h}"/>\n`).join('') : '') + `  </url>`).join('\n') + `\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /photos/\n\nSitemap: ${site.url}/sitemap.xml\n`);
 
 console.log(`Built ${pages.length} pages (${usedIcons.size} icons in sprite, ${(sprite.length / 1024).toFixed(1)} KB)${ctx.hasGallery ? `, ${ordered.length} gallery photos` : ', no gallery photos yet'}`);
