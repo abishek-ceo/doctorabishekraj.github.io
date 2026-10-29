@@ -72,6 +72,18 @@ export const services = [
     blurb: 'Minimally invasive gynaecological surgery. Over 7,000 laparoscopic surgeries performed.', specialty: 'Gynecologic' },
 ];
 
+// Towns outside Erode that have their own page (/womens-hospital-tamil-nadu/<slug>/). km = rough road distance to Erode Fort,
+// rounded from public map and travel sites (they differ by a few km); time = usual road time. Keep these honest: do not add a town
+// without real travel information, and never describe a branch we do not have.
+export const districts = [
+  { slug: 'salem', name: 'Salem', tamil: 'சேலம்', km: 58, time: 'about 1 to 1½ hours' },
+  { slug: 'tiruppur', name: 'Tiruppur', tamil: 'திருப்பூர்', km: 48, time: 'about 1 to 1½ hours' },
+  { slug: 'namakkal', name: 'Namakkal', tamil: 'நாமக்கல்', km: 57, time: 'about 1 to 1½ hours' },
+  { slug: 'karur', name: 'Karur', tamil: 'கரூர்', km: 65, time: 'about 1½ hours' },
+  { slug: 'coimbatore', name: 'Coimbatore', tamil: 'கோயம்புத்தூர்', km: 90, time: 'about 2 hours' },
+  { slug: 'gobichettipalayam', name: 'Gobichettipalayam', tamil: 'கோபிச்செட்டிபாளையம்', km: 37, time: 'about 1 hour' },
+];
+
 export const areas = ['Erode', 'Perundurai', 'Bhavani', 'Surampatti', 'Kollampalayam', 'Veerappanchatram', 'Thindal'];
 
 export const tamil = {

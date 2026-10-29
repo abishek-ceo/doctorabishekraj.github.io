@@ -1,5 +1,5 @@
 // Shared layout, components and structured data for the static page builder.
-import { site, social, services, areas, tamil, featuredVideo, reviews } from './site.mjs';
+import { site, social, services, areas, districts, tamil, featuredVideo, reviews } from './site.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -24,6 +24,8 @@ export const wa = (text) => `https://wa.me/${site.phone.wa}?text=${encodeURIComp
 export const tel = `tel:${site.phone.tel}`;
 export const slugUrl = (slug) => `/${slug}/`;
 export const doctorUrl = slugUrl(site.doctor.slug);
+export const hubUrl = '/womens-hospital-tamil-nadu/';
+export const regionUrl = (slug) => `${hubUrl}${slug}/`;
 
 export const btnWA = (text = 'Hello Abishek Hospital, I would like to book an appointment.', label = 'Book on WhatsApp', cls = 'btn btn-wa') =>
   `<a class="${cls}" href="${wa(text)}" target="_blank" rel="noopener">${icon('whatsapp')} ${label}</a>`;
@@ -83,7 +85,7 @@ export function hospitalNode() {
     ],
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
     knowsAbout: ['Normal delivery', 'Painless (epidural) delivery', 'High-risk pregnancy care', 'PCOS and PCOD treatment', 'Infertility and IUI treatment', 'Laparoscopic gynaecological surgery', 'Menopause care', 'Family planning'],
-    areaServed: areas.map((a) => ({ '@type': 'City', name: a })),
+    areaServed: [{ '@type': 'State', name: 'Tamil Nadu' }, ...[...new Set([...areas, ...districts.map((d) => d.name)])].map((a) => ({ '@type': 'City', name: a }))],
     sameAs: social.flatMap((s) => [s.url, ...(s.alt || [])]),
   };
 }
@@ -112,7 +114,7 @@ function graph(page) {
     hospitalNode(),
   ];
   if (page.withDoctor) nodes.push(doctorNode());
-  const wp = { '@type': page.schemaType || 'WebPage', '@id': `${url}#webpage`, url, name: page.title, description: page.description, inLanguage: 'en-IN', isPartOf: { '@id': `${U}/#website` }, about: { '@id': `${U}/#hospital` } };
+  const wp = { '@type': page.schemaType || 'WebPage', '@id': `${url}#webpage`, url, name: page.title, description: page.description, inLanguage: page.lang === 'ta' ? 'ta-IN' : 'en-IN', isPartOf: { '@id': `${U}/#website` }, about: { '@id': `${U}/#hospital` } };
   if (page.specialty) wp.specialty = `https://schema.org/${page.specialty}`;
   if (page.withDoctor && page.path !== '/') wp.mainEntity = { '@id': `${U}/#doctor` };
   nodes.push(wp);
@@ -132,16 +134,18 @@ function head(page, ctx, main) {
   const url = `${U}${page.path}`;
   const italic = /<h1[^>]*>(?:(?!<\/h1>)[\s\S])*<em>/.test(main) ? '<link rel="preload" href="/assets/fonts/PlayfairDisplay-italic-var.woff2" as="font" type="font/woff2" crossorigin>\n' : '';   // the accent word in most headings is italic
   const img = `${U}${page.ogImage || '/assets/img/og-image.jpg'}`;
+  // Pages that exist in English and Tamil point at each other, so Google shows each searcher the right one.
+  const hreflang = page.alternates ? page.alternates.map(([l, h]) => `<link rel="alternate" hreflang="${l}" href="${U}${h}">\n`).join('') + `<link rel="alternate" hreflang="x-default" href="${U}/">\n` : '';
   const geo = page.geo ? `<meta name="geo.region" content="IN-TN"><meta name="geo.placename" content="Erode"><meta name="geo.position" content="${site.geo.lat};${site.geo.lng}"><meta name="ICBM" content="${site.geo.lat}, ${site.geo.lng}">\n` : '';
   return `<!doctype html>
-<html lang="en">
+<html lang="${page.lang || 'en'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
 <link rel="canonical" href="${url}">
-<meta name="robots" content="${page.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
+${hreflang}<meta name="robots" content="${page.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
 <meta name="author" content="${esc(site.name)}">
 <meta name="theme-color" content="#C2185B">
 ${geo}<link rel="manifest" href="/manifest.json">
@@ -155,7 +159,7 @@ ${italic}${page.preload || ''}<link rel="stylesheet" href="${ctx.cssHref}">
 <script type="speculationrules">${SPECULATION}</script>
 <meta property="og:type" content="${page.ogType || 'website'}">
 <meta property="og:site_name" content="${esc(site.name)}">
-<meta property="og:locale" content="en_IN">
+<meta property="og:locale" content="${page.lang === 'ta' ? 'ta_IN' : 'en_IN'}">
 <meta property="og:title" content="${esc(page.ogTitle || page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
 <meta property="og:url" content="${url}">
@@ -208,7 +212,7 @@ function header(page, ctx) {
 <p class="grp">Our services</p>
 <div class="sublist">${services.map((s) => `<a href="${slugUrl(s.slug)}">${s.short}</a>`).join('')}</div>
 <p class="grp">More</p>
-<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
+<a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="/ta/" lang="ta">தமிழில்</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
 <div class="btn-row">${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}</div>
 ${socialList('on-dark')}
 </nav></div>
@@ -234,6 +238,7 @@ ${socialList('on-dark')}</div>
 <div class="f-bottom">
 <p>© ${yr} ${site.name} · ${site.doctor.name} · Erode, Tamil Nadu. All rights reserved.</p>
 <p><span lang="ta">${tamil.emergency}</span> · For an emergency call <a href="${tel}">${site.phone.display}</a> or dial 108 / 112 for an ambulance.</p>
+<p class="areas">Women travel to us from ${districts.map((d) => `<a href="${regionUrl(d.slug)}">${d.name}</a>`).join(', ')} and across Tamil Nadu: <a href="${hubUrl}">women’s hospital in Tamil Nadu</a> · <a href="/ta/" lang="ta">தமிழில் படிக்க</a></p>
 <p class="areas">Serving women and families in ${areas.join(', ')} and nearby towns. The information on this website is for general education and does not replace advice from your doctor.</p>
 </div></div></footer>
 <nav class="mbar" aria-label="Quick contact">
