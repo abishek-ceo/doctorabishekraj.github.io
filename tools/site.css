@@ -373,16 +373,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .result{animation:pop .4s cubic-bezier(.2,.8,.2,1) both}
   @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
 
-  /* FAQ answers slide open (browsers without this simply open instantly) */
-  @supports (interpolate-size:allow-keywords){
-    :root{interpolate-size:allow-keywords}
-    .faq details::details-content{block-size:0;overflow:clip;transition:block-size .3s ease,content-visibility .3s allow-discrete}
-    .faq details[open]::details-content{block-size:auto}
-  }
-
-  /* page-to-page fade (browsers that support cross-document view transitions) */
-  @view-transition{navigation:auto}
-  ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+  /* FAQ answers sliding open and the page-to-page fade live in assets/css/enhance.css (loaded after the page is shown) */
 
   /* content fades up once as it scrolls into view (site.js adds .rv only to items below the fold, then removes it again) */
   .rv{opacity:0;transform:translateY(18px)}

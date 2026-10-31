@@ -41,7 +41,8 @@ const pages = [
 ];
 
 const ctx = {
-  cssHref: `/assets/css/site.css?v=${hash(rd('assets/css/site.css'))}`,
+  enhanceHref: `/assets/css/enhance.css?v=${hash(rd('assets/css/enhance.css'))}`,   // loaded after first paint (media=print trick), see lib.mjs
+  css: rd('tools/site.css').trim(),   // inlined into every page's <head>: no separate stylesheet request to wait for on a slow network
   jsHref: `/assets/js/site.js?v=${hash(rd('assets/js/site.js'))}`,
   toolsJsHref: `/assets/js/tools.js?v=${hash(rd('assets/js/tools.js'))}`,
   photos: ordered,
