@@ -1,5 +1,6 @@
 // Shared layout, components and structured data for the static page builder.
 import { site, social, services, areas, districts, tamil, featuredVideo, reviews, verification } from './site.mjs';
+import { videoById, placements } from './videos.mjs';
 
 export const usedIcons = new Set();
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -297,6 +298,7 @@ export function servicePage(s) {
 <aside class="facts" aria-label="At a glance"><h2>At a glance</h2><ul>${s.facts.map((f) => `<li>${icon(f.icon)}<span><b>${f.title}</b><small>${f.text}</small></span></li>`).join('')}</ul></aside>
 </div></section>
 ${sections}
+${videoSection(s.videos, { soft: s.sections.length % 2 === 1 })}
 ${s.faqs ? `<section class="section section-soft" id="faqs"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('help')} Questions answered</span><h2>Frequently asked questions</h2></div>${faqBlock(s.faqs)}</div></section>` : ''}
 ${s.share ? shareRow(s.share.url, s.share.text, 'Found this useful? Share it with a friend or family member.', 'Share on WhatsApp') : ''}
 <section class="section"><div class="wrap"><div class="sec-head"><span class="eyebrow">Related care</span><h2>You may also need</h2></div>${serviceCards(related, true)}</div></section>
@@ -307,7 +309,7 @@ ${ctaBand(undefined, undefined, s.waText)}`;
 export function makeServicePage(d) {
   const s = services.find((x) => x.slug === d.slug);
   const crumbsArr = [['Home', '/'], ['Services', '/#services'], [s.short]];
-  const data = { ...d, icon: s.icon, crumbs: crumbsArr };
+  const data = { ...d, icon: s.icon, crumbs: crumbsArr, videos: placements[d.slug] };
   return {
     path: slugUrl(d.slug),
     title: d.title,
@@ -328,3 +330,20 @@ export const videoCard = (v = featuredVideo) =>
   `<span class="video-text"><span class="video-kicker">${icon('youtube')} Watch</span><span class="video-title">${esc(v.title)}</span>` +
   `<span class="video-play">${icon('play')}</span><span class="sr-only"> Play video</span></span>` +
   `<img src="/assets/img/doctor-480.webp" srcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" sizes="320px" width="480" height="481" loading="lazy" decoding="async" alt=""></a></div>`;
+
+/* Compact tap-to-play tile for a list of videos (no picture, nothing loads from YouTube until it is tapped; site.js turns it into the player). */
+export const videoTile = (v, ta = false) => {
+  const t = ta && v.ta ? v.ta : v.title;
+  return `<div class="video vtile" data-video="${v.id}" data-title="${esc(t)}"><a class="video-card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">` +
+    `<span class="video-play">${icon('play')}</span><span class="video-title"${ta && v.ta ? ' lang="ta"' : ''}>${esc(t)}</span><span class="sr-only"> (opens the video player)</span></a></div>`;
+};
+/* "Related videos" block for a page: ids come from videos.mjs `placements`. Returns '' when a page has none. */
+export const videoSection = (ids, { ta = false, soft = false } = {}) => {
+  const list = (ids || []).map((id) => videoById[id]).filter(Boolean);
+  if (!list.length) return '';
+  const heading = ta ? '<span class="eyebrow">' + icon('youtube') + ' <span lang="ta">வீடியோக்கள்</span></span><h2 lang="ta">எங்கள் YouTube சேனலிலிருந்து தொடர்புடைய வீடியோக்கள்</h2>'
+    : '<span class="eyebrow">' + icon('youtube') + ' Watch and learn</span><h2>Related videos from our YouTube channel</h2>';
+  return `<section class="section${soft ? ' section-soft' : ''}" id="videos"><div class="wrap"><div class="sec-head">${heading}</div><div class="vgrid">${list.map((v) => videoTile(v, ta)).join('')}</div>` +
+    `<p class="vnote"${ta ? ' lang="ta"' : ''}>${ta ? 'இந்த வீடியோக்கள் பொதுவான தகவலுக்கு மட்டுமே; மருத்துவ ஆலோசனைக்கு மாற்றல்ல.' : 'Videos are general health education, not a replacement for a consultation.'}</p>` +
+    `<p><a class="link-arrow" href="/videos/"${ta ? '' : ''}>${ta ? 'மேலும் வீடியோக்கள்' : 'More health videos'} ${icon('arrow')}</a></p></div></section>`;
+};

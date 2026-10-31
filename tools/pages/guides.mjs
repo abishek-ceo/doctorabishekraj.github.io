@@ -1,7 +1,8 @@
 // Women's health guides: plain-language answers to the questions women most often search for (English, plus Tamil versions of the top three).
 // General education only: no diagnosis, no drug doses, and never a claim that a named doctor wrote or reviewed a page.
 import { site } from '../site.mjs';
-import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, shareRow, slugUrl, doctorUrl } from '../lib.mjs';
+import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, shareRow, videoSection, slugUrl, doctorUrl } from '../lib.mjs';
+import { placements } from '../videos.mjs';
 
 const P = site.phone.display;
 export const guidesUrl = '/women-health-guides/';
@@ -188,7 +189,7 @@ const guideCrumbs = (g) => [['Home', '/'], ['Women’s health guides', guidesUrl
 function enPage(g) {
   const path = `${guidesUrl}${g.slug}/`;
   const c = guideCrumbs({ ...g, short: g.title.split(' | ')[0] });
-  const data = { icon: g.icon, crumbs: c, eyebrow: 'Women’s health guide', h1: g.h1, tamil: g.tamil, lead: g.lead, waText: g.waText, facts: g.facts, sections: g.sections, faqs: g.faqs, related: g.related, share: { url: site.url + path, text: g.title.split(' | ')[0] } };
+  const data = { icon: g.icon, crumbs: c, eyebrow: 'Women’s health guide', h1: g.h1, tamil: g.tamil, lead: g.lead, waText: g.waText, facts: g.facts, sections: g.sections, faqs: g.faqs, related: g.related, videos: placements['guide/' + g.slug], share: { url: site.url + path, text: g.title.split(' | ')[0] } };
   const page = { path, title: g.title, description: g.description, schemaType: 'MedicalWebPage', crumbs: c, faqs: g.faqs, render: () => servicePage(data) };
   if (g.ta) page.alternates = [['en-IN', path], ['ta-IN', `/ta/${g.ta}/`]];
   return page;
@@ -274,6 +275,7 @@ export function taPage(g) {
 <div class="btn-row">${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
 </div></section>
 ${g.sections.map(([t, html], i) => `<section class="section${i % 2 ? ' section-soft' : ''}"><div class="wrap"><h2 lang="ta">${t}</h2><div class="prose">${html}</div></div></section>`).join('\n')}
+${videoSection(placements[g.enPath ? g.en : 'guide/' + g.en], { ta: true, soft: g.sections.length % 2 === 0 })}
 <section class="section section-soft"><div class="wrap"><div class="sec-head"><h2 lang="ta">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2></div>${faqBlock(g.faqs)}</div></section>
 ${shareRow(site.url + path, g.title.split(' | ')[0], '<span lang="ta">பயனுள்ளதாக இருந்ததா? குடும்பத்தினருடனும் நண்பர்களுடனும் பகிருங்கள்.</span>', '<span lang="ta">வாட்ஸ்அப்பில் பகிர</span>')}
 <section class="section"><div class="wrap"><div class="prose"><h2 lang="ta">அபிஷேக் மருத்துவமனையில்</h2>${taCare}<p><a class="link-arrow" href="${enPath}">${g.enLabel || 'Read this guide in English'} ${icon('arrow')}</a></p></div></div></section>
