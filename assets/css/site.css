@@ -303,7 +303,7 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 .cta p{color:rgba(255,255,255,.88);margin:0}
 
 /* ---------- footer ---------- */
-.footer{background:var(--plum);color:rgba(255,255,255,.82);padding:clamp(40px,6vw,72px) 0 92px;font-size:.97rem}   /* room for the fixed action bar */
+.footer{background:var(--plum);color:rgba(255,255,255,.82);padding:clamp(40px,6vw,72px) 0 116px;font-size:.97rem}   /* a clear gap under the last line, above the fixed Call / WhatsApp / Directions bar */
 .footer a{color:rgba(255,255,255,.88);text-decoration:none}
 .footer a:hover{color:var(--gold-soft);text-decoration:underline}
 .footer .f-title{font:700 .8rem/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 14px}
@@ -528,3 +528,14 @@ body{font-variant-numeric:lining-nums}
 .hero .status-line{margin:0 0 .7rem}
 .status-line b{font-weight:700;color:var(--wa)}
 .status-line .dot{position:relative;display:inline-block;width:.6em;height:.6em;margin-right:.5em;border-radius:50%;background:var(--wa);vertical-align:.05em}
+
+/* short screens (phones on their side, foldable cover screens): the pinned header and the phone bar would cover about half the screen,
+   so the header scrolls away and the bar shrinks to one slim row. The footer keeps a gap under its last line. */
+@media (max-height:520px) and (max-width:1159px){
+  .header{position:static}
+  html{scroll-padding-top:12px;scroll-padding-bottom:64px}
+  .mbar{bottom:6px;padding:4px;gap:6px;border-radius:16px}
+  .mbar a{flex-direction:row;gap:8px;min-height:38px;border-radius:11px;font-size:.84rem}
+  .mbar .i{width:18px;height:18px}
+  .footer{padding-bottom:88px}
+}
