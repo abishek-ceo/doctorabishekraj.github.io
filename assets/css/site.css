@@ -24,7 +24,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:cal
 body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--plum);background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;overflow-wrap:anywhere}
 img,svg{max-width:100%;height:auto;display:block}
 a{color:var(--rose-600);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--rose-700)}
+@media (hover:hover){a:hover{color:var(--rose-700)}}
 h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0 0 .5em;color:var(--plum);letter-spacing:-.01em;text-wrap:balance;overflow-wrap:anywhere}
 h1{font-size:clamp(2.05rem,1.35rem + 3.3vw,3.55rem);font-weight:800}
 h2{font-size:clamp(1.6rem,1.15rem + 1.9vw,2.45rem);font-weight:800}
@@ -47,15 +47,15 @@ h1[lang=ta]{font-size:clamp(1.6rem,1.1rem + 2.4vw,3.2rem)}   /* a long Tamil wor
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:48px;padding:.7em 1.35em;border-radius:999px;border:2px solid transparent;font:700 1rem/1.2 var(--body);text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s,background-color .15s,color .15s;-webkit-tap-highlight-color:transparent}
-.btn:hover{transform:translateY(-1px)}
+@media (hover:hover){.btn:hover{transform:translateY(-1px)}}
 .btn-primary{background:var(--rose-500);color:#fff;box-shadow:0 10px 22px -10px rgba(194,24,91,.7)}
-.btn-primary:hover{background:var(--rose-600);color:#fff}
+@media (hover:hover){.btn-primary:hover{background:var(--rose-600);color:#fff}}
 .btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 22px -12px rgba(15,123,65,.8)}
-.btn-wa:hover{background:var(--wa-dark);color:#fff}
+@media (hover:hover){.btn-wa:hover{background:var(--wa-dark);color:#fff}}
 .btn-outline{background:#fff;color:var(--plum);border-color:var(--plum)}
-.btn-outline:hover{background:var(--plum);color:#fff}
+@media (hover:hover){.btn-outline:hover{background:var(--plum);color:#fff}}
 .btn-light{background:#fff;color:var(--rose-700)}
-.btn-light:hover{background:var(--rose-100);color:var(--rose-700)}
+@media (hover:hover){.btn-light:hover{background:var(--rose-100);color:var(--rose-700)}}
 .btn-sm{min-height:42px;padding:.5em 1.05em;font-size:.95rem}
 .share-section{padding:clamp(18px,3vw,28px) 0}
 .share-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;text-align:center}
@@ -64,7 +64,7 @@ h1[lang=ta]{font-size:clamp(1.6rem,1.1rem + 2.4vw,3.2rem)}   /* a long Tamil wor
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.25rem}
 .link-arrow{display:inline-flex;align-items:center;min-height:40px;gap:.35em;font-weight:700;text-decoration:none}
 .link-arrow .i{width:1em;height:1em;transition:transform .15s}
-.link-arrow:hover .i{transform:translateX(3px)}
+@media (hover:hover){.link-arrow:hover .i{transform:translateX(3px)}}
 
 /* ---------- header ---------- */
 .header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
@@ -78,7 +78,8 @@ h1[lang=ta]{font-size:clamp(1.6rem,1.1rem + 2.4vw,3.2rem)}   /* a long Tamil wor
 .nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px}
 .nav li{margin:0;position:relative}
 .nav a,.nav .sub-toggle{display:inline-flex;align-items:center;gap:4px;padding:.55em .8em;border-radius:10px;color:var(--plum);font:600 .97rem/1 var(--body);text-decoration:none;background:none;border:0;cursor:pointer}
-.nav a:hover,.nav .sub-toggle:hover,.nav [aria-current=page]{color:var(--rose-600);background:var(--rose-50)}
+.nav [aria-current=page]{color:var(--rose-600);background:var(--rose-50)}
+@media (hover:hover){.nav a:hover,.nav .sub-toggle:hover{color:var(--rose-600);background:var(--rose-50)}}
 .nav .i{width:1em;height:1em}
 .nav .has-sub{position:static}   /* the menu hangs from the header's lower edge, not from the link */
 .sub{display:none;position:absolute;z-index:3;top:100%;left:auto;margin:6px 0 0 -80px;width:520px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px}
@@ -90,7 +91,7 @@ html:not(.js) .menu-btn.open-menu{display:none}   /* without JavaScript the menu
 .sub a small{display:block;font-weight:400;color:var(--muted);font-size:.8rem;line-height:1.3;margin-top:2px}
 .header-cta{display:none;align-items:center;gap:8px}
 .lang-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--rose-700);font:700 .92rem/1 var(--tamil);text-decoration:none;white-space:nowrap}
-.lang-btn:hover{background:var(--rose-50);color:var(--rose-700)}
+@media (hover:hover){.lang-btn:hover{background:var(--rose-50);color:var(--rose-700)}}
 .lang-btn[lang=en]{font-family:var(--body)}
 .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--plum);cursor:pointer}
 .menu-btn .i{width:24px;height:24px}
@@ -159,7 +160,7 @@ body.locked>main,body.locked>.footer,body.locked>.mbar{visibility:hidden;transit
 
 .quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-26px;position:relative;z-index:2;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .quick a{display:flex;align-items:center;gap:12px;padding:15px 16px;color:var(--plum);text-decoration:none;font-weight:700;line-height:1.25;font-size:.95rem;transition:background-color .15s}
-.quick a:hover{background:var(--rose-50)}
+@media (hover:hover){.quick a:hover{background:var(--rose-50)}}
 .quick a:nth-child(n+3){border-top:1px solid var(--line)}
 .quick a:nth-child(even){border-left:1px solid var(--line)}
 .quick a small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
@@ -181,12 +182,12 @@ body.locked>main,body.locked>.footer,body.locked>.mbar{visibility:hidden;transit
 .facts small{display:block;color:var(--muted)}
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:1.5rem 0 0;padding:0;list-style:none}
 .toc a{display:inline-block;padding:.58em .95em;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.88rem;font-weight:600;text-decoration:none;color:var(--plum-2)}
-.toc a:hover{border-color:var(--rose-500);color:var(--rose-600)}
+@media (hover:hover){.toc a:hover{border-color:var(--rose-500);color:var(--rose-600)}}
 
 /* ---------- cards ---------- */
 .card{display:flex;flex-direction:column;padding:24px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;height:100%}
 a.card{text-decoration:none;color:inherit}
-a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--rose-200)}
+@media (hover:hover){a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--rose-200)}}
 .card .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--rose-100);color:var(--rose-600);margin-bottom:16px}
 .card .ico .i{width:26px;height:26px}
 .card h3{margin-bottom:.4em}
@@ -208,7 +209,7 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 .chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
 .chips li{margin:0;max-width:100%}
 .chips a,.chips span{display:inline-flex;align-items:center;gap:8px;padding:.6em 1.05em;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--plum);font-weight:600;font-size:.95rem;text-decoration:none;box-shadow:var(--shadow-sm);max-width:100%;overflow-wrap:anywhere}
-.chips a:hover{border-color:var(--rose-500);color:var(--rose-600)}
+@media (hover:hover){.chips a:hover{border-color:var(--rose-500);color:var(--rose-600)}}
 .callout{padding:20px 22px;border-radius:var(--radius);background:var(--rose-50);border:1px solid var(--rose-200);border-left:5px solid var(--rose-500);margin:1.4rem 0}
 .callout.warn{background:#FFF8E6;border-color:#F2DDA0;border-left-color:var(--gold)}
 .callout p:last-child{margin-bottom:0}
@@ -239,13 +240,13 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 .social{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
 .social li{margin:0}
 .social a{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--rose-100);color:var(--rose-600);transition:transform .15s,background-color .15s,color .15s}
-.social a:hover{transform:translateY(-2px);background:var(--rose-500);color:#fff}
+@media (hover:hover){.social a:hover{transform:translateY(-2px);background:var(--rose-500);color:#fff}}
 .social .i{width:22px;height:22px}
 .social.on-dark a{background:rgba(255,255,255,.12);color:#fff}
-.social.on-dark a:hover{background:var(--gold-soft);color:var(--plum)}
+@media (hover:hover){.social.on-dark a:hover{background:var(--gold-soft);color:var(--plum)}}
 .soc-cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .soc-card{display:flex;align-items:center;gap:14px;padding:18px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);text-decoration:none;color:var(--plum);transition:transform .2s,box-shadow .2s}
-.soc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+@media (hover:hover){.soc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}}
 .soc-card .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#fff;flex:none}
 .soc-card .ico .i{width:26px;height:26px}
 .soc-card b{display:block;line-height:1.2}
@@ -305,7 +306,7 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:va
 /* ---------- footer ---------- */
 .footer{background:var(--plum);color:rgba(255,255,255,.82);padding:clamp(40px,6vw,72px) 0 116px;font-size:.97rem}   /* a clear gap under the last line, above the fixed Call / WhatsApp / Directions bar */
 .footer a{color:rgba(255,255,255,.88);text-decoration:none}
-.footer a:hover{color:var(--gold-soft);text-decoration:underline}
+@media (hover:hover){.footer a:hover{color:var(--gold-soft);text-decoration:underline}}
 .footer .f-title{font:700 .8rem/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 14px}
 .footer ul{list-style:none;margin:0;padding:0}
 .footer li{margin:0}
@@ -467,7 +468,7 @@ body{font-variant-numeric:lining-nums}
 .sos h3{color:#fff}
 .sos p{color:rgba(255,255,255,.86)}
 .sos .big{display:block;margin:.5rem 0 1rem;font:800 clamp(1.8rem,1.3rem + 2vw,2.6rem)/1.1 var(--display);color:var(--gold-soft);text-decoration:none}
-.sos .big:hover{color:#fff}
+@media (hover:hover){.sos .big:hover{color:#fff}}
 .sos .big{padding:.15em 0}
 .faq-split{align-items:start}
 .faq-split .faq{max-width:none}
@@ -501,14 +502,14 @@ body{font-variant-numeric:lining-nums}
 /* ---------- click-to-play video ---------- */
 .video{position:relative;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,var(--rose-700),var(--rose-900));box-shadow:var(--shadow)}
 .video-card{display:flex;flex-direction:column;width:100%;color:#fff;text-decoration:none}
-.video-card:hover{color:#fff}
+@media (hover:hover){.video-card:hover{color:#fff}}
 .video-card img{order:-1;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 10%}
 .video-text{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px 20px 22px;min-width:0}
 .video-kicker{display:inline-flex;align-items:center;gap:6px;font:700 .78rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft)}
 .video-title{font:800 clamp(1.2rem,1rem + 1vw,1.6rem)/1.15 var(--display)}
 .video-play{position:relative;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#fff;color:var(--rose-600);box-shadow:0 10px 24px -8px rgba(0,0,0,.5);transition:transform .15s}
 .video-play .i{margin-left:3px;fill:currentColor}
-.video-card:hover .video-play{transform:scale(1.08)}
+@media (hover:hover){.video-card:hover .video-play{transform:scale(1.08)}}
 .video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 @media (min-width:520px){
   .video{aspect-ratio:16/9}
@@ -553,3 +554,8 @@ body{font-variant-numeric:lining-nums}
 
 /* Windows high-contrast mode removes background colours: keep the "Open now" dot visible */
 @media (forced-colors:active){.status-line .dot{forced-color-adjust:none;background:Highlight}}
+
+/* tablets and large foldables: a slim centred phone bar instead of three huge buttons stretched across the whole screen */
+@media (min-width:700px) and (max-width:1159px){
+  .mbar{left:0;right:0;margin-inline:auto;width:min(560px,calc(100% - 20px))}
+}
