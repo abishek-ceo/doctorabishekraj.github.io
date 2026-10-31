@@ -1,6 +1,7 @@
 // Home, doctor, videos, contact and FAQ pages.
 import { site, social, stats, services, areas, districts, tamil, reviews } from '../site.mjs';
-import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, statusLine, hubUrl, regionUrl } from '../lib.mjs';
+import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, videoTile, videoSection, statusLine, hubUrl, regionUrl } from '../lib.mjs';
+import { videoList, videoGroups, placements } from '../videos.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
@@ -286,7 +287,7 @@ ${statsBand()}</div></section>
 <section class="section section-soft"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('video')} Learn from ${D}</span><h2>Follow Dr. Jayanthi <em>online</em></h2></div>
 ${socialCards()}</div></section>
-
+${videoSection(placements.doctor)}
 <section class="section"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('help')} Quick answers</span><h2>Frequently asked <em>questions</em></h2></div>
 ${faqBlock(doctorFaqs)}</div></section>
@@ -299,6 +300,16 @@ const videoFaqs = [
   ['Which language are the videos in?', 'The videos are in Tamil, so every woman and family can understand them easily.'],
   ['Can a video replace a visit to the doctor?', `No. The videos are for general education. If you have symptoms or a medical concern, please book a consultation. Call or WhatsApp ${P}.`],
 ];
+/* Every video on the channel, grouped by topic (data in tools/videos.mjs). Tiles load nothing from YouTube until tapped. */
+const videoLibrary = () => {
+  const groups = Object.entries(videoGroups).map(([key, label]) => [key, label, videoList.filter((v) => v.group === key)]).filter(([, , list]) => list.length);
+  return `<section class="section" id="library"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">${icon('play')} All videos</span><h2>Watch by <em>topic</em></h2><p class="lead">${videoList.length} videos from our YouTube channel. Tap one to play it right here.</p></div>
+<ul class="chips vnav" aria-label="Video topics">${groups.map(([key, label, list]) => `<li><a href="#v-${key}">${label} (${list.length})</a></li>`).join('')}</ul>
+${groups.map(([key, label, list]) => `<h3 class="vgroup" id="v-${key}">${label}</h3><div class="vgrid">${list.map((v) => videoTile(v)).join('')}</div>`).join('\n')}
+<p class="vnote">Videos are general health education, not a replacement for a consultation. To see Dr. Jayanthi Prabakaran, call or WhatsApp ${P}.</p>
+</div></section>`;
+};
 export const videos = {
   path: '/videos/',
   title: 'Women’s Health Videos in Tamil | Dr. Jayanthi Prabakaran',
@@ -326,6 +337,8 @@ ${videoCard()}
 <div class="btn-row"><a class="btn btn-outline" href="${YT}/videos" target="_blank" rel="noopener">${icon('youtube')} More videos on YouTube</a></div>
 <p style="margin-top:1rem"><a class="link-arrow" href="${slugUrl('maternity-hospital-erode')}">Pregnancy care in Erode ${icon('arrow')}</a></p></div>
 </div></section>
+
+${videoLibrary()}
 
 <section class="section section-soft"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('play')} What you will learn</span><h2>Topics <em>we cover</em></h2></div>

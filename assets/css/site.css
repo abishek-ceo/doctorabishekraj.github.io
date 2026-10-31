@@ -506,6 +506,22 @@ body{font-variant-numeric:lining-nums}
   .video-text{flex:1;justify-content:center;padding:clamp(14px,3vw,28px)}
   .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;aspect-ratio:auto}
 }
+/* video list tiles (related videos on a page, and the library on /videos/) */
+.vgrid{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+.video.vtile{aspect-ratio:auto}
+.vtile .video-card{flex-direction:row;align-items:center;gap:14px;height:auto;min-height:84px;padding:14px 18px}
+.vtile .video-play{flex:none;width:46px;height:46px}
+.vtile .video-play::after{content:none}
+.vtile .video-title{font:700 1rem/1.4 var(--body);color:#fff;min-width:0}
+.vtile .video-title[lang=ta]{font-family:var(--tamil);line-height:1.55}
+.vtile iframe{position:static;width:100%;height:auto;aspect-ratio:16/9}
+.vnote{margin:1rem 0 .4rem;color:var(--muted);font-size:.92rem}
+.vnav{margin:0 0 .6rem;gap:8px}
+.vnav a{padding:.4em .85em;font-size:.88rem;box-shadow:none}
+.vgroup{margin:1.8rem 0 .9rem;font-size:1.3rem;scroll-margin-top:92px}
+@media (min-width:640px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.vgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vgrid .vtile:has(iframe){grid-column:1/-1}
 
 /* ---------- "Open now" line (home hero and contact page) ---------- */
 .status-line{margin:.9rem 0 0;font-size:.95rem;line-height:1.5;color:var(--muted)}
