@@ -1,0 +1,13 @@
+/* Two small, brand-new CSS touches that are only polish. Loaded after the page has been shown (see the <link> in every page's head), so they never delay the first paint,
+   and kept out of the inline stylesheet because the W3C validator does not know these newest CSS features yet (they are valid CSS; browsers without them just skip them). */
+@media screen and (prefers-reduced-motion:no-preference){
+  /* FAQ answers slide open (browsers without this simply open instantly) */
+  @supports (interpolate-size:allow-keywords){
+    :root{interpolate-size:allow-keywords}
+    .faq details::details-content{block-size:0;overflow:clip;transition:block-size .3s ease,content-visibility .3s allow-discrete}
+    .faq details[open]::details-content{block-size:auto}
+  }
+  /* page-to-page fade (browsers that support cross-document view transitions) */
+  @view-transition{navigation:auto}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+}

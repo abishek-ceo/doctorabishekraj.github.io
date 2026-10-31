@@ -163,7 +163,8 @@ ${geo}<link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/DMSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/PlayfairDisplay-var.woff2" as="font" type="font/woff2" crossorigin>
-${italic}${page.preload || ''}<link rel="stylesheet" href="${ctx.cssHref}">
+${italic}${page.preload || ''}<style>${ctx.css}</style>
+<link rel="stylesheet" href="${ctx.enhanceHref}" media="print" onload="this.media='all'">
 <script>document.documentElement.classList.add('js')</script>
 <script type="speculationrules">${SPECULATION}</script>
 <meta property="og:type" content="${page.ogType || 'website'}">
