@@ -448,7 +448,17 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
 @media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.header .wrap{gap:8px}.brand-sub{letter-spacing:.01em}}
 @media (max-width:380px){.brand-sub{display:none}.brand-name{font-size:1.02rem}}
 @media (max-width:359px){.brand-sub{display:none}.btn{padding-inline:1em}.lang-btn{display:none}}
-@media print{.header,.mbar,.cta,.drawer{display:none}body{padding:0}}
+@media print{
+  .header,.mbar,.cta,.drawer,.kolam,.petals,.video,.share-section,.vnav{display:none}
+  body{padding:0;color:#000}
+  /* browsers drop background colours when printing, so white text on a coloured block would vanish: print everything dark on white */
+  .hero,.page-hero,.section-soft,.section-dark,.sos,.footer{background:#fff!important;box-shadow:none!important}
+  .footer,.footer *,.section-dark,.section-dark *,.sos,.sos *{color:#000!important}
+  .btn,.btn-wa,.btn-primary,.btn-light{background:#fff!important;color:#000!important;border:1px solid #000!important;box-shadow:none!important}
+  .btn svg,.footer svg,.sos svg{color:#000!important;fill:none}
+  .footer{padding-bottom:20px}
+  a{color:#000}
+}
 
 /* ---------- additions after first review ---------- */
 body{font-variant-numeric:lining-nums}
@@ -469,6 +479,7 @@ body{font-variant-numeric:lining-nums}
 /* header: never wrap, even with the Gallery link present */
 .header .wrap{max-width:1320px}
 .nav a,.nav .sub-toggle,.header-cta .btn{white-space:nowrap}
+.nav .sub a{white-space:normal}   /* menu titles may wrap inside their column instead of running past the box edge */
 .header-cta .btn .i{margin:0}
 @media (min-width:1160px) and (max-width:1359px){
   .header-cta .call-text{display:none}
@@ -539,3 +550,6 @@ body{font-variant-numeric:lining-nums}
   .mbar .i{width:18px;height:18px}
   .footer{padding-bottom:88px}
 }
+
+/* Windows high-contrast mode removes background colours: keep the "Open now" dot visible */
+@media (forced-colors:active){.status-line .dot{forced-color-adjust:none;background:Highlight}}
