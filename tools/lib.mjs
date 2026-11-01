@@ -1,5 +1,6 @@
 // Shared layout, components and structured data for the static page builder.
 import { site, social, services, areas, districts, tamil, featuredVideo, reviews, verification } from './site.mjs';
+import { createHash } from 'node:crypto';
 import { videoById, placements } from './videos.mjs';
 
 export const usedIcons = new Set();
@@ -12,6 +13,24 @@ export const statusLine = (cls = '') =>
   `<p class="status-line${cls ? ' ' + cls : ''}"><span class="dot" aria-hidden="true"></span><b>Open now</b> · 24/7</p>`;
 // Browsers that support it fetch a page's HTML when a visitor hovers or presses a link, so the next page opens almost instantly.
 const SPECULATION = JSON.stringify({ prefetch: [{ where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[target=_blank]' } }] }, eagerness: 'moderate' }] });
+// The one inline script on every page (marks the page as JavaScript-capable). Its hash goes into the Content-Security-Policy below.
+const JS_FLAG = "document.documentElement.classList.add('js')";
+// Content-Security-Policy, sent as a <meta> tag because GitHub Pages cannot send HTTP headers. It lets pages load things only from this site,
+// plus YouTube (privacy mode) and Google Maps frames that appear after a visitor taps, and allows the single inline script above and the
+// speculation-rules prefetch hints (each by its hash, so nothing else inline can run). Nothing else can run, so an injected <script> or a hijacked third-party file could not execute.
+const CSP = [
+  "default-src 'self'",
+  `script-src 'self' 'sha256-${createHash('sha256').update(JS_FLAG).digest('base64')}' 'sha256-${createHash('sha256').update(SPECULATION).digest('base64')}'`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "frame-src https://www.youtube-nocookie.com https://www.google.com/maps/embed",
+  "manifest-src 'self'",
+  "form-action 'self'",
+  "base-uri 'none'",
+  "object-src 'none'",
+].join('; ');   // no upgrade-insecure-requests: every address on the site is already https, and HTTPS itself is switched on in the GitHub Pages settings
 
 let SPRITE = '/assets/icons.svg';
 export const setSprite = (href) => { SPRITE = href; };
@@ -148,6 +167,8 @@ function head(page, ctx, main) {
 <html lang="${page.lang || 'en'}">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
@@ -164,8 +185,8 @@ ${geo}<link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/assets/fonts/DMSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/PlayfairDisplay-var.woff2" as="font" type="font/woff2" crossorigin>
 ${italic}${page.preload || ''}<style>${ctx.css}</style>
-<link rel="stylesheet" href="${ctx.enhanceHref}" media="print" onload="this.media='all'">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="${ctx.enhanceHref}" media="print" data-late>
+<script>${JS_FLAG}</script>
 <script type="speculationrules">${SPECULATION}</script>
 <meta property="og:type" content="${page.ogType || 'website'}">
 <meta property="og:site_name" content="${esc(site.name)}">
