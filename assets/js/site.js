@@ -6,6 +6,9 @@
   function $(s, r) { return (r || doc).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); }
 
+  /* style sheets marked data-late were fetched without blocking the first paint; switch them on now (an inline onload attribute would be blocked by the Content-Security-Policy) */
+  $$('link[data-late]').forEach(function (l) { l.media = 'all'; });
+
   /* ---- mobile drawer ---- */
   var drawer = $('#drawer'), openBtn = $('[data-open-menu]');
   var behind = $$('.skip, .header, main, .footer, .mbar');   /* everything the open menu covers: not reachable by keyboard or screen reader */
