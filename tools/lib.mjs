@@ -97,7 +97,7 @@ export function hospitalNode() {
     name: site.name,
     alternateName: site.altName,
     url: `${U}/`,
-    logo: { '@type': 'ImageObject', url: `${U}/hospital-logo.png`, width: 500, height: 500 },
+    logo: { '@type': 'ImageObject', url: `${U}/assets/img/icon-512.png`, width: 512, height: 512 },   // the heart mark, as in the header and app icons (same image to use as the Google Business Profile logo)
     image: [`${U}/assets/img/og-image.jpg`],
     telephone: site.phone.tel,
     email: site.email,
