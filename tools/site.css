@@ -142,6 +142,10 @@ body.locked>main,body.locked>.footer,body.locked>.mbar{visibility:hidden;transit
 .hero h1{margin-bottom:.35em}
 .hero .lead{max-width:34em}
 .hero .btn-row .btn,.page-hero .btn-row .btn{flex:1 1 230px}
+.rating{display:inline-flex;align-items:center;gap:.45em;margin:1rem 0 0;font-size:.93rem;font-weight:600;color:var(--plum-2)}
+.rating .i{width:1.1em;height:1.1em;fill:#E3A008;stroke:#E3A008}
+.rating b{color:var(--plum)}
+@media (hover:hover){.rating:hover span{text-decoration:underline}}
 .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 1.1rem}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:.4em .85em;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.85rem;font-weight:600;color:var(--plum-2);box-shadow:var(--shadow-sm)}
 .pill .i{width:1em;height:1em;color:var(--rose-500)}

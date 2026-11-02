@@ -60,6 +60,10 @@ export const btnDir = (label = 'Get directions', cls = 'btn btn-outline') =>
 export const btnReview = (label = 'Write a Google review', cls = 'btn btn-outline btn-sm') =>
   `<a class="${cls}" href="${reviews.write}" target="_blank" rel="noopener">${icon('star')} ${label}</a>`;
 
+/* "★ 5.0 · 1,700+ Google reviews": plain text and a link to the Google Maps listing (no review markup, no script). Numbers live in `reviews` in site.mjs. */
+export const ratingLine = (cls = '') =>
+  `<a class="rating${cls ? ' ' + cls : ''}" href="${reviews.view}" target="_blank" rel="noopener">${icon('star')}<span><b>${reviews.rating}</b> · ${reviews.count} Google reviews<span class="sr-only"> (opens Google Maps)</span></span></a>`;
+
 export const socialList = (cls = '') =>
   `<ul class="social${cls ? ' ' + cls : ''}">` +
   social.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.label} – ${s.handle}">${icon(s.id)}</a></li>`).join('') +

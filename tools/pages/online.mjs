@@ -2,22 +2,22 @@
 // Fee, minutes, hours, days and the registration number all come from `online` in site.mjs. There is no payment or booking system on the website:
 // the form opens WhatsApp with the request written out, our team confirms a slot and sends the payment details there, and the doctor calls.
 // Keep the wording honest: this is general guidance on how the service works, not a promise of treatment, and never a claim about outcomes.
-import { site, online } from '../site.mjs';
+import { site, online, onlineSlot, onlineSlotTa } from '../site.mjs';
 import { icon, servicePage, wa, tel, slugUrl, doctorUrl } from '../lib.mjs';
 import { taPage, taList } from './guides.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
 const fee = `₹${online.fee}`;
-const when = online.days ? `${online.hours}, ${online.days}` : online.hours;
+const when = onlineSlot;
 const path = slugUrl(online.slug);
 const taPath = `/ta/${online.slug}/`;
 const list = (items) => `<ul class="checks">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
 const reg = (ta) => (online.regNo ? `<p${ta ? ' lang="ta"' : ''}>${ta ? 'மருத்துவ கவுன்சில் பதிவு எண்' : 'Medical council registration no.'}: <b>${online.regNo}</b></p>` : '');
 
 // The request, as it will arrive on WhatsApp: the patient only has to fill in the blanks.
-const waText = `Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes).\nName: \nAge: \nConcern: \nAudio or video call: \nPreferred day and time (${online.hours}): `;
-const taWaText = `வணக்கம் அபிஷேக் மருத்துவமனை, நான் ஆன்லைன் ஆலோசனைக்கு (${fee}, ${online.minutes} நிமிடம் வரை) முன்பதிவு செய்ய விரும்புகிறேன்.\nபெயர்: \nவயது: \nபிரச்சனை: \nஆடியோ / வீடியோ: \nவிரும்பும் நாள் மற்றும் நேரம் (மாலை 6:30 – 8:30): `;
+const waText = `Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes).\nName: \nAge: \nConcern: \nAudio or video call: \nPreferred day and time (${onlineSlot}): `;
+const taWaText = `வணக்கம் அபிஷேக் மருத்துவமனை, நான் ஆன்லைன் ஆலோசனைக்கு (${fee}, ${online.minutes} நிமிடம் வரை) முன்பதிவு செய்ய விரும்புகிறேன்.\nபெயர்: \nவயது: \nபிரச்சனை: \nஆடியோ / வீடியோ: \nவிரும்பும் நாள் மற்றும் நேரம் (${onlineSlotTa}): `;
 
 // 15-minute slots from the opening time; the last one ends at closing time.
 const slots = ['6:30', '6:45', '7:00', '7:15', '7:30', '7:45', '8:00', '8:15'].map((t) => `${t} PM`);
@@ -27,7 +27,7 @@ const form = `<form class="form form-card" data-wa-form data-wa="${site.phone.wa
 <div class="field"><label for="o-age">Your age <span aria-hidden="true">*</span></label><input id="o-age" name="age" data-label="Age" type="text" inputmode="numeric" maxlength="3" autocomplete="off" required><span class="err">Please enter your age.</span></div>
 <div class="field"><label for="o-concern">What would you like to discuss? <span aria-hidden="true">*</span></label><textarea id="o-concern" name="concern" data-label="Concern" placeholder="For example: periods have been irregular for 3 months" required></textarea><span class="err">Please tell us briefly what you would like to discuss.</span></div>
 <div class="field"><label for="o-mode">Audio or video call <span aria-hidden="true">*</span></label><select id="o-mode" name="mode" data-label="Call type" required><option value="">Select</option><option>Audio call</option><option>Video call</option><option>Either is fine</option></select><span class="err">Please choose a call type.</span></div>
-<div class="field"><label for="o-day">Preferred day <span aria-hidden="true">*</span></label><input id="o-day" name="day" data-label="Preferred day" type="text" placeholder="For example: Monday, or 5 Nov" autocomplete="off" required><span class="err">Please tell us which day suits you.</span></div>
+<div class="field"><label for="o-day">Preferred day${online.days ? ` (${online.days})` : ''} <span aria-hidden="true">*</span></label><input id="o-day" name="day" data-label="Preferred day" type="text" placeholder="For example: Monday, or 5 Nov" autocomplete="off" required><span class="err">Please tell us which day suits you.</span></div>
 <div class="field"><label for="o-time">Preferred time <span aria-hidden="true">*</span></label><select id="o-time" name="time" data-label="Preferred time" required><option value="">Select (${online.hours})</option>${slots.map((t) => `<option>${t}</option>`).join('')}<option>Any time in the evening</option></select><span class="err">Please choose a time.</span></div>
 <div class="btn-row" style="margin-top:0"><button class="btn btn-wa" type="submit">${icon('whatsapp')} Request on WhatsApp</button></div>
 <p class="note" role="status" aria-live="polite" data-status></p>
@@ -36,7 +36,7 @@ const form = `<form class="form form-card" data-wa-form data-wa="${site.phone.wa
 <noscript><div class="callout"><p>Please <a href="${wa(waText)}">send your request on WhatsApp</a> or call <a href="${tel}">${P}</a>.</p></div></noscript>`;
 
 const steps = `<ol class="steps">
-<li><b>Send your request</b><span>Fill in the short form below. It opens WhatsApp with your details ready to send. Tell us your concern and the time you prefer, between ${online.hours}.</span></li>
+<li><b>Send your request</b><span>Fill in the short form below. It opens WhatsApp with your details ready to send. Tell us your concern and the time you prefer (${when}).</span></li>
 <li><b>We confirm your slot</b><span>Our team replies on WhatsApp with your confirmed time and the payment details for the ${fee} fee. Your slot is booked once we confirm it.</span></li>
 <li><b>Talk to the doctor</b><span>At your time, ${D} speaks with you by audio or video call. Keep your earlier reports, medicines and questions ready.</span></li>
 <li><b>Follow the advice</b><span>If you need an examination, a scan or a test, the doctor will tell you, and we will help you book a visit to the hospital.</span></li>
@@ -44,7 +44,7 @@ const steps = `<ol class="steps">
 
 const faqs = [
   ['How much does an online consultation cost?', `${fee} for one consultation of up to ${online.minutes} minutes. Any tests, scans or procedures the doctor advises are separate, and their cost is explained before you decide.`],
-  ['When can I talk to the doctor online?', `Online consultations are in the evening, ${when}. Tell us the time you prefer and our team will confirm your slot. For clinic visits, the usual hours are ${site.hours.opd}.`],
+  ['When can I talk to the doctor online?', `Online consultations are held in the evening, ${when}. Tell us the time you prefer and our team will confirm your slot. For clinic visits, the usual hours are ${site.hours.opd}.`],
   ['Can I choose between an audio call and a video call?', 'Yes. Choose audio or video in the request form. Video lets the doctor see you, but audio is enough for many questions.'],
   ['How do I pay?', 'After we confirm your slot, our team sends the payment details on WhatsApp. Please do not send money before you hear from us.'],
   ['Which problems can I discuss?', `Any gynaecological concern: periods, PCOS, discharge and infections, fibroids and cysts, pelvic pain, menopause, family planning and fertility questions, and review of your scan or blood reports. See <a href="${slugUrl('gynecologist-erode')}">gynaecology care</a>.`],
@@ -60,19 +60,19 @@ const data = {
   icon: 'video', crumbs: crumbArr, eyebrow: 'Online consultation',
   h1: 'Online Consultation with a <em>Gynaecologist</em>',
   tamil: 'ஆன்லைன் மகளிர் மருத்துவ ஆலோசனை · வீட்டிலிருந்தே',
-  lead: `Talk to ${D} from home, by audio or video call. ${fee} for a consultation of up to ${online.minutes} minutes, in the evening, ${online.hours}.`,
+  lead: `Talk to ${D} from home, by audio or video call. ${fee} for a consultation of up to ${online.minutes} minutes. Available ${when}.`,
   waText,
   facts: [
     { icon: 'video', title: 'Audio or video call', text: 'Your choice, from your own phone' },
     { icon: 'timer', title: `Up to ${online.minutes} minutes`, text: `${fee} per consultation` },
-    { icon: 'clock', title: `Evenings, ${online.hours}`, text: online.days ? online.days : 'We confirm your exact slot on WhatsApp' },
+    { icon: 'clock', title: when, text: 'Evening slots, confirmed on WhatsApp' },
     { icon: 'stethoscope', title: 'All gynaecology concerns', text: 'Periods, PCOS, discharge, menopause and more' },
   ],
   sections: [
     { id: 'how', title: 'How it works', nav: 'How it works', html: steps },
     { id: 'book', title: 'Request a consultation', nav: 'Request a slot', wide: true, html: `<div class="contact-grid" style="align-items:start"><div>
 <p class="lead">Tell us your concern and when you would like to talk. We reply on WhatsApp to confirm your slot.</p>
-${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`, `Evenings, <b>${online.hours}</b>${online.days ? ', ' + online.days : ''}`, 'Audio or video call, your choice', 'Your slot is booked only after our team confirms it on WhatsApp'])}
+${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`, `Evenings: <b>${when}</b>`, 'Audio or video call, your choice', 'Your slot is booked only after our team confirms it on WhatsApp'])}
 <p>Prefer to talk first? Call <a href="${tel}">${P}</a>.</p></div>
 <div>${form}</div></div>` },
     { id: 'topics', title: 'What you can discuss', nav: 'What we cover', html: `<p>Any gynaecological concern, for example:</p>${list([
@@ -110,7 +110,7 @@ ${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`,
 export const onlinePage = {
   path,
   title: 'Online Gynecologist Consultation | Abishek Hospital, Erode',
-  description: `Talk to a gynaecologist by audio or video call. ${fee} for up to ${online.minutes} minutes, evenings ${online.hours.replace(' PM – ', ' – ')}. Abishek Hospital, Erode.`,
+  description: `Talk to a gynaecologist by audio or video call. ${fee} for up to ${online.minutes} minutes, ${online.days ? online.days + ', ' : ''}${online.hours.replace(' PM – ', ' – ')}. Abishek Hospital, Erode.`,
   schemaType: 'MedicalWebPage',
   specialty: 'Gynecologic',
   alternates: [['en-IN', path], ['ta-IN', taPath]],
@@ -123,7 +123,7 @@ export const onlinePage = {
 const p = (t) => `<p lang="ta">${t}</p>`;
 const taFaqs = [
   ['ஆன்லைன் ஆலோசனைக்குக் கட்டணம் எவ்வளவு?', `ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. மருத்துவர் பரிந்துரைக்கும் பரிசோதனைகள், ஸ்கேன் அல்லது சிகிச்சைகளுக்கான கட்டணம் தனி; அதன் செலவு முன்கூட்டியே விளக்கப்படும்.`],
-  ['எந்த நேரத்தில் மருத்துவரிடம் பேசலாம்?', `ஆன்லைன் ஆலோசனை மாலை நேரத்தில், மாலை 6:30 முதல் 8:30 வரை. நீங்கள் விரும்பும் நேரத்தைத் தெரிவியுங்கள்; எங்கள் குழு நேரத்தை உறுதி செய்யும்.`],
+  ['எந்த நேரத்தில் மருத்துவரிடம் பேசலாம்?', `ஆன்லைன் ஆலோசனை ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை. நீங்கள் விரும்பும் நேரத்தைத் தெரிவியுங்கள்; எங்கள் குழு நேரத்தை உறுதி செய்யும்.`],
   ['ஆடியோ அழைப்பா, வீடியோ அழைப்பா என்று தேர்வு செய்யலாமா?', 'ஆம். உங்கள் விருப்பப்படி ஆடியோ அல்லது வீடியோ அழைப்பைத் தேர்ந்தெடுக்கலாம்.'],
   ['கட்டணத்தை எப்படிச் செலுத்துவது?', 'நேரம் உறுதியான பிறகு, எங்கள் குழு வாட்ஸ்அப்பில் கட்டண விவரங்களை அனுப்பும். எங்களிடமிருந்து தகவல் வருவதற்கு முன் பணம் அனுப்ப வேண்டாம்.'],
   ['கர்ப்ப காலத்தில் ஆன்லைன் ஆலோசனை பெறலாமா?', `கேள்விகள் கேட்கவும் அறிக்கைகளைக் காட்டவும் முடியும். வழக்கமான கர்ப்பகாலப் பரிசோதனைகளுக்கு உடல் பரிசோதனையும் ஸ்கேனும் தேவை; அதற்கு நேரில் வாருங்கள். ரத்தப்போக்கு, தண்ணீர் கசிவு, கடுமையான வலி அல்லது குழந்தையின் அசைவு குறைந்தால் ஆன்லைன் அழைப்புக்குக் காத்திருக்காமல் ${P} என்ற எண்ணில் அழைக்கவும் அல்லது மருத்துவமனைக்கு வரவும்.`],
@@ -134,13 +134,13 @@ export const taOnlinePage = taPage({
   slug: online.slug, en: online.slug, enPath: path, enLabel: 'Read this page in English, with the request form',
   wa: taWaText,
   title: 'ஆன்லைன் மகளிர் மருத்துவ ஆலோசனை | அபிஷேக்',
-  description: `வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் மகளிர் மருத்துவரிடம் பேசலாம். ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. மாலை 6:30 – 8:30. ஈரோடு அபிஷேக் மருத்துவமனை.`,
+  description: `வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் மகளிர் மருத்துவரிடம் பேசலாம். ${fee}, ${online.minutes} நிமிடம் வரை. ${onlineSlotTa}. அபிஷேக் மருத்துவமனை, ஈரோடு.`,
   crumb: 'ஆன்லைன் ஆலோசனை',
   h1: 'ஆன்லைன் <em>மகளிர் மருத்துவ</em> ஆலோசனை',
-  lead: `டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தபடியே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. மாலை நேரம்: 6:30 முதல் 8:30 வரை.`,
+  lead: `டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தபடியே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. நேரம்: ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை.`,
   sections: [
     ['எப்படிச் செயல்படுகிறது', `<ol class="steps" lang="ta">
-<li><b>வாட்ஸ்அப்பில் கோரிக்கை அனுப்புங்கள்</b><span>மேலே உள்ள பொத்தானை அழுத்தினால் உங்கள் பெயர், வயது, பிரச்சனை, ஆடியோ அல்லது வீடியோ, மாலை 6:30 – 8:30-க்குள் விரும்பும் நாள் மற்றும் நேரம் ஆகியவற்றை எழுதும் வகையில் வாட்ஸ்அப் திறக்கும்.</span></li>
+<li><b>வாட்ஸ்அப்பில் கோரிக்கை அனுப்புங்கள்</b><span>மேலே உள்ள பொத்தானை அழுத்தினால் உங்கள் பெயர், வயது, பிரச்சனை, ஆடியோ அல்லது வீடியோ, விரும்பும் நாள் மற்றும் நேரம் (${onlineSlotTa}) ஆகியவற்றை எழுதும் வகையில் வாட்ஸ்அப் திறக்கும்.</span></li>
 <li><b>நேரத்தை நாங்கள் உறுதி செய்வோம்</b><span>எங்கள் குழு உறுதியான நேரத்தையும் ${fee} கட்டணத்துக்கான கட்டண விவரங்களையும் வாட்ஸ்அப்பில் அனுப்பும். உறுதி செய்த பிறகே நேரம் முன்பதிவாகும்.</span></li>
 <li><b>மருத்துவரிடம் பேசுங்கள்</b><span>குறிப்பிட்ட நேரத்தில் டாக்டர் ஜெயந்தி பிரபாகரன் ஆடியோ அல்லது வீடியோ அழைப்பில் பேசுவார். பழைய அறிக்கைகள், மருந்துகள், கேள்விகளைத் தயாராக வைத்திருங்கள்.</span></li>
 <li><b>ஆலோசனையைப் பின்பற்றுங்கள்</b><span>பரிசோதனை, ஸ்கேன் அல்லது ரத்தப் பரிசோதனை தேவைப்பட்டால் மருத்துவர் தெரிவிப்பார்; மருத்துவமனைக்கு வர நாங்கள் உதவுவோம்.</span></li>
@@ -162,7 +162,7 @@ export const taOnlinePage = taPage({
       'கர்ப்ப காலத்தில் ரத்தப்போக்கு, தண்ணீர் கசிவு, கடுமையான வலி, கடுமையான தலைவலி அல்லது பார்வை மங்குதல், குழந்தையின் அசைவு குறைதல்',
     ])}<p>${P} என்ற எண்ணில் அழைக்கவும் அல்லது உடனே மருத்துவமனைக்கு வரவும். அவசர சிகிச்சை 24 மணி நேரமும் உண்டு. உயிருக்கு ஆபத்தான நிலையில் 108 அல்லது 112-ஐ அழைக்கவும்.</p></div>
 ${p('ஆன்லைன் ஆலோசனை உடல் பரிசோதனைக்கு மாற்றாகாது. பரிசோதனை, ஸ்கேன் அல்லது ரத்தப் பரிசோதனை தேவை என மருத்துவர் கருதினால் தெரிவிப்பார்; அப்போது ஈரோடு கோட்டை மருத்துவமனைக்கு வாருங்கள்.')}`],
-    ['கட்டணமும் நேரமும்', `${p(`கட்டணம் ஒரு ஆலோசனைக்கு <b>${fee}</b>, ${online.minutes} நிமிடம் வரை. ஆன்லைன் ஆலோசனை மாலை 6:30 முதல் 8:30 வரை. நேரம் உறுதியான பிறகு எங்கள் குழு வாட்ஸ்அப்பில் கட்டண விவரங்களை அனுப்பும். எங்களிடமிருந்து தகவல் வருவதற்கு முன் பணம் அனுப்ப வேண்டாம்.`)}
+    ['கட்டணமும் நேரமும்', `${p(`கட்டணம் ஒரு ஆலோசனைக்கு <b>${fee}</b>, ${online.minutes} நிமிடம் வரை. ஆன்லைன் ஆலோசனை ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை. நேரம் உறுதியான பிறகு எங்கள் குழு வாட்ஸ்அப்பில் கட்டண விவரங்களை அனுப்பும். எங்களிடமிருந்து தகவல் வருவதற்கு முன் பணம் அனுப்ப வேண்டாம்.`)}
 ${p('இந்தக் கட்டணம் ஆலோசனைக்கு மட்டுமே. மருத்துவர் பரிந்துரைக்கும் பரிசோதனைகள், ஸ்கேன் அல்லது சிகிச்சைகளுக்கான கட்டணம் தனி; அதன் செலவு முன்கூட்டியே விளக்கப்படும்.')}`],
     ['முன்பதிவுக்கு முன்', `${taList([
       'அமைதியான இடத்தில், நல்ல நெட்வொர்க் உள்ள இடத்தில் இருங்கள். வீடியோ அழைப்புக்கு வாட்ஸ்அப் இருக்க வேண்டும்.',
