@@ -87,7 +87,9 @@ export const services = [
 // Online (audio / video) consultations. Phase 1 has no payment system on the website: a patient requests a slot on WhatsApp, our team confirms it and
 // sends the payment details, and the doctor calls at the confirmed time. Change the fee or timings here and rebuild; every page follows.
 //   days:  the days she sees online patients ('Mon – Sat'); daysTa is the same in Tamil. Leave days '' to show the hours only.
-export const online = { slug: 'online-consultation', fee: 499, minutes: 15, hours: '6:30 PM – 8:30 PM', days: 'Mon – Sat', daysTa: 'திங்கள் – சனி' };
+//   payUrl: the hospital's Razorpay Payment Page link for the fixed ₹499 fee (https://pages.razorpay.com/..., https://rzp.io/... or https://razorpay.me/...).
+//           Leave '' to hide the "Pay" step (the team then sends payment details on WhatsApp). Only paste a link you have opened and that shows the hospital's name.
+export const online = { slug: 'online-consultation', fee: 499, minutes: 15, hours: '6:30 PM – 8:30 PM', days: 'Mon – Sat', daysTa: 'திங்கள் – சனி', payUrl: '' };
 export const onlineSlot = online.days ? `${online.days}, ${online.hours}` : online.hours;   // "Mon – Sat, 6:30 PM – 8:30 PM"
 export const onlineSlotTa = `${online.daysTa ? online.daysTa + ', ' : ''}மாலை 6:30 – 8:30`;   // Tamil pages (the Tamil hours are written out here: keep them in step with `hours`)
 

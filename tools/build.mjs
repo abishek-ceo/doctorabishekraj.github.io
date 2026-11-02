@@ -17,7 +17,7 @@ import { dueDate, visitReminder } from './pages/tools.mjs';
 import { hub, regionPages, tamilPage } from './pages/regions.mjs';
 import { guidesHub, guidePages, taGuidePages } from './pages/guides.mjs';
 import { taServicePages } from './pages/ta-services.mjs';
-import { onlinePage, taOnlinePage } from './pages/online.mjs';
+import { onlinePage, taOnlinePage, termsPage } from './pages/online.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rd = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -38,7 +38,7 @@ const pages = [
   home, ...maternityPages, ...gynaePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, onlinePage, taOnlinePage, doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
   dueDate, visitReminder,
-  privacy, notFound,
+  privacy, termsPage, notFound,
 ];
 
 const ctx = {
