@@ -1,6 +1,6 @@
 // Gynaecology service pages: general gynaecology, PCOS/PCOD, fertility & IUI, laparoscopic surgery.
 import { icon, makeServicePage } from '../lib.mjs';
-import { site } from '../site.mjs';
+import { site, online } from '../site.mjs';
 
 const P = site.phone.display;
 const card = (ic, title, text, link) =>
@@ -59,12 +59,12 @@ ${card('sprout', 'Adolescent health', 'Gentle guidance for teenagers on periods,
   faqs: [
     ['Which doctor should I see for period problems?', 'A gynaecologist. Irregular, heavy, painful or missed periods are all common reasons to visit, and most causes are treatable.'],
     ['Is it normal to have irregular periods?', 'Cycles can vary, especially in teenagers and near menopause. But cycles shorter than 21 days or longer than 35 days, missed periods, or very heavy bleeding should be checked, because PCOS, thyroid problems and fibroids are common causes.'],
-    ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours (${site.hours.opd}). For emergencies we are open 24 hours a day.`],
+    ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours (${site.hours.opd}). For emergencies we are open 24 hours a day. If you cannot travel, you can also <a href="/${online.slug}/">talk to the doctor online</a> (₹${online.fee}, up to ${online.minutes} minutes, in the evening).`],
     ['When should a girl first visit a gynaecologist?', 'There is no fixed age. A visit is a good idea if periods have not started by 15, are very painful or heavy, or if you or your parents have concerns. A gynaecologist can also advise on HPV vaccination.'],
     ['Is my consultation private?', 'Yes. Your consultation and medical information are kept private and secure.'],
     ['Do you treat fibroids and ovarian cysts?', 'Yes. Many can be treated with medicines or simply monitored, and when surgery is needed, keyhole (laparoscopic) surgery is often possible. Dr. Jayanthi Prabakaran will advise what is best for you.'],
   ],
-  related: ['pcos-treatment-erode', 'laparoscopic-surgery-erode', 'infertility-treatment-erode'],
+  related: ['pcos-treatment-erode', 'laparoscopic-surgery-erode', 'infertility-treatment-erode', 'online-consultation'],
 });
 
 const pcos = makeServicePage({
@@ -131,7 +131,7 @@ const pcos = makeServicePage({
     ['What tests are done for PCOS?', 'Usually a pelvic ultrasound and blood tests for hormones, thyroid, blood sugar and cholesterol. Your doctor decides which tests you need.'],
     ['What is the difference between PCOD and PCOS?', 'The two names are often used for the same problem in everyday talk, while doctors use the term PCOS. What matters is a proper check-up to see how it affects you, and treatment for your symptoms and goals.'],
   ],
-  related: ['gynecologist-erode', 'infertility-treatment-erode', 'high-risk-pregnancy-erode'],
+  related: ['gynecologist-erode', 'infertility-treatment-erode', 'high-risk-pregnancy-erode', 'online-consultation'],
 });
 
 const fertility = makeServicePage({
@@ -183,7 +183,7 @@ const fertility = makeServicePage({
     ['What is the difference between IUI and IVF?', 'In IUI, sperm are placed in the uterus and fertilisation happens inside the body. In IVF, eggs are collected, fertilised in a laboratory and the embryo is placed in the uterus. IVF is a more complex treatment and is advised in specific situations.'],
     ['Can PCOS be treated so that I can get pregnant?', 'Yes. Most women with PCOS can conceive with lifestyle changes, ovulation-inducing medicines and monitoring, and sometimes IUI. <a href="/pcos-treatment-erode/">Read about PCOS treatment</a>.'],
   ],
-  related: ['pcos-treatment-erode', 'gynecologist-erode', 'laparoscopic-surgery-erode'],
+  related: ['pcos-treatment-erode', 'gynecologist-erode', 'laparoscopic-surgery-erode', 'online-consultation'],
 });
 
 const laparoscopy = makeServicePage({

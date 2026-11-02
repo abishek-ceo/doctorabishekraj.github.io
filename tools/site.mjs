@@ -73,7 +73,16 @@ export const services = [
     blurb: 'Fertility evaluation and IUI treatment, with over 500 conceptions through IUI.', specialty: 'Gynecologic' },
   { slug: 'laparoscopic-surgery-erode', short: 'Laparoscopic (Keyhole) Surgery', icon: 'scissors', hint: 'Minimally invasive gynae surgery',
     blurb: 'Minimally invasive gynaecological surgery. Over 7,000 laparoscopic surgeries performed.', specialty: 'Gynecologic' },
+  { slug: 'online-consultation', short: 'Online Consultation', icon: 'video', hint: 'Audio or video call from home', online: true,
+    blurb: 'Talk to the gynaecologist from home by audio or video call. ₹499 for up to 15 minutes, in the evening.', specialty: 'Gynecologic' },
 ];
+
+// Online (audio / video) consultations. Phase 1 has no payment system on the website: a patient requests a slot on WhatsApp, our team confirms it and
+// sends the payment details, and the doctor calls at the confirmed time. Change the fee or timings here and rebuild; every page follows.
+//   days:  '' until the hospital says which days (then e.g. 'Mon – Sat'); it is simply added after the hours.
+//   regNo: '' until the doctor's medical council registration number is supplied. Indian telemedicine rules ask for it to be shown, so when it is
+//          filled in the page prints it automatically.
+export const online = { slug: 'online-consultation', fee: 499, minutes: 15, hours: '6:30 PM – 8:30 PM', days: '', regNo: '' };
 
 // Towns outside Erode that have their own page (/womens-hospital-tamil-nadu/<slug>/). km = rough road distance to Erode Fort,
 // rounded from public map and travel sites (they differ by a few km); time = usual road time. Keep these honest: do not add a town

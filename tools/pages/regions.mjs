@@ -1,7 +1,7 @@
 // Pages for women who live outside Erode: a Tamil Nadu hub, one page per nearby town, and a Tamil-language page.
 // Honest by design: we have ONE hospital (Erode Fort). These pages tell a woman from another town how far we are, how to get here
 // and how to plan a visit. They must not claim a branch or a clinic anywhere else.
-import { site, services, districts, areas } from '../site.mjs';
+import { site, services, districts, areas, online } from '../site.mjs';
 import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, hubUrl, regionUrl, slugUrl, doctorUrl, tel } from '../lib.mjs';
 
 const P = site.phone.display;
@@ -195,6 +195,17 @@ export const tamilPage = {
 <h1 lang="ta">ஈரோடு <em>மகளிர் &amp; மகப்பேறு</em> மருத்துவமனை</h1>
 <p class="lead" lang="ta">ஈரோடு கோட்டையில் உள்ள அபிஷேக் மருத்துவமனை, டாக்டர் ஜெயந்தி பிரபாகரன் தலைமையில் இயங்கும் மகளிர் நலம் மற்றும் மகப்பேறு மருத்துவமனை. கர்ப்பகால பராமரிப்பு, சுகப்பிரசவம், வலியில்லா பிரசவம், பிசிஓஎஸ், குழந்தையின்மை சிகிச்சை மற்றும் லேப்ராஸ்கோபி அறுவை சிகிச்சை இங்கு கிடைக்கின்றன. 24 மணி நேர அவசர சிகிச்சை உண்டு.</p>
 <div class="btn-row">${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
+</div></section>
+
+<section class="section section-soft"><div class="wrap split two">
+<div><h2 lang="ta">ஆன்லைன் ஆலோசனை</h2>
+<p class="lead" lang="ta">பயணம் செய்ய முடியவில்லையா? டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ₹${online.fee}, ${online.minutes} நிமிடம் வரை. மாலை 6:30 – 8:30.</p>
+<div class="btn-row"><a class="btn btn-primary" href="/ta/${online.slug}/" lang="ta">ஆன்லைன் ஆலோசனை பற்றி ${icon('arrow')}</a></div></div>
+<ul class="info-list" lang="ta">
+<li><span class="ico">${icon('video')}</span><div><b>ஆடியோ அல்லது வீடியோ அழைப்பு</b><span>உங்கள் விருப்பம்</span></div></li>
+<li><span class="ico">${icon('timer')}</span><div><b>₹${online.fee} · ${online.minutes} நிமிடம் வரை</b><span>அனைத்து மகளிர் மருத்துவப் பிரச்சனைகளுக்கும்</span></div></li>
+<li><span class="ico">${icon('clock')}</span><div><b>மாலை 6:30 – 8:30</b><span>நேரம் வாட்ஸ்அப்பில் உறுதி செய்யப்படும்</span></div></li>
+</ul>
 </div></section>
 
 <section class="section"><div class="wrap">
