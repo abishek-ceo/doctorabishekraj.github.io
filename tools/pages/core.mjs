@@ -1,5 +1,5 @@
 // Home, doctor, videos, contact and FAQ pages.
-import { site, social, stats, services, areas, districts, tamil, reviews } from '../site.mjs';
+import { site, social, stats, services, areas, districts, tamil, reviews, online } from '../site.mjs';
 import { icon, esc, btnWA, btnCall, btnDir, btnReview, socialList, faqBlock, serviceCards, ctaBand, crumbs, wa, tel, doctorUrl, slugUrl, videoCard, videoTile, videoSection, statusLine, hubUrl, regionUrl } from '../lib.mjs';
 import { videoList, videoGroups, placements } from '../videos.mjs';
 
@@ -57,13 +57,14 @@ const homeFaqs = [
   ['Where is Abishek Hospital in Erode?', `We are at ${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}. <a href="/contact/">See the map and directions</a>.`],
   ['What are your clinic timings?', `${site.hours.opd}. Emergency care is available ${site.hours.emergency}.`],
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
+  ['Can I consult the doctor online?', `Yes. ${D} sees women by audio or video call in the evening, ${online.hours}. The fee is ₹${online.fee} for up to ${online.minutes} minutes. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.`],
   ['Who is the doctor?', `${D}, Consultant Obstetrician & Gynaecologist, is an Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries. <a href="${doctorUrl}">Know more about Dr. Jayanthi Prabakaran</a>.`],
   ['Which services do you offer?', 'Pregnancy and delivery care, normal and painless (epidural) delivery, high-risk pregnancy care, gynaecology and lady doctor consultations, PCOS and PCOD treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery, menopause care and family planning.'],
 ];
 
 // Seven service pages plus the two women's-wellness services that live as sections of the gynaecology page.
 const homeCards = [
-  ...services,
+  ...services.filter((s) => !s.online),   // the online consultation has its own band above the cards
   { href: `${slugUrl('gynecologist-erode')}#menopause`, short: 'Menopause Care', icon: 'sparkles', blurb: 'Guidance and treatment through perimenopause and menopause: hot flushes, sleep, mood and bone health.' },
   { href: `${slugUrl('gynecologist-erode')}#family-planning`, short: 'Family Planning', icon: 'pill', blurb: 'Personalised, affordable counselling and contraception advice for every family.' },
 ];
@@ -101,6 +102,18 @@ ${statusLine('rise')}
 <a href="${site.maps.directions}" target="_blank" rel="noopener"><span class="ico">${icon('navigation')}</span><span>Get directions<small>Erode Fort, near bus stand</small></span></a>
 <a href="${tel}"><span class="ico">${icon('siren')}</span><span>Emergency 24/7<small>Call any time</small></span></a>
 </div></div>
+
+<section class="section section-soft" id="online"><div class="wrap split two">
+<div><span class="eyebrow">${icon('video')} Online consultation</span>
+<h2>Cannot travel? Talk to the doctor <em>from home</em></h2>
+<p class="lead">Speak with ${D} by audio or video call. ₹${online.fee} for a consultation of up to ${online.minutes} minutes, in the evening.</p>
+<div class="btn-row"><a class="btn btn-primary" href="${slugUrl(online.slug)}">Book an online consultation ${icon('arrow')}</a></div></div>
+<ul class="info-list">
+<li><span class="ico">${icon('video')}</span><div><b>Audio or video call</b><span>Your choice, from your own phone</span></div></li>
+<li><span class="ico">${icon('timer')}</span><div><b>₹${online.fee} · up to ${online.minutes} minutes</b><span>For all gynaecology concerns</span></div></li>
+<li><span class="ico">${icon('clock')}</span><div><b>Evenings, ${online.hours}</b><span>Your slot is confirmed on WhatsApp</span></div></li>
+</ul>
+</div></section>
 
 <section class="section" id="services"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('stethoscope')} Our services</span><h2>Complete women’s healthcare <em>in Erode</em></h2>
@@ -396,6 +409,7 @@ ${statusLine()}
 <div><span class="eyebrow">${icon('send')} Book an appointment</span><h2>Tell us how we can <em>help</em></h2>
 <p class="lead">Fill in your details and we will open WhatsApp with your message ready to send. Prefer to talk? Call ${P}.</p>
 <p>Serving women and families in ${areas.join(', ')} and nearby towns.</p>
+<p>Prefer not to travel? <a href="${slugUrl(online.slug)}">Book an online consultation</a> (₹${online.fee}, up to ${online.minutes} minutes, in the evening).</p>
 <p>Already have a visit? <a href="/visit-reminder/">Add it to your phone's calendar</a> with a reminder.</p></div>
 <div>
 <form class="form form-card" data-wa-form data-wa="${site.phone.wa}" data-mail="${site.email}" novalidate>
@@ -423,6 +437,7 @@ const faqAbout = [
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
   ['Is emergency care available 24/7?', `Yes. Call ${P} at any hour or come straight to the hospital. In a life-threatening emergency, dial 108 or 112 for an ambulance.`],
   ['How do I choose a gynecologist in Erode?', `Look for a registered obstetrician and gynaecologist with the qualifications and experience for the care you need, a hospital with emergency and delivery facilities available at all hours, clear and upfront pricing, and a doctor you feel comfortable talking to. ${D} is an Academic Topper from ${site.doctor.college} with over 40,000 safe deliveries, and ${site.name} offers emergency care 24/7. You are welcome to visit and meet us before you decide.`],
+  ['Do you offer online consultations?', `Yes. Talk to ${D} by audio or video call in the evening, ${online.hours}, for ₹${online.fee} per consultation of up to ${online.minutes} minutes. Your slot is confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How online consultation works</a>.`],
   ['How much is the consultation fee?', `Consultation fees are kept affordable for all income groups, and treatment costs are explained clearly before any procedure. Please call or WhatsApp ${P} for the current fee.`],
 ];
 const faqPregnancy = [

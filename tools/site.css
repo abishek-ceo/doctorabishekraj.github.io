@@ -275,7 +275,7 @@ a.card{text-decoration:none;color:inherit}
 .field textarea{min-height:120px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(194,24,91,.25);border-color:var(--rose-500)}
 .field .err{display:none;margin-top:4px;font-size:.85rem;color:#B00020}
-.field.bad .err{display:block}.field.bad input,.field.bad select{border-color:#B00020}
+.field.bad .err{display:block}.field.bad input,.field.bad select,.field.bad textarea{border-color:#B00020}
 .note{font-size:.88rem;color:var(--muted)}
 .form-card{padding:clamp(20px,3vw,30px);border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
 

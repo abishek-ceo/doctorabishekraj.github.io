@@ -185,7 +185,16 @@
       if (!ok) say('Please fill in the highlighted fields.');
       return ok;
     };
+    var intro = form.getAttribute('data-wa-intro');   /* forms that carry their own opening line send every filled-in field, labelled by its data-label */
     var text = function () {
+      if (intro) {
+        var out = [intro];
+        $$('[name]', form).forEach(function (el) {
+          var v = el.value.trim();
+          if (v) out.push((el.getAttribute('data-label') || el.name) + ': ' + v);
+        });
+        return out.join('\n');
+      }
       var lines = ['Hello Abishek Hospital, I would like to book an appointment.',
         'Name: ' + val('name'), 'Phone: ' + val('phone'), 'Service: ' + val('service')];
       var m = val('message');
@@ -198,7 +207,7 @@
       var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text());
       var w = window.open(url, '_blank');   /* 'noopener' in the features would always return null and send this tab to WhatsApp too */
       if (w) w.opener = null; else window.location.href = url;
-      say('Opening WhatsApp with your details. If nothing opened, tap "Send by email" or call us.');
+      say(form.querySelector('[data-mail-btn]') ? 'Opening WhatsApp with your details. If nothing opened, tap "Send by email" or call us.' : 'Opening WhatsApp with your details. If nothing opened, please call us.');
     });
     var mailBtn = $('[data-mail-btn]', form);
     if (mailBtn) mailBtn.addEventListener('click', function () {

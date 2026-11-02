@@ -24,11 +24,13 @@ export const privacy = {
   description: 'Privacy policy of Abishek Hospital, Erode.',
   crumbs: [['Home', '/'], ['Privacy policy']],
   render: () => `
-<section class="page-hero"><div class="wrap">${crumbs([['Home', '/'], ['Privacy policy']])}<h1>Privacy Policy</h1><p class="lead">Last updated: June 2026</p></div></section>
+<section class="page-hero"><div class="wrap">${crumbs([['Home', '/'], ['Privacy policy']])}<h1>Privacy Policy</h1><p class="lead">Last updated: November 2026</p></div></section>
 <section class="section"><div class="wrap"><div class="prose">
 <p>Abishek Hospital operates the dr.jayanthiprabakaran social media accounts.</p>
 <h2>Information We Collect</h2>
-<p>We do not collect any personal data from users.</p>
+<p>This website does not collect any personal data from its visitors. It has no accounts, no cookies and no analytics, and it does not store what you type into its forms.</p>
+<h2>Messages You Send Us</h2>
+<p>When you tap a WhatsApp, call or email button, or send the booking or online consultation request form, WhatsApp (or your phone or email app) opens with your message ready, and nothing is sent until you send it. If you choose to send us your name, age, health concern or reports, for example to book an online consultation, our team receives them on WhatsApp and uses them only to arrange your appointment or consultation and to care for you. Please do not send us anything you are not comfortable sharing, and call us on 97505 11225 for an emergency.</p>
 <h2>Social Media</h2>
 <p>Our app posts medical education content to Instagram and Facebook on behalf of Abishek Hospital.</p>
 <h2>Contact</h2>
