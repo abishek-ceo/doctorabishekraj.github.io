@@ -39,9 +39,10 @@ export const site = {
 export const verification = { google: '', bing: '' };
 
 export const social = [
-  { id: 'youtube', label: 'YouTube', handle: '@abishekmedicalcenter', url: 'https://www.youtube.com/@abishekmedicalcenter',
+  { id: 'youtube', label: 'YouTube', handle: '@drjayanthiprabakaran', url: 'https://www.youtube.com/@drjayanthiprabakaran',
     alt: ['https://www.youtube.com/channel/UCyuPSFNLWCyKALkSbKXVZIg'] },   // same channel by ID (its description shows this hospital's address)
-  { id: 'instagram', label: 'Instagram', handle: 'dr.jayanthiprabakaran', url: 'https://www.instagram.com/dr.jayanthiprabakaran' },
+  // The account that posts for the hospital. Swap to the drjayanthiprabakaran handle once Instagram lets the rename go through.
+  { id: 'instagram', label: 'Instagram', handle: 'abishekmedicalcenter', url: 'https://www.instagram.com/abishekmedicalcenter' },
   { id: 'facebook', label: 'Facebook', handle: 'dr.jayanthi.prabakaran', url: 'https://www.facebook.com/dr.jayanthi.prabakaran' },
 ];
 
