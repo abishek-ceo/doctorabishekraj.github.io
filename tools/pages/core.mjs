@@ -264,6 +264,7 @@ export const doctor = {
 <h1>Dr. Jayanthi <em>Prabakaran</em></h1>
 <span class="tamil-line" lang="ta">டாக்டர் ஜெயந்தி பிரபாகரன் — மகப்பேறு மற்றும் மகளிர் நோய் மருத்துவ நிபுணர்</span>
 <p class="lead">${site.doctor.role} at ${site.name}, Erode Fort. Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries.</p>
+${site.doctor.reg ? `<p class="note" style="margin:-.4rem 0 1rem">${site.doctor.reg.body} (${site.doctor.reg.short}) registration no. <b>${site.doctor.reg.no}</b></p>` : ''}
 <div class="btn-row">${btnWA('Hello Abishek Hospital, I would like to book an appointment with Dr. Jayanthi Prabakaran.')}${btnCall(undefined, 'btn btn-outline')}</div></div>
 <div class="doc-photo"><div class="portrait-frame"><img src="/assets/img/doctor-480.webp" srcset="/assets/img/doctor-240.webp 240w, /assets/img/doctor-480.webp 480w, /assets/img/doctor-698.webp 698w" sizes="(min-width:960px) 340px, 80vw" width="480" height="481" fetchpriority="high" alt="${D}, gynecologist and obstetrician in Erode"></div></div>
 </div></section>
@@ -295,7 +296,7 @@ ${statsBand()}</div></section>
 <div><span class="eyebrow">${icon('hand-heart')} Philosophy</span><h2>Excellence without <em>compromise</em></h2>
 <blockquote class="quote">“Expert care should be accessible to all, not just a few.”<small>${D}</small></blockquote>
 <p style="margin-top:1.2rem">Every woman deserves the same gold-standard care, whatever her background. Treatment costs are discussed upfront, before any procedure, and consultation fees are kept affordable for all income groups.</p></div>
-<div><div class="card flat"><span class="ico">${icon('cap')}</span><h3>Education and recognition</h3><ul class="checks" style="margin-bottom:0"><li>Academic Topper, ${site.doctor.college}</li><li>${site.doctor.role}</li><li>High-risk pregnancy specialist</li></ul></div></div>
+<div><div class="card flat"><span class="ico">${icon('cap')}</span><h3>Education and recognition</h3><ul class="checks" style="margin-bottom:0"><li>Academic Topper, ${site.doctor.college}</li><li>${site.doctor.role}</li>${site.doctor.reg ? `<li>Registered with the ${site.doctor.reg.body}, no. ${site.doctor.reg.no}</li>` : ''}<li>High-risk pregnancy specialist</li></ul></div></div>
 </div></section>
 
 <section class="section section-soft"><div class="wrap">
