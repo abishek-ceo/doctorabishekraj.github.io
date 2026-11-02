@@ -13,7 +13,8 @@ const when = onlineSlot;
 const path = slugUrl(online.slug);
 const taPath = `/ta/${online.slug}/`;
 const list = (items) => `<ul class="checks">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
-const reg = (ta) => (online.regNo ? `<p${ta ? ' lang="ta"' : ''}>${ta ? 'மருத்துவ கவுன்சில் பதிவு எண்' : 'Medical council registration no.'}: <b>${online.regNo}</b></p>` : '');
+const regNo = site.doctor.reg && site.doctor.reg.no;
+const reg = (ta) => (regNo ? `<p${ta ? ' lang="ta"' : ''}>${ta ? 'டாக்டர் ஜெயந்தி பிரபாகரன்: தமிழ்நாடு மருத்துவக் கவுன்சில் (TNMC) பதிவு எண்' : `${D}: Tamil Nadu Medical Council (TNMC) registration no.`} <b>${regNo}</b></p>` : '');
 
 // The request, as it will arrive on WhatsApp: the patient only has to fill in the blanks.
 const waText = `Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes).\nName: \nAge: \nConcern: \nAudio or video call: \nPreferred day and time (${onlineSlot}): `;
@@ -67,6 +68,7 @@ const data = {
     { icon: 'timer', title: `Up to ${online.minutes} minutes`, text: `${fee} per consultation` },
     { icon: 'clock', title: when, text: 'Evening slots, confirmed on WhatsApp' },
     { icon: 'stethoscope', title: 'All gynaecology concerns', text: 'Periods, PCOS, discharge, menopause and more' },
+    ...(regNo ? [{ icon: 'badge-check', title: `TNMC Reg. No. ${regNo}`, text: site.doctor.reg.body }] : []),
   ],
   sections: [
     { id: 'how', title: 'How it works', nav: 'How it works', html: steps },

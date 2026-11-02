@@ -11,6 +11,9 @@ export const site = {
     role: 'Consultant Obstetrician & Gynaecologist',
     college: 'Coimbatore Medical College',
     slug: 'dr-jayanthi-prabakaran',
+    // Medical council registration, supplied by the doctor. Indian telemedicine rules ask for it to be displayed; it is printed on the online consultation
+    // pages and the doctor page, and added to the doctor's structured data. Not verified against the council's register from here.
+    reg: { body: 'Tamil Nadu Medical Council', short: 'TNMC', no: '60813' },
   },
   phone: { display: '97505 11225', intl: '+91 97505 11225', tel: '+919750511225', wa: '919750511225' },
   email: 'info@abishekhospital.com',
@@ -84,9 +87,7 @@ export const services = [
 // Online (audio / video) consultations. Phase 1 has no payment system on the website: a patient requests a slot on WhatsApp, our team confirms it and
 // sends the payment details, and the doctor calls at the confirmed time. Change the fee or timings here and rebuild; every page follows.
 //   days:  the days she sees online patients ('Mon – Sat'); daysTa is the same in Tamil. Leave days '' to show the hours only.
-//   regNo: '' until the doctor's medical council registration number is supplied. Indian telemedicine rules ask for it to be shown, so when it is
-//          filled in the page prints it automatically.
-export const online = { slug: 'online-consultation', fee: 499, minutes: 15, hours: '6:30 PM – 8:30 PM', days: 'Mon – Sat', daysTa: 'திங்கள் – சனி', regNo: '' };
+export const online = { slug: 'online-consultation', fee: 499, minutes: 15, hours: '6:30 PM – 8:30 PM', days: 'Mon – Sat', daysTa: 'திங்கள் – சனி' };
 export const onlineSlot = online.days ? `${online.days}, ${online.hours}` : online.hours;   // "Mon – Sat, 6:30 PM – 8:30 PM"
 export const onlineSlotTa = `${online.daysTa ? online.daysTa + ', ' : ''}மாலை 6:30 – 8:30`;   // Tamil pages (the Tamil hours are written out here: keep them in step with `hours`)
 

@@ -131,6 +131,7 @@ export function doctorNode() {
     worksFor: { '@id': `${U}/#hospital` },
     hospitalAffiliation: { '@id': `${U}/#hospital` },
     medicalSpecialty: ['https://schema.org/Obstetric', 'https://schema.org/Gynecologic'],
+    ...(site.doctor.reg ? { identifier: { '@type': 'PropertyValue', name: `${site.doctor.reg.body} registration number`, value: site.doctor.reg.no } } : {}),
     alumniOf: { '@type': 'CollegeOrUniversity', name: site.doctor.college },
     knowsAbout: ['Obstetrics', 'Gynaecology', 'High-risk pregnancy', 'Epidural (painless) delivery', 'Laparoscopic gynaecological surgery', 'IUI and infertility treatment', 'PCOS'],
     sameAs: social.flatMap((s) => [s.url, ...(s.alt || [])]),
