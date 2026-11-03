@@ -81,20 +81,33 @@
     if (mq.addEventListener) mq.addEventListener('change', close); else if (mq.addListener) mq.addListener(close);
   }
 
-  /* ---- click-to-load map (keeps Google Maps off the critical path) ---- */
+  /* ---- map: loads by itself when it scrolls into view (so Google Maps stays off the first paint); the "Show map" button still works ---- */
+  function loadMap(btn, focus) {
+    var box = btn.closest('.map-card');
+    if (!box || !box.contains(btn)) return;   /* already loaded */
+    var f = doc.createElement('iframe');
+    f.src = btn.getAttribute('data-map');
+    f.title = btn.getAttribute('data-title') || 'Map';
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.allowFullscreen = true;
+    box.innerHTML = '';
+    box.appendChild(f);
+    if (focus) f.focus();   /* the tapped button is gone: keep keyboard focus on the page */
+  }
   $$('[data-map]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var box = btn.closest('.map-card');
-      var f = doc.createElement('iframe');
-      f.src = btn.getAttribute('data-map');
-      f.title = btn.getAttribute('data-title') || 'Map';
-      f.loading = 'lazy';
-      f.referrerPolicy = 'no-referrer-when-downgrade';
-      f.allowFullscreen = true;
-      box.innerHTML = '';
-      box.appendChild(f);
-      f.focus();   /* the tapped button is gone: keep keyboard focus on the page */
-    });
+    btn.addEventListener('click', function () { loadMap(btn, true); });
+    var box = btn.closest('.map-card');
+    if (box && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); loadMap(btn, false); }
+      }, { rootMargin: '300px 0px' });
+      io.observe(box);
+      setTimeout(function () {   /* some in-app browsers are slow to report: look once more shortly after load */
+        var r = box.getBoundingClientRect();
+        if (box.contains(btn) && r.top < window.innerHeight + 300 && r.bottom > -300) { io.disconnect(); loadMap(btn, false); }
+      }, 1500);
+    }
   });
 
   /* ---- click-to-play YouTube videos (privacy-friendly: nothing loads from YouTube until tapped) ---- */

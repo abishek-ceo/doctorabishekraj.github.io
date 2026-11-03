@@ -1,15 +1,16 @@
 // Online (audio / video) consultation: English page with a WhatsApp request form, and its Tamil twin.
-// Fee, minutes, hours, days and the registration number all come from `online` in site.mjs. There is no payment or booking system on the website:
+// Fee, minutes and the registration number all come from `online` in site.mjs. There are no fixed online hours or days: each patient is given a slot
+// based on the doctor's availability. There is no payment or booking system on the website:
 // the form opens WhatsApp with the request written out, our team confirms a slot and sends the payment details there, and the doctor calls.
 // Keep the wording honest: this is general guidance on how the service works, not a promise of treatment, and never a claim about outcomes.
-import { site, online, onlineSlot, onlineSlotTa } from '../site.mjs';
+import { site, online, onlineSlotTa } from '../site.mjs';
 import { icon, crumbs, ctaBand, servicePage, wa, tel, slugUrl, doctorUrl } from '../lib.mjs';
 import { taPage, taList } from './guides.mjs';
 
 const P = site.phone.display;
 const D = site.doctor.name;
 const fee = `₹${online.fee}`;
-const when = onlineSlot;
+const slotNote = 'a slot based on the doctor’s availability';   // no fixed hours: the team confirms a slot on WhatsApp
 
 // Razorpay Payment Page (fixed amount). A plain link that opens in a new tab: no script, no keys and no change to the Content-Security-Policy.
 const payUrl = online.payUrl || '';
@@ -28,27 +29,23 @@ const regNo = site.doctor.reg && site.doctor.reg.no;
 const reg = (ta) => (regNo ? `<p${ta ? ' lang="ta"' : ''}>${ta ? 'டாக்டர் ஜெயந்தி பிரபாகரன்: தமிழ்நாடு மருத்துவக் கவுன்சில் (TNMC) பதிவு எண்' : `${D}: Tamil Nadu Medical Council (TNMC) registration no.`} <b>${regNo}</b></p>` : '');
 
 // The request, as it will arrive on WhatsApp: the patient only has to fill in the blanks.
-const waText = `Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes).\nName: \nAge: \nConcern: \nAudio or video call: \nPreferred day and time (${onlineSlot}): `;
-const taWaText = `வணக்கம் அபிஷேக் மருத்துவமனை, நான் ஆன்லைன் ஆலோசனைக்கு (${fee}, ${online.minutes} நிமிடம் வரை) முன்பதிவு செய்ய விரும்புகிறேன்.\nபெயர்: \nவயது: \nபிரச்சனை: \nஆடியோ / வீடியோ: \nவிரும்பும் நாள் மற்றும் நேரம் (${onlineSlotTa}): `;
-
-// 15-minute slots from the opening time; the last one ends at closing time.
-const slots = ['6:30', '6:45', '7:00', '7:15', '7:30', '7:45', '8:00', '8:15'].map((t) => `${t} PM`);
+const waText = `Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes).\nName: \nAge: \nConcern: \nAudio or video call: \nPreferred day and time: `;
+const taWaText = `வணக்கம் அபிஷேக் மருத்துவமனை, நான் ஆன்லைன் ஆலோசனைக்கு (${fee}, ${online.minutes} நிமிடம் வரை) முன்பதிவு செய்ய விரும்புகிறேன்.\nபெயர்: \nவயது: \nபிரச்சனை: \nஆடியோ / வீடியோ: \nவிரும்பும் நாள் மற்றும் நேரம்: `;
 
 const form = `<form class="form form-card" data-wa-form data-wa="${site.phone.wa}" data-wa-intro="Hello Abishek Hospital, I would like to book an online consultation (${fee}, up to ${online.minutes} minutes)." novalidate>
 <div class="field"><label for="o-name">Your name <span aria-hidden="true">*</span></label><input id="o-name" name="name" data-label="Name" type="text" autocomplete="name" required><span class="err">Please enter your name.</span></div>
 <div class="field"><label for="o-age">Your age <span aria-hidden="true">*</span></label><input id="o-age" name="age" data-label="Age" type="text" inputmode="numeric" maxlength="3" autocomplete="off" required><span class="err">Please enter your age.</span></div>
 <div class="field"><label for="o-concern">What would you like to discuss? <span aria-hidden="true">*</span></label><textarea id="o-concern" name="concern" data-label="Concern" placeholder="For example: periods have been irregular for 3 months" required></textarea><span class="err">Please tell us briefly what you would like to discuss.</span></div>
 <div class="field"><label for="o-mode">Audio or video call <span aria-hidden="true">*</span></label><select id="o-mode" name="mode" data-label="Call type" required><option value="">Select</option><option>Audio call</option><option>Video call</option><option>Either is fine</option></select><span class="err">Please choose a call type.</span></div>
-<div class="field"><label for="o-day">Preferred day${online.days ? ` (${online.days})` : ''} <span aria-hidden="true">*</span></label><input id="o-day" name="day" data-label="Preferred day" type="text" placeholder="For example: Monday, or 5 Nov" autocomplete="off" required><span class="err">Please tell us which day suits you.</span></div>
-<div class="field"><label for="o-time">Preferred time <span aria-hidden="true">*</span></label><select id="o-time" name="time" data-label="Preferred time" required><option value="">Select (${online.hours})</option>${slots.map((t) => `<option>${t}</option>`).join('')}<option>Any time in the evening</option></select><span class="err">Please choose a time.</span></div>
+<div class="field"><label for="o-day">Preferred day and time <span aria-hidden="true">*</span></label><input id="o-day" name="day" data-label="Preferred day and time" type="text" placeholder="For example: Monday evening, or any day this week" autocomplete="off" required><span class="err">Please tell us which day and time suit you.</span></div>
 <div class="btn-row" style="margin-top:0"><button class="btn btn-wa" type="submit">${icon('whatsapp')} Request on WhatsApp</button></div>
 <p class="note" role="status" aria-live="polite" data-status></p>
-<p class="note">This opens WhatsApp with your request ready to send. Your slot is booked only after our team confirms it. Please keep the message short and send reports only when we ask. For an emergency, call ${P} (24/7).</p>
+<p class="note">This opens WhatsApp with your request ready to send. We give you ${slotNote}, and your slot is booked only after our team confirms it. Please keep the message short and send reports only when we ask. For an emergency, call ${P} (24/7).</p>
 </form>
 <noscript><div class="callout"><p>Please <a href="${wa(waText)}">send your request on WhatsApp</a> or call <a href="${tel}">${P}</a>.</p></div></noscript>`;
 
 const steps = `<ol class="steps">
-<li><b>Send your request</b><span>Fill in the short form below. It opens WhatsApp with your details ready to send. Tell us your concern and the time you prefer (${when}).</span></li>
+<li><b>Send your request</b><span>Fill in the short form below. It opens WhatsApp with your details ready to send. Tell us your concern and the day and time you would like.</span></li>
 <li><b>We confirm your slot</b><span>${payUrl ? `Our team replies on WhatsApp with your confirmed time. Then pay the ${fee} fee on the secure Razorpay page (UPI, cards or net banking) to complete your booking.` : `Our team replies on WhatsApp with your confirmed time and the payment details for the ${fee} fee. Your slot is booked once we confirm it.`}</span></li>
 <li><b>Talk to the doctor</b><span>At your time, ${D} speaks with you by audio or video call. Keep your earlier reports, medicines and questions ready.</span></li>
 <li><b>Follow the advice</b><span>If you need an examination, a scan or a test, the doctor will tell you, and we will help you book a visit to the hospital.</span></li>
@@ -56,7 +53,7 @@ const steps = `<ol class="steps">
 
 const faqs = [
   ['How much does an online consultation cost?', `${fee} for one consultation of up to ${online.minutes} minutes. Any tests, scans or procedures the doctor advises are separate, and their cost is explained before you decide.`],
-  ['When can I talk to the doctor online?', `Online consultations are held in the evening, ${when}. Tell us the time you prefer and our team will confirm your slot. For clinic visits, the usual hours are ${site.hours.opd}.`],
+  ['When can I talk to the doctor online?', `We give you ${slotNote}. Tell us the day and time you would like and our team will confirm a slot on WhatsApp. For clinic visits, the usual hours are ${site.hours.opd}.`],
   ['Can I choose between an audio call and a video call?', 'Yes. Choose audio or video in the request form. Video lets the doctor see you, but audio is enough for many questions.'],
   ['How do I pay?', payText],
   ['Which problems can I discuss?', `Any gynaecological concern: periods, PCOS, discharge and infections, fibroids and cysts, pelvic pain, menopause, family planning and fertility questions, and review of your scan or blood reports. See <a href="${slugUrl('gynecologist-erode')}">gynaecology care</a>.`],
@@ -72,12 +69,12 @@ const data = {
   icon: 'video', crumbs: crumbArr, eyebrow: 'Online consultation',
   h1: 'Online Consultation with a <em>Gynaecologist</em>',
   tamil: 'ஆன்லைன் மகளிர் மருத்துவ ஆலோசனை · வீட்டிலிருந்தே',
-  lead: `Talk to ${D} from home, by audio or video call. ${fee} for a consultation of up to ${online.minutes} minutes. Available ${when}.`,
+  lead: `Talk to ${D} from home, by audio or video call. ${fee} for a consultation of up to ${online.minutes} minutes. We give you ${slotNote}.`,
   waText,
   facts: [
     { icon: 'video', title: 'Audio or video call', text: 'Your choice, from your own phone' },
     { icon: 'timer', title: `Up to ${online.minutes} minutes`, text: `${fee} per consultation` },
-    { icon: 'clock', title: when, text: 'Evening slots, confirmed on WhatsApp' },
+    { icon: 'clock', title: 'Slot based on availability', text: 'Confirmed on WhatsApp' },
     { icon: 'stethoscope', title: 'All gynaecology concerns', text: 'Periods, PCOS, discharge, menopause and more' },
     ...(regNo ? [{ icon: 'badge-check', title: `TNMC Reg. No. ${regNo}`, text: site.doctor.reg.body }] : []),
   ],
@@ -85,7 +82,7 @@ const data = {
     { id: 'how', title: 'How it works', nav: 'How it works', html: steps },
     { id: 'book', title: 'Request a consultation', nav: 'Request a slot', wide: true, html: `<div class="contact-grid" style="align-items:start"><div>
 <p class="lead">Tell us your concern and when you would like to talk. We reply on WhatsApp to confirm your slot.</p>
-${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`, `Evenings: <b>${when}</b>`, 'Audio or video call, your choice', 'Your slot is booked only after our team confirms it on WhatsApp'])}
+${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`, 'A slot based on the doctor’s availability', 'Audio or video call, your choice', 'Your slot is booked only after our team confirms it on WhatsApp'])}
 <p>Prefer to talk first? Call <a href="${tel}">${P}</a>.</p></div>
 <div>${form}</div></div>` },
     ...(payUrl ? [{ id: 'pay', title: 'Pay for your consultation', nav: 'Pay', html: `<p>Once our team has confirmed your slot on WhatsApp, pay the <b>${fee}</b> consultation fee here. Please pay only after we have confirmed a time.</p>
@@ -108,7 +105,7 @@ ${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`,
       'in pregnancy: any bleeding, a watery leak, severe pain, a severe headache or blurred vision, or less movement of the baby',
     ])}<p>Emergency care is available ${site.hours.emergency}. In a life-threatening emergency dial 108 or 112 for an ambulance.</p></div>
 <p>An online consultation cannot replace an examination. If the doctor feels you need an examination, a scan or a test, she will say so, and you can come to the hospital at Erode Fort.</p>` },
-    { id: 'fee', title: 'Fee and timings', nav: 'Fee and timings', html: `<p>The fee is <b>${fee}</b> for one consultation of up to ${online.minutes} minutes. Online consultations are in the evening, <b>${when}</b>. ${payText}</p>
+    { id: 'fee', title: 'Fee and slots', nav: 'Fee and slots', html: `<p>The fee is <b>${fee}</b> for one consultation of up to ${online.minutes} minutes. We give you ${slotNote}. ${payText}</p>
 <p>The fee is for the consultation. Any tests, scans or procedures the doctor advises are separate, and their cost is explained before you decide. For a visit to the hospital, clinic hours are ${site.hours.opd}.</p>` },
     { id: 'before', title: 'Before you book', nav: 'Before you book', html: `${list([
       'Choose a quiet place with a steady phone network. For a video call, keep WhatsApp installed.',
@@ -127,7 +124,7 @@ ${list([`<b>${fee}</b> for one consultation of up to ${online.minutes} minutes`,
 export const onlinePage = {
   path,
   title: 'Online Gynecologist Consultation | Abishek Hospital, Erode',
-  description: `Talk to a gynaecologist by audio or video call. ${fee} for up to ${online.minutes} minutes, ${online.days ? online.days + ', ' : ''}${online.hours.replace(' PM – ', ' – ')}. Abishek Hospital, Erode.`,
+  description: `Talk to a gynaecologist by audio or video call. ${fee} for up to ${online.minutes} minutes, with a slot based on the doctor’s availability. Abishek Hospital, Erode.`,
   schemaType: 'MedicalWebPage',
   specialty: 'Gynecologic',
   alternates: [['en-IN', path], ['ta-IN', taPath]],
@@ -140,7 +137,7 @@ export const onlinePage = {
 const p = (t) => `<p lang="ta">${t}</p>`;
 const taFaqs = [
   ['ஆன்லைன் ஆலோசனைக்குக் கட்டணம் எவ்வளவு?', `ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. மருத்துவர் பரிந்துரைக்கும் பரிசோதனைகள், ஸ்கேன் அல்லது சிகிச்சைகளுக்கான கட்டணம் தனி; அதன் செலவு முன்கூட்டியே விளக்கப்படும்.`],
-  ['எந்த நேரத்தில் மருத்துவரிடம் பேசலாம்?', `ஆன்லைன் ஆலோசனை ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை. நீங்கள் விரும்பும் நேரத்தைத் தெரிவியுங்கள்; எங்கள் குழு நேரத்தை உறுதி செய்யும்.`],
+  ['எந்த நேரத்தில் மருத்துவரிடம் பேசலாம்?', `${onlineSlotTa}. நீங்கள் விரும்பும் நாள் மற்றும் நேரத்தைத் தெரிவியுங்கள்; எங்கள் குழு வாட்ஸ்அப்பில் நேரத்தை உறுதி செய்யும்.`],
   ['ஆடியோ அழைப்பா, வீடியோ அழைப்பா என்று தேர்வு செய்யலாமா?', 'ஆம். உங்கள் விருப்பப்படி ஆடியோ அல்லது வீடியோ அழைப்பைத் தேர்ந்தெடுக்கலாம்.'],
   ['கட்டணத்தை எப்படிச் செலுத்துவது?', taPayText],
   ['கர்ப்ப காலத்தில் ஆன்லைன் ஆலோசனை பெறலாமா?', `கேள்விகள் கேட்கவும் அறிக்கைகளைக் காட்டவும் முடியும். வழக்கமான கர்ப்பகாலப் பரிசோதனைகளுக்கு உடல் பரிசோதனையும் ஸ்கேனும் தேவை; அதற்கு நேரில் வாருங்கள். ரத்தப்போக்கு, தண்ணீர் கசிவு, கடுமையான வலி அல்லது குழந்தையின் அசைவு குறைந்தால் ஆன்லைன் அழைப்புக்குக் காத்திருக்காமல் ${P} என்ற எண்ணில் அழைக்கவும் அல்லது மருத்துவமனைக்கு வரவும்.`],
@@ -151,13 +148,13 @@ export const taOnlinePage = taPage({
   slug: online.slug, en: online.slug, enPath: path, enLabel: 'Read this page in English, with the request form',
   wa: taWaText,
   title: 'ஆன்லைன் மகளிர் மருத்துவ ஆலோசனை | அபிஷேக்',
-  description: `வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் மகளிர் மருத்துவரிடம் பேசலாம். ${fee}, ${online.minutes} நிமிடம் வரை. ${onlineSlotTa}. அபிஷேக் மருத்துவமனை, ஈரோடு.`,
+  description: `வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் மகளிர் மருத்துவரிடம் பேசலாம். ${fee}, ${online.minutes} நிமிடம் வரை. அபிஷேக் மருத்துவமனை, ஈரோடு.`,
   crumb: 'ஆன்லைன் ஆலோசனை',
   h1: 'ஆன்லைன் <em>மகளிர் மருத்துவ</em> ஆலோசனை',
-  lead: `டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தபடியே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. நேரம்: ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை.`,
+  lead: `டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தபடியே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ${fee}, ${online.minutes} நிமிடம் வரை. ${onlineSlotTa}.`,
   sections: [
     ['எப்படிச் செயல்படுகிறது', `<ol class="steps" lang="ta">
-<li><b>வாட்ஸ்அப்பில் கோரிக்கை அனுப்புங்கள்</b><span>மேலே உள்ள பொத்தானை அழுத்தினால் உங்கள் பெயர், வயது, பிரச்சனை, ஆடியோ அல்லது வீடியோ, விரும்பும் நாள் மற்றும் நேரம் (${onlineSlotTa}) ஆகியவற்றை எழுதும் வகையில் வாட்ஸ்அப் திறக்கும்.</span></li>
+<li><b>வாட்ஸ்அப்பில் கோரிக்கை அனுப்புங்கள்</b><span>மேலே உள்ள பொத்தானை அழுத்தினால் உங்கள் பெயர், வயது, பிரச்சனை, ஆடியோ அல்லது வீடியோ, விரும்பும் நாள் மற்றும் நேரம் ஆகியவற்றை எழுதும் வகையில் வாட்ஸ்அப் திறக்கும்.</span></li>
 <li><b>நேரத்தை நாங்கள் உறுதி செய்வோம்</b><span>${payUrl ? `எங்கள் குழு உறுதியான நேரத்தை வாட்ஸ்அப்பில் தெரிவிக்கும். பிறகு ${fee} கட்டணத்தைப் பாதுகாப்பான Razorpay இணைப்பு மூலம் (UPI, கார்டு, நெட் பேங்கிங்) செலுத்தி முன்பதிவை முடிக்கவும்.` : `எங்கள் குழு உறுதியான நேரத்தையும் ${fee} கட்டணத்துக்கான கட்டண விவரங்களையும் வாட்ஸ்அப்பில் அனுப்பும். உறுதி செய்த பிறகே நேரம் முன்பதிவாகும்.`}</span></li>
 <li><b>மருத்துவரிடம் பேசுங்கள்</b><span>குறிப்பிட்ட நேரத்தில் டாக்டர் ஜெயந்தி பிரபாகரன் ஆடியோ அல்லது வீடியோ அழைப்பில் பேசுவார். பழைய அறிக்கைகள், மருந்துகள், கேள்விகளைத் தயாராக வைத்திருங்கள்.</span></li>
 <li><b>ஆலோசனையைப் பின்பற்றுங்கள்</b><span>பரிசோதனை, ஸ்கேன் அல்லது ரத்தப் பரிசோதனை தேவைப்பட்டால் மருத்துவர் தெரிவிப்பார்; மருத்துவமனைக்கு வர நாங்கள் உதவுவோம்.</span></li>
@@ -182,7 +179,7 @@ ${p('ஆன்லைன் ஆலோசனை உடல் பரிசோதன
     ...(payUrl ? [['கட்டணம் செலுத்த', `${p(`எங்கள் குழு வாட்ஸ்அப்பில் உங்கள் நேரத்தை உறுதி செய்த பிறகு மட்டும், <b>${fee}</b> ஆலோசனைக் கட்டணத்தை இங்கே செலுத்துங்கள்.`)}
 <p>${payBtn('பாதுகாப்பாகக் கட்டணம் செலுத்த')}</p>
 ${p('கட்டணம் Razorpay மூலம் நடைபெறுகிறது (UPI, கார்டு, நெட் பேங்கிங்). உங்கள் கார்டு அல்லது UPI விவரங்களை நாங்கள் பார்ப்பதோ சேமிப்பதோ இல்லை.')}`]] : []),
-    ['கட்டணமும் நேரமும்', `${p(`கட்டணம் ஒரு ஆலோசனைக்கு <b>${fee}</b>, ${online.minutes} நிமிடம் வரை. ஆன்லைன் ஆலோசனை ${online.daysTa}, மாலை 6:30 முதல் 8:30 வரை. ${taPayText}`)}
+    ['கட்டணமும் நேரமும்', `${p(`கட்டணம் ஒரு ஆலோசனைக்கு <b>${fee}</b>, ${online.minutes} நிமிடம் வரை. ${onlineSlotTa}. ${taPayText}`)}
 ${p('இந்தக் கட்டணம் ஆலோசனைக்கு மட்டுமே. மருத்துவர் பரிந்துரைக்கும் பரிசோதனைகள், ஸ்கேன் அல்லது சிகிச்சைகளுக்கான கட்டணம் தனி; அதன் செலவு முன்கூட்டியே விளக்கப்படும்.')}`],
     ['முன்பதிவுக்கு முன்', `${taList([
       'அமைதியான இடத்தில், நல்ல நெட்வொர்க் உள்ள இடத்தில் இருங்கள். வீடியோ அழைப்புக்கு வாட்ஸ்அப் இருக்க வேண்டும்.',
@@ -212,7 +209,7 @@ export const termsPage = {
 <p class="lead">How online consultations, payment, rescheduling and refunds work at ${site.name}, Erode Fort. Last updated: November 2026.</p></div></section>
 <section class="section"><div class="wrap"><div class="prose">
 <h2>The service</h2>
-<p>An online consultation is a conversation with ${D}, ${site.doctor.role}, by audio or video call, for up to ${online.minutes} minutes. It is available ${when}. ${regNo ? `${D} is registered with the ${site.doctor.reg.body} (TNMC), registration no. ${regNo}. ` : ''}Read how it works on the <a href="${path}">online consultation page</a>.</p>
+<p>An online consultation is a conversation with ${D}, ${site.doctor.role}, by audio or video call, for up to ${online.minutes} minutes. We give you ${slotNote}. ${regNo ? `${D} is registered with the ${site.doctor.reg.body} (TNMC), registration no. ${regNo}. ` : ''}Read how it works on the <a href="${path}">online consultation page</a>.</p>
 <ul class="checks">
 <li><b>Not for emergencies.</b> If you have heavy bleeding, severe pain, a high fever, fainting, or any danger sign in pregnancy, call ${P} (24/7) or dial 108 / 112. Do not wait for an online call.</li>
 <li><b>The doctor decides what is safe.</b> She may advise an examination, a scan or a test at the hospital, and may not be able to prescribe some medicines without one. This advice is part of the consultation.</li>
@@ -237,5 +234,5 @@ export const termsPage = {
 <h2>Contact us</h2>
 <p>For any question about a booking, payment or refund, message us on WhatsApp or call <a href="${tel}">${site.phone.intl}</a>, or write to <a href="mailto:${site.email}">${site.email}</a>. ${site.name}, ${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}.</p>
 </div></div></section>
-${ctaBand('Ready to book an online consultation?', `Request a slot on WhatsApp or call ${P}. ${when}.`, waText)}`,
+${ctaBand('Ready to book an online consultation?', `Request a slot on WhatsApp or call ${P}. We give you ${slotNote}.`, waText)}`,
 };

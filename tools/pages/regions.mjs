@@ -194,7 +194,7 @@ export const tamilPage = {
 <span class="eyebrow">${icon('languages')} <span lang="ta">தமிழில்</span></span>
 <h1 lang="ta">ஈரோடு <em>மகளிர் &amp; மகப்பேறு</em> மருத்துவமனை</h1>
 <p class="lead" lang="ta">ஈரோடு கோட்டையில் உள்ள அபிஷேக் மருத்துவமனை, டாக்டர் ஜெயந்தி பிரபாகரன் தலைமையில் இயங்கும் மகளிர் நலம் மற்றும் மகப்பேறு மருத்துவமனை. கர்ப்பகால பராமரிப்பு, சுகப்பிரசவம், வலியில்லா பிரசவம், பிசிஓஎஸ், குழந்தையின்மை சிகிச்சை மற்றும் லேப்ராஸ்கோபி அறுவை சிகிச்சை இங்கு கிடைக்கின்றன. 24 மணி நேர அவசர சிகிச்சை உண்டு.</p>
-<div class="btn-row">${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
+<div class="btn-row"><a class="btn btn-primary" href="/ta/${online.slug}/" lang="ta">${icon('video')} ஆன்லைன் ஆலோசனை</a>${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
 </div></section>
 
 <section class="section section-soft"><div class="wrap split two">

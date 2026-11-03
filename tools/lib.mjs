@@ -16,7 +16,7 @@ const SPECULATION = JSON.stringify({ prefetch: [{ where: { and: [{ href_matches:
 // The one inline script on every page (marks the page as JavaScript-capable). Its hash goes into the Content-Security-Policy below.
 const JS_FLAG = "document.documentElement.classList.add('js')";
 // Content-Security-Policy, sent as a <meta> tag because GitHub Pages cannot send HTTP headers. It lets pages load things only from this site,
-// plus YouTube (privacy mode) and Google Maps frames that appear after a visitor taps, and allows the single inline script above and the
+// plus YouTube (privacy mode) and Google Maps frames that appear when the map scrolls into view (or is tapped), and allows the single inline script above and the
 // speculation-rules prefetch hints (each by its hash, so nothing else inline can run). Nothing else can run, so an injected <script> or a hijacked third-party file could not execute.
 const CSP = [
   "default-src 'self'",
