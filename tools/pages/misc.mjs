@@ -21,7 +21,7 @@ ${ctaBand('Visit us at Erode Fort', 'Walk in during clinic hours, or book on Wha
 export const privacy = {
   path: '/privacy-policy.html',
   title: 'Privacy Policy | Abishek Hospital',
-  description: 'Privacy policy of Abishek Hospital, Erode.',
+  description: 'Privacy policy of Abishek Hospital, Erode: what this website collects (nothing), how WhatsApp requests work, and how the map and videos load.',
   crumbs: [['Home', '/'], ['Privacy policy']],
   render: () => `
 <section class="page-hero"><div class="wrap">${crumbs([['Home', '/'], ['Privacy policy']])}<h1>Privacy Policy</h1><p class="lead">Last updated: November 2026</p></div></section>
@@ -31,6 +31,8 @@ export const privacy = {
 <p>This website does not collect any personal data from its visitors. It has no accounts, no cookies and no analytics, and it does not store what you type into its forms.</p>
 <h2>Messages You Send Us</h2>
 <p>When you tap a WhatsApp, call or email button, or send the booking or online consultation request form, WhatsApp (or your phone or email app) opens with your message ready, and nothing is sent until you send it. If you choose to send us your name, age, health concern or reports, for example to book an online consultation, our team receives them on WhatsApp and uses them only to arrange your appointment or consultation and to care for you. Please do not send us anything you are not comfortable sharing, and call us on 97505 11225 for an emergency.</p>
+<h2>Map and Videos</h2>
+<p>The map on our home and contact pages is provided by Google Maps, and our videos by YouTube. They load only when you scroll to the map or tap a video. When they load, Google or YouTube may use cookies or similar technology under their own privacy policies. You can skip the map by using the “Open in Google Maps” or “Get directions” buttons instead.</p>
 <h2>Social Media</h2>
 <p>Our app posts medical education content to Instagram and Facebook on behalf of Abishek Hospital.</p>
 <h2>Contact</h2>
