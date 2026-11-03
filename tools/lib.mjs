@@ -285,6 +285,7 @@ ${socialList('on-dark')}</div>
 <p><span lang="ta">${tamil.emergency}</span> · For an emergency call <a href="${tel}">${site.phone.display}</a> or dial 108 / 112 for an ambulance.</p>
 <p class="areas">Women travel to us from ${districts.map((d) => `<a href="${regionUrl(d.slug)}">${d.name}</a>`).join(', ')} and across Tamil Nadu: <a href="${hubUrl}">women’s hospital in Tamil Nadu</a> · <a href="/ta/" lang="ta">தமிழில் படிக்க</a></p>
 <p class="areas">Serving women and families in ${areas.join(', ')} and nearby towns. The information on this website is for general education and does not replace advice from your doctor.</p>
+<p>Social media by <a href="https://v4d.in" target="_blank" rel="noopener">V4D · v4d.in</a></p>
 </div></div></footer>
 <nav class="mbar" aria-label="Quick contact">
 <a class="m-call" href="${tel}">${icon('phone')}Call</a>
