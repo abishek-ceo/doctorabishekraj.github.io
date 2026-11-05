@@ -195,7 +195,7 @@
         f.classList.toggle('bad', bad);
         if (bad) ok = false;
       });
-      if (!ok) say('Please fill in the highlighted fields.');
+      if (!ok) say(form.getAttribute('data-say-fill') || 'Please fill in the highlighted fields.');
       return ok;
     };
     var intro = form.getAttribute('data-wa-intro');   /* forms that carry their own opening line send every filled-in field, labelled by its data-label */
@@ -220,7 +220,8 @@
       var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text());
       var w = window.open(url, '_blank');   /* 'noopener' in the features would always return null and send this tab to WhatsApp too */
       if (w) w.opener = null; else window.location.href = url;
-      say(form.querySelector('[data-mail-btn]') ? 'Opening WhatsApp with your details. If nothing opened, tap "Send by email" or call us.' : 'Opening WhatsApp with your details. If nothing opened, please call us.');
+      if (form.getAttribute('data-say-open')) say(form.getAttribute('data-say-open'));
+      else say(form.querySelector('[data-mail-btn]') ? 'Opening WhatsApp with your details. If nothing opened, tap "Send by email" or call us.' : 'Opening WhatsApp with your details. If nothing opened, please call us.');
     });
     var mailBtn = $('[data-mail-btn]', form);
     if (mailBtn) mailBtn.addEventListener('click', function () {
