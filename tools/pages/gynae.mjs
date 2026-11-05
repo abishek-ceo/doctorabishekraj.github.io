@@ -26,8 +26,8 @@ const gynae = makeServicePage({
 <div class="grid cards">
 ${card('droplets', 'Irregular, heavy or painful periods', 'A cycle shorter than 21 or longer than 35 days, very heavy bleeding, or pain that stops you from your daily work should be checked. Common causes are hormonal imbalance, PCOS, thyroid problems, fibroids and polyps.')}
 ${card('flower', 'PCOS / PCOD', 'Irregular periods, acne, excess hair growth and weight gain, and trouble conceiving.', ['/pcos-treatment-erode/', 'PCOS treatment'])}
-${card('activity', 'Fibroids', 'Non-cancerous growths in the uterus that can cause heavy periods, pelvic pressure or trouble conceiving. Many can be treated by keyhole surgery when needed.', ['/laparoscopic-surgery-erode/', 'Keyhole surgery'])}
-${card('heart-pulse', 'Ovarian cysts', 'Fluid-filled sacs on the ovary. Many are harmless and settle on their own, while some need monitoring or surgery.')}
+${card('activity', 'Fibroids', 'Non-cancerous growths in the uterus that can cause heavy periods, pelvic pressure or trouble conceiving. Many can be treated by keyhole surgery when needed.', ['/fibroids-ovarian-cyst-treatment-erode/', 'Fibroids and cysts: treatment'])}
+${card('heart-pulse', 'Ovarian cysts', 'Fluid-filled sacs on the ovary. Many are harmless and settle on their own, while some need monitoring or surgery.', ['/fibroids-ovarian-cyst-treatment-erode/', 'Fibroids and cysts: treatment'])}
 ${card('thermometer', 'White discharge and vaginal infections', 'Some discharge is normal. Itching, a bad smell, burning or a change in colour can point to an infection that is easily treated.')}
 ${card('clipboard', 'Pelvic pain and endometriosis', 'Long-lasting pelvic pain or very painful periods can be due to endometriosis or pelvic infection and deserve a proper check.')}
 ${card('shield', 'Cervical screening', 'A Pap smear or HPV test can find changes in the cervix early. Ask when you should start and how often to repeat it.')}
@@ -62,9 +62,9 @@ ${card('sprout', 'Adolescent health', 'Gentle guidance for teenagers on periods,
     ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours (${site.hours.opd}). For emergencies we are open 24 hours a day. If you cannot travel, you can also <a href="/${online.slug}/">talk to the doctor online</a> (₹${online.fee}, up to ${online.minutes} minutes, in the evening).`],
     ['When should a girl first visit a gynaecologist?', 'There is no fixed age. A visit is a good idea if periods have not started by 15, are very painful or heavy, or if you or your parents have concerns. A gynaecologist can also advise on HPV vaccination.'],
     ['Is my consultation private?', 'Yes. Your consultation and medical information are kept private and secure.'],
-    ['Do you treat fibroids and ovarian cysts?', 'Yes. Many can be treated with medicines or simply monitored, and when surgery is needed, keyhole (laparoscopic) surgery is often possible. Dr. Jayanthi Prabakaran will advise what is best for you.'],
+    ['Do you treat fibroids and ovarian cysts?', 'Yes. Many can be treated with medicines or simply monitored, and when surgery is needed, keyhole (laparoscopic) surgery is often possible. Dr. Jayanthi Prabakaran will advise what is best for you. <a href="/fibroids-ovarian-cyst-treatment-erode/">Read more about fibroids and ovarian cysts</a>.'],
   ],
-  related: ['pcos-treatment-erode', 'laparoscopic-surgery-erode', 'infertility-treatment-erode', 'online-consultation'],
+  related: ['fibroids-ovarian-cyst-treatment-erode', 'pcos-treatment-erode', 'laparoscopic-surgery-erode', 'online-consultation'],
 });
 
 const pcos = makeServicePage({
@@ -230,7 +230,7 @@ const laparoscopy = makeServicePage({
     ['Is hysterectomy possible by keyhole surgery?', 'Yes, for many non-cancerous conditions a hysterectomy can be done laparoscopically. Whether it is right for you depends on your condition and your health.'],
     ['How much does laparoscopic surgery cost?', `The cost depends on the operation, your health and the length of your hospital stay. We explain the expected cost clearly before any procedure, with no hidden fees. Call or WhatsApp ${P} for details.`],
   ],
-  related: ['gynecologist-erode', 'pcos-treatment-erode', 'infertility-treatment-erode'],
+  related: ['gynecologist-erode', 'fibroids-ovarian-cyst-treatment-erode', 'pcos-treatment-erode', 'infertility-treatment-erode'],
 });
 
 export default [gynae, pcos, fertility, laparoscopy];

@@ -49,7 +49,7 @@ const maternity = makeServicePage({
 <div class="grid cards">
 <div class="card flat"><span class="ico">${icon('baby')}</span><h3>Normal delivery</h3><p>Usually the preferred route when it is safe for you and your baby: quicker recovery, a shorter hospital stay and an easier start to breastfeeding.</p></div>
 <div class="card flat"><span class="ico">${icon('syringe')}</span><h3>Painless (epidural) delivery</h3><p>An epidural eases labour pain while you stay awake and in control. Over 2,500 deliveries with epidural pain relief have been completed.</p></div>
-<div class="card flat"><span class="ico">${icon('shield')}</span><h3>Caesarean section, when needed</h3><p>A C-section is advised when it is the safer option for you or your baby, for example in an emergency, or because of the baby’s position or a medical condition.</p></div>
+<div class="card flat"><span class="ico">${icon('shield')}</span><h3>Caesarean section, when needed</h3><p>A C-section is advised when it is the safer option for you or your baby, for example in an emergency, or because of the baby’s position or a medical condition.</p><p><a class="link-arrow" href="/caesarean-delivery-erode/">About caesarean delivery ${icon('arrow')}</a></p></div>
 </div>
 <p style="margin-top:1.4rem"><a class="link-arrow" href="/normal-painless-delivery-erode/">Read about normal and painless delivery ${icon('arrow')}</a></p>` },
     { id: 'warning-signs', title: 'Warning signs: when to come in immediately', nav: 'Warning signs', html: warnSigns },
@@ -60,7 +60,8 @@ const maternity = makeServicePage({
 <li><b>Your recovery.</b> Care of stitches or the caesarean wound, bleeding, pain relief, rest and nutrition.</li>
 <li><b>Your emotional health.</b> Feeling low or tearful in the first two weeks is common. Tell your doctor if it lasts or feels severe.</li>
 <li><b>Newborn care.</b> Feeding, sleep, cord care, jaundice and the vaccination schedule.</li>
-<li><b>Family planning.</b> Safe ways to space your next pregnancy, discussed at your postnatal checkup, usually around six weeks after delivery.</li></ul>` },
+<li><b>Family planning.</b> Safe ways to space your next pregnancy, discussed at your postnatal checkup, usually around six weeks after delivery.</li></ul>
+<p><a class="link-arrow" href="/postnatal-care-erode/">More about postnatal care ${icon('arrow')}</a></p>` },
     { id: 'why', title: 'Why families in Erode choose Abishek Hospital', nav: 'Why us', wide: true, html: `
 <div class="grid cards">
 <div class="card flat"><span class="ico">${icon('award')}</span><h3>Experience you can rely on</h3><p>Dr. Jayanthi Prabakaran, Academic Topper from Coimbatore Medical College, has over 40,000 safe deliveries to her name.</p></div>
@@ -77,7 +78,7 @@ const maternity = makeServicePage({
     ['What should I bring to my first visit?', 'Your previous medical and scan reports, a list of medicines you take, the date of your last period, and records from earlier pregnancies. If you have diabetes, thyroid disease or high blood pressure, bring those reports too.'],
     ['How much does delivery cost?', `The cost depends on the type of delivery and any extra care you need. We explain expected costs clearly before treatment, with no hidden fees. Call or WhatsApp ${P} to discuss your situation.`],
   ],
-  related: ['normal-painless-delivery-erode', 'high-risk-pregnancy-erode', 'gynecologist-erode'],
+  related: ['normal-painless-delivery-erode', 'caesarean-delivery-erode', 'postnatal-care-erode', 'high-risk-pregnancy-erode'],
 });
 
 const delivery = makeServicePage({
@@ -115,7 +116,7 @@ const delivery = makeServicePage({
 <div class="card flat"><h3>A normal delivery is usually advised when…</h3><ul class="checks"><li>your baby is head-down and growing well</li><li>your pregnancy is healthy, or a condition is well controlled</li><li>labour starts and progresses normally</li></ul></div>
 <div class="card flat"><h3>A caesarean is advised when…</h3><ul class="checks"><li>the baby is not getting enough oxygen, or labour is not progressing</li><li>the baby is lying sideways, or in some cases bottom-first</li><li>the placenta covers the cervix (placenta praevia)</li><li>there are certain medical conditions or previous uterine surgery</li></ul></div>
 </div>
-<div class="prose"><p style="margin-top:1.2rem">A caesarean can be lifesaving, and nobody should feel guilty about having one. We explain which route is safest for you and why, so you can decide together with your doctor.</p></div>` },
+<div class="prose"><p style="margin-top:1.2rem">A caesarean can be lifesaving, and nobody should feel guilty about having one. We explain which route is safest for you and why, so you can decide together with your doctor. <a href="/caesarean-delivery-erode/">Read more about caesarean delivery</a>.</p></div>` },
     { id: 'vbac', title: 'Normal delivery after a previous caesarean', nav: 'After a C-section', html: `
 <p>Some women who have had a caesarean can safely try for a normal delivery next time. This is known as VBAC (vaginal birth after caesarean). Whether it is suitable depends on why the earlier caesarean was done, the type of scar on your uterus, the gap between pregnancies and how this pregnancy is going. Dr. Jayanthi Prabakaran will assess you individually and explain the benefits and risks before you decide.</p>` },
     { id: 'prepare', title: 'Preparing for a normal delivery', nav: 'Preparation', html: `
@@ -130,7 +131,7 @@ const delivery = makeServicePage({
     ['Do I have to decide about the epidural in advance?', 'No, you can ask for it during labour. But it helps to discuss it in the last trimester, so you know what to expect and any checks can be done in time.'],
     ['How much does a normal delivery cost in Erode?', `The cost depends on the type of delivery, the room you choose and any extra care needed. We explain costs upfront, with no hidden fees. Call or WhatsApp ${P} for details.`],
   ],
-  related: ['maternity-hospital-erode', 'high-risk-pregnancy-erode', 'gynecologist-erode'],
+  related: ['maternity-hospital-erode', 'caesarean-delivery-erode', 'high-risk-pregnancy-erode', 'postnatal-care-erode'],
 });
 
 const highRisk = makeServicePage({
