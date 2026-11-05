@@ -246,7 +246,7 @@ function header(page, ctx) {
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="wrap">${brandHtml()}
 <nav class="nav" aria-label="Main"><ul>${items}</ul></nav>
-<div class="header-cta"><a class="btn btn-outline btn-sm" href="${tel}" aria-label="Call ${site.phone.display}">${icon('phone')}<span class="call-text">${site.phone.display}</span></a>${btnWA(undefined, 'Book appointment', 'btn btn-wa btn-sm')}</div>
+<div class="header-cta">${page.focus ? `<a class="btn btn-wa btn-sm" href="${page.focus.href}">${icon('video')} ${page.focus.label}</a>` : `<a class="btn btn-outline btn-sm" href="${tel}" aria-label="Call ${site.phone.display}">${icon('phone')}<span class="call-text">${site.phone.display}</span></a>${btnWA(undefined, 'Book appointment', 'btn btn-wa btn-sm')}`}</div>
 <a class="lang-btn" href="${sw.href}" ${sw.attrs}>${sw.label}</a>
 <button class="menu-btn open-menu" type="button" data-open-menu aria-expanded="false" aria-controls="drawer" aria-label="Open menu">${icon('menu')}</button>
 </div></header>
@@ -258,13 +258,13 @@ function header(page, ctx) {
 <div class="sublist">${services.map((s) => `<a href="${slugUrl(s.slug)}">${s.short}</a>`).join('')}</div>
 <p class="grp">More</p>
 <a href="${doctorUrl}">Our Doctor</a><a href="/videos/">Daily Health Videos</a>${ctx.hasGallery ? '<a href="/gallery/">Hospital Gallery</a>' : ''}<a href="/pregnancy-due-date-calculator/">Due Date Calculator</a><a href="/women-health-guides/">Women’s Health Guides</a><a href="/womens-hospital-tamil-nadu/">Women from across Tamil Nadu</a><a href="${sw.href}" ${sw.attrs}>${sw.label}</a><a href="/faq/">FAQs</a><a href="/contact/">Contact &amp; Directions</a>
-<div class="btn-row">${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}</div>
+<div class="btn-row">${page.focus ? `<a class="btn btn-wa btn-block" href="${page.focus.href}" data-close-menu>${icon('video')} ${page.focus.label}</a>` : `${btnWA(undefined, 'Book on WhatsApp', 'btn btn-wa btn-block')}${btnCall(`Call ${site.phone.display}`, 'btn btn-light btn-block')}`}</div>
 ${socialList('on-dark')}
 </nav></div>
 `;
 }
 
-function footer(ctx) {
+function footer(ctx, page = {}) {
   const y = new Date().getFullYear();
   const yr = y > site.startYear ? `${site.startYear}–${y}` : `${site.startYear}`;
   return `<footer class="footer"><div class="wrap">
@@ -287,12 +287,12 @@ ${socialList('on-dark')}</div>
 <p class="areas">Serving women and families in ${areas.join(', ')} and nearby towns. The information on this website is for general education and does not replace advice from your doctor.</p>
 <p>Social media by <a href="https://v4d.in" target="_blank" rel="noopener">V4D · v4d.in</a></p>
 </div></div></footer>
-<nav class="mbar" aria-label="Quick contact">
+${page.focus ? '' : `<nav class="mbar" aria-label="Quick contact">
 <a class="m-call" href="${tel}">${icon('phone')}Call</a>
 <a class="m-wa" href="${wa('Hello Abishek Hospital, I would like to book an appointment.')}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
 <a class="m-dir" href="${site.maps.directions}" target="_blank" rel="noopener">${icon('navigation')}Directions</a>
 </nav>
-`;
+`}`;
 }
 
 export function renderPage(page, ctx) {
@@ -303,7 +303,7 @@ export function renderPage(page, ctx) {
 ${header(page, ctx)}<main id="main">
 ${main}
 </main>
-${footer(ctx)}${scripts}
+${footer(ctx, page)}${scripts}
 </body>
 </html>
 `;
@@ -315,22 +315,22 @@ export function servicePage(s) {
   const related = s.related.map((slug) => services.find((x) => x.slug === slug)).filter(Boolean);
   const sections = s.sections.map((sec, i) =>
     `<section class="section${i % 2 ? ' section-soft' : ''}" id="${sec.id}"><div class="wrap"><h2>${sec.title}</h2>${sec.wide ? sec.html : `<div class="prose">${sec.html}</div>`}</div></section>`).join('\n');
-  return `<section class="page-hero"><div class="wrap split">
+  return `<section class="page-hero"><div class="wrap split${s.splitClass ? ' ' + s.splitClass : ''}">
 <div>${crumbs(s.crumbs)}
 <span class="eyebrow">${icon(s.icon)} ${s.eyebrow}</span>
 <h1>${s.h1}</h1>
 <span class="tamil-line" lang="ta">${s.tamil}</span>
 <p class="lead">${s.lead}</p>
-<div class="btn-row">${btnWA(s.waText)}${btnCall(undefined, 'btn btn-outline')}</div>
-<ul class="toc" aria-label="On this page">${toc}</ul></div>
-<aside class="facts" aria-label="At a glance"><h2>At a glance</h2><ul>${s.facts.map((f) => `<li>${icon(f.icon)}<span><b>${f.title}</b><small>${f.text}</small></span></li>`).join('')}</ul></aside>
+${s.heroHtml !== undefined ? s.heroHtml : `<div class="btn-row">${btnWA(s.waText)}${btnCall(undefined, 'btn btn-outline')}</div>`}
+${s.toc === false ? '' : `<ul class="toc" aria-label="On this page">${toc}</ul>`}</div>
+${s.aside !== undefined ? s.aside : `<aside class="facts" aria-label="At a glance"><h2>At a glance</h2><ul>${s.facts.map((f) => `<li>${icon(f.icon)}<span><b>${f.title}</b><small>${f.text}</small></span></li>`).join('')}</ul></aside>`}
 </div></section>
 ${sections}
 ${videoSection(s.videos, { soft: s.sections.length % 2 === 1 })}
 ${s.faqs ? `<section class="section section-soft" id="faqs"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('help')} Questions answered</span><h2>Frequently asked questions</h2></div>${faqBlock(s.faqs)}</div></section>` : ''}
 ${s.share ? shareRow(s.share.url, s.share.text, 'Found this useful? Share it with a friend or family member.', 'Share on WhatsApp') : ''}
 <section class="section"><div class="wrap"><div class="sec-head"><span class="eyebrow">Related care</span><h2>You may also need</h2></div>${serviceCards(related, true)}</div></section>
-${ctaBand(undefined, undefined, s.waText)}`;
+${s.endCta !== undefined ? s.endCta : ctaBand(undefined, undefined, s.waText)}`;
 }
 
 /* ---------- helper: turn a service data object into a page definition ---------- */
