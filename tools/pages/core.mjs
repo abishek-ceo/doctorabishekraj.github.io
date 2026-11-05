@@ -59,7 +59,7 @@ const homeFaqs = [
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
   ['Can I consult the doctor online?', `Yes. ${D} sees women by audio or video call. The fee is ₹${online.fee} for up to ${online.minutes} minutes, and we give you a slot based on the doctor’s availability. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.`],
   ['Who is the doctor?', `${D}, Consultant Obstetrician & Gynaecologist, is an Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries. <a href="${doctorUrl}">Know more about Dr. Jayanthi Prabakaran</a>.`],
-  ['Which services do you offer?', 'Pregnancy and delivery care, normal and painless (epidural) delivery, high-risk pregnancy care, gynaecology and lady doctor consultations, PCOS and PCOD treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery, menopause care and family planning.'],
+  ['Which services do you offer?', 'Pregnancy and delivery care, normal and painless (epidural) delivery, caesarean delivery, high-risk pregnancy care, postnatal care, gynaecology and lady doctor consultations, fibroid and ovarian cyst treatment, PCOS and PCOD treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery, menopause care and family planning.'],
 ];
 
 // Seven service pages plus the two women's-wellness services that live as sections of the gynaecology page.
