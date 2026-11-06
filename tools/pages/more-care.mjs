@@ -1,16 +1,15 @@
 // More care pages: caesarean delivery, fibroids and ovarian cysts, postnatal care.
 // General information only: no diagnosis, no doses, no promises about results. Every page keeps its warning-signs box and says the doctor decides.
 // Only numbers the site already states elsewhere are used (40,000+ safe deliveries, 7,000+ laparoscopic surgeries). Costs: "explained upfront, no hidden fees".
-// These pages have no Tamil twin yet (the Tamil text needs a native-speaker proofread), so they carry no hreflang alternates and no language switch.
+// Tamil twins live in ta-services.mjs (the Tamil text needs a native-speaker proofread); makeServicePage links the two with hreflang.
 import { makeServicePage } from '../lib.mjs';
 import { site } from '../site.mjs';
 
 const P = site.phone.display;
 const emergency = '<p>Emergency care is available 24 hours a day. In a life-threatening emergency, dial 108 or 112 for an ambulance.</p>';
-const noTwin = (page) => { delete page.alternates; return page; };
 
 /* ------------------------------------------------------------ Caesarean delivery ------------------------------------------------------------ */
-const caesarean = noTwin(makeServicePage({
+const caesarean = makeServicePage({
   slug: 'caesarean-delivery-erode',
   title: 'C-Section (Caesarean Delivery) in Erode | Abishek Hospital',
   description: `Caesarean (C-section) delivery at Abishek Hospital, Erode: when it is advised, what to expect, recovery and warning signs. Call ${P}.`,
@@ -82,10 +81,10 @@ ${emergency}</div>` },
     ['Can I have a normal delivery after a caesarean?', 'Sometimes, yes. It depends on the reason for your earlier caesarean, your scar and your current pregnancy. Dr. Jayanthi Prabakaran will assess you and explain whether it is a safe option for you. <a href="/normal-painless-delivery-erode/#vbac">Read more</a>.'],
   ],
   related: ['normal-painless-delivery-erode', 'postnatal-care-erode', 'high-risk-pregnancy-erode', 'maternity-hospital-erode'],
-}));
+});
 
 /* ------------------------------------------------------------ Fibroids and ovarian cysts ------------------------------------------------------------ */
-const fibroids = noTwin(makeServicePage({
+const fibroids = makeServicePage({
   slug: 'fibroids-ovarian-cyst-treatment-erode',
   title: 'Fibroids & Ovarian Cyst Treatment, Erode | Abishek Hospital',
   description: `Fibroids and ovarian cysts: symptoms, tests and treatment, from monitoring to keyhole surgery, with a lady gynaecologist in Erode. Call ${P}.`,
@@ -145,10 +144,10 @@ const fibroids = noTwin(makeServicePage({
     ['Will I need to have my womb removed?', 'Not always. In many cases the fibroid or cyst can be treated while the womb is kept. Removing the womb is considered mainly when other treatments are not suitable and your family is complete. Your doctor will explain all your options.'],
   ],
   related: ['gynecologist-erode', 'laparoscopic-surgery-erode', 'pcos-treatment-erode', 'infertility-treatment-erode'],
-}));
+});
 
 /* ------------------------------------------------------------ Postnatal care ------------------------------------------------------------ */
-const postnatal = noTwin(makeServicePage({
+const postnatal = makeServicePage({
   slug: 'postnatal-care-erode',
   title: 'Postnatal Care After Delivery in Erode | Abishek Hospital',
   description: `Postnatal care in Erode: recovery after normal or caesarean delivery, breastfeeding support, mood and warning signs. Abishek Hospital. Call ${P}.`,
@@ -205,6 +204,6 @@ ${emergency}</div>
     ['Can I take medicines while breastfeeding?', 'Many medicines are safe, but not all. Take only medicines your doctor has prescribed or approved, and tell every doctor you see that you are breastfeeding.'],
   ],
   related: ['maternity-hospital-erode', 'caesarean-delivery-erode', 'normal-painless-delivery-erode', 'gynecologist-erode'],
-}));
+});
 
 export default [caesarean, fibroids, postnatal];

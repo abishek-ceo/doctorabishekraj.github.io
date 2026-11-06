@@ -161,7 +161,7 @@ export const hub = {
 };
 
 /* ---------------- Tamil-language page ---------------- */
-const taIcons = { 'maternity-hospital-erode': 'baby', 'normal-painless-delivery-erode': 'syringe', 'high-risk-pregnancy-erode': 'activity', 'gynecologist-erode': 'stethoscope', 'pcos-treatment-erode': 'flower', 'infertility-treatment-erode': 'microscope', 'laparoscopic-surgery-erode': 'scissors' };
+const taIcons = { 'caesarean-delivery-erode': 'hospital', 'postnatal-care-erode': 'bed', 'fibroids-ovarian-cyst-treatment-erode': 'heart-pulse', 'maternity-hospital-erode': 'baby', 'normal-painless-delivery-erode': 'syringe', 'high-risk-pregnancy-erode': 'activity', 'gynecologist-erode': 'stethoscope', 'pcos-treatment-erode': 'flower', 'infertility-treatment-erode': 'microscope', 'laparoscopic-surgery-erode': 'scissors' };
 const taServices = [
   ['maternity-hospital-erode', 'கர்ப்பகால பராமரிப்பு &amp; பிரசவம்', 'கர்ப்பம் உறுதியானது முதல் பிரசவம் வரை, பிரசவத்திற்குப் பிந்தைய கவனிப்பும் உட்பட முழுமையான பராமரிப்பு.'],
   ['normal-painless-delivery-erode', 'சுகப்பிரசவம் &amp; வலியில்லா பிரசவம்', 'சுகப்பிரசவத்திற்கு ஆதரவு; எபிடியூரல் முறையில் வலியில்லா பிரசவ வசதி.'],
@@ -169,6 +169,9 @@ const taServices = [
   ['gynecologist-erode', 'மகளிர் நல சிகிச்சை', 'மாதவிடாய் பிரச்சனைகள், கர்ப்பப்பை கட்டிகள், சினைப்பை நீர்க்கட்டிகள், வெள்ளைப்படுதல், மெனோபாஸ், குடும்பக் கட்டுப்பாடு ஆலோசனை.'],
   ['pcos-treatment-erode', 'பிசிஓஎஸ் / பிசிஓடி சிகிச்சை', 'ஒழுங்கற்ற மாதவிடாய், உடல் எடை, முகப்பரு போன்றவற்றுக்கான சிகிச்சை.'],
   ['infertility-treatment-erode', 'குழந்தையின்மை &amp; ஐ.யூ.ஐ சிகிச்சை', 'குழந்தையின்மைக்கான பரிசோதனைகளும் ஐ.யூ.ஐ சிகிச்சையும்.'],
+  ['caesarean-delivery-erode', 'சிசேரியன் பிரசவம்', 'சிசேரியன் எப்போது தேவைப்படும், அறுவை சிகிச்சைக்குப் பிறகான மீட்பு மற்றும் எச்சரிக்கை அறிகுறிகள்.'],
+  ['postnatal-care-erode', 'பிரசவத்திற்குப் பிந்தைய பராமரிப்பு', 'பிரசவத்திற்குப் பிறகான மீட்பு, தாய்ப்பால் ஆதரவு, மன நலம் மற்றும் பரிசோதனை.'],
+  ['fibroids-ovarian-cyst-treatment-erode', 'கர்ப்பப்பைக் கட்டி & நீர்க்கட்டி', 'கர்ப்பப்பைக் கட்டிகள், சினைப்பை நீர்க்கட்டிகளுக்கான பரிசோதனை மற்றும் சிகிச்சை.'],
   ['laparoscopic-surgery-erode', 'லேப்ராஸ்கோபி அறுவை சிகிச்சை', 'சிறிய துளைகள் வழியாக செய்யப்படும் நவீன அறுவை சிகிச்சை; வலி குறைவு, விரைவில் குணமடைதல்.'],
 ];
 const taFaqs = [
