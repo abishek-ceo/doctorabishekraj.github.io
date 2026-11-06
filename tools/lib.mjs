@@ -222,9 +222,11 @@ function navItems(ctx) {
   ];
 }
 
-const brandHtml = () =>
-  `<a class="brand" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="50px" width="50" height="48" alt="">` +
-  `<span><span class="brand-name">${site.name}</span><span class="brand-sub">Women’s Health · Erode Fort</span><span class="sr-only"> – home page</span></span></a>`;
+const brandHtml = (logoOnly = false) => (logoOnly
+  // header and menu: the heart logo on its own (the name stays available to screen readers and search engines)
+  ? `<a class="brand brand-logo" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="60px" width="60" height="57" alt=""><span class="sr-only">${site.name} – home page</span></a>`
+  : `<a class="brand" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="50px" width="50" height="48" alt="">` +
+    `<span><span class="brand-name">${site.name}</span><span class="brand-sub">Women’s Health · Erode Fort</span><span class="sr-only"> – home page</span></span></a>`);
 
 // One-tap switch between English and Tamil: to the page's own translation when it has one, otherwise to the matching home page.
 function langSwitch(page) {
@@ -244,14 +246,14 @@ function header(page, ctx) {
     return `<li><a href="${it.href}"${page.path === it.href ? ' aria-current="page"' : ''}>${it.label}</a></li>`;
   }).join('');
   return `<a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="wrap">${brandHtml()}
+<header class="header"><div class="wrap">${brandHtml(true)}
 <nav class="nav" aria-label="Main"><ul>${items}</ul></nav>
 <div class="header-cta">${page.focus ? `<a class="btn btn-wa btn-sm" href="${page.focus.href}">${icon('video')} ${page.focus.label}</a>` : `<a class="btn btn-outline btn-sm" href="${tel}" aria-label="Call ${site.phone.display}">${icon('phone')}<span class="call-text">${site.phone.display}</span></a>${btnWA(undefined, 'Book appointment', 'btn btn-wa btn-sm')}`}</div>
 <a class="lang-btn" href="${sw.href}" ${sw.attrs}>${sw.label}</a>
 <button class="menu-btn open-menu" type="button" data-open-menu aria-expanded="false" aria-controls="drawer" aria-label="Open menu">${icon('menu')}</button>
 </div></header>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
-<div class="drawer-top">${brandHtml()}<button class="menu-btn" type="button" data-close-menu aria-label="Close menu">${icon('close')}</button></div>
+<div class="drawer-top">${brandHtml(true)}<button class="menu-btn" type="button" data-close-menu aria-label="Close menu">${icon('close')}</button></div>
 <nav aria-label="Mobile">
 <a href="/">Home</a>
 <p class="grp">Our services</p>

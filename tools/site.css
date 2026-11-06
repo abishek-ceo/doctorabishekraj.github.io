@@ -72,6 +72,7 @@ h1[lang=ta]{font-size:clamp(1.6rem,1.1rem + 2.4vw,3.2rem)}   /* a long Tamil wor
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--plum);min-width:0;min-height:44px}
 .brand img{width:44px;height:auto;flex:none}
 .brand>span{min-width:0}
+.brand-logo img{width:56px}   /* logo-only header and menu: a little larger, since the name is not printed beside it */
 .brand-name{display:block;font:800 1.2rem/1.1 var(--display);color:var(--rose-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-bottom:.2em;margin-bottom:-.2em}   /* with very large phone text the name shortens instead of pushing the page sideways; the padding keeps the tail of the p from being clipped */
 .brand-sub{display:block;font-size:.72rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-bottom:.2em;margin-bottom:-.2em}
 .nav{display:none}
@@ -429,7 +430,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .cta .box{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
   .cta .btn-row{justify-content:flex-end;margin:0}
   .doc-card{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
-  .brand img{width:50px}.brand-name{font-size:1.35rem}
+  .brand img{width:50px}.brand-logo img{width:62px}.brand-name{font-size:1.35rem}
 }
 @media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:960px){
@@ -448,7 +449,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .header-cta{display:flex}
   .footer{padding-bottom:0}
 }
-@media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.header .wrap{gap:8px}.brand-sub{letter-spacing:.01em}}
+@media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.brand-logo img{width:52px}.header .wrap{gap:8px}.brand-sub{letter-spacing:.01em}}
 @media (max-width:380px){.brand-sub{display:none}.brand-name{font-size:1.02rem}}
 @media (max-width:359px){.brand-sub{display:none}.btn{padding-inline:1em}.lang-btn{display:none}}
 @media print{
