@@ -97,6 +97,7 @@ h1[lang=ta]{font-size:clamp(1.6rem,1.1rem + 2.4vw,3.2rem)}   /* a long Tamil wor
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--plum);min-width:0;min-height:44px}
 .brand img{width:44px;height:auto;flex:none}
 .brand>span{min-width:0}
+.brand-logo img{width:56px}   /* logo-only header and menu: a little larger, since the name is not printed beside it */
 .brand-name{display:block;font:800 1.2rem/1.1 var(--display);color:var(--rose-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-bottom:.2em;margin-bottom:-.2em}   /* with very large phone text the name shortens instead of pushing the page sideways; the padding keeps the tail of the p from being clipped */
 .brand-sub{display:block;font-size:.72rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-bottom:.2em;margin-bottom:-.2em}
 .nav{display:none}
@@ -454,7 +455,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .cta .box{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
   .cta .btn-row{justify-content:flex-end;margin:0}
   .doc-card{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
-  .brand img{width:50px}.brand-name{font-size:1.35rem}
+  .brand img{width:50px}.brand-logo img{width:62px}.brand-name{font-size:1.35rem}
 }
 @media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:960px){
@@ -473,7 +474,7 @@ html:not(.js) [data-map],html:not(.js) .form-card{display:none}
   .header-cta{display:flex}
   .footer{padding-bottom:0}
 }
-@media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.header .wrap{gap:8px}.brand-sub{letter-spacing:.01em}}
+@media (max-width:420px){.brand-name{font-size:1.1rem}.brand img{width:40px}.brand-logo img{width:52px}.header .wrap{gap:8px}.brand-sub{letter-spacing:.01em}}
 @media (max-width:380px){.brand-sub{display:none}.brand-name{font-size:1.02rem}}
 @media (max-width:359px){.brand-sub{display:none}.btn{padding-inline:1em}.lang-btn{display:none}}
 @media print{
@@ -601,14 +602,14 @@ body{font-variant-numeric:lining-nums}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="wrap"><a class="brand" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="50px" width="50" height="48" alt=""><span><span class="brand-name">Abishek Hospital</span><span class="brand-sub">Women’s Health · Erode Fort</span><span class="sr-only"> – home page</span></span></a>
+<header class="header"><div class="wrap"><a class="brand brand-logo" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="60px" width="60" height="57" alt=""><span class="sr-only">Abishek Hospital – home page</span></a>
 <nav class="nav" aria-label="Main"><ul><li><a href="/">Home</a></li><li class="has-sub"><button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-services">Services <svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#chev-down"/></svg></button><div class="sub" id="sub-services"><a href="/online-consultation/"><span>Online Consultation<small>Audio or video call from home</small></span></a><a href="/maternity-hospital-erode/"><span>Maternity & Pregnancy Care<small>Antenatal, delivery & postnatal care</small></span></a><a href="/normal-painless-delivery-erode/"><span>Normal & Painless Delivery<small>Normal birth with epidural option</small></span></a><a href="/caesarean-delivery-erode/"><span>Caesarean (C-Section) Delivery<small>When it is advised, and recovery</small></span></a><a href="/high-risk-pregnancy-erode/"><span>High-Risk Pregnancy Care<small>Closer monitoring, planned delivery</small></span></a><a href="/postnatal-care-erode/"><span>Postnatal Care<small>Recovery, feeding and checkup</small></span></a><a href="/gynecologist-erode/"><span>Gynaecology & Women’s Health<small>Periods, fibroids, cysts, menopause</small></span></a><a href="/fibroids-ovarian-cyst-treatment-erode/"><span>Fibroids & Ovarian Cysts<small>Symptoms, scans and treatment</small></span></a><a href="/pcos-treatment-erode/"><span>PCOS / PCOD Treatment<small>Hormonal & irregular-period care</small></span></a><a href="/infertility-treatment-erode/"><span>Fertility & IUI Treatment<small>Infertility evaluation and IUI</small></span></a><a href="/laparoscopic-surgery-erode/"><span>Laparoscopic (Keyhole) Surgery<small>Minimally invasive gynae surgery</small></span></a></div></li><li><a href="/dr-jayanthi-prabakaran/">Our Doctor</a></li><li><a href="/videos/">Videos</a></li><li><a href="/gallery/">Gallery</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
 <div class="header-cta"><a class="btn btn-outline btn-sm" href="tel:+919750511225" aria-label="Call 97505 11225"><svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#phone"/></svg><span class="call-text">97505 11225</span></a><a class="btn btn-wa btn-sm" href="https://wa.me/919750511225?text=Hello%20Abishek%20Hospital%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener"><svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#whatsapp"/></svg> Book appointment</a></div>
 <a class="lang-btn" href="/women-health-guides/white-discharge/" hreflang="en-IN" lang="en">English</a>
 <button class="menu-btn open-menu" type="button" data-open-menu aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#menu"/></svg></button>
 </div></header>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
-<div class="drawer-top"><a class="brand" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="50px" width="50" height="48" alt=""><span><span class="brand-name">Abishek Hospital</span><span class="brand-sub">Women’s Health · Erode Fort</span><span class="sr-only"> – home page</span></span></a><button class="menu-btn" type="button" data-close-menu aria-label="Close menu"><svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#close"/></svg></button></div>
+<div class="drawer-top"><a class="brand brand-logo" href="/"><img src="/assets/img/mark-sm.webp" srcset="/assets/img/mark-sm.webp 88w, /assets/img/mark-lg.webp 238w" sizes="60px" width="60" height="57" alt=""><span class="sr-only">Abishek Hospital – home page</span></a><button class="menu-btn" type="button" data-close-menu aria-label="Close menu"><svg class="i" aria-hidden="true" focusable="false"><use href="/assets/icons.svg?v=51759cc5#close"/></svg></button></div>
 <nav aria-label="Mobile">
 <a href="/">Home</a>
 <p class="grp">Our services</p>
