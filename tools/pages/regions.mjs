@@ -23,31 +23,43 @@ ${tips.map((t) => `<li>${t}</li>`).join('\n')}
 /* ---------------- one page per nearby town ---------------- */
 const town = {
   salem: {
+    why: 'Salem and Erode are on the same railway line, so many women from Salem plan a morning appointment and a train home in the afternoon. It is the town we hear from most often along the Salem–Erode highway, and the journey is straightforward.',
+    day: ['Take an early train or bus so you reach Erode Fort before the morning clinic is busy.', 'Erode Junction to Erode Fort is a short auto or taxi ride; the hospital is near the bus stand.', 'Check the last train or bus back to Salem before you set out, and keep a little time in hand.'],
     route: `Salem Junction and Erode Junction are on the same railway line, about 60 km apart, with trains through the day. By road, the Salem–Erode highway (through Sankari) is the usual route.`,
     tips: ['<b>Travel by train if you can.</b> It is steadier than the road, and Erode Fort is a short auto or taxi ride from Erode Junction.'],
     faq: ['Can I come from Salem for a pregnancy check-up and go back the same day?', `Yes, many women plan a return trip in a day. Message us first so your time is fixed, and allow for the journey each way (about 1 to 1½ hours by road). Your doctor will tell you how often to visit.`],
   },
   tiruppur: {
+    why: 'Tiruppur sits on the Coimbatore–Erode railway line, which makes Erode an easy trip for families who work long or shift hours. Many visits fit between shifts if you plan the day.',
+    day: ['Pick a train or bus that reaches Erode comfortably before your appointment.', 'The hospital is near the Erode bus stand at Erode Fort, so you can walk or take an auto from the stand.', 'If your work is in shifts, tell us when you are free and we will help you choose a time.'],
     route: `Tiruppur is on the Coimbatore–Erode railway line, so trains run between Tiruppur and Erode Junction. Buses and cars also take about an hour or a little more.`,
     tips: ['<b>If you work in shifts,</b> message us on WhatsApp and we will help you find a time that fits your day.'],
     faq: ['Is there a way to reach Erode from Tiruppur without driving?', 'Yes. Trains and buses link Tiruppur and Erode. Check the timetable on the day you travel, as timings change.'],
   },
   namakkal: {
+    why: 'Namakkal and Erode are linked by road and by bus, and some women also travel by train through Salem or Karur. The route you choose depends on the day and the timetable, so it helps to decide the evening before.',
+    day: ['Check bus timings the day before and note the last bus back to Namakkal.', 'Take the “Get directions” link above if you drive: it opens the live route in Google Maps.', 'Ask a family member to travel with you, especially in later pregnancy.'],
     route: `Namakkal and Erode are linked by road, and buses connect the two towns. There are also train routes through Salem or Karur, so check the timetable before you plan.`,
     tips: ['<b>Plan your route the day before.</b> Bus and train timings change, and it helps to know your return option.'],
     faq: ['How do I get from Namakkal to Abishek Hospital?', `Most women go by bus or car. By road it is about 57 km. Use the “Get directions” button on our contact page to open the route in Google Maps.`],
   },
   karur: {
+    why: 'Karur and Erode are on the same railway line, so the train is a steady, comfortable choice for women from Karur, particularly in pregnancy when a long road journey is tiring.',
+    day: ['Choose a train that arrives with time to spare before your appointment.', 'Erode Junction to Erode Fort is a short ride; the hospital is near the bus stand.', 'Check the timetable for your return train before you leave Karur.'],
     route: `Karur and Erode are on the same railway line (Erode–Tiruchirappalli), with many trains each day, and the road is about 65 km.`,
     tips: ['<b>Train is a good option from Karur.</b> Several trains run each day, so you can pick a time that suits your appointment.'],
     faq: ['Are there trains between Karur and Erode?', 'Yes. Karur and Erode Junction are on the same line and trains run through the day. Check the IRCTC or railway timetable before you travel.'],
   },
   coimbatore: {
+    why: 'Coimbatore has many hospitals, so women who travel to Erode usually come for a particular reason: they want one senior doctor, Dr. Jayanthi Prabakaran, to know their history and lead their care from the first visit through delivery or treatment. If that is what you are looking for, you are welcome to visit once, meet the doctor and then decide.',
+    day: ['Take a morning train or bus from Coimbatore so you reach Erode by late morning; the journey is about two hours each way.', 'Abishek Hospital is near the Erode bus stand at Erode Fort. From Erode Junction it is a short auto or taxi ride.', 'If the doctor advises tests or a scan, ask the team at your visit whether they can be arranged on the same trip.', 'Check the last train or bus back to Coimbatore before you set out.'],
     route: `Coimbatore and Erode are on the same main railway line, with frequent trains, and the road between them is about 90 km.`,
     tips: ['<b>Allow for the day.</b> The journey is about two hours each way, so a morning visit is easier to fit in.'],
     faq: ['I live in Coimbatore. Why would I travel to Erode?', 'That is your choice. Some women prefer to be looked after by one senior doctor who knows their history, or like a smaller hospital. You are welcome to visit, meet the doctor and then decide.'],
   },
   gobichettipalayam: {
+    why: 'Gobichettipalayam is the closest of these towns to Erode, so many women manage regular check-ups without staying overnight, which makes it easier to see the same doctor throughout pregnancy.',
+    day: ['Regular buses run between Gobichettipalayam and Erode; the hospital is near the Erode bus stand.', 'Most visits fit within a morning or an afternoon.', 'Near your due date, ask the doctor how soon to plan to be close to the hospital.'],
     route: `Gobichettipalayam is the closest of these towns, about 37 km from Erode, with regular buses between the two.`,
     tips: ['<b>It is an easy day trip.</b> Most visits fit within the morning or the afternoon.'],
     faq: ['How far is Abishek Hospital from Gobichettipalayam?', 'About 37 km by road, around an hour. Buses run between Gobichettipalayam and Erode through the day.'],
@@ -86,8 +98,14 @@ function regionPage(d) {
 <p>${t.route}</p>
 <p><a class="btn btn-outline" href="${site.maps.directions}" target="_blank" rel="noopener">${icon('navigation')} Get directions</a></p>` },
       { id: 'care', title: 'Care you can get at Abishek Hospital', nav: 'Our care', html: `
+<p>${t.why}</p>
 <p>${site.doctor.name}, ${site.doctor.role}, is an Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries. <a href="${doctorUrl}">Read about the doctor</a>.</p>
 ${svcLinks}` },
+      { id: 'day', title: `A visit from ${d.name}: what to expect`, nav: 'Your day', html: `
+<p>Here is how a visit usually works for women travelling from ${d.name}:</p>
+<ul class="checks">${t.day.map((x) => `<li>${x}</li>`).join('')}</ul>` },
+      { id: 'online', title: 'Not ready to travel yet? Start with an online consultation', nav: 'Online first', html: `
+<p>If the journey from ${d.name} is the hard part, you can speak to ${site.doctor.name} first by video or audio call from home. The doctor can review your reports, answer your questions and tell you whether you need an examination or scan, so that any trip to Erode is planned and worthwhile. It is ₹${online.fee} for up to ${online.minutes} minutes. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.</p>` },
       { id: 'plan', title: `Planning your visit from ${d.name}`, nav: 'Plan your visit', html: visitPlan(t.tips) },
     ],
     faqs,
