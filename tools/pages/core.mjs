@@ -355,6 +355,22 @@ ${videoCard()}
 
 ${videoLibrary()}
 
+<section class="section"><div class="wrap"><div class="prose">
+<span class="eyebrow">${icon('clipboard')} Start here</span>
+<h2>Which video, guide or visit is <em>right for you?</em></h2>
+<p>Our videos explain women’s health in simple Tamil. A video is a good place to start, and when you want the details written down, or when you need to see a doctor, these pages take you the next step.</p>
+<ul class="checks">
+<li><b>You have just found out you are pregnant.</b> Read <a href="/women-health-guides/early-pregnancy-symptoms/">early pregnancy symptoms</a> and <a href="/women-health-guides/food-and-care-in-early-pregnancy/">food and care in early pregnancy</a>, then see <a href="${slugUrl('maternity-hospital-erode')}">pregnancy care in Erode</a>.</li>
+<li><b>You are preparing for delivery.</b> Compare <a href="/women-health-guides/normal-delivery-vs-caesarean/">normal delivery and caesarean</a>, then read about <a href="${slugUrl('normal-painless-delivery-erode')}">painless delivery</a> or <a href="${slugUrl('caesarean-delivery-erode')}">caesarean delivery</a>.</li>
+<li><b>You have just had your baby.</b> See <a href="/women-health-guides/care-after-delivery/">care after delivery</a> and <a href="${slugUrl('postnatal-care-erode')}">postnatal care</a>.</li>
+<li><b>Your periods are irregular or you have discharge.</b> Read <a href="/women-health-guides/irregular-periods/">irregular periods</a>, <a href="/women-health-guides/white-discharge/">white discharge</a> and <a href="${slugUrl('pcos-treatment-erode')}">PCOS treatment</a>.</li>
+<li><b>You have heavy periods, pelvic pain or a scan report you do not understand.</b> See <a href="${slugUrl('fibroids-ovarian-cyst-treatment-erode')}">fibroids and ovarian cysts</a>.</li>
+<li><b>You are finding it hard to conceive.</b> See <a href="${slugUrl('infertility-treatment-erode')}">fertility and IUI treatment</a>.</li>
+<li><b>You live far away, or abroad.</b> Start with an <a href="${slugUrl(online.slug)}">online consultation</a> with ${D}.</li>
+</ul>
+<p class="note">Videos are general education. They are not a diagnosis and do not replace an examination by your own doctor. For heavy bleeding, severe pain, or any danger sign in pregnancy, do not wait to watch a video: go to the nearest hospital or call 108 or 112 in India.</p>
+</div></div></section>
+
 <section class="section section-soft"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('play')} What you will learn</span><h2>Topics <em>we cover</em></h2></div>
 <div class="grid cards">
