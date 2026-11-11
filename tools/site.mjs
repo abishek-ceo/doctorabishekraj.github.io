@@ -41,8 +41,8 @@ export const verification = { google: '', bing: '' };
 export const social = [
   { id: 'youtube', label: 'YouTube', handle: '@drjayanthiprabakaran', url: 'https://www.youtube.com/@drjayanthiprabakaran',
     alt: ['https://www.youtube.com/channel/UCyuPSFNLWCyKALkSbKXVZIg'] },   // same channel by ID (its description shows this hospital's address)
-  // The account that posts for the hospital. Swap to the drjayanthiprabakaran handle once Instagram lets the rename go through.
-  { id: 'instagram', label: 'Instagram', handle: 'abishekmedicalcenter', url: 'https://www.instagram.com/abishekmedicalcenter' },
+  // The account that posts for the hospital. It was renamed from abishekmedicalcenter to dr.jayanthiprabakaran (the old address now shows "page isn't available", checked 11 Nov 2026).
+  { id: 'instagram', label: 'Instagram', handle: 'dr.jayanthiprabakaran', url: 'https://www.instagram.com/dr.jayanthiprabakaran/' },
   { id: 'facebook', label: 'Facebook', handle: 'dr.jayanthi.prabakaran', url: 'https://www.facebook.com/dr.jayanthi.prabakaran' },
 ];
 
