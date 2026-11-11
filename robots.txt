@@ -3,4 +3,79 @@ Allow: /
 Disallow: /tools/
 Disallow: /photos/
 
+User-agent: GPTBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
+User-agent: CCBot
+Allow: /
+Disallow: /tools/
+Disallow: /photos/
+
 Sitemap: https://abishekhospital.com/sitemap.xml

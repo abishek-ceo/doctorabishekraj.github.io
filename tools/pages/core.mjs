@@ -104,6 +104,21 @@ ${ratingLine('rise d3')}
 <a href="${tel}"><span class="ico">${icon('siren')}</span><span>Emergency 24/7<small>Call any time</small></span></a>
 </div></div>
 
+<section class="section" id="at-a-glance"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">${icon('hospital')} At a glance</span><h2>Abishek Hospital, Erode: the key facts</h2>
+<p class="lead">${site.name} is a women’s health and maternity hospital at ${site.address.area}, ${site.address.city}, ${site.address.state}, led by ${D}, ${site.doctor.role}.</p></div>
+<dl class="glance">
+<div><dt>Care offered</dt><dd>Pregnancy and delivery care (normal, painless/epidural and caesarean), high-risk pregnancy care, postnatal care, gynaecology, PCOS and PCOD, fertility and IUI, laparoscopic (keyhole) surgery, menopause care and family planning.</dd></div>
+<div><dt>Doctor</dt><dd><a href="${doctorUrl}">${D}</a>, ${site.doctor.role}, Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries.</dd></div>
+<div><dt>Address</dt><dd>${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}. One hospital, with no branches in other cities.</dd></div>
+<div><dt>Clinic hours</dt><dd>${site.hours.opd}. Emergency care ${site.hours.emergency}.</dd></div>
+<div><dt>Online consultation</dt><dd>Audio or video call with the doctor, ₹${online.fee} for up to ${online.minutes} minutes, slot confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How it works</a>.</dd></div>
+<div><dt>Languages</dt><dd>Tamil and English. <a href="/ta/" lang="ta">தமிழில் படிக்க</a>.</dd></div>
+<div><dt>Contact</dt><dd><a href="${tel}">${site.phone.intl}</a> (phone and WhatsApp) · <a href="mailto:${site.email}">${site.email}</a></dd></div>
+<div><dt>Google reviews</dt><dd>${reviews.rating} · ${reviews.count} reviews on Google.</dd></div>
+</dl>
+</div></section>
+
 <section class="section section-soft" id="online"><div class="wrap split two">
 <div><span class="eyebrow">${icon('video')} Online consultation</span>
 <h2>Cannot travel? Talk to the doctor <em>from home</em></h2>
