@@ -556,3 +556,9 @@ body{font-variant-numeric:lining-nums}
 @media (forced-colors:active){.status-line .dot{forced-color-adjust:none;background:Highlight}}
 
 
+
+.glance{display:grid;gap:12px;margin:0;max-width:880px}
+.glance>div{padding:14px 18px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.glance dt{font-weight:700;color:var(--rose-600);margin:0 0 .15rem}
+.glance dd{margin:0}
+@media(min-width:760px){.glance>div{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:baseline}.glance dt{margin:0}}
