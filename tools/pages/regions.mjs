@@ -1,8 +1,8 @@
 // Pages for women who live outside Erode: a Tamil Nadu hub, one page per nearby town, and a Tamil-language page.
 // Honest by design: we have ONE hospital (Erode Fort). These pages tell a woman from another town how far we are, how to get here
 // and how to plan a visit. They must not claim a branch or a clinic anywhere else.
-import { site, services, districts, areas, online, onlineSlotTa } from '../site.mjs';
-import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, servicePage, hubUrl, regionUrl, slugUrl, doctorUrl, tel } from '../lib.mjs';
+import { site, services, districts, areas, online, onlineSlotTa, reviews } from '../site.mjs';
+import { icon, crumbs, faqBlock, ctaBand, btnWA, btnCall, btnReview, servicePage, hubUrl, regionUrl, slugUrl, doctorUrl, tel } from '../lib.mjs';
 
 const P = site.phone.display;
 const addr = `${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}`;
@@ -228,6 +228,17 @@ ${online.enabled ? `<section class="section section-soft"><div class="wrap split
 <li><span class="ico">${icon('clock')}</span><div><b>${onlineSlotTa}</b><span>நேரம் வாட்ஸ்அப்பில் உறுதி செய்யப்படும்</span></div></li>
 </ul>
 </div></section>` : ''}
+<section class="section section-soft" id="reviews"><div class="wrap split two">
+<div><span class="eyebrow" lang="ta">${icon('star')} நோயாளிகள் மதிப்புரை</span>
+<h2 lang="ta">நோயாளிகள் என்ன சொல்கிறார்கள்</h2>
+<p class="lead" lang="ta">எங்கள் நோயாளிகள் தங்கள் சொந்த வார்த்தைகளில் எழுதிய மதிப்புரைகளை கூகுளில் படிக்கலாம்.</p>
+<div class="btn-row"><a class="btn btn-primary" href="${reviews.view}" target="_blank" rel="noopener" lang="ta">கூகுள் மதிப்புரைகளைப் படிக்க ${icon('arrow')}</a>${btnReview('உங்கள் அனுபவத்தைப் பகிர', 'btn btn-outline')}</div></div>
+<ul class="info-list" lang="ta">
+<li><span class="ico">${icon('star')}</span><div><b>கூகுளில் ${reviews.rating}</b><span>${reviews.count} மதிப்புரைகள்</span></div></li>
+<li><span class="ico">${icon('users')}</span><div><b>நோயாளிகள் எழுதியவை</b><span>மருத்துவமனையால் திருத்தப்படுவதில்லை</span></div></li>
+<li><span class="ico">${icon('info')}</span><div><b>ஒவ்வொருவரின் நிலையும் வேறு</b><span>ஒரு மதிப்புரை எந்த விளைவுக்கும் உறுதி அல்ல</span></div></li>
+</ul>
+</div></section>
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2 lang="ta">எங்கள் சிகிச்சைகள்</h2></div>

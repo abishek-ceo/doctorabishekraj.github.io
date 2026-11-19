@@ -168,8 +168,19 @@ ${statsBand()}
 <blockquote class="quote">“Expert care should be accessible to all, not just a few.”<small>${D}</small></blockquote>
 <div class="btn-row"><a class="btn btn-primary" href="${doctorUrl}">About Dr. Jayanthi ${icon('arrow')}</a>${btnWA(undefined, 'Book appointment')}</div></div>
 </div></section>
+<section class="section section-soft" id="reviews"><div class="wrap split two">
+<div><span class="eyebrow">${icon('star')} Patient reviews</span>
+<h2>What patients <em>say</em></h2>
+<p class="lead">Our patients write their reviews on Google, in their own words. Read them there and decide for yourself.</p>
+<div class="btn-row"><a class="btn btn-primary" href="${reviews.view}" target="_blank" rel="noopener">Read our Google reviews<span class="sr-only"> (opens Google Maps)</span> ${icon('arrow')}</a>${btnReview('Share your experience', 'btn btn-outline')}</div></div>
+<ul class="info-list">
+<li><span class="ico">${icon('star')}</span><div><b>${reviews.rating} on Google</b><span>From ${reviews.count} reviews</span></div></li>
+<li><span class="ico">${icon('users')}</span><div><b>Written by patients</b><span>Not edited by the hospital</span></div></li>
+<li><span class="ico">${icon('info')}</span><div><b>Every case is different</b><span>A review is not a promise of any result</span></div></li>
+</ul>
+</div></section>
 ${ctx.photos.length ? `
-<section class="section section-soft"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('camera')} Our hospital</span><h2>A look <em>inside</em> our hospital</h2></div>
+<section class="section"><div class="wrap"><div class="sec-head"><span class="eyebrow">${icon('camera')} Our hospital</span><h2>A look <em>inside</em> our hospital</h2></div>
 ${galleryGrid(ctx, (ctx.photos.filter((p) => p.width / p.height > 1.2).length >= 3 ? ctx.photos.filter((p) => p.width / p.height > 1.2) : ctx.photos).slice(0, 4), { uniform: true })}
 <p style="margin-top:1.2rem"><a class="link-arrow" href="/gallery/">See all photos ${icon('arrow')}</a></p></div></section>` : ''}
 
