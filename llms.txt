@@ -1,6 +1,6 @@
 # Abishek Hospital, Erode, Tamil Nadu
 
-> Abishek Hospital is a women's health and maternity hospital at Erode Fort, Tamil Nadu, India, led by Dr. Jayanthi Prabakaran, Consultant Obstetrician & Gynaecologist. It provides pregnancy and delivery care (normal, painless/epidural and caesarean), high-risk pregnancy care, gynaecology, PCOS treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery and online consultation. Emergency care is available 24 hours.
+> Abishek Hospital is a women's health and maternity hospital at Erode Fort, Tamil Nadu, India, led by Dr. Jayanthi Prabakaran, Consultant Obstetrician & Gynaecologist. It provides pregnancy and delivery care (normal, painless/epidural and caesarean), high-risk pregnancy care, gynaecology, PCOS treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery. Emergency care is available 24 hours.
 
 ## Key facts
 - Name: Abishek Hospital (also written Abishek Medical Center), Erode, Tamil Nadu, India
@@ -10,14 +10,12 @@
 - Outpatient clinic hours: Mon – Sat, 9:00 AM – 6:30 PM. Emergency care: 24 hours a day, 7 days a week.
 - Phone and WhatsApp: +91 97505 11225. Email: info@abishekhospital.com
 - Languages: Tamil and English. Tamil pages: https://abishekhospital.com/ta/
-- Online consultation (audio or video call with the gynaecologist): Rs 499 for up to 15 minutes; the time slot is confirmed on WhatsApp based on the doctor's availability. https://abishekhospital.com/online-consultation/
 - Reviews: 5.0 rating from 1,700+ Google reviews (as shown on the hospital's Google Business Profile, November 2026). See them at https://www.google.com/maps/search/?api=1&query=Abishek+Hospital+Erode+Fort+Tamil+Nadu
 - Numbers published by the hospital: 40,000+ Safe deliveries; 2,500+ Epidural (painless) deliveries; 500+ IUI conceptions; 7,000+ Laparoscopic gynaecological surgeries.
 - Official channels: website https://abishekhospital.com; YouTube https://www.youtube.com/@drjayanthiprabakaran (@drjayanthiprabakaran); Instagram https://www.instagram.com/dr.jayanthiprabakaran/; Facebook https://www.facebook.com/dr.jayanthi.prabakaran
 - Google Maps: https://www.google.com/maps/search/?api=1&query=Abishek+Hospital+Erode+Fort+Tamil+Nadu
 
 ## Services
-- [Online Consultation](https://abishekhospital.com/online-consultation/): Talk to the gynaecologist from home by audio or video call. ₹499 for up to 15 minutes, with a slot based on the doctor’s availability.
 - [Maternity & Pregnancy Care](https://abishekhospital.com/maternity-hospital-erode/): Antenatal checkups, delivery and postnatal care, with emergency care available 24/7.
 - [Normal & Painless Delivery](https://abishekhospital.com/normal-painless-delivery-erode/): Supported normal delivery with the option of epidural (painless) labour. Over 2,500 epidural deliveries.
 - [Caesarean (C-Section) Delivery](https://abishekhospital.com/caesarean-delivery-erode/): When a caesarean is advised, what to expect during the operation and how to recover.
@@ -69,7 +67,6 @@
 - [சிசேரியன் பிரசவம் ஈரோடு | அபிஷேக்](https://abishekhospital.com/ta/caesarean-delivery-erode/)
 - [கர்ப்பப்பைக் கட்டி & நீர்க்கட்டி சிகிச்சை ஈரோடு | அபிஷேக்](https://abishekhospital.com/ta/fibroids-ovarian-cyst-treatment-erode/)
 - [பிரசவத்திற்குப் பிந்தைய பராமரிப்பு ஈரோடு | அபிஷேக்](https://abishekhospital.com/ta/postnatal-care-erode/)
-- [ஆன்லைன் மகளிர் மருத்துவ ஆலோசனை | அபிஷேக்](https://abishekhospital.com/ta/online-consultation/)
 
 ## Optional
 - [Full text version of this summary, with all FAQs](https://abishekhospital.com/llms-full.txt)

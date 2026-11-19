@@ -13,7 +13,7 @@ import maternityPages from './pages/maternity.mjs';
 import gynaePages from './pages/gynae.mjs';
 import moreCarePages from './pages/more-care.mjs';
 import { home, doctor, videos, contact, faq, allFaqs } from './pages/core.mjs';
-import { gallery, privacy, notFound } from './pages/misc.mjs';
+import { gallery, privacy, notFound, onlinePaused, taOnlinePaused } from './pages/misc.mjs';
 import { dueDate, visitReminder } from './pages/tools.mjs';
 import { hub, regionPages, tamilPage } from './pages/regions.mjs';
 import { guidesHub, guidePages, taGuidePages } from './pages/guides.mjs';
@@ -36,10 +36,10 @@ for (const p of photos) if (!captions[p.id]) console.warn(`  ! photo "${p.id}" h
 const ordered = photos.slice().sort((a, b) => (captions[a.id]?.order ?? 99) - (captions[b.id]?.order ?? 99));
 
 const pages = [
-  home, ...maternityPages, ...gynaePages, ...moreCarePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, onlinePage, taOnlinePage, doctor, videos, contact, faq,
+  home, ...maternityPages, ...gynaePages, ...moreCarePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, ...(online.enabled ? [onlinePage, taOnlinePage] : [onlinePaused, taOnlinePaused]), doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
   dueDate, visitReminder,
-  privacy, termsPage, notFound,
+  privacy, ...(online.enabled ? [termsPage] : []), notFound,
 ];
 
 const ctx = {
@@ -75,6 +75,7 @@ for (const page of pages) {
   report.push(`${outFile(page.path).padEnd(52)} ${(Buffer.byteLength(html) / 1024).toFixed(1).padStart(6)} KB  ${warn.length ? '! ' + warn.join(', ') : ''}`);
 }
 if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, 'gallery'), { recursive: true });
+if (!online.enabled && exists('terms-and-refunds/index.html')) fs.rmSync(path.join(ROOT, 'terms-and-refunds'), { recursive: true });   // the terms page belongs to the online consultation (see ONLINE_ENABLED in site.mjs)
 
 // ---- sitemap + robots ----
 const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
@@ -99,7 +100,7 @@ const facts = [
   `Outpatient clinic hours: ${site.hours.opd}. Emergency care: ${site.hours.emergency}.`,
   `Phone and WhatsApp: ${site.phone.intl}. Email: ${site.email}`,
   `Languages: Tamil and English. Tamil pages: ${abs('/ta/')}`,
-  `Online consultation (audio or video call with the gynaecologist): Rs ${online.fee} for up to ${online.minutes} minutes; the time slot is confirmed on WhatsApp based on the doctor's availability. ${abs('/' + online.slug + '/')}`,
+  ...(online.enabled ? [`Online consultation (audio or video call with the gynaecologist): Rs ${online.fee} for up to ${online.minutes} minutes; the time slot is confirmed on WhatsApp based on the doctor's availability. ${abs('/' + online.slug + '/')}`] : []),
   `Reviews: ${reviews.rating} rating from ${reviews.count} Google reviews (as shown on the hospital's Google Business Profile, November 2026). See them at ${reviews.view}`,
   `Numbers published by the hospital: ${stats.map((s) => `${s.n} ${s.label}`).join('; ')}.`,
   `Official channels: website ${site.url}; YouTube ${social[0].url} (${social[0].handle}); Instagram ${social[1].url}; Facebook ${social[2].url}`,
@@ -114,7 +115,7 @@ const tamilPages = pages.filter((p) => p.lang === 'ta' && !p.noindex).map((p) =>
 const note = 'Health information on this website is general information, not a diagnosis or a substitute for an examination. In an emergency, go to the nearest hospital or call 108 / 112.';
 write('llms.txt', `# ${site.name}, Erode, Tamil Nadu
 
-> ${site.name} is a women's health and maternity hospital at Erode Fort, Tamil Nadu, India, led by ${D}, ${site.doctor.role}. It provides pregnancy and delivery care (normal, painless/epidural and caesarean), high-risk pregnancy care, gynaecology, PCOS treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery and online consultation. Emergency care is available 24 hours.
+> ${site.name} is a women's health and maternity hospital at Erode Fort, Tamil Nadu, India, led by ${D}, ${site.doctor.role}. It provides pregnancy and delivery care (normal, painless/epidural and caesarean), high-risk pregnancy care, gynaecology, PCOS treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery${online.enabled ? ' and online consultation' : ''}. Emergency care is available 24 hours.
 
 ## Key facts
 ${facts.map((f) => `- ${f}`).join('\n')}
