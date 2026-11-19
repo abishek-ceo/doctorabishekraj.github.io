@@ -1,6 +1,10 @@
 // Single source of truth for hospital facts. Everything here was already published on the previous
 // site (index.html / JSON-LD) - do not add claims here that the hospital has not approved.
 
+// IndexNow: a public key file (https://abishekhospital.com/<key>.txt) that lets Bing, Yandex and other search engines accept instant "this page changed" pings.
+// It is not a secret (the protocol requires it to be public). ChatGPT search, Copilot and Perplexity lean on Bing's index, so fresh pings help them see changes sooner.
+export const indexNowKey = 'b52ce7700cc850ffb951cb76a6eb048d';
+
 export const site = {
   name: 'Abishek Hospital',
   altName: 'Abishek Medical Center',
