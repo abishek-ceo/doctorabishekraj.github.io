@@ -125,14 +125,20 @@
   <url>
     <loc>https://abishekhospital.com/women-health-guides/normal-delivery-vs-caesarean/</loc>
     <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/normal-delivery-vs-caesarean/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/normal-delivery-vs-caesarean/"/>
   </url>
   <url>
     <loc>https://abishekhospital.com/women-health-guides/food-and-care-in-early-pregnancy/</loc>
     <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/food-and-care-in-early-pregnancy/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/food-and-care-in-early-pregnancy/"/>
   </url>
   <url>
     <loc>https://abishekhospital.com/women-health-guides/care-after-delivery/</loc>
     <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/care-after-delivery/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/care-after-delivery/"/>
   </url>
   <url>
     <loc>https://abishekhospital.com/ta/white-discharge/</loc>
@@ -151,6 +157,32 @@
     <lastmod>2026-11-19</lastmod>
     <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/early-pregnancy-symptoms/"/>
     <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/early-pregnancy-symptoms/"/>
+  </url>
+  <url>
+    <loc>https://abishekhospital.com/ta/normal-delivery-vs-caesarean/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/normal-delivery-vs-caesarean/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/normal-delivery-vs-caesarean/"/>
+  </url>
+  <url>
+    <loc>https://abishekhospital.com/ta/food-and-care-in-early-pregnancy/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/food-and-care-in-early-pregnancy/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/food-and-care-in-early-pregnancy/"/>
+  </url>
+  <url>
+    <loc>https://abishekhospital.com/ta/care-after-delivery/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://abishekhospital.com/women-health-guides/care-after-delivery/"/>
+    <xhtml:link rel="alternate" hreflang="ta-IN" href="https://abishekhospital.com/ta/care-after-delivery/"/>
+  </url>
+  <url>
+    <loc>https://abishekhospital.com/ta/pregnancy-scans/</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abishekhospital.com/ta/labour-pain/</loc>
+    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://abishekhospital.com/ta/maternity-hospital-erode/</loc>
