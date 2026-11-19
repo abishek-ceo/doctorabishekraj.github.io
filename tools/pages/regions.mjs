@@ -252,7 +252,7 @@ ${online.enabled ? `<section class="section section-soft"><div class="wrap split
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2 lang="ta">பெண்கள் ஆரோக்கிய வழிகாட்டி</h2></div>
-<ul class="chips"><li><a href="/ta/white-discharge/" lang="ta">வெள்ளைப்படுதல்</a></li><li><a href="/ta/irregular-periods/" lang="ta">ஒழுங்கற்ற மாதவிடாய்</a></li><li><a href="/ta/early-pregnancy-symptoms/" lang="ta">கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்</a></li></ul>
+<ul class="chips"><li><a href="/ta/white-discharge/" lang="ta">வெள்ளைப்படுதல்</a></li><li><a href="/ta/irregular-periods/" lang="ta">ஒழுங்கற்ற மாதவிடாய்</a></li><li><a href="/ta/early-pregnancy-symptoms/" lang="ta">கர்ப்பத்தின் ஆரம்ப அறிகுறிகள்</a></li><li><a href="/ta/pregnancy-scans/" lang="ta">கர்ப்பகால ஸ்கேன்கள்</a></li><li><a href="/ta/food-and-care-in-early-pregnancy/" lang="ta">கர்ப்பகால உணவு</a></li><li><a href="/ta/labour-pain/" lang="ta">பிரசவ வலி</a></li><li><a href="/ta/normal-delivery-vs-caesarean/" lang="ta">சுகப்பிரசவம் அல்லது சிசேரியன்</a></li><li><a href="/ta/care-after-delivery/" lang="ta">பிரசவத்திற்குப் பிந்தைய பராமரிப்பு</a></li></ul>
 </div></section>
 
 <section class="section section-soft"><div class="wrap">
