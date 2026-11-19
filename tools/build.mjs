@@ -26,6 +26,12 @@ const exists = (p) => fs.existsSync(path.join(ROOT, p));
 const write = (p, data) => { fs.mkdirSync(path.dirname(path.join(ROOT, p)), { recursive: true }); fs.writeFileSync(path.join(ROOT, p), data); };
 const hash = (s) => crypto.createHash('md5').update(s).digest('hex').slice(0, 8);
 const today = new Date().toISOString().slice(0, 10);
+// Real "last modified" dates: tools/lastmod.json remembers a fingerprint of every page. A page only gets today's date when its content actually changed,
+// so the sitemap <lastmod> and the schema dateModified stay truthful (search engines ignore lastmod when every page claims to change every day).
+const LASTMOD_FILE = 'tools/lastmod.json';
+const lastmod = exists(LASTMOD_FILE) ? JSON.parse(rd(LASTMOD_FILE)) : {};
+const newLastmod = {};
+const modDate = {};
 
 if (!exists('CNAME') || rd('CNAME').trim() !== 'abishekhospital.com') throw new Error('CNAME is missing or changed: refusing to build (it would break the custom domain).');
 
@@ -65,7 +71,13 @@ setSprite(`/assets/icons.svg?v=${hash(sprite)}`);
 const outFile = (p) => (p === '/' ? 'index.html' : p.endsWith('/') ? `${p.slice(1)}index.html` : p.slice(1));
 const report = [];
 for (const page of pages) {
-  const html = renderPage(page, ctx);
+  let html = renderPage(page, ctx);
+  const fp = hash(html);
+  const prev = lastmod[page.path];
+  const date = prev && prev.h === fp ? prev.d : today;
+  newLastmod[page.path] = { h: fp, d: date };
+  modDate[page.path] = date;
+  html = html.replaceAll('@@LASTMOD@@', date);
   write(outFile(page.path), html);
   const h1s = (html.match(/<h1[\s>]/g) || []).length;
   const warn = [];
@@ -74,6 +86,7 @@ for (const page of pages) {
   if (page.description.length > 165) warn.push(`description ${page.description.length} chars`);
   report.push(`${outFile(page.path).padEnd(52)} ${(Buffer.byteLength(html) / 1024).toFixed(1).padStart(6)} KB  ${warn.length ? '! ' + warn.join(', ') : ''}`);
 }
+write(LASTMOD_FILE, JSON.stringify(newLastmod, Object.keys(newLastmod).sort(), 1) + '\n');
 if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, 'gallery'), { recursive: true });
 for (const d of online.enabled ? [] : ['terms-and-refunds', online.slug, `ta/${online.slug}`]) if (exists(`${d}/index.html`)) fs.rmSync(path.join(ROOT, d), { recursive: true });   // the terms page belongs to the online consultation (see ONLINE_ENABLED in site.mjs)
 
@@ -82,7 +95,7 @@ write(`${indexNowKey}.txt`, indexNowKey);   // IndexNow ownership file (see site
 // ---- sitemap + robots ----
 const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
-  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${today}</lastmod>\n` +
+  indexable.map((p) => `  <url>\n    <loc>${site.url}${p.path}</loc>\n    <lastmod>${modDate[p.path]}</lastmod>\n` +
     (p.alternates ? p.alternates.map(([l, h]) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${site.url}${h}"/>\n`).join('') : '') + `  </url>`).join('\n') + `\n</urlset>\n`);
 // AI search and assistant crawlers are named on purpose: they are already allowed by the * rule, and naming them makes the intent explicit.
 // (Blocking any of them would stop that assistant from reading or quoting the site.)
