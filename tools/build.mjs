@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { site, services, districts, stats, social, reviews, online } from './site.mjs';
+import { site, services, districts, stats, social, reviews, online, indexNowKey } from './site.mjs';
 import { renderPage, setSprite, usedIcons, stripTags } from './lib.mjs';
 import maternityPages from './pages/maternity.mjs';
 import gynaePages from './pages/gynae.mjs';
@@ -76,6 +76,8 @@ for (const page of pages) {
 }
 if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, 'gallery'), { recursive: true });
 for (const d of online.enabled ? [] : ['terms-and-refunds', online.slug, `ta/${online.slug}`]) if (exists(`${d}/index.html`)) fs.rmSync(path.join(ROOT, d), { recursive: true });   // the terms page belongs to the online consultation (see ONLINE_ENABLED in site.mjs)
+
+write(`${indexNowKey}.txt`, indexNowKey);   // IndexNow ownership file (see site.mjs)
 
 // ---- sitemap + robots ----
 const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
