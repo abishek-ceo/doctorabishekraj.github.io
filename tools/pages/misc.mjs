@@ -1,5 +1,5 @@
 // Gallery (only when photos exist), privacy policy and 404 pages.
-import { site, services, online } from '../site.mjs';
+import { site, services } from '../site.mjs';
 import { icon, crumbs, btnWA, btnCall, ctaBand, slugUrl } from '../lib.mjs';
 import { galleryGrid } from './core.mjs';
 
@@ -52,37 +52,5 @@ export const notFound = {
 <p class="lead">The page may have moved. Try one of these, or call us on ${site.phone.display}.</p>
 <div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="/">${icon('hospital')} Go to home page</a>${btnWA(undefined, 'WhatsApp us')}${btnCall(undefined, 'btn btn-outline')}</div>
 <ul class="chips" style="justify-content:center;margin-top:1.6rem">${services.map((s) => `<li><a href="${slugUrl(s.slug)}">${s.short}</a></li>`).join('')}</ul>
-</div></section>`,
-};
-
-// Shown at the two old online-consultation addresses while online consultation is paused (online.enabled = false in site.mjs), so links that
-// were already shared (YouTube, social media) land on a clear message instead of an error. Not listed in the sitemap.
-export const onlinePaused = {
-  path: `/${online.slug}/`,
-  title: 'Online consultation is not available right now | Abishek Hospital',
-  description: 'Online consultation at Abishek Hospital, Erode is paused for now. Book on WhatsApp, call us or visit the hospital at Erode Fort.',
-  noindex: true,
-  crumbs: [['Home', '/'], ['Online consultation']],
-  render: () => `
-<section class="center-page"><div class="wrap">
-<span class="eyebrow">${icon('info')} Online consultation</span>
-<h1>Online consultation is <em>not available right now</em></h1>
-<p class="lead">We have paused online consultations for now. To see ${site.doctor.name}, book on WhatsApp, call us on ${site.phone.display}, or visit the hospital at ${site.address.area}, ${site.address.city}. Emergency care is available ${site.hours.emergency}.</p>
-<div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="/">${icon('hospital')} Go to home page</a>${btnWA(undefined, 'WhatsApp us')}${btnCall(undefined, 'btn btn-outline')}</div>
-</div></section>`,
-};
-export const taOnlinePaused = {
-  path: `/ta/${online.slug}/`,
-  lang: 'ta',
-  title: 'ஆன்லைன் ஆலோசனை தற்போது இல்லை | அபிஷேக் மருத்துவமனை',
-  description: 'அபிஷேக் மருத்துவமனை ஈரோட்டில் ஆன்லைன் ஆலோசனை தற்போது நிறுத்தப்பட்டுள்ளது. வாட்ஸ்அப்பில் முன்பதிவு செய்யுங்கள் அல்லது அழையுங்கள்.',
-  noindex: true,
-  crumbs: [['Home', '/'], ['ஆன்லைன் ஆலோசனை']],
-  render: () => `
-<section class="center-page"><div class="wrap">
-<span class="eyebrow">${icon('info')} <span lang="ta">ஆன்லைன் ஆலோசனை</span></span>
-<h1 lang="ta">ஆன்லைன் ஆலோசனை <em>தற்போது இல்லை</em></h1>
-<p class="lead" lang="ta">ஆன்லைன் ஆலோசனை தற்போது நிறுத்தப்பட்டுள்ளது. டாக்டர் ஜெயந்தி பிரபாகரனைச் சந்திக்க வாட்ஸ்அப்பில் முன்பதிவு செய்யுங்கள், ${site.phone.display} என்ற எண்ணில் அழையுங்கள், அல்லது ஈரோடு கோட்டை மருத்துவமனைக்கு வாருங்கள்.</p>
-<div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="/ta/" lang="ta">${icon('hospital')} முகப்புப் பக்கம்</a>${btnWA(undefined, 'WhatsApp')}${btnCall(undefined, 'btn btn-outline')}</div>
 </div></section>`,
 };
