@@ -145,7 +145,7 @@ function graph(page) {
     hospitalNode(),
   ];
   if (page.withDoctor) nodes.push(doctorNode());
-  const wp = { '@type': page.schemaType || 'WebPage', '@id': `${url}#webpage`, url, name: page.title, description: page.description, inLanguage: page.lang === 'ta' ? 'ta-IN' : 'en-IN', isPartOf: { '@id': `${U}/#website` }, about: { '@id': `${U}/#hospital` }, dateModified: new Date().toISOString().slice(0, 10) };
+  const wp = { '@type': page.schemaType || 'WebPage', '@id': `${url}#webpage`, url, name: page.title, description: page.description, inLanguage: page.lang === 'ta' ? 'ta-IN' : 'en-IN', isPartOf: { '@id': `${U}/#website` }, about: { '@id': `${U}/#hospital` }, dateModified: '@@LASTMOD@@' };   // replaced by build.mjs with the date this page's content last really changed
   if (page.specialty) wp.specialty = `https://schema.org/${page.specialty}`;
   if (page.withDoctor && page.path !== '/') wp.mainEntity = { '@id': `${U}/#doctor` };
   nodes.push(wp);
