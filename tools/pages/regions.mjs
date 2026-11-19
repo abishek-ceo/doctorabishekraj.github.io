@@ -104,8 +104,8 @@ ${svcLinks}` },
       { id: 'day', title: `A visit from ${d.name}: what to expect`, nav: 'Your day', html: `
 <p>Here is how a visit usually works for women travelling from ${d.name}:</p>
 <ul class="checks">${t.day.map((x) => `<li>${x}</li>`).join('')}</ul>` },
-      { id: 'online', title: 'Not ready to travel yet? Start with an online consultation', nav: 'Online first', html: `
-<p>If the journey from ${d.name} is the hard part, you can speak to ${site.doctor.name} first by video or audio call from home. The doctor can review your reports, answer your questions and tell you whether you need an examination or scan, so that any trip to Erode is planned and worthwhile. It is ₹${online.fee} for up to ${online.minutes} minutes. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.</p>` },
+      ...(!online.enabled ? [] : [{ id: 'online', title: 'Not ready to travel yet? Start with an online consultation', nav: 'Online first', html: `
+<p>If the journey from ${d.name} is the hard part, you can speak to ${site.doctor.name} first by video or audio call from home. The doctor can review your reports, answer your questions and tell you whether you need an examination or scan, so that any trip to Erode is planned and worthwhile. It is ₹${online.fee} for up to ${online.minutes} minutes. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.</p>` }]),
       { id: 'plan', title: `Planning your visit from ${d.name}`, nav: 'Plan your visit', html: visitPlan(t.tips) },
     ],
     faqs,
@@ -215,10 +215,10 @@ export const tamilPage = {
 <span class="eyebrow">${icon('languages')} <span lang="ta">தமிழில்</span></span>
 <h1 lang="ta">ஈரோடு <em>மகளிர் &amp; மகப்பேறு</em> மருத்துவமனை</h1>
 <p class="lead" lang="ta">ஈரோடு கோட்டையில் உள்ள அபிஷேக் மருத்துவமனை, டாக்டர் ஜெயந்தி பிரபாகரன் தலைமையில் இயங்கும் மகளிர் நலம் மற்றும் மகப்பேறு மருத்துவமனை. கர்ப்பகால பராமரிப்பு, சுகப்பிரசவம், வலியில்லா பிரசவம், பிசிஓஎஸ், குழந்தையின்மை சிகிச்சை மற்றும் லேப்ராஸ்கோபி அறுவை சிகிச்சை இங்கு கிடைக்கின்றன. 24 மணி நேர அவசர சிகிச்சை உண்டு.</p>
-<div class="btn-row"><a class="btn btn-primary" href="/ta/${online.slug}/" lang="ta">${icon('video')} ஆன்லைன் ஆலோசனை</a>${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
+<div class="btn-row">${online.enabled ? `<a class="btn btn-primary" href="/ta/${online.slug}/" lang="ta">${icon('video')} ஆன்லைன் ஆலோசனை</a>${btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு')}` : btnWA(taWa, 'வாட்ஸ்அப்பில் முன்பதிவு', 'btn btn-primary')}${btnCall(`அழைக்க ${P}`, 'btn btn-outline')}</div>
 </div></section>
 
-<section class="section section-soft"><div class="wrap split two">
+${online.enabled ? `<section class="section section-soft"><div class="wrap split two">
 <div><h2 lang="ta">ஆன்லைன் ஆலோசனை</h2>
 <p class="lead" lang="ta">பயணம் செய்ய முடியவில்லையா? டாக்டர் ஜெயந்தி பிரபாகரனுடன் வீட்டிலிருந்தே ஆடியோ அல்லது வீடியோ அழைப்பில் பேசலாம். ஒரு ஆலோசனைக்கு ₹${online.fee}, ${online.minutes} நிமிடம் வரை. ${onlineSlotTa}.</p>
 <div class="btn-row"><a class="btn btn-primary" href="/ta/${online.slug}/" lang="ta">ஆன்லைன் ஆலோசனை பற்றி ${icon('arrow')}</a></div></div>
@@ -227,7 +227,7 @@ export const tamilPage = {
 <li><span class="ico">${icon('timer')}</span><div><b>₹${online.fee} · ${online.minutes} நிமிடம் வரை</b><span>அனைத்து மகளிர் மருத்துவப் பிரச்சனைகளுக்கும்</span></div></li>
 <li><span class="ico">${icon('clock')}</span><div><b>${onlineSlotTa}</b><span>நேரம் வாட்ஸ்அப்பில் உறுதி செய்யப்படும்</span></div></li>
 </ul>
-</div></section>
+</div></section>` : ''}
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2 lang="ta">எங்கள் சிகிச்சைகள்</h2></div>

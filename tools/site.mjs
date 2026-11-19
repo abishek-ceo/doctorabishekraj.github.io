@@ -65,8 +65,14 @@ export const stats = [
   { n: '7,000+', label: 'Laparoscopic gynaecological surgeries' },
 ];
 
+// ONLINE CONSULTATION SWITCH. The owner paused online consultation on 19 Nov 2026 until Razorpay is configured.
+//   false = the online pages, buttons, menu/footer entries, FAQ answers and mentions are all left out, and the two old addresses
+//           (/online-consultation/ and /ta/online-consultation/) show a short "moved" page that sends visitors to the home page.
+//   true  = everything comes back (set `online.payUrl` first, then switch this to true and rebuild).
+export const ONLINE_ENABLED = false;
+
 // Service pages (also drive the menu, cards, footer and sitemap). The online consultation is listed first: it is the primary service on the website.
-export const services = [
+const allServices = [
   { slug: 'online-consultation', short: 'Online Consultation', icon: 'video', hint: 'Audio or video call from home', online: true,
     blurb: 'Talk to the gynaecologist from home by audio or video call. ₹499 for up to 15 minutes, with a slot based on the doctor’s availability.', specialty: 'Gynecologic' },
   { slug: 'maternity-hospital-erode', short: 'Maternity & Pregnancy Care', icon: 'baby', hint: 'Antenatal, delivery & postnatal care',
@@ -90,13 +96,14 @@ export const services = [
   { slug: 'laparoscopic-surgery-erode', short: 'Laparoscopic (Keyhole) Surgery', icon: 'scissors', hint: 'Minimally invasive gynae surgery',
     blurb: 'Minimally invasive gynaecological surgery. Over 7,000 laparoscopic surgeries performed.', specialty: 'Gynecologic' },
 ];
+export const services = ONLINE_ENABLED ? allServices : allServices.filter((s) => !s.online);
 
 // Online (audio / video) consultations. Phase 1 has no payment system on the website: a patient requests a slot on WhatsApp, our team confirms it and
 // sends the payment details, and the doctor calls at the confirmed time. Change the fee here and rebuild; every page follows.
 //   There are no fixed online hours or days on the website: each patient is given a slot based on the doctor's availability, confirmed on WhatsApp.
 //   payUrl: the hospital's Razorpay Payment Page link for the fixed ₹499 fee (https://pages.razorpay.com/..., https://rzp.io/... or https://razorpay.me/...).
 //           Leave '' to hide the "Pay" step (the team then sends payment details on WhatsApp). Only paste a link you have opened and that shows the hospital's name.
-export const online = { slug: 'online-consultation', fee: 499, minutes: 15, payUrl: '' };
+export const online = { slug: 'online-consultation', fee: 499, minutes: 15, payUrl: '', enabled: ONLINE_ENABLED };
 export const onlineSlotTa = 'மருத்துவர் இருக்கும் நேரத்தைப் பொறுத்து நேரம் ஒதுக்கப்படும்';   // Tamil: "a time is given depending on the doctor's available time" (needs the native-speaker proofread)
 
 // Towns outside Erode that have their own page (/womens-hospital-tamil-nadu/<slug>/). km = rough road distance to Erode Fort,

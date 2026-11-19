@@ -57,7 +57,7 @@ const homeFaqs = [
   ['Where is Abishek Hospital in Erode?', `We are at ${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}. <a href="/contact/">See the map and directions</a>.`],
   ['What are your clinic timings?', `${site.hours.opd}. Emergency care is available ${site.hours.emergency}.`],
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
-  ['Can I consult the doctor online?', `Yes. ${D} sees women by audio or video call. The fee is ₹${online.fee} for up to ${online.minutes} minutes, and we give you a slot based on the doctor’s availability. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.`],
+  ...(!online.enabled ? [] : [['Can I consult the doctor online?', `Yes. ${D} sees women by audio or video call. The fee is ₹${online.fee} for up to ${online.minutes} minutes, and we give you a slot based on the doctor’s availability. <a href="${slugUrl(online.slug)}">See how online consultation works</a>.`]]),
   ['Who is the doctor?', `${D}, Consultant Obstetrician & Gynaecologist, is an Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries. <a href="${doctorUrl}">Know more about Dr. Jayanthi Prabakaran</a>.`],
   ['Which services do you offer?', 'Pregnancy and delivery care, normal and painless (epidural) delivery, caesarean delivery, high-risk pregnancy care, postnatal care, gynaecology and lady doctor consultations, fibroid and ovarian cyst treatment, PCOS and PCOD treatment, fertility and IUI treatment, laparoscopic (keyhole) surgery, menopause care and family planning.'],
 ];
@@ -88,7 +88,7 @@ ${statusLine('rise')}
 <h1 class="rise d1">Gynecologist &amp; Maternity Hospital in <em>Erode</em></h1>
 <span class="tamil-line rise d1" lang="ta">${tamil.hero}</span>
 <p class="lead rise d2">Trusted care for every woman, at every stage. Led by ${D}, Academic Topper from Coimbatore Medical College, with over 40,000 safe deliveries, and honest, upfront pricing.</p>
-<div class="btn-row rise d3"><a class="btn btn-primary" href="${slugUrl(online.slug)}">${icon('video')} Online consultation</a>${btnWA()}${btnCall(undefined, 'btn btn-outline')}</div>
+<div class="btn-row rise d3">${online.enabled ? `<a class="btn btn-primary" href="${slugUrl(online.slug)}">${icon('video')} Online consultation</a>${btnWA()}${btnCall(undefined, 'btn btn-outline')}` : `${btnWA(undefined, undefined, 'btn btn-primary')}${btnCall(undefined, 'btn btn-outline')}`}</div>
 ${ratingLine('rise d3')}
 <div class="trust rise d3">${[[stats[0].n, 'Safe deliveries'], [stats[1].n, 'Painless deliveries'], [stats[3].n, 'Keyhole surgeries']].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join('')}</div>
 </div>
@@ -112,14 +112,14 @@ ${ratingLine('rise d3')}
 <div><dt>Doctor</dt><dd><a href="${doctorUrl}">${D}</a>, ${site.doctor.role}, Academic Topper from ${site.doctor.college}, with over 40,000 safe deliveries.</dd></div>
 <div><dt>Address</dt><dd>${site.address.line1}, ${site.address.area}, ${site.address.city} – ${site.address.pin}, ${site.address.state}. One hospital, with no branches in other cities.</dd></div>
 <div><dt>Clinic hours</dt><dd>${site.hours.opd}. Emergency care ${site.hours.emergency}.</dd></div>
-<div><dt>Online consultation</dt><dd>Audio or video call with the doctor, ₹${online.fee} for up to ${online.minutes} minutes, slot confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How it works</a>.</dd></div>
-<div><dt>Languages</dt><dd>Tamil and English. <a href="/ta/" lang="ta">தமிழில் படிக்க</a>.</dd></div>
+${online.enabled ? `<div><dt>Online consultation</dt><dd>Audio or video call with the doctor, ₹${online.fee} for up to ${online.minutes} minutes, slot confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How it works</a>.</dd></div>
+` : ''}<div><dt>Languages</dt><dd>Tamil and English. <a href="/ta/" lang="ta">தமிழில் படிக்க</a>.</dd></div>
 <div><dt>Contact</dt><dd><a href="${tel}">${site.phone.intl}</a> (phone and WhatsApp) · <a href="mailto:${site.email}">${site.email}</a></dd></div>
 <div><dt>Google reviews</dt><dd>${reviews.rating} · ${reviews.count} reviews on Google.</dd></div>
 </dl>
 </div></section>
 
-<section class="section section-soft" id="online"><div class="wrap split two">
+${online.enabled ? `<section class="section section-soft" id="online"><div class="wrap split two">
 <div><span class="eyebrow">${icon('video')} Online consultation</span>
 <h2>Cannot travel? Talk to the doctor <em>from home</em></h2>
 <p class="lead">Speak with ${D} by audio or video call. ₹${online.fee} for a consultation of up to ${online.minutes} minutes, with a slot based on the doctor’s availability.</p>
@@ -129,7 +129,7 @@ ${ratingLine('rise d3')}
 <li><span class="ico">${icon('timer')}</span><div><b>₹${online.fee} · up to ${online.minutes} minutes</b><span>For all gynaecology concerns</span></div></li>
 <li><span class="ico">${icon('clock')}</span><div><b>Slot based on availability</b><span>Confirmed on WhatsApp</span></div></li>
 </ul>
-</div></section>
+</div></section>` : ''}
 
 <section class="section" id="services"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">${icon('stethoscope')} Our services</span><h2>Complete women’s healthcare <em>in Erode</em></h2>
@@ -381,8 +381,8 @@ ${videoLibrary()}
 <li><b>Your periods are irregular or you have discharge.</b> Read <a href="/women-health-guides/irregular-periods/">irregular periods</a>, <a href="/women-health-guides/white-discharge/">white discharge</a> and <a href="${slugUrl('pcos-treatment-erode')}">PCOS treatment</a>.</li>
 <li><b>You have heavy periods, pelvic pain or a scan report you do not understand.</b> See <a href="${slugUrl('fibroids-ovarian-cyst-treatment-erode')}">fibroids and ovarian cysts</a>.</li>
 <li><b>You are finding it hard to conceive.</b> See <a href="${slugUrl('infertility-treatment-erode')}">fertility and IUI treatment</a>.</li>
-<li><b>You live far away, or abroad.</b> Start with an <a href="${slugUrl(online.slug)}">online consultation</a> with ${D}.</li>
-</ul>
+${online.enabled ? `<li><b>You live far away, or abroad.</b> Start with an <a href="${slugUrl(online.slug)}">online consultation</a> with ${D}.</li>
+` : ''}</ul>
 <p class="note">Videos are general education. They are not a diagnosis and do not replace an examination by your own doctor. For heavy bleeding, severe pain, or any danger sign in pregnancy, do not wait to watch a video: go to the nearest hospital or call 108 or 112 in India.</p>
 </div></div></section>
 
@@ -442,8 +442,8 @@ ${statusLine()}
 <div><span class="eyebrow">${icon('send')} Book an appointment</span><h2>Tell us how we can <em>help</em></h2>
 <p class="lead">Fill in your details and we will open WhatsApp with your message ready to send. Prefer to talk? Call ${P}.</p>
 <p>Serving women and families in ${areas.join(', ')} and nearby towns.</p>
-<p>Prefer not to travel? <a href="${slugUrl(online.slug)}">Book an online consultation</a> (₹${online.fee}, up to ${online.minutes} minutes, with a slot based on the doctor’s availability).</p>
-<p>Already have a visit? <a href="/visit-reminder/">Add it to your phone's calendar</a> with a reminder.</p></div>
+${online.enabled ? `<p>Prefer not to travel? <a href="${slugUrl(online.slug)}">Book an online consultation</a> (₹${online.fee}, up to ${online.minutes} minutes, with a slot based on the doctor’s availability).</p>
+` : ''}<p>Already have a visit? <a href="/visit-reminder/">Add it to your phone's calendar</a> with a reminder.</p></div>
 <div>
 <form class="form form-card" data-wa-form data-wa="${site.phone.wa}" data-mail="${site.email}" novalidate>
 <div class="field"><label for="f-name">Your name <span aria-hidden="true">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="err">Please enter your name.</span></div>
@@ -470,7 +470,7 @@ const faqAbout = [
   ['Do I need an appointment?', `You can book on WhatsApp or by phone at ${P}, or walk in during clinic hours.`],
   ['Is emergency care available 24/7?', `Yes. Call ${P} at any hour or come straight to the hospital. In a life-threatening emergency, dial 108 or 112 for an ambulance.`],
   ['How do I choose a gynecologist in Erode?', `Look for a registered obstetrician and gynaecologist with the qualifications and experience for the care you need, a hospital with emergency and delivery facilities available at all hours, clear and upfront pricing, and a doctor you feel comfortable talking to. ${D} is an Academic Topper from ${site.doctor.college} with over 40,000 safe deliveries, and ${site.name} offers emergency care 24/7. You are welcome to visit and meet us before you decide.`],
-  ['Do you offer online consultations?', `Yes. Talk to ${D} by audio or video call for ₹${online.fee} per consultation of up to ${online.minutes} minutes. We give you a slot based on the doctor’s availability, confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How online consultation works</a>.`],
+  ...(!online.enabled ? [] : [['Do you offer online consultations?', `Yes. Talk to ${D} by audio or video call for ₹${online.fee} per consultation of up to ${online.minutes} minutes. We give you a slot based on the doctor’s availability, confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How online consultation works</a>.`]]),
   ['How much is the consultation fee?', `Consultation fees are kept affordable for all income groups, and treatment costs are explained clearly before any procedure. Please call or WhatsApp ${P} for the current fee.`],
 ];
 const faqPregnancy = [
