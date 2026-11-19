@@ -13,7 +13,7 @@ import maternityPages from './pages/maternity.mjs';
 import gynaePages from './pages/gynae.mjs';
 import moreCarePages from './pages/more-care.mjs';
 import { home, doctor, videos, contact, faq, allFaqs } from './pages/core.mjs';
-import { gallery, privacy, notFound, onlinePaused, taOnlinePaused } from './pages/misc.mjs';
+import { gallery, privacy, notFound } from './pages/misc.mjs';
 import { dueDate, visitReminder } from './pages/tools.mjs';
 import { hub, regionPages, tamilPage } from './pages/regions.mjs';
 import { guidesHub, guidePages, taGuidePages } from './pages/guides.mjs';
@@ -36,7 +36,7 @@ for (const p of photos) if (!captions[p.id]) console.warn(`  ! photo "${p.id}" h
 const ordered = photos.slice().sort((a, b) => (captions[a.id]?.order ?? 99) - (captions[b.id]?.order ?? 99));
 
 const pages = [
-  home, ...maternityPages, ...gynaePages, ...moreCarePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, ...(online.enabled ? [onlinePage, taOnlinePage] : [onlinePaused, taOnlinePaused]), doctor, videos, contact, faq,
+  home, ...maternityPages, ...gynaePages, ...moreCarePages, hub, ...regionPages, tamilPage, guidesHub, ...guidePages, ...taGuidePages, ...taServicePages, ...(online.enabled ? [onlinePage, taOnlinePage] : []), doctor, videos, contact, faq,
   ...(ordered.length ? [gallery] : []),
   dueDate, visitReminder,
   privacy, ...(online.enabled ? [termsPage] : []), notFound,
@@ -75,7 +75,7 @@ for (const page of pages) {
   report.push(`${outFile(page.path).padEnd(52)} ${(Buffer.byteLength(html) / 1024).toFixed(1).padStart(6)} KB  ${warn.length ? '! ' + warn.join(', ') : ''}`);
 }
 if (!ctx.hasGallery && exists('gallery/index.html')) fs.rmSync(path.join(ROOT, 'gallery'), { recursive: true });
-if (!online.enabled && exists('terms-and-refunds/index.html')) fs.rmSync(path.join(ROOT, 'terms-and-refunds'), { recursive: true });   // the terms page belongs to the online consultation (see ONLINE_ENABLED in site.mjs)
+for (const d of online.enabled ? [] : ['terms-and-refunds', online.slug, `ta/${online.slug}`]) if (exists(`${d}/index.html`)) fs.rmSync(path.join(ROOT, d), { recursive: true });   // the terms page belongs to the online consultation (see ONLINE_ENABLED in site.mjs)
 
 // ---- sitemap + robots ----
 const indexable = pages.filter((p) => !p.noindex);   // no <changefreq>/<priority>: search engines ignore them
