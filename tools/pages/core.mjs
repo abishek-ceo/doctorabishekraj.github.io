@@ -482,7 +482,6 @@ const faqAbout = [
   ['Is emergency care available 24/7?', `Yes. Call ${P} at any hour or come straight to the hospital. In a life-threatening emergency, dial 108 or 112 for an ambulance.`],
   ['How do I choose a gynecologist in Erode?', `Look for a registered obstetrician and gynaecologist with the qualifications and experience for the care you need, a hospital with emergency and delivery facilities available at all hours, clear and upfront pricing, and a doctor you feel comfortable talking to. ${D} is an Academic Topper from ${site.doctor.college} with over 40,000 safe deliveries, and ${site.name} offers emergency care 24/7. You are welcome to visit and meet us before you decide.`],
   ...(!online.enabled ? [] : [['Do you offer online consultations?', `Yes. Talk to ${D} by audio or video call for ₹${online.fee} per consultation of up to ${online.minutes} minutes. We give you a slot based on the doctor’s availability, confirmed on WhatsApp. <a href="${slugUrl(online.slug)}">How online consultation works</a>.`]]),
-  ['How much is the consultation fee?', `Consultation fees are kept affordable for all income groups, and treatment costs are explained clearly before any procedure. Please call or WhatsApp ${P} for the current fee.`],
 ];
 const faqPregnancy = [
   ['When should I first see a doctor in pregnancy?', 'As soon as you have a positive pregnancy test, ideally in the first trimester. <a href="/maternity-hospital-erode/">Read about antenatal care</a>.'],
